@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.TutorIndustrial" table="TUTORINDUSTRIAL">
+      <!-- 0 -->
+      <id name="idTutorIndustrial" column="idTutorIndustrial">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombreTI" column="nombreTI" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="profesionTI" column="profesionTI" type="string" not-null="true"/>
+      <!-- 3 -->
+      <property name="cargoTI" column="cargoTI" type="string" not-null="true"/>
+      <!-- 4 -->
+      <property name="departamentoTI" column="departamentoTI" type="string" not-null="true"/>
+      <!-- 5 -->
+      <property name="direccionTI" column="direccionTI" type="string" not-null="true"/>
+      <!-- 6 -->
+      <property name="correoTI" column="correoTI" type="string" not-null="true" unique="true"/>
+      <!-- 7 -->
+      <property name="telefonoTI" column="telefonoTI" type="string" not-null="true"/>
+      <!-- 8 -->
+      <property name="codigoEmpresa" column="codigoEmpresa" type="string" not-null="true"/>
+      <!-- 9 -->
+      <property name="cedulaTI" column="cedulaTI" type="string" not-null="true" unique="true"/>
+
+    </class>
+</hibernate-mapping>

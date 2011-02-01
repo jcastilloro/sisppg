@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Profesor" table="PROFESOR">
+      <!-- 0 -->
+      <id name="idProfesor" column="idProfesor">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombreProfesor" column="nombreProfesor" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="codigoProfesor" column="codigoProfesor" type="string" not-null="true" unique="true"/>
+      <!-- 3 -->
+      <property name="departamentoUSB" column="departamentoUSB" type="string" not-null="true"/>
+      <!-- 4 -->
+      <property name="telefonoProfesor" column="telefonoProfesor" type="string" not-null="true"/>
+      <!-- 5 -->
+      <property name="correoProfesor" column="correoProfesor" type="string" not-null="true" unique="true"/>
+
+    </class>
+</hibernate-mapping>

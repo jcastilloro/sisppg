@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Carrera" table="CARRERA">
+      <!-- 0 -->
+      <id name="idCarrera" column="idCarrera">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="codigoCarrera" column="codigoCarrera" type="string" not-null="true" unique="true"/>
+      <!-- 2 -->
+      <property name="nombreCarrera" column="nombreCarrera" type="string" not-null="true" unique="true"/>
+
+    </class>
+</hibernate-mapping>
