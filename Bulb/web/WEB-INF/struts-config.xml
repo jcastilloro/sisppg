@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="F_AgregarOferta" type="ve.usb.sistema.F_AgregarOferta"/>
+        <form-bean name="F_AgregarPPG" type="ve.usb.sistema.F_AgregarPPG"/>
+        <form-bean name="F_CancelarDatosEmpresa" type="ve.usb.sistema.F_CancelarDatosEmpresa"/>
+        <form-bean name="F_ConsultarEstudiante" type="ve.usb.sistema.F_ConsultarEstudiante"/>
+        <form-bean name="F_ConsultarPPG" type="ve.usb.sistema.F_ConsultarPPG"/>
+        <form-bean name="F_IniciarSesion" type="ve.usb.sistema.F_IniciarSesion"/>
+        <form-bean name="F_Notas_PLarga" type="ve.usb.sistema.F_Notas_PLarga"/>
+        <form-bean name="FplanPG" type="ve.usb.sistema.FplanPG"/>
+        <form-bean name="FplanPGBuscar" type="ve.usb.sistema.FplanPGBuscar"/>
+        <form-bean name="F_PlanTrabajo" type="ve.usb.sistema.F_PlanTrabajo"/>
+        <form-bean name="F_PreInscripcion" type="ve.usb.sistema.F_PreInscripcion"/>
+        <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
+
+    </form-beans>
+    
+    <global-exceptions>
+        
+    </global-exceptions>
+    
+    <global-forwards>
+
+        <!-- AgregarPPG -->
+
+        <forward name="A_Pre_AgregarPPG" path="/A_Pre_AgregarPPG.do"/>
+        <forward name="V_AgregarPPG" path="/agregarppg/V_AgregarPPG.jsp"/>
+        <forward name="A_AgregarPPG" path="/A_AgregarPPG.do"/>
+
+        <!-- GestionarPPG -->
+
+        <forward name="A_Pre_GestionarPPG" path="/A_Pre_GestionarPPG.do"/>
+        <forward name="V_GestionarPPG" path="/gestionarppg/V_GestionarPPG.jsp"/>
+
+        <!-- IniciarSesion -->
+
+        <forward name="A_Pre_IniciarSesion" path="/A_Pre_IniciarSesion.do"/>
+        <forward name="A_IniciarSesion" path="/A_IniciarSesion.do"/>
+        <forward name="V_IniciarSesion" path="/iniciarsesion/V_IniciarSesion.jsp"/>
+
+        <!-- LlenarFormularioPreinscripcion -->
+
+        <forward name="A_Pre_LlenarFormularioPreinscripcion" path="/A_Pre_LlenarFormularioPreinscripcion.do"/>
+        <forward name="V_LlenarFormularioPreinscripcion" path="/llenarformulariopreinscripcion/V_LlenarFormularioPreinscripcion.jsp"/>
+        <forward name="A_LlenarFormularioPreinscripcion" path="/A_LlenarFormularioPreinscripcion.do"/>
+
+        <!-- GestionarInscripcion -->
+
+        <forward name="A_Pre_GestionarInscripcion" path="/A_Pre_GestionarInscripcion.do"/>
+        <forward name="V_Inscripcion" path="/gestionarinscripcion/V_Inscripcion.jsp"/>
+
+        <!-- LlenarFInscripcion -->
+
+        <forward name="A_Pre_LlenarFInscripcion" path="/A_Pre_LlenarFInscripcion.do"/>
+        <forward name="V_LlenarFInscripcion" path="/llenarfinscripcion/V_LlenarFInscripcion.jsp"/>
+        <forward name="A_LlenarFIncripcion" path="/A_LlenarFIncripcion.do"/>
+
+        <!-- ConsultarPPG -->
+
+        <forward name="A_Pre_ConsultarPPG" path="/A_Pre_ConsultarPPG.do"/>
+        <forward name="V_ConsultarPPG" path="/consultarppg/V_ConsultarPPG.jsp"/>
+
+        <!-- VistaEstudiante -->
+
+        <forward name="A_Pre_VistaEstudiante" path="/A_Pre_VistaEstudiante.do"/>
+        <forward name="V_VistaEstudiante" path="/vistaestudiante/V_VistaEstudiante.jsp"/>
+
+        <!-- VistaProfesor -->
+
+        <forward name="A_Pre_VistaProfesor" path="/A_Pre_VistaProfesor.do"/>
+        <forward name="V_VistaProfesor" path="/vistaprofesor/V_VistaProfesor.jsp"/>
+
+        <!-- CerrarSesion -->
+
+        <forward name="A_Pre_CerrarSesion" path="/A_Pre_CerrarSesion.do"/>
+
+        <!-- GestionarPasantia -->
+
+        <forward name="A_Pre_GestionarPasantia" path="/A_Pre_GestionarPasantia.do"/>
+        <forward name="V_GestionarPasantia" path="/gestionarpasantia/V_GestionarPasantia.jsp"/>
+
+        <!-- GestionarPreinscripcion -->
+
+        <forward name="A_Pre_GestionarPreinscripcion" path="/A_Pre_GestionarPreinscripcion.do"/>
+        <forward name="V_GestionarPreinscripcion" path="/gestionarpreinscripcion/V_GestionarPreinscripcion.jsp"/>
+
+        <!-- ConsultarPreinscripcion -->
+
+        <forward name="A_Pre_ConsultarPreinscripcion" path="/A_Pre_ConsultarPreinscripcion.do"/>
+        <forward name="V_ConsultarPreinscripcion" path="/consultarpreinscripcion/V_ConsultarPreinscripcion.jsp"/>
+
+        <!-- ModificarPreinscripcion -->
+
+        <forward name="A_Pre_ModificarPreinscripcion" path="/A_Pre_ModificarPreinscripcion.do"/>
+        <forward name="V_modificarPreinscripcion" path="/modificarpreinscripcion/V_modificarPreinscripcion.jsp"/>
+        <forward name="A_ModificarPreinscripcion" path="/A_ModificarPreinscripcion.do"/>
+
+        <!-- RegistrarEmpresa -->
+
+        <forward name="A_Pre_RegistrarEmpresa" path="/A_Pre_RegistrarEmpresa.do"/>
+        <forward name="V_RegistrarEmpresa" path="/registrarempresa/V_RegistrarEmpresa.jsp"/>
+        <forward name="A_RegistrarEmpresa" path="/A_RegistrarEmpresa.do"/>
+
+        <!-- IniciarSesionEmpresa -->
+
+        <forward name="A_Pre_IniciarSesionEmpresa" path="/A_Pre_IniciarSesionEmpresa.do"/>
+        <forward name="V_IniciarSesionEmpresa" path="/iniciarsesionempresa/V_IniciarSesionEmpresa.jsp"/>
+        <forward name="A_IniciarSesionEmpresa" path="/A_IniciarSesionEmpresa.do"/>
+
+        <!-- VistaEmpresa -->
+
+        <forward name="A_Pre_VistaEmpresa" path="/A_Pre_VistaEmpresa.do"/>
+        <forward name="V_VistaEmpresa" path="/vistaempresa/V_VistaEmpresa.jsp"/>
+
+        <!-- EvaluarPasantia -->
+
+        <forward name="A_Pre_EvaluarPasantia" path="/A_Pre_EvaluarPasantia.do"/>
+        <forward name="V_EvaluarPasantia" path="/evaluarpasantia/V_EvaluarPasantia.jsp"/>
+        <forward name="A_EvaluarPasantia" path="/A_EvaluarPasantia.do"/>
+
+        <!-- CancelarRegistro -->
+
+        <forward name="A_Pre_CancelarRegistro" path="/A_Pre_CancelarRegistro.do"/>
+        <forward name="V_CancelarRegistro" path="/cancelarregistro/V_CancelarRegistro.jsp"/>
+        <forward name="A_CancelarRegistro" path="/A_CancelarRegistro.do"/>
+
+        <!-- ModificarDatosEmpresa -->
+
+        <forward name="A_Pre_ModificarDatosEmpresa" path="/A_Pre_ModificarDatosEmpresa.do"/>
+        <forward name="V_ModificarDatosEmpresa" path="/modificardatosempresa/V_ModificarDatosEmpresa.jsp"/>
+        <forward name="A_ModificarDatosEmpresa" path="/A_ModificarDatosEmpresa.do"/>
+
+        <!-- ConsultarInscripcion -->
+
+        <forward name="A_Pre_ConsultarInscripcion" path="/A_Pre_ConsultarInscripcion.do"/>
+        <forward name="V_ConsultarInscripcion" path="/consultarinscripcion/V_ConsultarInscripcion.jsp"/>
+
+        <!-- ModificarPPG -->
+
+        <forward name="A_Pre_ModificarPPG" path="/A_Pre_ModificarPPG.do"/>
+        <forward name="V_ModificarPPG" path="/modificarppg/V_ModificarPPG.jsp"/>
+        <forward name="A_ModificarPPG" path="/A_ModificarPPG.do"/>
+
+        <!-- VistaCoordinacion -->
+
+        <forward name="A_Pre_VistaCoordinacion" path="/A_Pre_VistaCoordinacion.do"/>
+        <forward name="V_VistaCoordinacion" path="/vistacoordinacion/V_VistaCoordinacion.jsp"/>
+
+        <!-- GestionarConsultaCoordinacion -->
+
+        <forward name="A_Pre_GestionarConsultaCoordinacion" path="/A_Pre_GestionarConsultaCoordinacion.do"/>
+        <forward name="V_GestionarConsultaCoordinacion" path="/gestionarconsultacoordinacion/V_GestionarConsultaCoordinacion.jsp"/>
+
+        <!-- ConsultarEstudiante -->
+
+        <forward name="A_Pre_ConsultarEstudiante" path="/A_Pre_ConsultarEstudiante.do"/>
+        <forward name="V_ConsultarEstudiante" path="/consultarestudiante/V_ConsultarEstudiante.jsp"/>
+        <forward name="A_BusquedaEstudiante" path="/A_BusquedaEstudiante.do"/>
+        <forward name="V_MostrarConsulta" path="/consultarestudiante/V_MostrarConsulta.jsp"/>
+        <forward name="A_MostrarConsultaEstudiante" path="/A_MostrarConsultaEstudiante.do"/>
+        <forward name="V_MostrarConsultaEstudiante" path="/consultarestudiante/V_MostrarConsultaEstudiante.jsp"/>
+        <forward name="A_Pre_MostrarConsulta" path="/A_Pre_MostrarConsulta.do"/>
+
+        <!-- ModificarInscripcion -->
+
+        <forward name="A_Pre_ModificarInscripcion" path="/A_Pre_ModificarInscripcion.do"/>
+        <forward name="V_ModificarInscripcion" path="/modificarinscripcion/V_ModificarInscripcion.jsp"/>
+        <forward name="A_ModificarInscripcion" path="/A_ModificarInscripcion.do"/>
+
+        <!-- ConsultarPPGCoordinacion -->
+
+        <forward name="A_Pre_ConsultarPPGCoordinacion" path="/A_Pre_ConsultarPPGCoordinacion.do"/>
+        <forward name="V_ConsultarPPGCoordinacion" path="/consultarppgcoordinacion/V_ConsultarPPGCoordinacion.jsp"/>
+        <forward name="A_ConsultarPPGCoordinacion" path="/A_ConsultarPPGCoordinacion.do"/>
+        <forward name="V_MostrarConsultaPPG" path="/consultarppgcoordinacion/V_MostrarConsultaPPG.jsp"/>
+        <forward name="A_MostrarConsultaPPG" path="/A_MostrarConsultaPPG.do"/>
+        <forward name="V_MostrarDescripcionPPG" path="/consultarppgcoordinacion/V_MostrarDescripcionPPG.jsp"/>
+        <forward name="A_Pre_MostrarConsultaPPG" path="/A_Pre_MostrarConsultaPPG.do"/>
+
+        <!-- ConsultarPPGTutor -->
+
+        <forward name="A_Pre_ConsultarPPGTutor" path="/A_Pre_ConsultarPPGTutor.do"/>
+        <forward name="V_ConsultarPPGTutor" path="/consultarppgtutor/V_ConsultarPPGTutor.jsp"/>
+        <forward name="A_MostrarDetallesPPG" path="/A_MostrarDetallesPPG.do"/>
+        <forward name="V_MostrarDetallesPPG" path="/consultarppgtutor/V_MostrarDetallesPPG.jsp"/>
+
+        <forward name="tooltip" path="/tooltip.do"/>
+        <forward name="Info" path="/_tooltips/Info.jsp"/>
+    </global-forwards>
+    
+    <action-mappings>
+
+        <!-- AgregarPPG -->
+        <action path="/A_Pre_AgregarPPG" parameter="A_Pre_AgregarPPG"
+           type="ve.usb.sistema.AccionesAgregarPPG"/>
+        <action path="/A_AgregarPPG" parameter="A_AgregarPPG"
+           type="ve.usb.sistema.AccionesAgregarPPG"
+           input="/AgregarPPG/V_AgregarPPG.jsp"
+           name="F_AgregarPPG"
+           scope="session"/>
+
+
+        <!-- GestionarPPG -->
+        <action path="/A_Pre_GestionarPPG" parameter="A_Pre_GestionarPPG"
+           type="ve.usb.sistema.AccionesGestionarPPG"/>
+
+
+        <!-- IniciarSesion -->
+        <action path="/A_Pre_IniciarSesion" parameter="A_Pre_IniciarSesion"
+           type="ve.usb.sistema.AccionesIniciarSesion"/>
+        <action path="/A_IniciarSesion" parameter="A_IniciarSesion"
+           type="ve.usb.sistema.AccionesIniciarSesion"
+           input="/IniciarSesion/V_IniciarSesion.jsp"
+           name="F_IniciarSesion"
+           scope="session"/>
+
+
+        <!-- LlenarFormularioPreinscripcion -->
+        <action path="/A_Pre_LlenarFormularioPreinscripcion" parameter="A_Pre_LlenarFormularioPreinscripcion"
+           type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"/>
+        <action path="/A_LlenarFormularioPreinscripcion" parameter="A_LlenarFormularioPreinscripcion"
+           type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"
+           input="/LlenarFormularioPreinscripcion/A_LlenarFormularioPreinscripcion.jsp"
+           name="F_PreInscripcion"
+           scope="session"/>
+
+
+        <!-- GestionarInscripcion -->
+        <action path="/A_Pre_GestionarInscripcion" parameter="A_Pre_GestionarInscripcion"
+           type="ve.usb.sistema.AccionesGestionarInscripcion"/>
+
+
+        <!-- LlenarFInscripcion -->
+        <action path="/A_Pre_LlenarFInscripcion" parameter="A_Pre_LlenarFInscripcion"
+           type="ve.usb.sistema.AccionesLlenarFInscripcion"/>
+        <action path="/A_LlenarFIncripcion" parameter="A_LlenarFIncripcion"
+           type="ve.usb.sistema.AccionesLlenarFInscripcion"
+           input="/LlenarFInscripcion/V_LlenarFInscripcion.jsp"
+           name="F_PlanTrabajo"
+           scope="session"/>
+
+
+        <!-- ConsultarPPG -->
+        <action path="/A_Pre_ConsultarPPG" parameter="A_Pre_ConsultarPPG"
+           type="ve.usb.sistema.AccionesConsultarPPG"/>
+
+
+        <!-- VistaEstudiante -->
+        <action path="/A_Pre_VistaEstudiante" parameter="A_Pre_VistaEstudiante"
+           type="ve.usb.sistema.AccionesVistaEstudiante"/>
+
+
+        <!-- VistaProfesor -->
+        <action path="/A_Pre_VistaProfesor" parameter="A_Pre_VistaProfesor"
+           type="ve.usb.sistema.AccionesVistaProfesor"/>
+
+
+        <!-- CerrarSesion -->
+        <action path="/A_Pre_CerrarSesion" parameter="A_Pre_CerrarSesion"
+           type="ve.usb.sistema.AccionesCerrarSesion"/>
+
+
+        <!-- GestionarPasantia -->
+        <action path="/A_Pre_GestionarPasantia" parameter="A_Pre_GestionarPasantia"
+           type="ve.usb.sistema.AccionesGestionarPasantia"/>
+
+
+        <!-- GestionarPreinscripcion -->
+        <action path="/A_Pre_GestionarPreinscripcion" parameter="A_Pre_GestionarPreinscripcion"
+           type="ve.usb.sistema.AccionesGestionarPreinscripcion"/>
+
+
+        <!-- ConsultarPreinscripcion -->
+        <action path="/A_Pre_ConsultarPreinscripcion" parameter="A_Pre_ConsultarPreinscripcion"
+           type="ve.usb.sistema.AccionesConsultarPreinscripcion"/>
+
+
+        <!-- ModificarPreinscripcion -->
+        <action path="/A_Pre_ModificarPreinscripcion" parameter="A_Pre_ModificarPreinscripcion"
+           type="ve.usb.sistema.AccionesModificarPreinscripcion"/>
+        <action path="/A_ModificarPreinscripcion" parameter="A_ModificarPreinscripcion"
+           type="ve.usb.sistema.AccionesModificarPreinscripcion"
+           input="/ModificarPreinscripcion/V_modificarPreinscripcion.jsp"
+           name="F_PreInscripcion"
+           scope="session"/>
+
+
+        <!-- RegistrarEmpresa -->
+        <action path="/A_Pre_RegistrarEmpresa" parameter="A_Pre_RegistrarEmpresa"
+           type="ve.usb.sistema.AccionesRegistrarEmpresa"/>
+        <action path="/A_RegistrarEmpresa" parameter="A_RegistrarEmpresa"
+           type="ve.usb.sistema.AccionesRegistrarEmpresa"
+           input="/RegistrarEmpresa/V_RegistrarEmpresa.jsp"
+           name="F_RegistrarEmpresa"
+           scope="session"/>
+
+
+        <!-- IniciarSesionEmpresa -->
+        <action path="/A_Pre_IniciarSesionEmpresa" parameter="A_Pre_IniciarSesionEmpresa"
+           type="ve.usb.sistema.AccionesIniciarSesionEmpresa"/>
+        <action path="/A_IniciarSesionEmpresa" parameter="A_IniciarSesionEmpresa"
+           type="ve.usb.sistema.AccionesIniciarSesionEmpresa"
+           input="/IniciarSesionEmpresa/V_IniciarSesionEmpresa.jsp"
+           name="F_IniciarSesion"
+           scope="session"/>
+
+
+        <!-- VistaEmpresa -->
+        <action path="/A_Pre_VistaEmpresa" parameter="A_Pre_VistaEmpresa"
+           type="ve.usb.sistema.AccionesVistaEmpresa"/>
+
+
+        <!-- EvaluarPasantia -->
+        <action path="/A_Pre_EvaluarPasantia" parameter="A_Pre_EvaluarPasantia"
+           type="ve.usb.sistema.AccionesEvaluarPasantia"/>
+        <action path="/A_EvaluarPasantia" parameter="A_EvaluarPasantia"
+           type="ve.usb.sistema.AccionesEvaluarPasantia"/>
+
+
+        <!-- CancelarRegistro -->
+        <action path="/A_Pre_CancelarRegistro" parameter="A_Pre_CancelarRegistro"
+           type="ve.usb.sistema.AccionesCancelarRegistro"/>
+        <action path="/A_CancelarRegistro" parameter="A_CancelarRegistro"
+           type="ve.usb.sistema.AccionesCancelarRegistro"
+           input="/CancelarRegistro/V_CancelarRegistro.jsp"
+           name="F_CancelarDatosEmpresa"
+           scope="session"/>
+
+
+        <!-- ModificarDatosEmpresa -->
+        <action path="/A_Pre_ModificarDatosEmpresa" parameter="A_Pre_ModificarDatosEmpresa"
+           type="ve.usb.sistema.AccionesModificarDatosEmpresa"/>
+        <action path="/A_ModificarDatosEmpresa" parameter="A_ModificarDatosEmpresa"
+           type="ve.usb.sistema.AccionesModificarDatosEmpresa"
+           input="/ModificarDatosEmpresa/V_ModificarDatosEmpresa.jsp"
+           name="F_RegistrarEmpresa"
+           scope="session"/>
+
+
+        <!-- ConsultarInscripcion -->
+        <action path="/A_Pre_ConsultarInscripcion" parameter="A_Pre_ConsultarInscripcion"
+           type="ve.usb.sistema.AccionesConsultarInscripcion"/>
+
+
+        <!-- ModificarPPG -->
+        <action path="/A_Pre_ModificarPPG" parameter="A_Pre_ModificarPPG"
+           type="ve.usb.sistema.AccionesModificarPPG"/>
+        <action path="/A_ModificarPPG" parameter="A_ModificarPPG"
+           type="ve.usb.sistema.AccionesModificarPPG"
+           input="/ModificarPPG/V_ModificarPPG.jsp"
+           name="F_AgregarPPG"
+           scope="session"/>
+
+
+        <!-- VistaCoordinacion -->
+        <action path="/A_Pre_VistaCoordinacion" parameter="A_Pre_VistaCoordinacion"
+           type="ve.usb.sistema.AccionesVistaCoordinacion"/>
+
+
+        <!-- GestionarConsultaCoordinacion -->
+        <action path="/A_Pre_GestionarConsultaCoordinacion" parameter="A_Pre_GestionarConsultaCoordinacion"
+           type="ve.usb.sistema.AccionesGestionarConsultaCoordinacion"/>
+
+
+        <!-- ConsultarEstudiante -->
+        <action path="/A_Pre_ConsultarEstudiante" parameter="A_Pre_ConsultarEstudiante"
+           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+        <action path="/A_BusquedaEstudiante" parameter="A_BusquedaEstudiante"
+           type="ve.usb.sistema.AccionesConsultarEstudiante"
+           input="/ConsultarEstudiante/V_ConsultarEstudiante.jsp"
+           name="F_ConsultarEstudiante"
+           scope="session"/>
+        <action path="/A_MostrarConsultaEstudiante" parameter="A_MostrarConsultaEstudiante"
+           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+        <action path="/A_Pre_MostrarConsulta" parameter="A_Pre_MostrarConsulta"
+           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+
+
+        <!-- ModificarInscripcion -->
+        <action path="/A_Pre_ModificarInscripcion" parameter="A_Pre_ModificarInscripcion"
+           type="ve.usb.sistema.AccionesModificarInscripcion"/>
+        <action path="/A_ModificarInscripcion" parameter="A_ModificarInscripcion"
+           type="ve.usb.sistema.AccionesModificarInscripcion"
+           input="/ModificarInscripcion/V_ModificarInscripcion.jsp"
+           name="F_PlanTrabajo"
+           scope="session"/>
+
+
+        <!-- ConsultarPPGCoordinacion -->
+        <action path="/A_Pre_ConsultarPPGCoordinacion" parameter="A_Pre_ConsultarPPGCoordinacion"
+           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+        <action path="/A_ConsultarPPGCoordinacion" parameter="A_ConsultarPPGCoordinacion"
+           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"
+           input="/ConsultarPPGCoordinacion/V_ConsultarPPGCoordinacion.jsp"
+           name="F_ConsultarPPG"
+           scope="session"/>
+        <action path="/A_MostrarConsultaPPG" parameter="A_MostrarConsultaPPG"
+           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+        <action path="/A_Pre_MostrarConsultaPPG" parameter="A_Pre_MostrarConsultaPPG"
+           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+
+
+        <!-- ConsultarPPGTutor -->
+        <action path="/A_Pre_ConsultarPPGTutor" parameter="A_Pre_ConsultarPPGTutor"
+           type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
+        <action path="/A_MostrarDetallesPPG" parameter="A_MostrarDetallesPPG"
+           type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
+
+
+        <action path="/tooltip" parameter="tooltip"
+           type="ve.usb.sistema.Acciones_tooltips"/>
+    </action-mappings>
+    
+    <!--
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    -->
+    
+    <message-resources parameter="ve/usb/sistema/ApplicationResource"/>
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <!--
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    -->
+    <!-- ========================= Validator plugin ================================= -->
+    <!--
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+    -->
+</struts-config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.RelPPGArea" table="RELPPGAREA">
+      <!-- 0 -->
+      <id name="idRelPPGArea" column="idRelPPGArea">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="codigo_Area" column="codigo_Area" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="numPPG" column="numPPG" type="integer" not-null="true"/>
+
+    </class>
+</hibernate-mapping>

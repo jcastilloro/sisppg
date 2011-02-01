@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Estudiante" table="ESTUDIANTE">
+      <!-- 0 -->
+      <id name="idEstudiante" column="idEstudiante">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="carnetE" column="carnetE" type="string" not-null="true" unique="true"/>
+      <!-- 2 -->
+      <property name="nombreE" column="nombreE" type="string" not-null="true"/>
+      <!-- 3 -->
+      <property name="cedulaE" column="cedulaE" type="string" not-null="true" unique="true"/>
+      <!-- 4 -->
+      <property name="indiceE" column="indiceE" type="double" not-null="true"/>
+      <!-- 5 -->
+      <property name="sexoE" column="sexoE" type="string" not-null="true"/>
+      <!-- 6 -->
+      <property name="nacionalidadE" column="nacionalidadE" type="string" not-null="true"/>
+      <!-- 7 -->
+      <property name="fechaNacimientoE" column="fechaNacimientoE" type="date" not-null="true"/>
+
+    </class>
+</hibernate-mapping>

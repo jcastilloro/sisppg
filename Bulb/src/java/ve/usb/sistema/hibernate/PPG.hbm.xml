@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.PPG" table="PPG">
+      <!-- 0 -->
+      <id name="idPPG" column="idPPG">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombrePPG" column="nombrePPG" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="fechaPPG" column="fechaPPG" type="date" not-null="true"/>
+      <!-- 3 -->
+      <property name="propuestop" column="propuestop" type="string" not-null="true"/>
+      <!-- 4 -->
+      <property name="actvPPG" column="actvPPG" type="text" not-null="true"/>
+      <!-- 5 -->
+      <property name="ptosInte" column="ptosInte" type="text" not-null="true"/>
+      <!-- 6 -->
+      <property name="areas" column="areas" type="text"/>
+      <!-- 7 -->
+      <property name="duraYrec" column="duraYrec" type="text" not-null="true"/>
+      <!-- 8 -->
+      <property name="primeraE" column="primeraE" type="string" not-null="true"/>
+      <!-- 9 -->
+      <property name="trimestreUno" column="trimestreUno" type="string" not-null="true"/>
+      <!-- 10 -->
+      <property name="resultMinUno" column="resultMinUno" type="string" not-null="true"/>
+      <!-- 11 -->
+      <property name="actResulUno" column="actResulUno" type="string" not-null="true"/>
+      <!-- 12 -->
+      <property name="descTopicosICI" column="descTopicosICI" type="string" not-null="true"/>
+      <!-- 13 -->
+      <property name="segundaE" column="segundaE" type="string" not-null="true"/>
+      <!-- 14 -->
+      <property name="trimestreDos" column="trimestreDos" type="string" not-null="true"/>
+      <!-- 15 -->
+      <property name="juntas" column="juntas" type="boolean" not-null="true"/>
+      <!-- 16 -->
+      <property name="resultMinDos" column="resultMinDos" type="string" not-null="true"/>
+      <!-- 17 -->
+      <property name="actResulDos" column="actResulDos" type="string" not-null="true"/>
+      <!-- 18 -->
+      <property name="descTopicosICII" column="descTopicosICII" type="string" not-null="true"/>
+      <!-- 19 -->
+      <property name="terceraE" column="terceraE" type="string" not-null="true"/>
+      <!-- 20 -->
+      <property name="trimestreTres" column="trimestreTres" type="string" not-null="true"/>
+      <!-- 21 -->
+      <property name="resultMinTres" column="resultMinTres" type="string" not-null="true"/>
+      <!-- 22 -->
+      <property name="actResulTres" column="actResulTres" type="string"/>
+      <!-- 23 -->
+      <property name="recurMate" column="recurMate" type="string" not-null="true"/>
+      <!-- 24 -->
+      <property name="numeroPPG" column="numeroPPG" type="integer" not-null="true" unique="true"/>
+      <!-- 25 -->
+      <property name="anoUno" column="anoUno" type="integer" not-null="true"/>
+      <!-- 26 -->
+      <property name="anoDos" column="anoDos" type="integer" not-null="true"/>
+      <!-- 27 -->
+      <property name="anoTres" column="anoTres" type="integer" not-null="true"/>
+
+    </class>
+</hibernate-mapping>

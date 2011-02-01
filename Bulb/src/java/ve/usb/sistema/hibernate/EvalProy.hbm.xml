@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.EvalProy" table="EVALPROY">
+      <!-- 0 -->
+      <id name="idEvalProy" column="idEvalProy">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="codigoProy" column="codigoProy" type="integer" not-null="true" unique="true"/>
+      <!-- 2 -->
+      <property name="evaluacion" column="evaluacion" type="string" not-null="true"/>
+      <!-- 3 -->
+      <property name="descripcion" column="descripcion" type="string"/>
+
+    </class>
+</hibernate-mapping>

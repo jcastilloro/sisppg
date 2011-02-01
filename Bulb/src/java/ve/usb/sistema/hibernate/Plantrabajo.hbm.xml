@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Plantrabajo" table="PLANTRABAJO">
+      <!-- 0 -->
+      <id name="idPlantrabajo" column="idPlantrabajo">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="empresa" column="empresa" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="tituloPasantia" column="tituloPasantia" type="string" not-null="true"/>
+      <!-- 3 -->
+      <property name="areaProyecto" column="areaProyecto" type="string" not-null="true"/>
+      <!-- 4 -->
+      <property name="resumenProyecto" column="resumenProyecto" type="string"/>
+      <!-- 5 -->
+      <property name="objetivosPasantias" column="objetivosPasantias" type="string" not-null="true"/>
+      <!-- 6 -->
+      <property name="fasesPasantia" column="fasesPasantia" type="string" not-null="true"/>
+      <!-- 7 -->
+      <property name="objetivosFaseI" column="objetivosFaseI" type="string" not-null="true"/>
+      <!-- 8 -->
+      <property name="actividadesFaseI" column="actividadesFaseI" type="string" not-null="true"/>
+      <!-- 9 -->
+      <property name="tiempoFaseI" column="tiempoFaseI" type="string" not-null="true"/>
+      <!-- 10 -->
+      <property name="objetivosFaseII" column="objetivosFaseII" type="string" not-null="true"/>
+      <!-- 11 -->
+      <property name="actividadesFaseII" column="actividadesFaseII" type="string" not-null="true"/>
+      <!-- 12 -->
+      <property name="tiempoFaseII" column="tiempoFaseII" type="string" not-null="true"/>
+      <!-- 13 -->
+      <property name="objetivosFaseIII" column="objetivosFaseIII" type="string" not-null="true"/>
+      <!-- 14 -->
+      <property name="actividadesFaseIII" column="actividadesFaseIII" type="string" not-null="true"/>
+      <!-- 15 -->
+      <property name="tiempoFaseIII" column="tiempoFaseIII" type="string" not-null="true"/>
+      <!-- 16 -->
+      <property name="objetivosFaseIV" column="objetivosFaseIV" type="string" not-null="true"/>
+      <!-- 17 -->
+      <property name="actividadesFaseIV" column="actividadesFaseIV" type="string" not-null="true"/>
+      <!-- 18 -->
+      <property name="tiempoFaseIV" column="tiempoFaseIV" type="string" not-null="true"/>
+      <!-- 19 -->
+      <property name="codigopt" column="codigopt" type="integer" not-null="true" unique="true"/>
+      <!-- 20 -->
+      <property name="codigoTI" column="codigoTI" type="string" not-null="true"/>
+      <!-- 21 -->
+      <property name="codigoTA" column="codigoTA" type="string"/>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.TITutoreaPasantia" table="TITUTOREAPASANTIA">
+      <!-- 0 -->
+      <id name="idTITutoreaPasantia" column="idTITutoreaPasantia">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="codigoTI" column="codigoTI" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="codigoPT" column="codigoPT" type="integer" not-null="true" unique="true"/>
+
+    </class>
+</hibernate-mapping>
