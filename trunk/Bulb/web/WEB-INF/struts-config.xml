@@ -39,6 +39,10 @@
         <forward name="A_Pre_GestionarPPG" path="/A_Pre_GestionarPPG.do"/>
         <forward name="V_GestionarPPG" path="/gestionarppg/V_GestionarPPG.jsp"/>
 
+        <!-- GestionarConsultaTutor -->
+
+        <forward name="V_GestionarConsultaTutor" path="/gestionarconsultatutor/V_GestionarConsultaTutor.jsp"/>
+
         <!-- IniciarSesion -->
 
         <forward name="A_Pre_IniciarSesion" path="/A_Pre_IniciarSesion.do"/>
@@ -210,6 +214,10 @@
         <!-- GestionarPPG -->
         <action path="/A_Pre_GestionarPPG" parameter="A_Pre_GestionarPPG"
            type="ve.usb.sistema.AccionesGestionarPPG"/>
+
+        <!-- GestionarConsultaTutor -->
+        <action path="/A_GestionarConsultaTutor" parameter="A_GestionarConsultaTutor"
+           type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
 
 
         <!-- IniciarSesion -->
