@@ -89,9 +89,9 @@
                   <table border="0" width="450px">
                     <tr><th><p id="1409009_C"><label for="1409009"><bean:message key="F_PreInscripcion.label0"/><%-- EP --%></label></th><td>
                              <select name="ep">	
-                              <option value="1420">1420 (Pasant&iacute;a Corta)</option>
+                              <option value="3420">3420 (Pasant&iacute;a Larga)</option>
                               <option value="2420">2420 (Pasant&iacute;a Intermedia)</option>
-                              <option value="3420">3420 (Pasant&iacute;a Larga)</option>     
+                              <option value="1420">1420 (Pasant&iacute;a Corta)</option>
                         </select>  
                     </p></td></tr>
                     <tr><th><p id="1409232_C"><label for="1409232"><bean:message key="F_PreInscripcion.label1"/><%-- Per&iacute;odo Pasant&iacute;a --%></label></th><td><html:text styleId="1409232" property="periodo_pasantia" value='${periodopasantia}' size="30"/></p></td></tr>
