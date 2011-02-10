@@ -66,7 +66,8 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
         String periodopasantia = "";
         int ano = 0;
         String carnet ="";
-        Double indice=0.0;
+        String ncarrera ="";
+        Double indice = 0.0;
         String nombre = "";
         String cedula = "";
         String sexo = "";
@@ -100,6 +101,7 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                periodopasantia = (String)(consulta.getPeriodoPasantia());
                ano = (int)(consulta.getAno());
                carnet = (String)(estudiante.getCarnetE());
+               ncarrera = carrera.getNombreCarrera();
                indice = estudiante.getIndiceE();
                nombre = estudiante.getNombreE();
                cedula = estudiante.getCedulaE();
@@ -163,40 +165,47 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                              /* PDF */
              /**************************************/
             try {
-                Document d = new Document(PageSize.LETTER);
+                Document pdf = new Document(PageSize.LETTER);
 
-                FileOutputStream os = new FileOutputStream("/home/chitty/cartaP.pdf");
-                PdfWriter.getInstance(d, os);
-                d.addTitle("Carta de Postulación - "+nombre);
-                d.open();
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition"," inline; filename=cartaPostulacion.pdf");
 
+                PdfWriter.getInstance(pdf, response.getOutputStream());
 
-                Image logo = Image.getInstance("/home/chitty/DEx.png");
-                Image foto = Image.getInstance("/home/chitty/foto.png");
-                logo.scaleToFit(156, 105);
-                logo.setAlignment(Chunk.ALIGN_LEFT);
-                foto.scaleToFit(130, 161);
-                foto.setAbsolutePosition(420, 400);
-                d.add(logo);
-                d.add(foto);
+                pdf.addTitle("Carta de Postulación - "+nombre);
+                pdf.open();
 
+                // Logo
+                Image logo = Image.getInstance("/home/chitty/logo.png");
+                logo.scaleToFit(295, 122);
+                logo.setAlignment(Image.ALIGN_LEFT);
+                pdf.add(logo);
 
-                Paragraph header = new Paragraph("Coordinación de Cooperación Técnica y Desarrollo Social");
-                d.add(header);
+                // Pie
+                Image pie  = Image.getInstance("/home/chitty/pie.png");
+                pie.scaleToFit(500, 216);
+                pie.setAbsolutePosition(40, 20);
+                pdf.add(pie);
 
                 Paragraph titulo = new Paragraph("SOLICITUD DE PASANTÍA",
                         FontFactory.getFont("arial", 20));
 
                 titulo.setAlignment(Paragraph.ALIGN_CENTER);
-                d.add(titulo);
+                pdf.add(titulo);
+                
+                // Foto
+                Image foto = Image.getInstance("/home/chitty/foto.png");
+                foto.scaleToFit(125, 168);
+                foto.setAlignment(Image.ALIGN_RIGHT | Image.TEXTWRAP);
+                pdf.add(foto);
 
                 Paragraph datos = new Paragraph("EP-"+ep+"\nPERÍODO: "+periodopasantia+" AÑO: "+ano+
-                                     "\n\nDATOS PERSONALES\n\nCarnet: "+carnet+"\nCarrera: "+codigoCarrera+
-                                     "\nIndice Académico: "+indice+"\nNombre: "+nombre+" Cédula: "+cedula+
-                                     "\nFecha de Nacimiento: "+fn+"\nSexo: "+sexo+" Nacionalidad: "+nacionalidad+
-                                     "\nEstado civil: "+edocivil+"\nTeléfono habitación: "+tlfhab+" Otro Teléfono: "
-                                     +tlfotro+"\nEmail: "+correo+"\nDirección: "+direccion+"\n");
-                d.add(datos);
+                                     "\n\nDATOS PERSONALES\n\nCarnet: "+carnet+"\nCarrera: "+ncarrera+" - "
+                                     +codigoCarrera+"\nIndice Académico: "+indice+"\n\nNombre: "+nombre+" Cédula: "
+                                     +cedula+"\nFecha de Nacimiento: "+fn+"\nSexo: "+sexo+" Nacionalidad: "
+                                     +nacionalidad+"\nEstado civil: "+edocivil+"\nTeléfono habitación: "+tlfhab+
+                                     " Otro Teléfono: "+tlfotro+"\nEmail: "+correo+"\nDirección: "+direccion+"\n");
+                pdf.add(datos);
 
                 Paragraph bloque;
                 if (graduando) {
@@ -204,25 +213,25 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                 } else {
                     bloque = new Paragraph("BLOQUE B (No me graduo con la pasantía)\n\n");
                 }
-                d.add(bloque);
+                pdf.add(bloque);
 
                 Paragraph deseo;             
                 if (tramite){
                     deseo = new Paragraph("Deseo que la CCTDS tramite el Proceso de Búsqueda de Pasantía en la Empresa"
                             + " \nEstoy dispuesto(a) a ir a la región: "+region+"\nTengo preferencia por el Estado: "
-                            +estado+" y la Ciudad: "+ciudad+"\n\n\n\n");
+                            +estado+" y la Ciudad: "+ciudad);
                 } else {
-                    deseo = new Paragraph("No Deseo que la CCTDS tramite el Proceso de Búsqueda de Pasantía en la Empresa\n\n\n\n\n\n");
+                    deseo = new Paragraph("No Deseo que la CCTDS tramite el Proceso de Búsqueda de Pasantía en la Empresa\n\n");
                 }
 
-                d.add(deseo);
+                pdf.add(deseo);
 
-                Paragraph firma = new Paragraph("_________________\nFIRMA ");
-                firma.setAlignment(Paragraph.ALIGN_RIGHT);
-                d.add(firma);
+                Paragraph firma = new Paragraph("\n\n\n\n_________________\nFIRMA ");
+                firma.setAlignment(Paragraph.ALIGN_CENTER);
+                pdf.add(firma);
                 
-                d.close();
-                os.close();
+                pdf.close();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
