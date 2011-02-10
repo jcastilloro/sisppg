@@ -24,7 +24,7 @@
 
         <!-- Uncomment this line to drop and re-create the database schema on startup
        <property name="hbm2ddl.auto">create</property>
-        -->  
+         --> 
           
         <mapping resource="ve/usb/sistema/hibernate/Area.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/Carrera.hbm.xml"/>
