@@ -104,6 +104,11 @@
         <forward name="A_Pre_GestionarPasantia" path="/A_Pre_GestionarPasantia.do"/>
         <forward name="V_GestionarPasantia" path="/gestionarpasantia/V_GestionarPasantia.jsp"/>
 
+         <!-- GestionarCulminacionPasantia -->
+
+        <forward name="A_Pre_GestionarCulminacion" path="/A_Pre_GestionarCulminacion.do"/>
+        <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
+
         <!-- GestionarPreinscripcion -->
 
         <forward name="A_Pre_GestionarPreinscripcion" path="/A_Pre_GestionarPreinscripcion.do"/>
@@ -284,6 +289,9 @@
         <action path="/A_Pre_GestionarInscripcion" parameter="A_Pre_GestionarInscripcion"
            type="ve.usb.sistema.AccionesGestionarInscripcion"/>
 
+           <!-- GestionarCulminacion -->
+        <action path="/A_Pre_GestionarCulminacion" parameter="A_Pre_GestionarCulminacion"
+           type="ve.usb.sistema.AccionesGestionarCulminacion"/>
 
         <!-- LlenarFInscripcion -->
         <action path="/A_Pre_LlenarFInscripcion" parameter="A_Pre_LlenarFInscripcion"
