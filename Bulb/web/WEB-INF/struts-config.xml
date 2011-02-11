@@ -19,6 +19,7 @@
         <form-bean name="F_PlanTrabajo" type="ve.usb.sistema.F_PlanTrabajo"/>
         <form-bean name="F_PreInscripcion" type="ve.usb.sistema.F_PreInscripcion"/>
         <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
+        <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
 
     </form-beans>
     
@@ -51,6 +52,10 @@
         <!-- GenerarPlanTrabajo -->
 
         <forward name="V_GenerarPlanTrabajo" path="/consultarinscripcion/V_ConsultarInscripcion.jsp"/>
+
+        <!-- Montar Documento Inscripcion -->
+        <forward name="V_MontarDocumentosInscripcion" path="/montardocumentosinscripcion/V_MontarDocumentosInscripcion.jsp"/>
+
 
         <!-- IniciarSesion -->
 
@@ -237,6 +242,23 @@
         <!-- GenerarPlanTrabajo -->
         <action path="/A_GenerarPlanTrabajo" parameter="A_GenerarPlanTrabajo"
            type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
+
+           <action path="/A_Pre_MontarDocumentosInscripcion" parameter="A_Pre_MontarDocumentosInscripcion"
+                type="ve.usb.sistema.AccionesMontarDocumentosInscripcion"/>
+
+        <!-- MontarDocumentosInscripcion -->
+        <action path="/A_MontarDocumentosInscripcion" parameter="A_MontarDocumentosInscripcion"
+                type="ve.usb.sistema.AccionesMontarDocumentosInscripcion"
+                name="F_Upload"
+                scope="request"
+                validate="true"
+                input="/montardocumentosinscripcion/V_MontarDocumentosInscripcion.jsp"
+                >
+            <forward name="success" path="/montardocumentosinscripcion/uploadsuccess.jsp"/>
+            <forward name="vacio" path="/montardocumentosinscripcion/uploadfailure1.jsp"/>
+            <forward name="formato" path="/montardocumentosinscripcion/uploadfailure2.jsp"/>
+            <forward name="tamano" path="/montardocumentosinscripcion/uploadfailure3.jsp"/>
+        </action>
 
         <!-- IniciarSesion -->
         <action path="/A_Pre_IniciarSesion" parameter="A_Pre_IniciarSesion"
