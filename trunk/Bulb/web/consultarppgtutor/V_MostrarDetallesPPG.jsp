@@ -62,10 +62,11 @@
                                 <tr><th>Actividades que propone realizar para lograr estos resultados: </th><td><bean:write name="PPG" property="actResulTres"/></td></tr>
                                 <tr><th>Previsiones para lograr la disponibilidad de recursos materiales: </th><td><bean:write name="PPG" property="recurMate"/></td></tr>
                                 <tr><th> Realizado Por: </th></tr>
-                                 <logic:iterate  name="Estudiante" id="estudiante">                                                                    
-                                    <tr><th><bean:write name="estudiante" property="nombreE"/> </th></tr>   
-                                </logic:iterate>  
-                               
+                                <logic:notEmpty name="posts" scope="request"><%-- esto esta cableando pa q funcione --%>
+                                <logic:iterate  name="Estudiante" id="e">
+                                    <tr><th><bean:write name="e" property="nombree"/> </th></tr>
+                                </logic:iterate>
+                             </logic:notEmpty>
                                
                             </table>
                                 <br>
