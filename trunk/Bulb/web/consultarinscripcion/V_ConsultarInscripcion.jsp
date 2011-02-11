@@ -82,7 +82,7 @@
 
                                 <tr><th>Tutor Acad&eacute;mico</th><td><bean:write name="tutorA"/></td></tr>
 
-                                <tr><th><h1 align="center">Pasant&iacute;a</h1></td></tr>
+                                <tr><th><h1 align="center">Pasant&iacute;a</h1></th></tr>
 
                                 <tr><th>T&iacute;tulo</th><td><bean:write name="titulo"/></td></tr>
 
