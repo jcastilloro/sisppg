@@ -33,6 +33,7 @@
                     <div id="left">
                         <div class="content">
                             <br>
+                            
                             <br>
                          <h3 align="center">${empty msg ? "" : msg}</h3>
                             <br>

@@ -42,6 +42,7 @@
         <!-- GestionarConsultaTutor -->
 
         <forward name="V_GestionarConsultaTutor" path="/gestionarconsultatutor/V_GestionarConsultaTutor.jsp"/>
+        <forward name="V_EstudiantesTutoreados" path="/gestionarconsultatutor/V_EstudiantesTutoreados.jsp"/>
 
         <!-- GenerarCartaPostulacion -->
       
