@@ -18,7 +18,7 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_VistaProfesor.label0"/><%-- Plan de Proyecto de Grado --%></html:link></li>
-                    <li><html:link action="/A_GestionarConsultaTutor.do"><bean:message key="V_VistaProfesor.label1"/><%-- Estudiantes Tutoreados --%></html:link></li>
+                    <li><html:link action="/A_GestionarConsultaTutor.do">Consultas Tutor Academico<%-- Estudiantes Tutoreados --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaProfesor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>
