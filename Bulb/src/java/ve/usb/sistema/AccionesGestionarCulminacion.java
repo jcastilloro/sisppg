@@ -42,7 +42,7 @@ public class AccionesGestionarCulminacion extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Inscripcion", };
+        final String[] SALIDAS = {"V_GestionarCulminacion", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;

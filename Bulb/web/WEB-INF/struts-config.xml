@@ -45,6 +45,10 @@
         <forward name="V_GestionarConsultaTutor" path="/gestionarconsultatutor/V_GestionarConsultaTutor.jsp"/>
         <forward name="V_EstudiantesTutoreados" path="/gestionarconsultatutor/V_EstudiantesTutoreados.jsp"/>
 
+        <!-- GestionarConsulminacion -->
+
+        <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
+
         <!-- GenerarCartaPostulacion -->
       
         <forward name="V_GenerarCartaPostulacion" path="/consultarpreinscripcion/V_ConsultarPreinscripcion.jsp"/>
@@ -55,6 +59,9 @@
 
         <!-- Montar Documento Inscripcion -->
         <forward name="V_MontarDocumentosInscripcion" path="/montardocumentosinscripcion/V_MontarDocumentosInscripcion.jsp"/>
+
+        <!-- Montar Documento C -->
+        <forward name="V_MontarDocumentosC" path="/montardocumentosc/V_MontarDocumentosC.jsp"/>
 
 
         <!-- IniciarSesion -->
@@ -263,6 +270,23 @@
             <forward name="vacio" path="/montardocumentosinscripcion/uploadfailure1.jsp"/>
             <forward name="formato" path="/montardocumentosinscripcion/uploadfailure2.jsp"/>
             <forward name="tamano" path="/montardocumentosinscripcion/uploadfailure3.jsp"/>
+        </action>
+
+         <action path="/A_Pre_MontarDocumentosC" parameter="A_Pre_MontarDocumentosC"
+                type="ve.usb.sistema.AccionesMontarDocumentosC"/>
+
+        <!-- MontarDocumentosC -->
+        <action path="/A_MontarDocumentosC" parameter="A_MontarDocumentosC"
+                type="ve.usb.sistema.AccionesMontarDocumentosC"
+                name="F_Upload"
+                scope="request"
+                validate="true"
+                input="/montardocumentosc/V_MontarDocumentosC.jsp"
+                >
+            <forward name="success" path="/montardocumentosc/uploadsuccess.jsp"/>
+            <forward name="vacio" path="/montardocumentosc/uploadfailure1.jsp"/>
+            <forward name="formato" path="/montardocumentosc/uploadfailure2.jsp"/>
+            <forward name="tamano" path="/montardocumentosc/uploadfailure3.jsp"/>
         </action>
 
         <!-- IniciarSesion -->

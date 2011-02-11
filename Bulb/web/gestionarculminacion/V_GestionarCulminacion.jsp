@@ -18,8 +18,8 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarCulminacion.do"><bean:message key="V_GestionarPasantia.label5"/><%-- Consultar Documentos --%></html:link></li>
-                    <li><html:link action="/A_Pre_MontarDocumentosInscripcion.do"><bean:message key="V_GestionarPasantia.label6"/><%-- Montar Documentos --%></html:link></li>
-                    <li><html:link action="/A_GestionarPasantia.do"><bean:message key="V_GestionarPasantia.label2"/><%-- Regresar --%></html:link></li>
+                    <li><html:link action="/A_Pre_MontarDocumentosC.do"><bean:message key="V_GestionarPasantia.label6"/><%-- Montar Documentos --%></html:link></li>
+                    <li><html:link action="/A_Pre_GestionarPasantia.do"><bean:message key="V_GestionarPasantia.label2"/><%-- Regresar --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPasantia.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>
