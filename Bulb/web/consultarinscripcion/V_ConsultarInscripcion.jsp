@@ -38,7 +38,7 @@
 
                     <li><html:link action="/A_Pre_ModificarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label0"/><%-- Modificar Inscripci&oacute;n --%></html:link></li>
 
-                    <li><html:link action="/A_Pre_ConsultarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label1"/><%-- Generar Planilla de Inscripci&oacute;n --%></html:link></li>
+                    <li><html:link action="/A_GenerarPlanTrabajo.do"><bean:message key="V_ConsultarInscripcion.label1"/><%-- Generar Planilla de Inscripci&oacute;n --%></html:link></li>
 
                     <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label2"/><%-- Regresar --%></html:link></li>
 
