@@ -43,10 +43,13 @@
 
         <forward name="V_GestionarConsultaTutor" path="/gestionarconsultatutor/V_GestionarConsultaTutor.jsp"/>
 
-        <!-- GestionarPPG -->
+        <!-- GenerarCartaPostulacion -->
+      
+        <forward name="V_GenerarCartaPostulacion" path="/consultarpreinscripcion/V_ConsultarPreinscripcion.jsp"/>
 
-        <!-- forward name="A_GenerarCartaPostulacion" path="/A_GenerarCartaPostulacion.do"/ -->
-        <forward name="V_GenerarCartaPostulacion" path="/generarcartapostulacion/V_GenerarCartaPostulacion.jsp"/>
+        <!-- GenerarPlanTrabajo -->
+
+        <forward name="V_GenerarPlanTrabajo" path="/consultarinscripcion/V_ConsultarInscripcion.jsp"/>
 
         <!-- IniciarSesion -->
 
@@ -225,8 +228,14 @@
            type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
         <action path="/A_ConsultaEstudiantesTutoreados" parameter="A_ConsultaEstudiantesTutoreados"
            type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
+
+        <!-- GenerarCartaPostulacion -->
         <action path="/A_GenerarCartaPostulacion" parameter="A_GenerarCartaPostulacion"
            type="ve.usb.sistema.AccionesGenerarCartaPostulacion"/>
+
+        <!-- GenerarPlanTrabajo -->
+        <action path="/A_GenerarPlanTrabajo" parameter="A_GenerarPlanTrabajo"
+           type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
 
         <!-- IniciarSesion -->
         <action path="/A_Pre_IniciarSesion" parameter="A_Pre_IniciarSesion"
