@@ -5,7 +5,7 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_GestionarConsultaTutor.title"/></title>
+        <title><bean:message key="V_EstudiantesTutoreados.title"/></title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -16,9 +16,7 @@
 
             <div id="menu">
                 <ul id="nav">
-                    <li><html:link action="/A_ConsultaEstudiantesTutoreados.do"><bean:message key="V_GestionarConsultaTutor.label0"/><%-- Consultar Estudiantes Tutoreados --%></html:link></li>
-                    <li><html:link action="/A_Pre_VistaProfesor.do"><bean:message key="V_GestionarConsultaTutor.label1"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaTutor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
+
                 </ul>
             </div>
 
