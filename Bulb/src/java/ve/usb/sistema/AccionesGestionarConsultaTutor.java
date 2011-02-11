@@ -49,6 +49,9 @@ public class AccionesGestionarConsultaTutor extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //comienza mi codigo
+
+            //finaliza mi codigo
             tr.commit();
 
         } catch (Exception ex) {
@@ -60,5 +63,36 @@ public class AccionesGestionarConsultaTutor extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
+    public ActionForward A_ConsultaEstudiantesTutoreados(ActionMapping mapping, ActionForm  form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+    //Salidas
+        final String[] SALIDAS = {"V_EstudiantesTutoreados", };
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            //comienza mi codigo
+
+            /*String codProf = (String)request.getSession().getAttribute("login");
+                        Profesor prof = (Profesor)s.createQuery("from EstRealizaProy where carnetestudiante = :carnet")
+                                .setString("carnet", carnet)
+                                .uniqueResult();*/
+
+            //finaliza mi codigo
+            tr.commit();
+
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try { s.close(); } catch (Exception ex2) {}
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+    
 
 }

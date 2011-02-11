@@ -99,7 +99,7 @@ public class AccionesConsultarPPG extends CohesionAction {
                request.setAttribute("nombrearea",(String)area.getNombreArea());
 
                /* Tutor */
-               ProfTutoreaProy proftutproy = (ProfTutoreaProy)s.createQuery("from ProfTutoreaProy where numeroppg = "+ppg.getNumeroPPG()+"")
+               ProfTutoreaProy proftutproy = (ProfTutoreaProy)s.createQuery("from ProfTutoreaProy where numeroppg = "+ppg.getNumeroPPG()+" and tipoproytutor=0")
                            .uniqueResult();
                Profesor profesor = (Profesor)s.createQuery("from Profesor where codigoprofesor = '"+proftutproy.getIdProfesor()+"'").uniqueResult();
                request.setAttribute("idprofesor",(String)proftutproy.getIdProfesor());

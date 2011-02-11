@@ -223,8 +223,8 @@
         <!-- GestionarConsultaTutor -->
         <action path="/A_GestionarConsultaTutor" parameter="A_GestionarConsultaTutor"
            type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
-
-        <!-- GestionarConsultaTutor -->
+        <action path="/A_ConsultaEstudiantesTutoreados" parameter="A_ConsultaEstudiantesTutoreados"
+           type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
         <action path="/A_GenerarCartaPostulacion" parameter="A_GenerarCartaPostulacion"
            type="ve.usb.sistema.AccionesGenerarCartaPostulacion"/>
 
