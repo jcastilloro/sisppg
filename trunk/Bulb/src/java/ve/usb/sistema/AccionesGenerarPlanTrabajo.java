@@ -1,4 +1,3 @@
-
 package ve.usb.sistema;
 
 import com.itextpdf.text.Document;
@@ -63,9 +62,11 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                 int codigo = (int) student.getCodigoproy();
                 Plantrabajo plantrabajo = (Plantrabajo) s.createQuery("from Plantrabajo where codigopt= :codigo").setInteger("codigo", codigo).uniqueResult();
                 request.setAttribute("empresa", plantrabajo.getEmpresa());
-                request.setAttribute("tutorI", plantrabajo.getCodigoTI());
+
                 request.setAttribute("tutorA", plantrabajo.getCodigoTA());
 
+                String tutorIn = plantrabajo.getCodigoTI();
+                String tutorAc = plantrabajo.getCodigoTA();
                 String carnet = (String)(estudiante.getCarnetE());
                 String nombre = estudiante.getNombreE();
                 String cedula = estudiante.getCedulaE();
@@ -126,10 +127,10 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                             +"\nPeríodo Pasantía: "+periodopasantia+" Año: "+ano);
                     pdf.add(datos);
 
-                    Paragraph tutorI = new Paragraph("\nTUTOR INDUSTRIAL\nNombre:");
+                    Paragraph tutorI = new Paragraph("\nTUTOR INDUSTRIAL\nNombre: "+tutorIn);
                     pdf.add(tutorI);
 
-                    Paragraph tutorA = new Paragraph("\nTUTOR ACADÉMICO\nNombre:\n\nPASANTÍA\n");
+                    Paragraph tutorA = new Paragraph("\nTUTOR ACADÉMICO\nNombre: "+tutorAc+"\n\nPASANTÍA\n");
                     pdf.add(tutorA);
 
                     float[] widths1 = { 1f, 2f };
