@@ -92,6 +92,8 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                 String actIV = plantrabajo.getActividadesFaseIV();
                 String tiempoIV = plantrabajo.getTiempoFaseIV();
 
+                String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
+
                 /**************************************/
                 /* PDF */
                 /**************************************/
@@ -106,13 +108,13 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     pdf.open();
 
                     // Logo
-                    Image logo = Image.getInstance("/home/chitty/logo.png");
+                    Image logo = Image.getInstance(path +"logo.png");
                     logo.scaleToFit(295, 122);
                     logo.setAlignment(Image.ALIGN_LEFT);
                     pdf.add(logo);
 
                     // Pie
-                    Image pie = Image.getInstance("/home/chitty/pie.png");
+                    Image pie = Image.getInstance(path +"pie.png");
                     pie.scaleToFit(500, 216);
                     pie.setAbsolutePosition(40, 20);
                     pdf.add(pie);
@@ -155,6 +157,10 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     t.addCell("4");     t.addCell(objIV);       t.addCell(actIV);           t.addCell(tiempoIV);
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
+
+                    Paragraph firma = new Paragraph("\n\n\n\n_________________\nFIRMA ");
+                    firma.setAlignment(Paragraph.ALIGN_CENTER);
+                    pdf.add(firma);
 
                     pdf.close();
 

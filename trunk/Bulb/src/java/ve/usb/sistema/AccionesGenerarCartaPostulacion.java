@@ -90,6 +90,8 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                 boolean graduando = (Boolean)consulta.getGraduando();
                 boolean tramite = (Boolean)consulta.getTramiteCCTDS();
 
+                String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
+
                 /* PDF */
                 try {
                     Document pdf = new Document(PageSize.LETTER);
@@ -103,13 +105,13 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     pdf.open();
 
                     // Logo
-                    Image logo = Image.getInstance("/home/chitty/logo.png");
+                    Image logo = Image.getInstance(path +"logo.png");
                     logo.scaleToFit(295, 122);
                     logo.setAlignment(Image.ALIGN_LEFT);
                     pdf.add(logo);
 
                     // Pie
-                    Image pie = Image.getInstance("/home/chitty/pie.png");
+                    Image pie = Image.getInstance(path +"pie.png");
                     pie.scaleToFit(500, 216);
                     pie.setAbsolutePosition(40, 20);
                     pdf.add(pie);
@@ -119,9 +121,9 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
 
                     titulo.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(titulo);
-
+                    
                     // Foto
-                    Image foto = Image.getInstance("/home/chitty/foto.png");
+                    Image foto = Image.getInstance(path +"foto.png");
                     foto.scaleToFit(125, 168);
                     foto.setAlignment(Image.ALIGN_RIGHT | Image.TEXTWRAP);
                     pdf.add(foto);
