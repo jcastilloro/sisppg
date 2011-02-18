@@ -19,8 +19,9 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_ConsultarEstudiante.do"><bean:message key="V_GestionarConsultaCoordinacion.label0"/><%-- Estudiantes --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarPPGCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label1"/><%-- Plan de Proyectos de Grado --%></html:link></li>
-                    <li><html:link action="/A_Pre_VistaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label2"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaCoordinacion.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
+                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label2"/><%-- Consultar Profesores --%></html:link></li>
+                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label3"/><%-- Consultar Jurados --%></html:link></li>
+                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaCoordinacion.label4"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>
             </div>

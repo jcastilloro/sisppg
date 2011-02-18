@@ -1,60 +1,30 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 
 %><html:html>
 
     <head>
-
         <title><bean:message key="V_ConsultarInscripcion.title"/></title>
-
         <html:base/>
-
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
-        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
-        
-
-
-
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>       
     </head>
 
-    <body>
-
-      
-
-           
+    <body>           
 
             <div id="menu">
-
                 <ul id="nav">
-
                     <li><html:link action="/A_Pre_ModificarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label0"/><%-- Modificar Inscripci&oacute;n --%></html:link></li>
-
                     <li><html:link action="/A_GenerarPlanTrabajo.do"><bean:message key="V_ConsultarInscripcion.label1"/><%-- Generar Planilla de Inscripci&oacute;n --%></html:link></li>
-
-                    <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label2"/><%-- Regresar --%></html:link></li>
-
-
-
+                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_ConsultarInscripcion.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
                 </ul>
-
             </div>
 
-                    <div id="header">
-
-                        
-
-                    </div>
-
-        </div>
+           <div id="header">             
+           </div>
 
         <div id="body_wrapper">
 

@@ -2,10 +2,12 @@ package ve.usb.sistema;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletRequest;
@@ -109,7 +111,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
 
                     // Logo
                     Image logo = Image.getInstance(path +"logo.png");
-                    logo.scaleToFit(295, 122);
+                    logo.scaleToFit(197, 81);
                     logo.setAlignment(Image.ALIGN_LEFT);
                     pdf.add(logo);
 
@@ -119,7 +121,10 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     pie.setAbsolutePosition(40, 20);
                     pdf.add(pie);
 
-                    Paragraph titulo = new Paragraph("PLAN DE TRABAJO", FontFactory.getFont("arial", 20));        
+                    Font font = FontFactory.getFont("Arial", BaseFont.IDENTITY_H, 12);
+                    font.setStyle(Font.BOLD);
+
+                    Paragraph titulo = new Paragraph("PLAN DE TRABAJO", font);
                     titulo.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(titulo);
                     

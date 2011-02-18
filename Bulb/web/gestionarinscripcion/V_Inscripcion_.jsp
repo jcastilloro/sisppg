@@ -19,8 +19,6 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_LlenarFInscripcion.do"><bean:message key="V_Inscripcion.label0"/><%-- Llenar Formulario de Inscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarInscripcion.do"><bean:message key="V_Inscripcion.label1"/><%-- Consultar Inscripci&oacute;n --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarPasantia.do"><bean:message key="V_Inscripcion.label2"/><%-- Regresar --%></html:link></li>
-
                 </ul>
             </div>
         </div>

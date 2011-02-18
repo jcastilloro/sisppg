@@ -15,11 +15,14 @@ import ve.usb.cohesion.runtime.HibernateUtil;
 import ve.usb.sistema.hibernate.*;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.BaseFont;
+import java.awt.Color;
 
 import java.util.Date;
 
@@ -106,7 +109,7 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
 
                     // Logo
                     Image logo = Image.getInstance(path +"logo.png");
-                    logo.scaleToFit(295, 122);
+                    logo.scaleToFit(197, 81);
                     logo.setAlignment(Image.ALIGN_LEFT);
                     pdf.add(logo);
 
@@ -116,9 +119,10 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     pie.setAbsolutePosition(40, 20);
                     pdf.add(pie);
 
-                    Paragraph titulo = new Paragraph("SOLICITUD DE PASANTÍA",
-                            FontFactory.getFont("arial", 20));
-
+                    Font font = FontFactory.getFont("Arial", BaseFont.IDENTITY_H, 12);
+                    font.setStyle(Font.BOLD);
+                    
+                    Paragraph titulo = new Paragraph("SOLICITUD DE PASANTÍA", font);
                     titulo.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(titulo);
                     

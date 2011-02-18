@@ -19,7 +19,6 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_ModificarPreinscripcion.do"><bean:message key="V_ConsultarPreinscripcion.label0"/><%-- Modificar Preinscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarPreinscripcion.do"><bean:message key="V_ConsultarPreinscripcion.label1"/><%-- Generar Planilla de Preinscripci&oacute;n --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_ConsultarPreinscripcion.label2"/><%-- Regresar --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_ConsultarPreinscripcion.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>
