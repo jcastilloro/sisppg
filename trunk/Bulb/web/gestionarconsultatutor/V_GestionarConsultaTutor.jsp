@@ -17,7 +17,6 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_ConsultaEstudiantesTutoreados.do"><bean:message key="V_GestionarConsultaTutor.label0"/><%-- Consultar Estudiantes Tutoreados --%></html:link></li>
-                    <li><html:link action="/A_Pre_VistaProfesor.do"><bean:message key="V_GestionarConsultaTutor.label1"/><%-- Regresar --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaTutor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
                 </ul>
             </div>

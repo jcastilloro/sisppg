@@ -19,9 +19,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_LlenarFormularioPreinscripcion.do"><bean:message key="V_GestionarPreinscripcion.label0"/><%-- Formulario de Preinscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarPreinscripcion.do"><bean:message key="V_GestionarPreinscripcion.label1"/><%-- Consultar Preinscripci&oacute;n --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarPasantia.do"><bean:message key="V_GestionarPreinscripcion.label2"/><%-- Regresar --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPreinscripcion.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
                 </ul>
             </div>
          <div id="header">          

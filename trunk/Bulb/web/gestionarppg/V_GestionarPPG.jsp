@@ -19,7 +19,6 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_AgregarPPG.do"><bean:message key="V_GestionarPPG.label0"/><%-- Agregar Plan --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarPPGTutor.do"><bean:message key="V_GestionarPPG.label3"/><%-- Consultar Plan --%></html:link></li>
-                    <li><html:link action="/A_Pre_VistaProfesor.do"><bean:message key="V_GestionarPPG.label1"/><%-- Regresar --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPPG.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
                     
 
