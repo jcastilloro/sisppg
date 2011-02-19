@@ -1,5 +1,6 @@
 package ve.usb.sistema;
 
+import com.itextpdf.text.Chunk;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,14 +16,17 @@ import ve.usb.cohesion.runtime.HibernateUtil;
 import ve.usb.sistema.hibernate.*;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
-import java.awt.Color;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 
 import java.util.Date;
 
@@ -132,9 +136,45 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     foto.setAlignment(Image.ALIGN_RIGHT | Image.TEXTWRAP);
                     pdf.add(foto);
 
-                    Paragraph datos = new Paragraph("EP-" + ep + "\nPERÍODO: " + periodopasantia + " AÑO: " + ano
-                            + "\n\nDATOS PERSONALES\n\nCarnet: " + carnet + "\nCarrera: " + ncarrera + " - "
-                            + codigoCarrera + "\nIndice Académico: " + indice + "\n\nNombre: " + nombre + " Cédula: "
+                    Chunk space = new Chunk(' ');
+                    Chunk epBold = new Chunk("\nEP: ", font);
+                    Chunk epAns = new Chunk(" "+ep+" ");
+                    Chunk periodBold = new Chunk("PERÍODO: ", font);
+                    Chunk periodAns = new Chunk(" "+periodopasantia+" ");
+                    Chunk anoBold = new Chunk("AÑO: ", font);
+                    Chunk anoAns = new Chunk(" "+ano+" ");
+                    pdf.add(epBold);
+                    pdf.add(epAns);
+                    for( int i=0; i<5; i++)
+                        pdf.add(space);
+                    pdf.add(periodBold);
+                    pdf.add(periodAns);
+                    for( int i=0; i<5; i++)
+                        pdf.add(space);
+                    pdf.add(anoBold);
+                    pdf.add(anoAns);
+
+                    Phrase dPersonales = new Phrase("\n\nDATOS PERSONALES", font);
+                    pdf.add(dPersonales);                    
+
+                    PdfPTable datosP = new PdfPTable(1);
+                    PdfPCell cell = new PdfPCell(new Paragraph("CARNET: " +carnet));
+                    cell.setMinimumHeight(30f);
+                    datosP.addCell(cell);                    
+
+                    cell = new PdfPCell(new Paragraph("CARRERA: "+ ncarrera +" - "+ codigoCarrera));
+                    cell.setMinimumHeight(30f);
+                    datosP.addCell(cell);
+
+                    cell = new PdfPCell(new Paragraph("ÍNDICE ACADÉMICO: "+indice));
+                    cell.setMinimumHeight(30f);
+                    datosP.addCell(cell);
+                    
+                    datosP.setWidthPercentage(75);
+                    datosP.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(datosP);
+
+                    Paragraph datos = new Paragraph("\n\nNombre: " + nombre + " Cédula: "
                             + cedula + "\nFecha de Nacimiento: " + fn + "\nSexo: " + sexo + " Nacionalidad: "
                             + nacionalidad + "\nEstado civil: " + edocivil + "\nTeléfono habitación: " + tlfhab
                             + " Otro Teléfono: " + tlfotro + "\nEmail: " + correo + "\nDirección: " + direccion + "\n");

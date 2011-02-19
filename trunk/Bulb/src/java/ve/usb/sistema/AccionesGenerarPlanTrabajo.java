@@ -1,5 +1,6 @@
 package ve.usb.sistema;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
@@ -7,6 +8,7 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -127,12 +129,49 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     Paragraph titulo = new Paragraph("PLAN DE TRABAJO", font);
                     titulo.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(titulo);
-                    
-                    Paragraph datos = new Paragraph("ESTUDIANTE\nNombre: "+nombre +
-                            "\nCarnet: " + carnet + " Cédula: "+cedula+" Carrera: ?"
-                            +"\nTeléfono: "+tlfhab+" E-mail: "+correo
-                            +"\nPeríodo Pasantía: "+periodopasantia+" Año: "+ano);
-                    pdf.add(datos);
+
+                    Phrase est = new Phrase("Estudiante", font);
+                    pdf.add(est);
+
+                    float[] widths0 = { 1f, 2f };
+                    PdfPTable nom = new PdfPTable(widths0);
+                    nom.addCell("Nombre y Apellido");
+                    nom.addCell(" "+nombre);
+                    nom.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(nom);
+                    pdf.add(new Paragraph("\n"));
+
+                    float[] widths2 = { 2f, 2f, 2f, 3f, 2f, 2f };
+                    PdfPTable ccc = new PdfPTable(widths2);
+                    ccc.addCell("Carnet");
+                    ccc.addCell(" "+carnet);
+                    ccc.addCell("Cédula");
+                    ccc.addCell(" "+cedula);
+                    ccc.addCell("Carrera");
+                    ccc.addCell("?");
+                    ccc.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(ccc);
+                    pdf.add(new Paragraph("\n"));
+
+                    float[] widths3 = { 1f, 1f, 1f, 2f };
+                    PdfPTable tlf = new PdfPTable(widths3);
+                    tlf.addCell("Teléfono");
+                    tlf.addCell(" "+tlfhab);
+                    tlf.addCell("E-mail");
+                    tlf.addCell(" "+correo);
+                    tlf.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(tlf);
+                    pdf.add(new Paragraph("\n"));
+
+                    float[] widths4 = { 3f, 3f, 2f, 2f };
+                    PdfPTable ppa = new PdfPTable(widths4);
+                    ppa.addCell("Período de pasantía");
+                    ppa.addCell(" "+periodopasantia);
+                    ppa.addCell("Año");
+                    ppa.addCell(" "+ano);
+                    ppa.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(ppa);
+                    pdf.add(new Paragraph("\n"));
 
                     Paragraph tutorI = new Paragraph("\nTUTOR INDUSTRIAL\nNombre: "+tutorIn);
                     pdf.add(tutorI);
