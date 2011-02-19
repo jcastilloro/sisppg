@@ -10,25 +10,23 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
     </head>
-    <body>
-        
-            
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_Pre_ConsultarEstudiante.do"><bean:message key="V_GestionarConsultaCoordinacion.label0"/><%-- Estudiantes --%></html:link></li>
-                    <li><html:link action="/A_Pre_ConsultarPPGCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label1"/><%-- Plan de Proyectos de Grado --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label2"/><%-- Consultar Profesores --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label3"/><%-- Consultar Jurados --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaCoordinacion.label4"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
+    
+    <body>        
 
-                </ul>
-            </div>
-                    <div id="header">
-                        
-                    </div>
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_Pre_ConsultarEstudiante.do"><bean:message key="V_GestionarConsultaCoordinacion.label0"/><%-- Estudiantes --%></html:link></li>
+                <li><html:link action="/A_Pre_ConsultarPPGCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label1"/><%-- Plan de Proyectos de Grado --%></html:link></li>
+                <li><html:link action="/A_ConsultarProfesores.do"><bean:message key="V_GestionarConsultaCoordinacion.label2"/><%-- Consultar Profesores --%></html:link></li>
+                <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_GestionarConsultaCoordinacion.label3"/><%-- Consultar Jurados --%></html:link></li>
+                <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarConsultaCoordinacion.label4"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
+            </ul>
         </div>
+
+        <div id="header">
+        </div>
+
         <div id="body_wrapper">
             <div id="body">
                 <div id="split">
@@ -44,8 +42,6 @@
                           <br>
                           <br>
                           <br>
-                          
-                              
                         </div>
                     </div>
                    

@@ -168,7 +168,7 @@
 
 	<div id="footer">
 
-		<p>Copyright (c) 2011 SISPPG. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		<p>Copyright (c) 2011 SISPPG. All rights reserved.</p>
 
 	</div>
 
