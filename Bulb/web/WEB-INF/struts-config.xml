@@ -11,6 +11,7 @@
         <form-bean name="F_AgregarPPG" type="ve.usb.sistema.F_AgregarPPG"/>
         <form-bean name="F_CancelarDatosEmpresa" type="ve.usb.sistema.F_CancelarDatosEmpresa"/>
         <form-bean name="F_ConsultarEstudiante" type="ve.usb.sistema.F_ConsultarEstudiante"/>
+        <form-bean name="F_ConsultarProfesores" type="ve.usb.sistema.F_ConsultarProfesores"/>
         <form-bean name="F_ConsultarPPG" type="ve.usb.sistema.F_ConsultarPPG"/>
         <form-bean name="F_IniciarSesion" type="ve.usb.sistema.F_IniciarSesion"/>
         <form-bean name="F_Notas_PLarga" type="ve.usb.sistema.F_Notas_PLarga"/>
@@ -197,6 +198,11 @@
         <forward name="A_MostrarConsultaEstudiante" path="/A_MostrarConsultaEstudiante.do"/>
         <forward name="V_MostrarConsultaEstudiante" path="/consultarestudiante/V_MostrarConsultaEstudiante.jsp"/>
         <forward name="A_Pre_MostrarConsulta" path="/A_Pre_MostrarConsulta.do"/>
+
+        <!-- ConsultarProfesores -->
+
+        <forward name="A_ConsultarProfesores" path="/A_ConsultarProfesores.do"/>
+        <forward name="V_ConsultarProfesores" path="/consultarprofesores/V_ConsultarProfesores.jsp"/>
 
         <!-- ModificarInscripcion -->
 
@@ -462,6 +468,9 @@
         <action path="/A_Pre_MostrarConsulta" parameter="A_Pre_MostrarConsulta"
            type="ve.usb.sistema.AccionesConsultarEstudiante"/>
 
+        <!-- Consultar Profesores -->
+        <action path="/A_ConsultarProfesores" parameter="A_ConsultarProfesores"
+           type="ve.usb.sistema.AccionesConsultarProfesores"/>
 
         <!-- ModificarInscripcion -->
         <action path="/A_Pre_ModificarInscripcion" parameter="A_Pre_ModificarInscripcion"
