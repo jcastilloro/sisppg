@@ -1,11 +1,11 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_VistaCoordinacion.title"/></title>
+        <title>Gestionar Correos Electronicos</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -13,19 +13,16 @@
 
     </head>
     <body>
-        
-            
+
             <div id="menu">
                 <ul id="nav">
-                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_VistaCoordinacion.label0"/><%-- Consultas --%></html:link></li>
-                    <li><html:link action="/A_Pre_VistaProfesor.do"><bean:message key="V_VistaCoordinacion.label1"/><%-- Opciones Profesor --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarCorreos.do">Gestionar Correos</html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaCoordinacion.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-                    
-
+                    <li><html:link action="/A_Pre_EspecificarCorreo.do">Especificar Correo</html:link></li>
                 </ul>
             </div>
+
+
         <div id="header">
+
         </div>
         <div id="body_wrapper">
             <div id="body">
@@ -34,26 +31,28 @@
                     <div id="left">
                         <div class="content">
                             <br>
+
+                            <br>
+                         <h3 align="center">${empty msg ? "" : msg}</h3>
                             <br>
                             <br>
                             <br>
-                          <h3 align="center"> ${empty msg ? "" : msg}</h3>
                             <br>
                             <br>
-                            <br>
-                            <br>
+
                         </div>
                     </div>
-                    
+
                     <div class="clearer"></div>
                     <div class="bottom"></div>
-                </div>
+
                 <div class="clearer"></div>
             </div>
             <div class="clearer"></div>
         </div>
+        </div>
         <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+
     </body>
 </html:html>

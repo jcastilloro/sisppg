@@ -36,6 +36,14 @@
         <forward name="V_AgregarPPG" path="/agregarppg/V_AgregarPPG.jsp"/>
         <forward name="A_AgregarPPG" path="/A_AgregarPPG.do"/>
 
+        <!-- Correos -->
+
+        <forward name="A_Pre_GestionarCorreos" path="/A_Pre_GestionarCorreos.do"/>
+        <forward name="V_GestionarCorreos" path="/correos/V_GestionarCorreos.jsp"/>
+        <forward name="A_Pre_EspecificarCorreo" path="/A_Pre_EspecificarCorreo.do"/>
+        <forward name="V_EspecificarCorreo" path="/correos/V_EspecificarCorreo.jsp"/>
+        <forward name="A_EnviarCorreo" path="/A_EnviarCorreo.jsp"/>
+
         <!-- GestionarPPG -->
 
         <forward name="A_Pre_GestionarPPG" path="/A_Pre_GestionarPPG.do"/>
@@ -242,6 +250,13 @@
            name="F_AgregarPPG"
            scope="session"/>
 
+         <!-- Correos -->
+        <action path="/A_Pre_GestionarCorreos" parameter="A_Pre_GestionarCorreos"
+           type="ve.usb.sistema.AccionesCorreoElectronico"/>
+        <action path="/A_Pre_EspecificarCorreo" parameter="A_Pre_EspecificarCorreo"
+           type="ve.usb.sistema.AccionesCorreoElectronico"/>
+        <action path="/A_EnviarCorreo" parameter="A_EnviarCorreo"
+           type="ve.usb.sistema.AccionesCorreoElectronico"/>
 
         <!-- GestionarPPG -->
         <action path="/A_Pre_GestionarPPG" parameter="A_Pre_GestionarPPG"
