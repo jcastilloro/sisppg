@@ -174,27 +174,34 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     datosP.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(datosP);
 
-                    Paragraph datos = new Paragraph("\n\nNombre: " + nombre + " Cédula: "
-                            + cedula + "\nFecha de Nacimiento: " + fn + "\nSexo: " + sexo + " Nacionalidad: "
-                            + nacionalidad + "\nEstado civil: " + edocivil + "\nTeléfono habitación: " + tlfhab
-                            + " Otro Teléfono: " + tlfotro + "\nEmail: " + correo + "\nDirección: " + direccion + "\n");
-                    pdf.add(datos);
+                    Paragraph blank = new Paragraph("\n");
+                    pdf.add(blank);
+                    pdf.add(blank);
 
-                    Paragraph bloque;
+                    String bloque;
                     if (graduando) {
-                        bloque = new Paragraph("BLOQUE A (Me graduo con la pasantía)\n\n");
+                        bloque = "A (Me graduo con la pasantía)";
                     } else {
-                        bloque = new Paragraph("BLOQUE B (No me graduo con la pasantía)\n\n");
+                        bloque = "BLOQUE B (No me graduo con la pasantía)";
                     }
-                    pdf.add(bloque);
+
+                    float[] widths = { 3f, 2f, 3f };
+                    PdfPTable t = new PdfPTable(widths);
+                    t.addCell("APELLIDOS: ");  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
+                    t.addCell("EDAD: "+fn);     t.addCell("SEXO: "+sexo);    t.addCell("NACIONALIDAD: "+nacionalidad);
+                    t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlfhab); t.addCell("OTROS TELEFONOS: "+tlfotro);
+                    t.addCell("BLOQUE: "+bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
+                    t.setHorizontalAlignment(Element.ALIGN_LEFT);
+                    pdf.add(t);
+                    pdf.add(blank);
 
                     Paragraph deseo;
                     if (tramite) {
-                        deseo = new Paragraph("Deseo que la CCTDS tramite el Proceso de Búsqueda de Pasantía en la Empresa"
-                                + " \nEstoy dispuesto(a) a ir a la región: " + region + "\nTengo preferencia por el Estado: "
-                                + estado + " y la Ciudad: " + ciudad);
+                        deseo = new Paragraph("Deseo que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el "
+                                + "Proceso de Búsqueda de Pasantía en la Empresa\nEstoy dispuesto(a) a ir a la región: "
+                                + region + "\nTengo preferencia por el Estado: "+ estado + " y la Ciudad: " + ciudad);
                     } else {
-                        deseo = new Paragraph("No Deseo que la CCTDS tramite el Proceso de Búsqueda de Pasantía en la Empresa\n\n");
+                        deseo = new Paragraph("No Deseo que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el Proceso de Búsqueda de Pasantía en la Empresa\n\n");
                     }
 
                     pdf.add(deseo);
