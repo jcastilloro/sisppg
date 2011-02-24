@@ -35,11 +35,12 @@
                         <div class="content">
 
                         <br><br>
-                        <h3>Consultar Profesores</h3>
+                        <h3> Profesores</h3>
                         <br>
+                        <html:form action="/A_IniciarSesion.do" method="post">
                         <table border="0" width="450px">
                             <tr><td>
-                                    <bean:message key="F_ConsultarProfesores.label0"/><%-- Dpto --%></label>
+                                    <bean:message key="F_ConsultarProfesores.label1"/><%-- Dpto --%>
                                 </td>
                                 <td>
                                     <select name="ep">
@@ -50,7 +51,7 @@
                                 </td>
                             </tr>
                             <tr><td>
-                                    <bean:message key="F_ConsultarProfesores.label1"/><%-- Area --%></label>
+                                    <bean:message key="F_ConsultarProfesores.label2"/><%-- Area --%>
                                 </td>
                                 <td>
                                     <select name="ep">
@@ -60,7 +61,14 @@
                                     </select>
                                 </td>
                             </tr>
+                            <tr><td></td>
+                                <td>
+                                    <br><html:submit><bean:message key="V_IniciarSesion.label0"/><%-- Consultar --%></html:submit>
+                                </td>
+                            </tr>
+
                         </table>
+                        </html:form>
                         <br>
 
                         </div>

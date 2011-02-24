@@ -17,7 +17,6 @@ public class F_ConsultarProfesores extends org.apache.struts.action.ActionForm {
         areaPPG = "";
         tutorPPG = "";
         periodoPPG = "";
-        anoPPG = 0;
 
     }
 
@@ -25,8 +24,19 @@ public class F_ConsultarProfesores extends org.apache.struts.action.ActionForm {
         areaPPG = "";
         tutorPPG = "";
         periodoPPG = "";
-        anoPPG = 0;
 
+    }
+
+        public static F_ConsultarProfesores clear(ActionMapping mapping, HttpServletRequest request) {
+        HttpSession sess = request.getSession();
+        F_ConsultarProfesores fF_ConsultarProfesores = (F_ConsultarProfesores) sess.getAttribute("F_ConsultarProfesores");
+        if (fF_ConsultarProfesores == null) {
+            fF_ConsultarProfesores = new F_ConsultarProfesores();
+            sess.setAttribute("F_ConsultarProfesores", fF_ConsultarProfesores);
+        } else {
+            fF_ConsultarProfesores.reset(mapping, request);
+        }
+        return fF_ConsultarProfesores;
     }
 
     /**
@@ -91,26 +101,5 @@ public class F_ConsultarProfesores extends org.apache.struts.action.ActionForm {
     public void setPeriodoPPG(String periodoPPG) {
         this.periodoPPG = periodoPPG;
     }
-
-    /**
-     * Holds value of property anoPPG.
-     */
-    private int anoPPG;
-
-    /**
-     * Getter for property anoPPG.
-     * @return Value of property anoPPG.
-     */
-    public int getAnoPPG() {
-        return this.anoPPG;
-    }
-
-    /**
-     * Setter for property anoPPG.
-     * @param anoPPG New value of property anoPPG.
-     */
-    public void setAnoPPG(int anoPPG) {
-        this.anoPPG = anoPPG;
-    }
-
+    
 }
