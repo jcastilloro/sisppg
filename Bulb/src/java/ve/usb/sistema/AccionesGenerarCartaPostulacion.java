@@ -27,8 +27,10 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import java.util.Calendar;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -187,8 +189,8 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
 
                     float[] widths = { 3f, 2f, 3f };
                     PdfPTable t = new PdfPTable(widths);
-                    t.addCell("APELLIDOS: ");  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
-                    t.addCell("EDAD: "+fn);     t.addCell("SEXO: "+sexo);    t.addCell("NACIONALIDAD: "+nacionalidad);
+                    t.addCell("APELLIDOS: "+nombre);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
+                    t.addCell("EDAD: "+calcularEdad(fn));     t.addCell("SEXO: "+sexo);    t.addCell("NACIONALIDAD: "+nacionalidad);
                     t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlfhab); t.addCell("OTROS TELEFONOS: "+tlfotro);
                     t.addCell("BLOQUE: "+bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -241,4 +243,27 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
+    private int calcularEdad(Date fechaNacimiento){
+
+        Calendar fn = new GregorianCalendar();
+        Calendar hoy = new GregorianCalendar();
+        int edad = 0;
+        int factor = 0;
+
+        Date currentDate = new Date();
+        fn.setTime(fechaNacimiento);
+        hoy.setTime(currentDate);
+        if (hoy.get(Calendar.MONTH) <= fn.get(Calendar.MONTH)) {
+            if (hoy.get(Calendar.MONTH) == fn.get(Calendar.MONTH)) {
+                if (hoy.get(Calendar.DATE) > fn.get(Calendar.DATE)) {
+                    factor = -1; //Aun no celebra su cumpleaños
+                }
+            } else {
+                factor = -1; //Aun no celebra su cumpleaños
+            }
+        }
+        edad = (hoy.get(Calendar.YEAR) - fn.get(Calendar.YEAR)) + factor;
+        return edad;
+    }
+    
 }

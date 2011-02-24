@@ -470,7 +470,10 @@
 
         <!-- Consultar Profesores -->
         <action path="/A_ConsultarProfesores" parameter="A_ConsultarProfesores"
-           type="ve.usb.sistema.AccionesConsultarProfesores"/>
+           type="ve.usb.sistema.AccionesConsultarProfesores"
+           input="/consultarprofesores/V_ConsultarProfesores.jsp"
+           name="F_ConsultarProfesores"
+           scope="session"/>
 
         <!-- ModificarInscripcion -->
         <action path="/A_Pre_ModificarInscripcion" parameter="A_Pre_ModificarInscripcion"
