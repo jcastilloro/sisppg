@@ -1,4 +1,3 @@
-
 package ve.usb.sistema;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,16 +13,14 @@ public class F_ConsultarProfesores extends org.apache.struts.action.ActionForm {
 
     public F_ConsultarProfesores() {
         super();
-        areaPPG = "";
-        tutorPPG = "";
-        periodoPPG = "";
+        Departamento = "";
+        Area = "";
 
     }
 
     public void reset(ActionMapping mapping, HttpServletRequest request) {
-        areaPPG = "";
-        tutorPPG = "";
-        periodoPPG = "";
+        Departamento = "";
+        Area = "";
 
     }
 
@@ -40,66 +37,45 @@ public class F_ConsultarProfesores extends org.apache.struts.action.ActionForm {
     }
 
     /**
-     * Holds value of property areaPPG.
+     * Holds value of property Departamento.
      */
-    private String areaPPG;
+    private String Departamento;
 
     /**
-     * Getter for property areaPPG.
-     * @return Value of property areaPPG.
+     * Getter for property Departamento.
+     * @return Value of property Departamento.
      */
-    public String getAreaPPG() {
-        return this.areaPPG;
+    public String getDepartamento() {
+        return this.Departamento;
     }
 
     /**
-     * Setter for property areaPPG.
-     * @param areaPPG New value of property areaPPG.
+     * Setter for property Departamento.
+     * @param Departamento New value of property Departamento.
      */
-    public void setAreaPPG(String areaPPG) {
-        this.areaPPG = areaPPG;
+    public void setDepartamento(String Departamento) {
+        this.Departamento = Departamento;
     }
 
     /**
-     * Holds value of property tutorPPG.
+     * Holds value of property Area.
      */
-    private String tutorPPG;
+    private String Area;
 
     /**
-     * Getter for property tutorPPG.
-     * @return Value of property tutorPPG.
+     * Getter for property Area.
+     * @return Value of property Area.
      */
-    public String getTutorPPG() {
-        return this.tutorPPG;
+    public String getArea() {
+        return this.Area;
     }
 
     /**
-     * Setter for property tutorPPG.
-     * @param tutorPPG New value of property tutorPPG.
+     * Setter for property Area.
+     * @param Area New value of property Area.
      */
-    public void setTutorPPG(String tutorPPG) {
-        this.tutorPPG = tutorPPG;
-    }
-
-    /**
-     * Holds value of property periodoPPG.
-     */
-    private String periodoPPG;
-
-    /**
-     * Getter for property periodoPPG.
-     * @return Value of property periodoPPG.
-     */
-    public String getPeriodoPPG() {
-        return this.periodoPPG;
-    }
-
-    /**
-     * Setter for property periodoPPG.
-     * @param periodoPPG New value of property periodoPPG.
-     */
-    public void setPeriodoPPG(String periodoPPG) {
-        this.periodoPPG = periodoPPG;
+    public void setArea(String Area) {
+        this.Area = Area;
     }
     
 }

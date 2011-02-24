@@ -4,12 +4,13 @@
     Author     : chitty
 --%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
-%><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
-%><html:html>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"%>
+<%@ page language="java" contentType="text/html;charset=ISO-8859-1" import="java.util.*"%>
+
+<html:html>
     <head>
         <title><bean:message key="V_GestionarConsultaCoordinacion.title"/></title>
         <html:base/>
@@ -34,42 +35,48 @@
                     <div id="left">
                         <div class="content">
 
-                        <br><br>
-                        <h3> Profesores</h3>
-                        <br>
-                        <html:form action="/A_IniciarSesion.do" method="post">
-                        <table border="0" width="450px">
-                            <tr><td>
-                                    <bean:message key="F_ConsultarProfesores.label1"/><%-- Dpto --%>
-                                </td>
-                                <td>
-                                    <select name="ep">
-                                        <option value="">-- Seleccionar --</option>
-                                        <option value="2420">Computación</option>
-                                        <option value="1420">Procesos y Sistemas</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr><td>
-                                    <bean:message key="F_ConsultarProfesores.label2"/><%-- Area --%>
-                                </td>
-                                <td>
-                                    <select name="ep">
-                                        <option value="">-- Seleccionar --</option>
-                                        <option value="2420">Redes</option>
-                                        <option value="1420">Bases de Datos</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr><td></td>
-                                <td>
-                                    <br><html:submit><bean:message key="V_IniciarSesion.label0"/><%-- Consultar --%></html:submit>
-                                </td>
-                            </tr>
+                            <br><br>
+                            <h3> Profesores</h3>
+                            <br>
+                            <html:form action="/A_ConsultarProfesores.do" method="post" focus="dpto">
+                                <table border="0" width="450px">
+                                    <tr><td>
+                                            <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
+                                        </td>
+                                        <td>
+                                            <select name="dpto">
+                                                <option value="todos">Todos</option>
+                                                <option value="comp">Computación</option>
+                                                <option value="pys">Procesos y Sistemas</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr><td>
+                                            <bean:message key="V_ConsultarProfesores.label2"/><%-- Area --%>
+                                        </td>
+                                        <td>
+                                            <select name="y">
+                                                <option value="1">Todas</option>
+                                                <%Iterator itr;%>
+                                                <% List data = (List) request.getAttribute("L_Area");
+                                                            for (itr = data.iterator(); itr.hasNext();) {
+                                                                String area = itr.next().toString();
+                                                                request.setAttribute("area", area);
+                                                %>
+                                                <option value = "<%=area%>" ><bean:write name="area"/></option>
+                                                <%}%>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr><td></td>
+                                        <td>
+                                            <br><html:submit><bean:message key="V_ConsultarProfesores.label0"/><%-- Consultar --%></html:submit>
+                                        </td>
+                                    </tr>
 
-                        </table>
-                        </html:form>
-                        <br>
+                                </table>
+                            </html:form>
+                            <br>
 
                         </div>
                     </div>
