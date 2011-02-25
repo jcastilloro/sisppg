@@ -1,5 +1,6 @@
 package ve.usb.sistema;
 
+import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,9 +21,9 @@ import java.util.List;
  *
  * @author chitty
  */
-public class AccionesConsultarProfesores extends CohesionAction {
+public class AccionesProfesores extends CohesionAction {
 
-/**
+    /**
      * Called by Struts for the execution of action A_ConsultarProfesores.
      *
      * @param mapping The ActionMapping used to select this instance.
@@ -34,12 +35,12 @@ public class AccionesConsultarProfesores extends CohesionAction {
      * These exceptios will normally be treated with
      * the default exception action.
      */
-    public ActionForward A_ConsultarProfesores(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_Profesores(ActionMapping mapping, ActionForm  form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_ConsultarProfesores", };
+        final String[] SALIDAS = {"V_Profesores", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -48,13 +49,21 @@ public class AccionesConsultarProfesores extends CohesionAction {
         try {
             /* Aqui empieza mi codigo */
 
-            /* Consultas*/
-            
-            /* Lista de Areas */
-            List<Area> list;
-            list = (List<Area>)s.createQuery("Select nombreArea from Area").list();
-            request.setAttribute("L_Area", list);
+            /* Respuestas */
+            F_Profesores fF_Profesores = (F_Profesores)form;
+            String departamento = fF_Profesores.getDepartamento();
+            String area = fF_Profesores.getArea();
 
+            List<String> prof = s.createSQLQuery("select nombreprofesor from profesor where departamentousb='Computación';").list();
+
+            if (!prof.isEmpty()){
+               
+                    request.setAttribute("Profs", prof);
+
+            } else
+                request.setAttribute("test", departamento);
+
+            request.setAttribute("prueba", departamento);
 
             /* Aqui termina mi codigo */
             tr.commit();

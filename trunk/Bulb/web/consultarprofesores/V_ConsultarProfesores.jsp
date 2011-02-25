@@ -38,7 +38,7 @@
                             <br><br>
                             <h3> Profesores</h3>
                             <br>
-                            <html:form action="/A_ConsultarProfesores.do" method="post" focus="dpto">
+                            <html:form action="/A_Profesores.do" method="post" focus="dpto">
                                 <table border="0" width="450px">
                                     <tr><td>
                                             <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
@@ -46,7 +46,7 @@
                                         <td>
                                             <select name="dpto">
                                                 <option value="todos">Todos</option>
-                                                <option value="comp">Computación</option>
+                                                <option value="Computación">Computación</option>
                                                 <option value="pys">Procesos y Sistemas</option>
                                             </select>
                                         </td>
@@ -55,7 +55,7 @@
                                             <bean:message key="V_ConsultarProfesores.label2"/><%-- Area --%>
                                         </td>
                                         <td>
-                                            <select name="y">
+                                            <select name="area">
                                                 <option value="1">Todas</option>
                                                 <%Iterator itr;%>
                                                 <% List data = (List) request.getAttribute("L_Area");
@@ -63,9 +63,9 @@
                                                                 String area = itr.next().toString();
                                                                 request.setAttribute("area", area);
                                                 %>
-                                                <option value = "<%=area%>" ><bean:write name="area"/></option>
+                                                <option value = <bean:write name="area"/> ><bean:write name="area"/></option>
                                                 <%}%>
-                                            </select>
+                                            </select> 
                                         </td>
                                     </tr>
                                     <tr><td></td>
