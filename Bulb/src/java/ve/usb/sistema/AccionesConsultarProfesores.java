@@ -1,5 +1,6 @@
 package ve.usb.sistema;
 
+import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +16,7 @@ import ve.usb.cohesion.runtime.HibernateUtil;
 import ve.usb.sistema.hibernate.*;
 
 import java.util.List;
+import org.hibernate.Query;
 
 /**
  *
@@ -52,8 +54,28 @@ public class AccionesConsultarProfesores extends CohesionAction {
             
             /* Lista de Areas */
             List<Area> list;
-            list = (List<Area>)s.createQuery("from Area").list();
+            Query q = s.createQuery("from Area");
+            list = q.list();
             request.setAttribute("L_Area", list);
+
+            /* Lista de Depts */
+            List<String> listDpts;
+            q = s.createSQLQuery("select departamentoUSB from Profesor");
+            listDpts = q.list();
+            listDpts.removeAll(listDpts);
+
+            //armo los dtps
+            Object [] objIt;
+            Estudiante e;
+            for (Iterator it = ((List)q.list()).iterator(); it.hasNext();){
+
+                String dep = (String)it.next();
+                if(!listDpts.contains(dep))
+                    listDpts.add(dep);
+            }
+            request.setAttribute("L_Dpts", listDpts);
+
+
 
 
             /* Aqui termina mi codigo */

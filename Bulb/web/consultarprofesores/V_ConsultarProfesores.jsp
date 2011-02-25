@@ -39,15 +39,21 @@
                             <h3> Profesores</h3>
                             <br>
                             <html:form action="/A_Profesores.do" method="post" focus="dpto">
-                                <table border="1" width="450px">
+                                <table border="0" width="450px">
                                     <tr><td>
                                             <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
                                         </td>
                                         <td>
-                                            <select name="dpto">
-                                                <option value="todos">Todos</option>
-                                                <option value="Computación">Computación</option>
-                                                <option value="pys">Procesos y Sistemas</option>
+                                            <select name="dpts">
+                                                <logic:empty name="L_Dpts">
+                                                    <option value="1">Todas</option>
+                                                </logic:empty>
+                                                <logic:notEmpty name="L_Dpts">
+                                                    <option value="1">Todos</option>
+                                                    <logic:iterate id="d" name="L_Dpts">
+                                                        <option value = <bean:write name="d" /> ><bean:write name="d" /></option>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
                                             </select>
                                         </td>
                                     </tr>
