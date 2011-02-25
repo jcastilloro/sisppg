@@ -117,7 +117,9 @@ public class AccionesMontarDocumentosC extends CohesionAction {
             SimpleDateFormat formatter = new SimpleDateFormat("-yyyy-MM-dd-hh-mm-ss");
             Date currentTime_1 = new Date();
             String dateString = formatter.format(currentTime_1);
-            File fileToCreate = new File(filePath, carnet + dateString + ext);
+            //Para los de culminacion se les mantiene el mismo nombre
+            //File fileToCreate = new File(filePath, carnet + dateString + ext);
+            File fileToCreate = new File(filePath,fileName);
             //If file does not exists create file
             if (!fileToCreate.exists()) {
                 FileOutputStream fileOutStream = new FileOutputStream(fileToCreate);

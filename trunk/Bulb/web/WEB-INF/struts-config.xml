@@ -126,6 +126,11 @@
         <forward name="A_Pre_GestionarCulminacion" path="/A_Pre_GestionarCulminacion.do"/>
         <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
 
+        <!-- ConsultarDocumentos -->
+
+        <forward name="A_Pre_ConsultarDocumentos" path="/A_Pre_ConsultarDocumentos.do"/>
+        <forward name="V_ConsultarDocumentos" path="/consultardocumentos/V_ConsultarDocumentos.jsp"/>
+
         <!-- GestionarPreinscripcion -->
 
         <forward name="A_Pre_GestionarPreinscripcion" path="/A_Pre_GestionarPreinscripcion.do"/>
@@ -282,6 +287,9 @@
         <action path="/A_GenerarPlanTrabajo" parameter="A_GenerarPlanTrabajo"
            type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
 
+
+
+
            <action path="/A_Pre_MontarDocumentosInscripcion" parameter="A_Pre_MontarDocumentosInscripcion"
                 type="ve.usb.sistema.AccionesMontarDocumentosInscripcion"/>
 
@@ -340,10 +348,23 @@
         <action path="/A_Pre_GestionarInscripcion" parameter="A_Pre_GestionarInscripcion"
            type="ve.usb.sistema.AccionesGestionarInscripcion"/>
 
-           <!-- GestionarCulminacion -->
+        <!-- GestionarCulminacion -->
         <action path="/A_Pre_GestionarCulminacion" parameter="A_Pre_GestionarCulminacion"
            type="ve.usb.sistema.AccionesGestionarCulminacion"/>
 
+        <!-- ConsultarDocumentos -->
+        <action path="/A_Pre_ConsultarDocumentos" parameter="A_Pre_ConsultarDocumentos"
+           type="ve.usb.sistema.AccionesConsultarDocumentos"/>
+
+        <action path="/A_ConsultarDocumentos"  parameter="A_ConsultarDocumentos"
+                type="ve.usb.sistema.AccionesConsultarDocumentos"
+                name="F_Upload"
+                scope="request"
+                validate="true"
+              input="/consultardocumentos/V_ConsultarDocumentos.jsp"
+                >
+        </action>
+        
         <!-- LlenarFInscripcion -->
         <action path="/A_Pre_LlenarFInscripcion" parameter="A_Pre_LlenarFInscripcion"
            type="ve.usb.sistema.AccionesLlenarFInscripcion"/>
