@@ -290,7 +290,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
             nom.addCell(names[i]);
         }
 
-        nom.setHorizontalAlignment(Element.ALIGN_CENTER);
+        nom.setHorizontalAlignment(Element.ALIGN_LEFT);
 
         return nom;
     }
