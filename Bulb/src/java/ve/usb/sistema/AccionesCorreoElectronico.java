@@ -173,7 +173,7 @@ public void enviarCorreo(String carrera, String carnet) throws Exception{
             message.setFrom(new InternetAddress(from));
 
             // A quien va dirigido
-            String to = (carnet+"@ldc.usb.ve");
+            String to = (carnet+"@usb.ve");
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             MimeMultipart multipart = new MimeMultipart("related");
