@@ -39,7 +39,7 @@
                             <h3> Profesores</h3>
                             <br>
                             <html:form action="/A_Profesores.do" method="post" focus="dpto">
-                                <table border="0" width="450px">
+                                <table border="1" width="450px">
                                     <tr><td>
                                             <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
                                         </td>
@@ -56,15 +56,15 @@
                                         </td>
                                         <td>
                                             <select name="area">
-                                                <option value="1">Todas</option>
-                                                <%Iterator itr;%>
-                                                <% List data = (List) request.getAttribute("L_Area");
-                                                            for (itr = data.iterator(); itr.hasNext();) {
-                                                                String area = itr.next().toString();
-                                                                request.setAttribute("area", area);
-                                                %>
-                                                <option value = <bean:write name="area"/> ><bean:write name="area"/></option>
-                                                <%}%>
+                                                <logic:empty name="L_Area">
+                                                    <option value="1">Todas</option>
+                                                </logic:empty>
+                                                <logic:notEmpty name="L_Area">
+                                                    <option value="1">Todas</option>
+                                                    <logic:iterate id="a" name="L_Area">
+                                                        <option value = <bean:write name="a" property="nombreArea" /> ><bean:write name="a" property="nombreArea" /></option>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
                                             </select> 
                                         </td>
                                     </tr>

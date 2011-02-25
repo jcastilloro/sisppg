@@ -52,7 +52,7 @@ public class AccionesConsultarProfesores extends CohesionAction {
             
             /* Lista de Areas */
             List<Area> list;
-            list = (List<Area>)s.createQuery("Select nombreArea from Area").list();
+            list = (List<Area>)s.createQuery("from Area").list();
             request.setAttribute("L_Area", list);
 
 
