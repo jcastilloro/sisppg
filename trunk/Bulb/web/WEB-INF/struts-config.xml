@@ -24,11 +24,11 @@
         <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
 
     </form-beans>
-    
+
     <global-exceptions>
-        
+
     </global-exceptions>
-    
+
     <global-forwards>
 
         <!-- AgregarPPG -->
@@ -60,7 +60,7 @@
         <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
 
         <!-- GenerarCartaPostulacion -->
-      
+
         <forward name="V_GenerarCartaPostulacion" path="/consultarpreinscripcion/V_ConsultarPreinscripcion.jsp"/>
 
         <!-- GenerarPlanTrabajo -->
@@ -112,6 +112,11 @@
         <forward name="A_Pre_VistaProfesor" path="/A_Pre_VistaProfesor.do"/>
         <forward name="V_VistaProfesor" path="/vistaprofesor/V_VistaProfesor.jsp"/>
 
+        <!-- Vista Admin -->
+
+        <forward name="A_VistaAdmin" path="/A_VistaAdmin.do"/>
+        <forward name="V_VistaAdmin" path="/vistaadmin/V_VistaAdmin.jsp"/>
+
         <!-- CerrarSesion -->
 
         <forward name="A_Pre_CerrarSesion" path="/A_Pre_CerrarSesion.do"/>
@@ -135,6 +140,11 @@
 
         <forward name="A_Pre_GestionarPreinscripcion" path="/A_Pre_GestionarPreinscripcion.do"/>
         <forward name="V_GestionarPreinscripcion" path="/gestionarpreinscripcion/V_GestionarPreinscripcion.jsp"/>
+
+        <!-- Gestionar Profesores -->
+
+        <forward name="A_GestionarDepartamentos" path="/A_GestionarDepartamentos.do"/>
+        <forward name="V_GestionarDepartamentos" path="/GestionarDepartamentos/V_GestionarDepartamentos.jsp"/>
 
         <!-- ConsultarPreinscripcion -->
 
@@ -249,7 +259,7 @@
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
     </global-forwards>
-    
+
     <action-mappings>
 
         <!-- AgregarPPG -->
@@ -364,7 +374,7 @@
               input="/consultardocumentos/V_ConsultarDocumentos.jsp"
                 >
         </action>
-        
+
         <!-- LlenarFInscripcion -->
         <action path="/A_Pre_LlenarFInscripcion" parameter="A_Pre_LlenarFInscripcion"
            type="ve.usb.sistema.AccionesLlenarFInscripcion"/>
@@ -389,6 +399,10 @@
         <action path="/A_Pre_VistaProfesor" parameter="A_Pre_VistaProfesor"
            type="ve.usb.sistema.AccionesVistaProfesor"/>
 
+        <!-- Vista Admin -->
+        <action path="/A_VistaAdmin" parameter="A_VistaAdmin"
+           type="ve.usb.sistema.AccionesVistaAdmin"/>
+
 
         <!-- CerrarSesion -->
         <action path="/A_Pre_CerrarSesion" parameter="A_Pre_CerrarSesion"
@@ -403,6 +417,11 @@
         <!-- GestionarPreinscripcion -->
         <action path="/A_Pre_GestionarPreinscripcion" parameter="A_Pre_GestionarPreinscripcion"
            type="ve.usb.sistema.AccionesGestionarPreinscripcion"/>
+
+
+        <!-- Gestionar Profesores -->
+        <action path="/A_GestionarDepartamentos" parameter="A_GestionarDepartamentos"
+           type="ve.usb.sistema.AccionesGestionarDepartamentos"/>
 
 
         <!-- ConsultarPreinscripcion -->
@@ -558,13 +577,13 @@
         <action path="/tooltip" parameter="tooltip"
            type="ve.usb.sistema.Acciones_tooltips"/>
     </action-mappings>
-    
+
     <!--
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     -->
-    
+
     <message-resources parameter="ve/usb/sistema/ApplicationResource"/>
-    
+
     <!-- ========================= Tiles plugin ===============================-->
     <!--
     This plugin initialize Tiles definition factory. This later can takes some
@@ -594,7 +613,7 @@
     -->
     <!--
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
-        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
         <set-property property="moduleAware" value="true" />
     </plug-in>
     -->

@@ -2,22 +2,16 @@ package ve.usb.sistema;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
-import ve.usb.sistema.hibernate.*;
 
 import java.util.List;
 
@@ -78,11 +72,12 @@ public class AccionesIniciarSesion extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"A_Pre_VistaEstudiante", "A_Pre_VistaProfesor", "A_Pre_IniciarSesion", "A_Pre_VistaCoordinacion", };
+        final String[] SALIDAS = {"A_Pre_VistaEstudiante", "A_Pre_VistaProfesor", "A_Pre_IniciarSesion", "A_Pre_VistaCoordinacion", "A_VistaAdmin"};
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
         final int SALIDA_2 = 2;
         final int SALIDA_3 = 3;
+        final int SALIDA_4 = 4;
 
         int salida = SALIDA_0;
         Session s = HibernateUtil.getCurrentSession();
@@ -106,6 +101,8 @@ public class AccionesIniciarSesion extends CohesionAction {
                         request.getSession().setAttribute("carrera", consulta.get(0));
                     }
                     else { salida = SALIDA_1; }
+                }  else if (((String)consulta.get(0)).equals("admin")){
+                    salida = SALIDA_4;
                 }
                fF_IniciarSesion.reset(mapping, request);                
             }
