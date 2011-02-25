@@ -35,7 +35,7 @@ public class AccionesProfesores extends CohesionAction {
      * These exceptios will normally be treated with
      * the default exception action.
      */
-    public ActionForward A_Profesores(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_Profesores(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -49,21 +49,26 @@ public class AccionesProfesores extends CohesionAction {
         try {
             /* Aqui empieza mi codigo */
 
-            /* Respuestas */
-            F_Profesores fF_Profesores = (F_Profesores)form;
-            String departamento = fF_Profesores.getDepartamento();
-            String area = fF_Profesores.getArea();
+            /* Extrayendo info del form */
+            if (form != null) {
+                F_Profesores f_prof = (F_Profesores) form;
+                String depto = f_prof.getDepartamento();
+                String areaf = f_prof.getArea();
 
-            List<String> prof = s.createSQLQuery("select nombreprofesor from profesor where departamentousb='Computación';").list();
+                List <String> consulta;
+                if (depto.equals("todos") || areaf.equals("todas")) 
+                    consulta = s.createSQLQuery("select nombreprofesor from profesor;").list();
+                else 
+                    consulta = s.createSQLQuery("select nombreprofesor from profesor where idprofesor='" + areaf + "';").list();
 
-            if (!prof.isEmpty()){
-               
-                    request.setAttribute("Profs", prof);
+                if (!consulta.isEmpty()) {
+                    request.setAttribute("Profs", consulta);
+                }
+                request.setAttribute("Area", areaf);
+                request.setAttribute("Dep", depto);
+                
 
-            } else
-                request.setAttribute("test", departamento);
-
-            request.setAttribute("prueba", departamento);
+            }
 
             /* Aqui termina mi codigo */
             tr.commit();

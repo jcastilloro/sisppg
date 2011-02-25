@@ -58,11 +58,17 @@ public class AccionesConsultarProfesores extends CohesionAction {
             list = q.list();
             request.setAttribute("L_Area", list);
 
+            List<Profesor> listd;
+            q = s.createQuery("from Profesor");
+            listd = q.list();
+            request.setAttribute("L_Dpts", listd);
+
             /* Lista de Depts */
-            List<String> listDpts;
+        /*    List<String> listDpts;
             q = s.createSQLQuery("select departamentoUSB from Profesor");
             listDpts = q.list();
             listDpts.removeAll(listDpts);
+
 
             //armo los dtps
             Object [] objIt;
@@ -75,7 +81,7 @@ public class AccionesConsultarProfesores extends CohesionAction {
             }
             request.setAttribute("L_Dpts", listDpts);
 
-
+*/
 
 
             /* Aqui termina mi codigo */

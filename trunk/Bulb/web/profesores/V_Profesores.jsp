@@ -37,14 +37,19 @@
                             <br><br>
                             <h3> Profesores</h3>
                             <br><br>
-                            <%Iterator itr;%>
-                            <% List data = (List) request.getAttribute("Profs");
-                                        for (itr = data.iterator(); itr.hasNext();) {
-                                            String area = itr.next().toString();
-                                            request.setAttribute("Profs", area);
-                            %>
-                            <bean:write name="Profs"/>
-                            <%}%>
+                            <table border="1" width="400px">
+                                <tr><th>Nombre</th><th>Departamento</th></tr>
+                            <logic:empty name="Profs">
+                                ¡No hay profesores!
+                            </logic:empty>
+                            <logic:notEmpty name="Profs">
+                                <logic:iterate id="p" name="Profs">
+                                    <tr><td><bean:write name="p"/></td>
+                                        <td></td>
+                                    </tr>
+                                </logic:iterate>
+                            </logic:notEmpty>
+                            </table>
                             <br><br><br><br>
                         </div>
                     </div>

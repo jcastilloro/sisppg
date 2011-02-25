@@ -46,12 +46,12 @@
                                         <td>
                                             <select name="dpts">
                                                 <logic:empty name="L_Dpts">
-                                                    <option value="1">Todas</option>
+                                                    <option value="todos">Todos</option>
                                                 </logic:empty>
                                                 <logic:notEmpty name="L_Dpts">
-                                                    <option value="1">Todos</option>
+                                                    <option value="todos">Todos</option>
                                                     <logic:iterate id="d" name="L_Dpts">
-                                                        <option value = <bean:write name="d" /> ><bean:write name="d" /></option>
+                                                        <option value = <bean:write name="d" property="departamentoUSB"/> ><bean:write name="d" property="departamentoUSB"/></option>
                                                     </logic:iterate>
                                                 </logic:notEmpty>
                                             </select>
@@ -63,12 +63,12 @@
                                         <td>
                                             <select name="area">
                                                 <logic:empty name="L_Area">
-                                                    <option value="1">Todas</option>
+                                                    <option value="todas">Todas</option>
                                                 </logic:empty>
                                                 <logic:notEmpty name="L_Area">
-                                                    <option value="1">Todas</option>
+                                                    <option value="todas">Todas</option>
                                                     <logic:iterate id="a" name="L_Area">
-                                                        <option value = <bean:write name="a" property="nombreArea" /> ><bean:write name="a" property="nombreArea" /></option>
+                                                        <option value = <bean:write name="a" property="idArea" /> ><bean:write name="a" property="nombreArea" /></option>
                                                     </logic:iterate>
                                                 </logic:notEmpty>
                                             </select> 

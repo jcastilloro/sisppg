@@ -17,67 +17,45 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPasantia.do"><bean:message key="V_VistaEstudiante.label0"/><%-- Pasant&iacute;as --%></html:link></li>
-                    <li><html:link action="/A_Pre_ConsultarPPG.do"><bean:message key="V_VistaEstudiante.label1"/><%-- Proyecto de Grado --%></html:link></li>
+                    <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_VistaEstudiante.label1"/><%-- Proyecto de Grado --%></html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaEstudiante.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>
             </div>
-          <div id="header">          
-		
-	</div>
+          <div id="header"></div>
 	<!-- end #header -->          
         </div>
-            <div id="page">
+        <div id="page">
             <div id="content">
-            <div id="body_wrapper">
-                <div id="body">
-                    <div id="split">
+                <div id="body_wrapper">
+                    <div id="body">
+                        <div id="split">
                         <div class="top"></div>
-                        <div id="left">
+                            <div id="left">
                             <div class="content">
                                 ${empty msg ? "" : msg}
-                                
                             </div>
-                        </div>
+                            </div>
                         <div class="clearer"></div>
-                    <div class="bottom"></div>
-                </div>
+                        <div class="bottom"></div>
+                        </div>
+                    <div class="clearer"></div>
+                    </div>
                 <div class="clearer"></div>
+                </div>
+            <div id="end_body"></div>
+            <!-- end #content -->
+            <div style="clear: both;">&nbsp;</div>
             </div>
-            <div class="clearer"></div>
-        </div>
-        <div id="end_body"></div>
-	<!-- end #content -->
-        <div style="clear: both;">&nbsp;</div>
 	</div>
-	</div>
-	</div>
-	<!-- end #page -->
- </div>
- <br>
-                                    
-                                <br>
-                                <br>
-                                    
-                                <br>
-                                    
-                                <br>    
-                                
-                                <br>
-                                
-                                <br>
-                                    
-                                <br>
-                                    
-                                <br>
-                                <br>
-                                    
-                                <br>
-</body>
+
+	<!-- end #page -->                                    
+        <br></br><br></br><br></br><br></br><br></br>
+
+    </body>
 
         <div id="footer">
             <div id="footer"> <bean:message key="bottom.label"/> </div>	
 	</div>
-	<!-- end #footer -->
-    
+	<!-- end #footer -->    
 </html>
