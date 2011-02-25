@@ -12,6 +12,7 @@
         <form-bean name="F_CancelarDatosEmpresa" type="ve.usb.sistema.F_CancelarDatosEmpresa"/>
         <form-bean name="F_ConsultarEstudiante" type="ve.usb.sistema.F_ConsultarEstudiante"/>
         <form-bean name="F_ConsultarProfesores" type="ve.usb.sistema.F_ConsultarProfesores"/>
+        <form-bean name="F_Profesores" type="ve.usb.sistema.F_Profesores"/>
         <form-bean name="F_ConsultarPPG" type="ve.usb.sistema.F_ConsultarPPG"/>
         <form-bean name="F_IniciarSesion" type="ve.usb.sistema.F_IniciarSesion"/>
         <form-bean name="F_Notas_PLarga" type="ve.usb.sistema.F_Notas_PLarga"/>
@@ -211,6 +212,11 @@
 
         <forward name="A_ConsultarProfesores" path="/A_ConsultarProfesores.do"/>
         <forward name="V_ConsultarProfesores" path="/consultarprofesores/V_ConsultarProfesores.jsp"/>
+
+        <!-- Profesores -->
+
+        <forward name="A_Profesores" path="/A_Profesores.do"/>
+        <forward name="V_Profesores" path="/profesores/V_Profesores.jsp"/>
 
         <!-- ModificarInscripcion -->
 
@@ -488,6 +494,13 @@
            type="ve.usb.sistema.AccionesConsultarProfesores"
            input="/consultarprofesores/V_ConsultarProfesores.jsp"
            name="F_ConsultarProfesores"
+           scope="session"/>
+
+       <!-- Profesores -->
+        <action path="/A_Profesores" parameter="A_Profesores"
+           type="ve.usb.sistema.AccionesProfesores"
+           input="/profesores/V_Profesores.jsp"
+           name="F_Profesores"
            scope="session"/>
 
         <!-- ModificarInscripcion -->
