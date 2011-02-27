@@ -22,6 +22,7 @@
         <form-bean name="F_PreInscripcion" type="ve.usb.sistema.F_PreInscripcion"/>
         <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
         <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
+        <form-bean name="F_ConsultarJurados" type="ve.usb.sistema.F_ConsultarJurados"/>
 
     </form-beans>
 
@@ -126,7 +127,7 @@
         <forward name="A_Pre_GestionarPasantia" path="/A_Pre_GestionarPasantia.do"/>
         <forward name="V_GestionarPasantia" path="/gestionarpasantia/V_GestionarPasantia.jsp"/>
 
-         <!-- GestionarCulminacionPasantia -->
+        <!-- GestionarCulminacionPasantia -->
 
         <forward name="A_Pre_GestionarCulminacion" path="/A_Pre_GestionarCulminacion.do"/>
         <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
@@ -239,6 +240,15 @@
         <forward name="V_ModificarInscripcion" path="/modificarinscripcion/V_ModificarInscripcion.jsp"/>
         <forward name="A_ModificarInscripcion" path="/A_ModificarInscripcion.do"/>
 
+
+        <!-- Consultar Jurados -->
+
+        <forward name="A_Pre_ConsultarJurados" path="/A_Pre_ConsultarJurados.do"/>
+        <forward name="V_ConsultarJurados" path="/consultarjurados/V_ConsultarJurados.jsp"/>
+        <forward name="V_MostrarJurados" path="/consultarjurados/V_MostrarJurados.jsp"/>
+        <forward name="A_ConsultarJurados" path="/A_ConsultarJurados.do"/>
+
+
         <!-- ConsultarPPGCoordinacion -->
 
         <forward name="A_Pre_ConsultarPPGCoordinacion" path="/A_Pre_ConsultarPPGCoordinacion.do"/>
@@ -264,43 +274,43 @@
 
         <!-- AgregarPPG -->
         <action path="/A_Pre_AgregarPPG" parameter="A_Pre_AgregarPPG"
-           type="ve.usb.sistema.AccionesAgregarPPG"/>
+                type="ve.usb.sistema.AccionesAgregarPPG"/>
         <action path="/A_AgregarPPG" parameter="A_AgregarPPG"
-           type="ve.usb.sistema.AccionesAgregarPPG"
-           input="/AgregarPPG/V_AgregarPPG.jsp"
-           name="F_AgregarPPG"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesAgregarPPG"
+                input="/AgregarPPG/V_AgregarPPG.jsp"
+                name="F_AgregarPPG"
+                scope="session"/>
 
-         <!-- Correos -->
+        <!-- Correos -->
         <action path="/A_Pre_GestionarCorreos" parameter="A_Pre_GestionarCorreos"
-           type="ve.usb.sistema.AccionesCorreoElectronico"/>
+                type="ve.usb.sistema.AccionesCorreoElectronico"/>
         <action path="/A_Pre_EspecificarCorreo" parameter="A_Pre_EspecificarCorreo"
-           type="ve.usb.sistema.AccionesCorreoElectronico"/>
+                type="ve.usb.sistema.AccionesCorreoElectronico"/>
         <action path="/A_EnviarCorreo" parameter="A_EnviarCorreo"
-           type="ve.usb.sistema.AccionesCorreoElectronico"/>
+                type="ve.usb.sistema.AccionesCorreoElectronico"/>
 
         <!-- GestionarPPG -->
         <action path="/A_Pre_GestionarPPG" parameter="A_Pre_GestionarPPG"
-           type="ve.usb.sistema.AccionesGestionarPPG"/>
+                type="ve.usb.sistema.AccionesGestionarPPG"/>
 
         <!-- GestionarConsultaTutor -->
         <action path="/A_GestionarConsultaTutor" parameter="A_GestionarConsultaTutor"
-           type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
+                type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
         <action path="/A_ConsultaEstudiantesTutoreados" parameter="A_ConsultaEstudiantesTutoreados"
-           type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
+                type="ve.usb.sistema.AccionesGestionarConsultaTutor"/>
 
         <!-- GenerarCartaPostulacion -->
         <action path="/A_GenerarCartaPostulacion" parameter="A_GenerarCartaPostulacion"
-           type="ve.usb.sistema.AccionesGenerarCartaPostulacion"/>
+                type="ve.usb.sistema.AccionesGenerarCartaPostulacion"/>
 
         <!-- GenerarPlanTrabajo -->
         <action path="/A_GenerarPlanTrabajo" parameter="A_GenerarPlanTrabajo"
-           type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
+                type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
 
 
 
 
-           <action path="/A_Pre_MontarDocumentosInscripcion" parameter="A_Pre_MontarDocumentosInscripcion"
+        <action path="/A_Pre_MontarDocumentosInscripcion" parameter="A_Pre_MontarDocumentosInscripcion"
                 type="ve.usb.sistema.AccionesMontarDocumentosInscripcion"/>
 
         <!-- MontarDocumentosInscripcion -->
@@ -317,7 +327,7 @@
             <forward name="tamano" path="/montardocumentosinscripcion/uploadfailure3.jsp"/>
         </action>
 
-         <action path="/A_Pre_MontarDocumentosC" parameter="A_Pre_MontarDocumentosC"
+        <action path="/A_Pre_MontarDocumentosC" parameter="A_Pre_MontarDocumentosC"
                 type="ve.usb.sistema.AccionesMontarDocumentosC"/>
 
         <!-- MontarDocumentosC -->
@@ -336,68 +346,68 @@
 
         <!-- IniciarSesion -->
         <action path="/A_Pre_IniciarSesion" parameter="A_Pre_IniciarSesion"
-           type="ve.usb.sistema.AccionesIniciarSesion"/>
+                type="ve.usb.sistema.AccionesIniciarSesion"/>
         <action path="/A_IniciarSesion" parameter="A_IniciarSesion"
-           type="ve.usb.sistema.AccionesIniciarSesion"
-           input="/IniciarSesion/V_IniciarSesion.jsp"
-           name="F_IniciarSesion"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesIniciarSesion"
+                input="/IniciarSesion/V_IniciarSesion.jsp"
+                name="F_IniciarSesion"
+                scope="session"/>
 
 
         <!-- LlenarFormularioPreinscripcion -->
         <action path="/A_Pre_LlenarFormularioPreinscripcion" parameter="A_Pre_LlenarFormularioPreinscripcion"
-           type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"/>
+                type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"/>
         <action path="/A_LlenarFormularioPreinscripcion" parameter="A_LlenarFormularioPreinscripcion"
-           type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"
-           input="/LlenarFormularioPreinscripcion/A_LlenarFormularioPreinscripcion.jsp"
-           name="F_PreInscripcion"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"
+                input="/LlenarFormularioPreinscripcion/A_LlenarFormularioPreinscripcion.jsp"
+                name="F_PreInscripcion"
+                scope="session"/>
 
 
         <!-- GestionarInscripcion -->
         <action path="/A_Pre_GestionarInscripcion" parameter="A_Pre_GestionarInscripcion"
-           type="ve.usb.sistema.AccionesGestionarInscripcion"/>
+                type="ve.usb.sistema.AccionesGestionarInscripcion"/>
 
         <!-- GestionarCulminacion -->
         <action path="/A_Pre_GestionarCulminacion" parameter="A_Pre_GestionarCulminacion"
-           type="ve.usb.sistema.AccionesGestionarCulminacion"/>
+                type="ve.usb.sistema.AccionesGestionarCulminacion"/>
 
         <!-- ConsultarDocumentos -->
         <action path="/A_Pre_ConsultarDocumentos" parameter="A_Pre_ConsultarDocumentos"
-           type="ve.usb.sistema.AccionesConsultarDocumentos"/>
+                type="ve.usb.sistema.AccionesConsultarDocumentos"/>
 
         <action path="/A_ConsultarDocumentos"  parameter="A_ConsultarDocumentos"
                 type="ve.usb.sistema.AccionesConsultarDocumentos"
                 name="F_Upload"
                 scope="request"
                 validate="true"
-              input="/consultardocumentos/V_ConsultarDocumentos.jsp"
+                input="/consultardocumentos/V_ConsultarDocumentos.jsp"
                 >
         </action>
 
         <!-- LlenarFInscripcion -->
         <action path="/A_Pre_LlenarFInscripcion" parameter="A_Pre_LlenarFInscripcion"
-           type="ve.usb.sistema.AccionesLlenarFInscripcion"/>
+                type="ve.usb.sistema.AccionesLlenarFInscripcion"/>
         <action path="/A_LlenarFIncripcion" parameter="A_LlenarFIncripcion"
-           type="ve.usb.sistema.AccionesLlenarFInscripcion"
-           input="/LlenarFInscripcion/V_LlenarFInscripcion.jsp"
-           name="F_PlanTrabajo"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesLlenarFInscripcion"
+                input="/LlenarFInscripcion/V_LlenarFInscripcion.jsp"
+                name="F_PlanTrabajo"
+                scope="session"/>
 
 
         <!-- ConsultarPPG -->
         <action path="/A_Pre_ConsultarPPG" parameter="A_Pre_ConsultarPPG"
-           type="ve.usb.sistema.AccionesConsultarPPG"/>
+                type="ve.usb.sistema.AccionesConsultarPPG"/>
 
 
         <!-- VistaEstudiante -->
         <action path="/A_Pre_VistaEstudiante" parameter="A_Pre_VistaEstudiante"
-           type="ve.usb.sistema.AccionesVistaEstudiante"/>
+                type="ve.usb.sistema.AccionesVistaEstudiante"/>
 
 
         <!-- VistaProfesor -->
         <action path="/A_Pre_VistaProfesor" parameter="A_Pre_VistaProfesor"
-           type="ve.usb.sistema.AccionesVistaProfesor"/>
+                type="ve.usb.sistema.AccionesVistaProfesor"/>
 
         <!-- Vista Admin -->
         <action path="/A_VistaAdmin" parameter="A_VistaAdmin"
@@ -406,17 +416,17 @@
 
         <!-- CerrarSesion -->
         <action path="/A_Pre_CerrarSesion" parameter="A_Pre_CerrarSesion"
-           type="ve.usb.sistema.AccionesCerrarSesion"/>
+                type="ve.usb.sistema.AccionesCerrarSesion"/>
 
 
         <!-- GestionarPasantia -->
         <action path="/A_Pre_GestionarPasantia" parameter="A_Pre_GestionarPasantia"
-           type="ve.usb.sistema.AccionesGestionarPasantia"/>
+                type="ve.usb.sistema.AccionesGestionarPasantia"/>
 
 
         <!-- GestionarPreinscripcion -->
         <action path="/A_Pre_GestionarPreinscripcion" parameter="A_Pre_GestionarPreinscripcion"
-           type="ve.usb.sistema.AccionesGestionarPreinscripcion"/>
+                type="ve.usb.sistema.AccionesGestionarPreinscripcion"/>
 
 
         <!-- Gestionar Profesores -->
@@ -426,156 +436,164 @@
 
         <!-- ConsultarPreinscripcion -->
         <action path="/A_Pre_ConsultarPreinscripcion" parameter="A_Pre_ConsultarPreinscripcion"
-           type="ve.usb.sistema.AccionesConsultarPreinscripcion"/>
+                type="ve.usb.sistema.AccionesConsultarPreinscripcion"/>
 
 
         <!-- ModificarPreinscripcion -->
         <action path="/A_Pre_ModificarPreinscripcion" parameter="A_Pre_ModificarPreinscripcion"
-           type="ve.usb.sistema.AccionesModificarPreinscripcion"/>
+                type="ve.usb.sistema.AccionesModificarPreinscripcion"/>
         <action path="/A_ModificarPreinscripcion" parameter="A_ModificarPreinscripcion"
-           type="ve.usb.sistema.AccionesModificarPreinscripcion"
-           input="/ModificarPreinscripcion/V_modificarPreinscripcion.jsp"
-           name="F_PreInscripcion"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesModificarPreinscripcion"
+                input="/ModificarPreinscripcion/V_modificarPreinscripcion.jsp"
+                name="F_PreInscripcion"
+                scope="session"/>
 
 
         <!-- RegistrarEmpresa -->
         <action path="/A_Pre_RegistrarEmpresa" parameter="A_Pre_RegistrarEmpresa"
-           type="ve.usb.sistema.AccionesRegistrarEmpresa"/>
+                type="ve.usb.sistema.AccionesRegistrarEmpresa"/>
         <action path="/A_RegistrarEmpresa" parameter="A_RegistrarEmpresa"
-           type="ve.usb.sistema.AccionesRegistrarEmpresa"
-           input="/RegistrarEmpresa/V_RegistrarEmpresa.jsp"
-           name="F_RegistrarEmpresa"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesRegistrarEmpresa"
+                input="/RegistrarEmpresa/V_RegistrarEmpresa.jsp"
+                name="F_RegistrarEmpresa"
+                scope="session"/>
 
 
         <!-- IniciarSesionEmpresa -->
         <action path="/A_Pre_IniciarSesionEmpresa" parameter="A_Pre_IniciarSesionEmpresa"
-           type="ve.usb.sistema.AccionesIniciarSesionEmpresa"/>
+                type="ve.usb.sistema.AccionesIniciarSesionEmpresa"/>
         <action path="/A_IniciarSesionEmpresa" parameter="A_IniciarSesionEmpresa"
-           type="ve.usb.sistema.AccionesIniciarSesionEmpresa"
-           input="/IniciarSesionEmpresa/V_IniciarSesionEmpresa.jsp"
-           name="F_IniciarSesion"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesIniciarSesionEmpresa"
+                input="/IniciarSesionEmpresa/V_IniciarSesionEmpresa.jsp"
+                name="F_IniciarSesion"
+                scope="session"/>
 
 
         <!-- VistaEmpresa -->
         <action path="/A_Pre_VistaEmpresa" parameter="A_Pre_VistaEmpresa"
-           type="ve.usb.sistema.AccionesVistaEmpresa"/>
+                type="ve.usb.sistema.AccionesVistaEmpresa"/>
 
 
         <!-- EvaluarPasantia -->
         <action path="/A_Pre_EvaluarPasantia" parameter="A_Pre_EvaluarPasantia"
-           type="ve.usb.sistema.AccionesEvaluarPasantia"/>
+                type="ve.usb.sistema.AccionesEvaluarPasantia"/>
         <action path="/A_EvaluarPasantia" parameter="A_EvaluarPasantia"
-           type="ve.usb.sistema.AccionesEvaluarPasantia"/>
+                type="ve.usb.sistema.AccionesEvaluarPasantia"/>
 
 
         <!-- CancelarRegistro -->
         <action path="/A_Pre_CancelarRegistro" parameter="A_Pre_CancelarRegistro"
-           type="ve.usb.sistema.AccionesCancelarRegistro"/>
+                type="ve.usb.sistema.AccionesCancelarRegistro"/>
         <action path="/A_CancelarRegistro" parameter="A_CancelarRegistro"
-           type="ve.usb.sistema.AccionesCancelarRegistro"
-           input="/CancelarRegistro/V_CancelarRegistro.jsp"
-           name="F_CancelarDatosEmpresa"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesCancelarRegistro"
+                input="/CancelarRegistro/V_CancelarRegistro.jsp"
+                name="F_CancelarDatosEmpresa"
+                scope="session"/>
 
 
         <!-- ModificarDatosEmpresa -->
         <action path="/A_Pre_ModificarDatosEmpresa" parameter="A_Pre_ModificarDatosEmpresa"
-           type="ve.usb.sistema.AccionesModificarDatosEmpresa"/>
+                type="ve.usb.sistema.AccionesModificarDatosEmpresa"/>
         <action path="/A_ModificarDatosEmpresa" parameter="A_ModificarDatosEmpresa"
-           type="ve.usb.sistema.AccionesModificarDatosEmpresa"
-           input="/ModificarDatosEmpresa/V_ModificarDatosEmpresa.jsp"
-           name="F_RegistrarEmpresa"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesModificarDatosEmpresa"
+                input="/ModificarDatosEmpresa/V_ModificarDatosEmpresa.jsp"
+                name="F_RegistrarEmpresa"
+                scope="session"/>
 
 
         <!-- ConsultarInscripcion -->
         <action path="/A_Pre_ConsultarInscripcion" parameter="A_Pre_ConsultarInscripcion"
-           type="ve.usb.sistema.AccionesConsultarInscripcion"/>
+                type="ve.usb.sistema.AccionesConsultarInscripcion"/>
 
 
         <!-- ModificarPPG -->
         <action path="/A_Pre_ModificarPPG" parameter="A_Pre_ModificarPPG"
-           type="ve.usb.sistema.AccionesModificarPPG"/>
+                type="ve.usb.sistema.AccionesModificarPPG"/>
         <action path="/A_ModificarPPG" parameter="A_ModificarPPG"
-           type="ve.usb.sistema.AccionesModificarPPG"
-           input="/ModificarPPG/V_ModificarPPG.jsp"
-           name="F_AgregarPPG"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesModificarPPG"
+                input="/ModificarPPG/V_ModificarPPG.jsp"
+                name="F_AgregarPPG"
+                scope="session"/>
 
 
         <!-- VistaCoordinacion -->
         <action path="/A_Pre_VistaCoordinacion" parameter="A_Pre_VistaCoordinacion"
-           type="ve.usb.sistema.AccionesVistaCoordinacion"/>
+                type="ve.usb.sistema.AccionesVistaCoordinacion"/>
 
 
         <!-- GestionarConsultaCoordinacion -->
         <action path="/A_Pre_GestionarConsultaCoordinacion" parameter="A_Pre_GestionarConsultaCoordinacion"
-           type="ve.usb.sistema.AccionesGestionarConsultaCoordinacion"/>
+                type="ve.usb.sistema.AccionesGestionarConsultaCoordinacion"/>
 
 
         <!-- ConsultarEstudiante -->
         <action path="/A_Pre_ConsultarEstudiante" parameter="A_Pre_ConsultarEstudiante"
-           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+                type="ve.usb.sistema.AccionesConsultarEstudiante"/>
         <action path="/A_BusquedaEstudiante" parameter="A_BusquedaEstudiante"
-           type="ve.usb.sistema.AccionesConsultarEstudiante"
-           input="/ConsultarEstudiante/V_ConsultarEstudiante.jsp"
-           name="F_ConsultarEstudiante"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesConsultarEstudiante"
+                input="/ConsultarEstudiante/V_ConsultarEstudiante.jsp"
+                name="F_ConsultarEstudiante"
+                scope="session"/>
         <action path="/A_MostrarConsultaEstudiante" parameter="A_MostrarConsultaEstudiante"
-           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+                type="ve.usb.sistema.AccionesConsultarEstudiante"/>
         <action path="/A_Pre_MostrarConsulta" parameter="A_Pre_MostrarConsulta"
-           type="ve.usb.sistema.AccionesConsultarEstudiante"/>
+                type="ve.usb.sistema.AccionesConsultarEstudiante"/>
 
         <!-- Consultar Profesores -->
         <action path="/A_ConsultarProfesores" parameter="A_ConsultarProfesores"
-           type="ve.usb.sistema.AccionesConsultarProfesores"
-           input="/consultarprofesores/V_ConsultarProfesores.jsp"
-           name="F_ConsultarProfesores"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesConsultarProfesores"
+                input="/consultarprofesores/V_ConsultarProfesores.jsp"
+                name="F_ConsultarProfesores"
+                scope="session"/>
 
-       <!-- Profesores -->
+        <!-- Profesores -->
         <action path="/A_Profesores" parameter="A_Profesores"
-           type="ve.usb.sistema.AccionesProfesores"
-           input="/profesores/V_Profesores.jsp"
-           name="F_Profesores"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesProfesores"
+                input="/profesores/V_Profesores.jsp"
+                name="F_Profesores"
+                scope="session"/>
 
         <!-- ModificarInscripcion -->
         <action path="/A_Pre_ModificarInscripcion" parameter="A_Pre_ModificarInscripcion"
-           type="ve.usb.sistema.AccionesModificarInscripcion"/>
+                type="ve.usb.sistema.AccionesModificarInscripcion"/>
         <action path="/A_ModificarInscripcion" parameter="A_ModificarInscripcion"
-           type="ve.usb.sistema.AccionesModificarInscripcion"
-           input="/ModificarInscripcion/V_ModificarInscripcion.jsp"
-           name="F_PlanTrabajo"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesModificarInscripcion"
+                input="/ModificarInscripcion/V_ModificarInscripcion.jsp"
+                name="F_PlanTrabajo"
+                scope="session"/>
 
 
         <!-- ConsultarPPGCoordinacion -->
         <action path="/A_Pre_ConsultarPPGCoordinacion" parameter="A_Pre_ConsultarPPGCoordinacion"
-           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+                type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
         <action path="/A_ConsultarPPGCoordinacion" parameter="A_ConsultarPPGCoordinacion"
-           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"
-           input="/ConsultarPPGCoordinacion/V_ConsultarPPGCoordinacion.jsp"
-           name="F_ConsultarPPG"
-           scope="session"/>
+                type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"
+                input="/ConsultarPPGCoordinacion/V_ConsultarPPGCoordinacion.jsp"
+                name="F_ConsultarPPG"
+                scope="session"/>
         <action path="/A_MostrarConsultaPPG" parameter="A_MostrarConsultaPPG"
-           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+                type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
         <action path="/A_Pre_MostrarConsultaPPG" parameter="A_Pre_MostrarConsultaPPG"
-           type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
+                type="ve.usb.sistema.AccionesConsultarPPGCoordinacion"/>
 
 
         <!-- ConsultarPPGTutor -->
         <action path="/A_Pre_ConsultarPPGTutor" parameter="A_Pre_ConsultarPPGTutor"
-           type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
+                type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
         <action path="/A_MostrarDetallesPPG" parameter="A_MostrarDetallesPPG"
-           type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
+                type="ve.usb.sistema.AccionesConsultarPPGTutor"/>
 
+        <!-- Consultar Jurados -->
+        <action path="/A_Pre_ConsultarJurados" parameter="A_Pre_ConsultarJurados"
+                type="ve.usb.sistema.AccionesConsultarJurados"/>
+        <action path="/A_ConsultarJurados" parameter="A_ConsultarJurados"
+                type="ve.usb.sistema.AccionesConsultarJurados"
+                input="/ConsultarJurados/V_ConsultarJurados.jsp"
+                name="F_ConsultarJurados"
+                scope="session"/>
 
         <action path="/tooltip" parameter="tooltip"
-           type="ve.usb.sistema.Acciones_tooltips"/>
+                type="ve.usb.sistema.Acciones_tooltips"/>
     </action-mappings>
 
     <!--
