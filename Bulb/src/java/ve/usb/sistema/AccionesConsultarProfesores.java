@@ -1,6 +1,5 @@
 package ve.usb.sistema;
 
-import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,10 +12,8 @@ import ve.usb.cohesion.runtime.CohesionAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
-import ve.usb.sistema.hibernate.*;
 
 import java.util.List;
-import org.hibernate.Query;
 
 /**
  *
@@ -33,7 +30,7 @@ public class AccionesConsultarProfesores extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions.
-     * These exceptios will normally be treated with
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_ConsultarProfesores(ActionMapping mapping, ActionForm  form,
@@ -51,16 +48,14 @@ public class AccionesConsultarProfesores extends CohesionAction {
             /* Aqui empieza mi codigo */
 
             /* Consultas*/
-            
+
             /* Lista de Areas */
-            List<Area> list;
-            Query q = s.createQuery("from Area");
-            list = q.list();
+            List<String> list;
+            list = s.createSQLQuery("select distinct area from profesor").list();
             request.setAttribute("L_Area", list);
 
-            List<Profesor> listd;
-            q = s.createQuery("from Profesor");
-            listd = q.list();
+            List<String> listd;
+            listd = s.createSQLQuery("select distinct departamentousb from profesor").list();
             request.setAttribute("L_Dpts", listd);
 
             /* Lista de Depts */
@@ -68,7 +63,6 @@ public class AccionesConsultarProfesores extends CohesionAction {
             q = s.createSQLQuery("select departamentoUSB from Profesor");
             listDpts = q.list();
             listDpts.removeAll(listDpts);
-
 
             //armo los dtps
             Object [] objIt;
@@ -82,8 +76,6 @@ public class AccionesConsultarProfesores extends CohesionAction {
             request.setAttribute("L_Dpts", listDpts);
 
 */
-
-
             /* Aqui termina mi codigo */
             tr.commit();
 

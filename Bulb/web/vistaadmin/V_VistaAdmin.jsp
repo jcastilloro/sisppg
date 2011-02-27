@@ -23,9 +23,9 @@
 
             <div id="menu">
                 <ul id="nav">
-                    <li><html:link action="/A_VistaAdmin.do">Gestionar Profesores</html:link></li>
                     <li><html:link action="/A_VistaAdmin.do">Gestionar Departamentos</html:link></li>
-                    <li><html:link action="/A_VistaAdmin.do">Gestionar Coordinadores</html:link></li>
+                    <li><html:link action="/A_VistaAdmin.do">Agregar Coordinadores</html:link></li>
+                    <li><html:link action="/A_VistaAdmin.do">Modificar Coordinadores</html:link></li>
                     <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaProfesor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
                 </ul>

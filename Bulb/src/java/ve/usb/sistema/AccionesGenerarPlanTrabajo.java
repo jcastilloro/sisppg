@@ -1,5 +1,6 @@
 package ve.usb.sistema;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
@@ -231,7 +232,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     linea = new String[] { "FASES", " "+fases };
                     pdf.add(crearTabla(w, linea));
                     pdf.add(blank);
-                    
+
                     float[] widths = { 1f, 2f, 2f, 1f };
                     PdfPTable t = new PdfPTable(widths);
                     t.addCell("Fase");  t.addCell("Objetivos"); t.addCell("Actividades");   t.addCell("Tiempo Estimado");
@@ -242,9 +243,30 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
 
-                    Paragraph firma = new Paragraph("\n\n\n\n_________________\nFIRMA ");
-                    firma.setAlignment(Paragraph.ALIGN_CENTER);
+                    Chunk space = new Chunk(' ');
+                    Paragraph firma = new Paragraph("\n\n\n\n");
                     pdf.add(firma);
+                    Chunk firm = new Chunk("____________________");
+                    pdf.add(firm);
+                    for( int i=0; i<10; i++)
+                        pdf.add(space);
+                    pdf.add(firm);
+                    for( int i=0; i<10; i++)
+                        pdf.add(space);
+                    pdf.add(firm);
+
+                    firma = new Paragraph("\n");
+                    pdf.add(firma);
+                    firm = new Chunk("Firma de Tutor Industrial");
+                    pdf.add(firm);
+                    for( int i=0; i<10; i++)
+                        pdf.add(space);
+                    firm = new Chunk("Firma de Tutor Académico");
+                    pdf.add(firm);
+                    for( int i=0; i<10; i++)
+                        pdf.add(space);
+                    firm = new Chunk("Firma del Coordinador");
+                    pdf.add(firm);
 
                     pdf.close();
 
@@ -259,7 +281,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
               }else{
                 salida = SALIDA_1;
               }
-            
+
             /*aqui termina*/
             tr.commit();
 

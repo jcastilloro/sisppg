@@ -34,53 +34,56 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
+                            <center>
+                                <br><br>
+                                <h3> Profesores</h3>
+                                <br>
+                                <html:form action="/A_Profesores.do" method="post" focus="departamento">
 
-                            <br><br>
-                            <h3> Profesores</h3>
-                            <br>
-                            <html:form action="/A_Profesores.do" method="post" focus="dpto">
-                                <table border="0" width="450px">
-                                    <tr><td>
-                                            <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
-                                        </td>
-                                        <td>
-                                            <select name="dpts">
-                                                <logic:empty name="L_Dpts">
-                                                    <option value="todos">Todos</option>
-                                                </logic:empty>
-                                                <logic:notEmpty name="L_Dpts">
-                                                    <option value="todos">Todos</option>
-                                                    <logic:iterate id="d" name="L_Dpts">
-                                                        <option value = <bean:write name="d" property="departamentoUSB"/> ><bean:write name="d" property="departamentoUSB"/></option>
-                                                    </logic:iterate>
-                                                </logic:notEmpty>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr><td>
-                                            <bean:message key="V_ConsultarProfesores.label2"/><%-- Area --%>
-                                        </td>
-                                        <td>
-                                            <select name="area">
-                                                <logic:empty name="L_Area">
-                                                    <option value="todas">Todas</option>
-                                                </logic:empty>
-                                                <logic:notEmpty name="L_Area">
-                                                    <option value="todas">Todas</option>
-                                                    <logic:iterate id="a" name="L_Area">
-                                                        <option value = <bean:write name="a" property="idArea" /> ><bean:write name="a" property="nombreArea" /></option>
-                                                    </logic:iterate>
-                                                </logic:notEmpty>
-                                            </select> 
-                                        </td>
-                                    </tr>
-                                    <tr><td></td>
-                                        <td>
-                                            <br><html:submit><bean:message key="V_ConsultarProfesores.label0"/><%-- Consultar --%></html:submit>
-                                        </td>
-                                    </tr>
+                                    <table border="0" width="450px">
 
-                                </table>
+                                        <tr><td>
+                                                <bean:message key="V_ConsultarProfesores.label1"/><%-- Dpto --%>
+                                            </td>
+                                            <td>
+                                                <select name="departamento">
+                                                    <logic:empty name="L_Dpts">
+                                                        <option value="todos">Todos</option>
+                                                    </logic:empty>
+                                                    <logic:notEmpty name="L_Dpts">
+                                                        <option value="todos">Todos</option>
+                                                        <logic:iterate id="d" name="L_Dpts">
+                                                            <option value = <bean:write name="d" filter='false'/>><bean:write name="d" filter='false'/></option>
+                                                        </logic:iterate>
+                                                    </logic:notEmpty>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr><td>
+                                                <bean:message key="V_ConsultarProfesores.label2"/><%-- Area --%>
+                                            </td>
+                                            <td>
+                                                <select name="area">
+                                                    <logic:empty name="L_Area">
+                                                        <option value="todas">Todas</option>
+                                                    </logic:empty>
+                                                    <logic:notEmpty name="L_Area">
+                                                        <option value="todas">Todas</option>
+                                                        <logic:iterate id="a" name="L_Area">
+                                                            <option value = <bean:write name="a" filter='false'/>><bean:write name="a" filter='false'/> </option>
+                                                        </logic:iterate>
+                                                    </logic:notEmpty>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr><td></td>
+                                            <td>
+                                                <br><html:submit><bean:message key="V_ConsultarProfesores.label0"/><%-- Consultar --%></html:submit>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </center>
                             </html:form>
                             <br>
 

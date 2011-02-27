@@ -1,6 +1,5 @@
 package ve.usb.sistema;
 
-import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +12,6 @@ import ve.usb.cohesion.runtime.CohesionAction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
-import ve.usb.sistema.hibernate.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class AccionesProfesores extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions.
-     * These exceptios will normally be treated with
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_Profesores(ActionMapping mapping, ActionForm form,
@@ -40,7 +38,7 @@ public class AccionesProfesores extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Profesores", };
+        final String[] SALIDAS = {"V_Profesores",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -54,19 +52,41 @@ public class AccionesProfesores extends CohesionAction {
                 F_Profesores f_prof = (F_Profesores) form;
                 String depto = f_prof.getDepartamento();
                 String areaf = f_prof.getArea();
+                String query = "";
+                List<String> consulta;
+                List<String> areas;
+                List<String> departamentos;
+                if (!depto.equals("todos")) {
+                    query = " where departamentousb = '" + depto + "' ";
+                }
+                if (!areaf.equals("todas")) {
+                    if (!query.equals("")) {
+                        query = query + " AND ";
+                    } else {
+                        query = query + " where ";
+                    }
+                    query = query + " area = '" + areaf + "' ";
+                }
 
-                List <String> consulta;
-                if (depto.equals("todos") || areaf.equals("todas")) 
-                    consulta = s.createSQLQuery("select nombreprofesor from profesor;").list();
-                else 
-                    consulta = s.createSQLQuery("select nombreprofesor from profesor where idprofesor='" + areaf + "';").list();
+                System.out.println("######################################################" + query);
+                consulta = s.createSQLQuery("select nombreprofesor from profesor" + query + ";").list();
+                areas = s.createSQLQuery("select area from profesor" + query + ";").list();
+                departamentos = s.createSQLQuery("select departamentousb from profesor" + query + ";").list();
+
+                List<String> Devolucion = s.createSQLQuery("select nombreprofesor from esjurado where nombreprofesor = 'nidevainaexisto'").list();
+
+                for (int i = 0; i < consulta.size(); i++) {
+                    Devolucion.add("<tr><td>" + consulta.get(i) + "</td><td>");
+                    Devolucion.add(areas.get(i));
+                    Devolucion.add("</td><td>" + departamentos.get(i) + "<td></tr>");
+                }
 
                 if (!consulta.isEmpty()) {
-                    request.setAttribute("Profs", consulta);
+                    request.setAttribute("Profs", Devolucion);
                 }
-                request.setAttribute("Area", areaf);
-                request.setAttribute("Dep", depto);
-                
+//                request.setAttribute("Area", areas);
+//                request.setAttribute("Dep", departamentos);
+
 
             }
 
@@ -77,9 +97,11 @@ public class AccionesProfesores extends CohesionAction {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
         }
         return mapping.findForward(SALIDAS[salida]);
     }
-
 }
