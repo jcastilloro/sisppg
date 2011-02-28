@@ -104,6 +104,27 @@ public class Profesor implements java.io.Serializable, ve.usb.cohesion.runtime.A
         this.departamentoUSB = departamentoUSB;
     }
 
+     /**
+     * Holds value of property area.
+     */
+    private String area = "";
+
+    /**
+     * Getter for property area.
+     * @return Value of property area.
+     */
+    public String getArea() {
+        return this.area;
+    }
+
+    /**
+     * Setter for property area.
+     * @param area New value of property area.
+     */
+    public void setArea(String area) {
+        this.area = area;
+    }
+
     /**
      * Holds value of property telefonoProfesor.
      */
@@ -155,6 +176,7 @@ public class Profesor implements java.io.Serializable, ve.usb.cohesion.runtime.A
       "\" nombreProfesor =\"" + nombreProfesor +
       "\" codigoProfesor =\"" + codigoProfesor +
       "\" departamentoUSB =\"" + departamentoUSB +
+      "\" area =\"" + area +
       "\" telefonoProfesor =\"" + telefonoProfesor +
       "\" correoProfesor =\"" + correoProfesor +
 

@@ -30,6 +30,7 @@
         <mapping resource="ve/usb/sistema/hibernate/Carrera.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/Empresa.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/EsCoordinador.hbm.xml"/>
+        <mapping resource="ve/usb/sistema/hibernate/esjurado.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/EstCursaCarrera.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/EstRealizaProy.hbm.xml"/>
         <mapping resource="ve/usb/sistema/hibernate/Estudiante.hbm.xml"/>

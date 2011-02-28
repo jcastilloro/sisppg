@@ -20,6 +20,7 @@
       <property name="telefonoProfesor" column="telefonoProfesor" type="string" not-null="true"/>
       <!-- 5 -->
       <property name="correoProfesor" column="correoProfesor" type="string" not-null="true" unique="true"/>
-
+      <!-- 6 -->
+      <property name="area" column="area" type="string" not-null="true"/>
     </class>
 </hibernate-mapping>

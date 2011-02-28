@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.esjurado" table="esjurado">
+      <!-- 0 -->
+      <id name="idesjurado" column="idesjurado">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombreppg" column="nombreppg" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="fechaasignacion" column="fechaasignacion" type="date" not-null="true"/>
+      <!-- 3 -->
+      <property name="fechadefensa" column="fechadefensa" type="date" not-null="true"/>
+      <!-- 4 -->
+      <property name="areajurado" column="areajurado" type="string"/>
+      <!-- 5 -->
+      <property name="areaproyecto" column="areaproyecto" type="string" not-null="true"/>
+      <!-- 6 -->
+      <property name="nombreprofesor" column="nombreprofesor" type="string" not-null="true"/>
+      <!-- 7 -->
+      <property name="idpasantia" column="idpasantia" type="integer" not-null="true" unique="true"/>
+      <!-- 8 -->
+      <property name="idppg" column="idppg" type="integer" not-null="true" unique="true"/>
+      <!-- 9 -->
+      <property name="pasantia" column="pasantia" type="string" not-null="true"/>
+      <!-- 10 -->
+      <property name="esppg" column="esppg" type="boolean"/>
+      <!-- 11 -->
+      <property name="tutoreo" column="tutoreo" type="integer" not-null="true" unique="true"/>
+
+
+    </class>
+</hibernate-mapping>
