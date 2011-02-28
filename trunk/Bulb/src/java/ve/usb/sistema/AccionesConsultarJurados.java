@@ -46,7 +46,7 @@ public class AccionesConsultarJurados extends CohesionAction {
         try {
             /* Aqui empieza mi codigo */
             List<String> list;
-            list = s.createSQLQuery("select areajurado from esjurado").list();
+            list = s.createSQLQuery("select distinct areajurado from esjurado").list();
             request.setAttribute("Dpto", list);
              /* Aqui termina mi codigo */
             tr.commit();

@@ -102,8 +102,9 @@
                                         <br><br><br>
                                         <tr>
                                             <td align="center" colspan="2">
-                                                <br><br><br><br><br><br>
+                                                <br><br>
                                                 <html:submit>Realizar Consulta</html:submit>
+                                                <br><br><br>
                                             </td>
                                         </tr>
                                     </table>
