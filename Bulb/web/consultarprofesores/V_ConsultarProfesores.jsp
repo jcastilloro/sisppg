@@ -53,7 +53,7 @@
                                                     <logic:notEmpty name="L_Dpts">
                                                         <option value="todos">Todos</option>
                                                         <logic:iterate id="d" name="L_Dpts">
-                                                            <option value = <bean:write name="d" filter='false'/>><bean:write name="d" filter='false'/></option>
+                                                            <option value = '<bean:write name="d" filter='false'/>'><bean:write name="d" filter='false'/></option>
                                                         </logic:iterate>
                                                     </logic:notEmpty>
                                                 </select>
@@ -70,7 +70,7 @@
                                                     <logic:notEmpty name="L_Area">
                                                         <option value="todas">Todas</option>
                                                         <logic:iterate id="a" name="L_Area">
-                                                            <option value = <bean:write name="a" filter='false'/>><bean:write name="a" filter='false'/> </option>
+                                                            <option value = '<bean:write name="a" filter='false'/>'><bean:write name="a" filter='false'/> </option>
                                                         </logic:iterate>
                                                     </logic:notEmpty>
                                                 </select>
