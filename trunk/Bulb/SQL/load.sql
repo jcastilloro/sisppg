@@ -37,10 +37,10 @@ insert into estcursacarrera values (3,'06-39911','1700');
 insert into estcursacarrera values (4,'05-37843','0011');
 insert into estcursacarrera values (5,'06-40273','0011');
 
-insert into profesor values (1,'Soraya Abad','sabad','Computación y TI','0212-1234567','sabad@usb.ve','bases_de_datos');
-insert into profesor values (2,'Kenyer Dominguez','kdominguez','Computación y TI','0212-9876543','kdominguez@usb.ve','info');
-insert into profesor values (3,'Zoraida Chiquin','zchiquin','Procesos y Sistemas','0416-1111111','zchiquin@usb.ve','info');
-insert into profesor values (4,'Pedro Pérez','pperez','Matemáticas','0212-121212','pperez@usb.ve','estadística');
+insert into profesor values (1,'Soraya Abad','sabad','Computación y TI','0212-1234567','sabad@usb.ve','Bases de Datos');
+insert into profesor values (2,'Kenyer Dominguez','kdominguez','Computación y TI','0212-9876543','kdominguez@usb.ve','Sistemas de Información');
+insert into profesor values (3,'Zoraida Chiquin','zchiquin','Procesos y Sistemas','0416-1111111','zchiquin@usb.ve','Sistemas de Información');
+insert into profesor values (4,'Pedro Pérez','pperez','Matemáticas','0212-121212','pperez@usb.ve','Estadística');
 
 insert into usuario values (1,'06-39223','12345','estudiante');
 insert into usuario values (2,'06-39239','12345','estudiante');
