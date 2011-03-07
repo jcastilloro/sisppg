@@ -12,17 +12,14 @@
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
     </head>
-    <body>
-        
+    <body>       
             
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_AgregarPPG.do"><bean:message key="V_GestionarPPG.label0"/><%-- Agregar Plan --%></html:link></li>
                     <li><html:link action="/A_Pre_ConsultarPPGTutor.do"><bean:message key="V_GestionarPPG.label3"/><%-- Consultar Plan --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPPG.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-                    
-
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
                     
         </div>

@@ -168,7 +168,7 @@
 
 	<div id="footer">
 
-		<p>Copyright (c) 2011 SISPPG. All rights reserved.</p>
+		<p>Copyright© 2011 SISPPG. All rights reserved.</p>
 
 	</div>
 

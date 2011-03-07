@@ -1,29 +1,17 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-
 %><%@ page contentType="text/html;charset=ISO-8859-1"
-
 %><html:html>
 
     <head>
-
         <title><bean:message key="V_AgregarPPG.title"/></title>
-
         <html:base/>
-
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <script type="text/javascript" src="../scripts/datetimepicker.js"></script>
-
         <style type="text/css">
 
         div#box1388408 {width: 400px; margin: 40px auto; }
@@ -214,46 +202,24 @@
 
         </style>
 
-
-
     </head>
 
-    <body>
-
-        
-
-            
-
+    <body>     
             <div id="menu">
-
                 <ul id="nav">
 
                     <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_AgregarPPG.label1"/><%-- Regresar --%></html:link></li>
-
-
-
                 </ul>
-
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
+            </div>
+            <div id="header">
             </div>
 
-                    <div id="header">
-
-                        
-
-                    </div>
-
-        
-
         <div id="body_wrapper">
-
             <div id="body">
-
                 <div id="split">
-
                     <div class="top"></div>
-
                     <div id="left">
-
                         <div class="content">
                             ${empty msg ? "" : msg}
                             <br>
@@ -381,33 +347,24 @@
 
                   <tr><th><p id="1388774_C"><label for="1388774"><bean:message key="F_AgregarPPG.label23"/><%-- Si las actividades de estas etapas dependen de recursos materiales, indique que previsiones se han tomado para lograr la disponibilidad  --%></label></th><td><html:textarea styleId="1388774" property="recurMate" cols="38" rows="10"></html:textarea></p></td></tr>
 
-                  
-
                   <tr><th><p id="1435712_C"><label for="1435712"><bean:message key="F_AgregarPPG.label24"/><%-- Carnet Integrante 1: --%></label></th><td><html:text styleId="1435712" property="integrante1" size="30"/></p></td></tr>
 
                   <tr><th><p id="1435715_C"><label for="1435715"><bean:message key="F_AgregarPPG.label25"/><%-- Carnet Integrante 2: --%></label></th><td><html:text styleId="1435715" property="integrante2" size="30"/></p></td></tr>
 
                   <tr><th><p id="1435718_C"><label for="1435718"><bean:message key="F_AgregarPPG.label26"/><%-- Carnet Integrante 3: --%></label></th><td><html:text styleId="1435718" property="integrante3" size="30"/></p></td></tr>
 
-                  
-                 
                   </table>
                 <table border="0" width="450px" align ="center">
                   <th><html:submit styleClass="button" ><bean:message key="V_AgregarPPG.label0"/><%-- Agregar Plan --%></html:submit></th>
                 </table>
 
-                  </html:form></div>
-
-                
+                  </html:form></div>                
 
                         </div>
 
-                    </div>
-
-                    
+                    </div>                    
 
                     <div class="clearer"></div>
-
                     <div class="bottom"></div>
 
                 </div>
@@ -421,10 +378,7 @@
         </div>
 
         <div id="end_body"></div>
-
-        <div id="footer"> <bean:message key="bottom.label"/> </div>
-
-        
+        <div id="footer"> <bean:message key="bottom.label"/> </div>        
 
     </body>
 

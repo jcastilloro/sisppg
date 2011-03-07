@@ -12,23 +12,21 @@
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
     
-    <body>
-    
+    <body>   
     
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_GestionarPasantia.label0"/><%-- Pre-Inscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_GestionarPasantia.label1"/><%-- Inscripcion --%></html:link></li>
                     <li><html:link action="/A_Pre_GestionarCulminacion.do"><bean:message key="V_GestionarPasantia.label2"/><%-- Culminacion --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPasantia.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
             <div id="header">          
 		
             </div>
             <!-- end #header -->
-        </div>
+  
         <div id="body_wrapper">
             <div id="body">
                 <div id="split">

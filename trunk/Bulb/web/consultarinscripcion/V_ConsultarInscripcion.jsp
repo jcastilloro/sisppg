@@ -13,37 +13,29 @@
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>       
     </head>
 
-    <body>           
-
+    <body>
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_ModificarInscripcion.do"><bean:message key="V_ConsultarInscripcion.label0"/><%-- Modificar Inscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_GenerarPlanTrabajo.do"><bean:message key="V_ConsultarInscripcion.label1"/><%-- Generar Planilla de Inscripci&oacute;n --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_ConsultarInscripcion.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
 
            <div id="header">             
            </div>
 
         <div id="body_wrapper">
-
             <div id="body">
-
                 <div id="split">
-
                     <div class="top"></div>
-
                     <div id="left">
-
                         <div class="content">
 
                             ${empty msg ? "" : msg}
 
                             <br>
-
                             <br>
-
                             <table border="0" align="center" width="500px">
 
                                 <tr><th>Empresa</th><td><bean:write name="empresa"/></td></tr>
@@ -80,9 +72,9 @@
 
                                 <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoII"/></td></tr>
 
-                                <tr><th><br><h1>Fase 3</h1></td></tr>
+                                <tr><th><br><h1>Fase 3</h1></th></tr>
 
-                                </tr><tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosIII"/></td></tr>
+                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosIII"/></td></tr>
 
                                 <tr><th>Actividades</th><td><bean:write name="actividadesIII"/></td></tr>
 
@@ -98,37 +90,22 @@
 
                                 <tr><th>Codigo PT</th><td><bean:write name="codigoPt"/></td></tr>                                
 
-
-
                             </table>
-
-
-
                         </div>
 
                     </div>
-
-                    
-
                     <div class="clearer"></div>
-
                     <div class="bottom"></div>
 
                 </div>
-
                 <div class="clearer"></div>
 
             </div>
-
             <div class="clearer"></div>
 
         </div>
-
         <div id="end_body"></div>
-
-        <div id="footer"> <bean:message key="bottom.label"/> </div>
-
-        
+        <div id="footer"> <bean:message key="bottom.label"/> </div>      
 
     </body>
 

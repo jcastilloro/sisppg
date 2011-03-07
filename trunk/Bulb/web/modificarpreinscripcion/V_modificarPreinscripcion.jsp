@@ -66,9 +66,8 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_modificarPreinscripcion.label1"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_modificarPreinscripcion.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
                     <div id="header">
                         
