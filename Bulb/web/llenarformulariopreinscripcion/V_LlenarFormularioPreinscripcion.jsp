@@ -1,26 +1,18 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-
 %><%@ page contentType="text/html;charset=ISO-8859-1"
-
 %><html xmlns="http://www.w3.org/1999/xhtml">
 
     
     <head>
         <title><bean:message key="V_LlenarFormularioPreinscripcion.title"/></title>
-
         <html:base/>
-
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
         <script type="text/javascript" src="../scripts/datetimepicker.js"></script>
-
         <style type="text/css">
+
 
         div#box1409001 {width: 400px; margin: 40px auto; }
 
@@ -149,47 +141,27 @@
 
 
         </style>
-
-
-
     </head>
 
     <body>
-
         <div id="wrapper">
-
             <div id="menu">
-
                 <ul id="nav">
-
                     <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_LlenarFormularioPreinscripcion.label1"/><%-- Regresar --%></html:link></li>
-
-
-
                 </ul>
-
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
-
         </div>
-
         <div id="header">          
-
-		
-
 	</div>
 
 	<!-- end #header -->
 
         <div id="body_wrapper">
-
             <div id="body">
-
                 <div id="split">
-
                     <div class="top"></div>
-
                     <div id="left">
-
                         <div class="content">
                               <br></br>
                               <br></br>
@@ -248,9 +220,6 @@
                   </table>
            <html:submit styleClass="button"><bean:message key="V_LlenarFormularioPreinscripcion.label0"/><%-- Enviar --%></html:submit>
            </html:form></div>
-
-
-
                     </div>
 
                     </div>
@@ -264,18 +233,12 @@
                 </div>
 
                 <div class="clearer"></div>
-
             </div>
-
             <div class="clearer"></div>
-
         </div>
-
         <div id="end_body"></div>
-
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-
-        
+      
 
     </body>
 

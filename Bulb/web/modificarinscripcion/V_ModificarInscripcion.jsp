@@ -89,11 +89,10 @@
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_ConsultarInscripcion.do"><bean:message key="V_ModificarInscripcion.label0"/><%-- Regresar --%></html:link></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
-                    <div id="header">
-                        
+                    <div id="header">                        
                     </div>
         </div>
         <div id="body_wrapper">

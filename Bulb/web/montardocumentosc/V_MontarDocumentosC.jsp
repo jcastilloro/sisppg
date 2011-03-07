@@ -37,10 +37,8 @@
             <ul id="nav">
 
                     <li><html:link action="/A_Pre_GestionarCulminacion.do"><bean:message key="V_GestionarPasantia.label7"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarPasantia.label3"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
-            </ul>
-
+                </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
         </div>
 
         <div id="header">
