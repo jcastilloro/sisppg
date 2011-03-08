@@ -1,52 +1,40 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-
-    <session-factory>
-        <!-- Database connection settings for postgresql -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/bulb</property>
-        <property name="hibernate.connection.username">bulb</property>
-        <property name="hibernate.connection.password">bulb</property>
-
-        <!-- Enable Hibernate's automatic session context management -->
-        <property name="current_session_context_class">thread</property>
-
-        <!-- Disable the second-level cache  -->
-        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-
-        <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
-
-        <!-- Uncomment this line to drop and re-create the database schema on startup
+  <session-factory>
+    <!-- Database connection settings for postgresql -->
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/bulb</property>
+    <property name="hibernate.connection.username">bulb</property>
+    <property name="hibernate.connection.password">bulb</property>
+    <!-- Enable Hibernate's automatic session context management -->
+    <property name="current_session_context_class">thread</property>
+    <!-- Disable the second-level cache  -->
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <!-- Echo all executed SQL to stdout -->
+    <property name="show_sql">true</property>
+    <!-- Uncomment this line to drop and re-create the database schema on startup
        <property name="hbm2ddl.auto">create</property>
-         --> 
-          
-        <mapping resource="ve/usb/sistema/hibernate/Area.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Carrera.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Empresa.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/EsCoordinador.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/esjurado.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/EstCursaCarrera.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/EstRealizaProy.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Estudiante.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/EvalProy.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Plantrabajo.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/PPG.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/PreInsPasantias.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Profesor.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/ProfTutoreaProy.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/RelPPGArea.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/TITutoreaPasantia.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/TutorIndustrial.hbm.xml"/>
-        <mapping resource="ve/usb/sistema/hibernate/Usuario.hbm.xml"/>
-
-
-
-    </session-factory>
-
+         -->
+    <mapping resource="ve/usb/sistema/hibernate/Area.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Carrera.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Empresa.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/EsCoordinador.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/esjurado.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/EstCursaCarrera.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/EstRealizaProy.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Estudiante.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/EvalProy.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Plantrabajo.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/PPG.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/PreInsPasantias.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Profesor.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/ProfTutoreaProy.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/RelPPGArea.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/TITutoreaPasantia.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/TutorIndustrial.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Usuario.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Documento.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>
