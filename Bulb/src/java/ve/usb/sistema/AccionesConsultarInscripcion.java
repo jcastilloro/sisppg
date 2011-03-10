@@ -2,23 +2,17 @@ package ve.usb.sistema;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import ve.usb.sistema.hibernate.*;
-
 
 /**
  * 
@@ -57,6 +51,8 @@ public class AccionesConsultarInscripcion extends CohesionAction {
               if (estudiante!=null){
                       int codigo = (int)estudiante.getCodigoproy();
                       Plantrabajo plantrabajo = (Plantrabajo)s.createQuery("from Plantrabajo where codigopt= :codigo").setInteger("codigo", codigo).uniqueResult();
+                      int pt = plantrabajo.getCodigopt();
+                     
                       request.setAttribute("empresa",plantrabajo.getEmpresa());
                       request.setAttribute("tutorI",plantrabajo.getCodigoTI());
                       request.setAttribute("tutorA",plantrabajo.getCodigoTA());
@@ -65,19 +61,12 @@ public class AccionesConsultarInscripcion extends CohesionAction {
                       request.setAttribute("resumen",plantrabajo.getResumenProyecto());
                       request.setAttribute("objetivos",plantrabajo.getObjetivosPasantias());
                       request.setAttribute("fases",plantrabajo.getFasesPasantia());
-                      request.setAttribute("objetivosI",plantrabajo.getObjetivosFaseI());
-                      request.setAttribute("actividadesI",plantrabajo.getActividadesFaseI());
-                      request.setAttribute("tiempoI",plantrabajo.getTiempoFaseI());
-                      request.setAttribute("objetivosII",plantrabajo.getObjetivosFaseII());
-                      request.setAttribute("actividadesII",plantrabajo.getActividadesFaseII());
-                      request.setAttribute("tiempoII",plantrabajo.getTiempoFaseII());
-                      request.setAttribute("objetivosIII",plantrabajo.getObjetivosFaseIII());
-                      request.setAttribute("actividadesIII",plantrabajo.getActividadesFaseIII());
-                      request.setAttribute("tiempoIII",plantrabajo.getTiempoFaseIII());
-                      request.setAttribute("objetivosIV",plantrabajo.getObjetivosFaseIV());
-                      request.setAttribute("actividadesIV",plantrabajo.getActividadesFaseIV());
-                      request.setAttribute("tiempoIV",plantrabajo.getTiempoFaseIV());
-                      request.setAttribute("codigoPt",plantrabajo.getCodigopt());
+                      request.setAttribute("codigoPt",pt);
+
+                      Fase fase = (Fase)s.createQuery("from Fase where idpasantia= :pt ").setInteger("pt", pt).uniqueResult();
+                      request.setAttribute("objetivosFase",fase.getObjetivosFase());
+                      request.setAttribute("actividadesFase",fase.getActividadesFase());
+                      request.setAttribute("tiempoFase",fase.getTiempoFase());
               }else{
                 salida = SALIDA_1;
               }

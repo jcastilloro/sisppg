@@ -19,7 +19,7 @@
                     <li><html:link action="/A_Pre_GestionarPasantia.do"><bean:message key="V_VistaEstudiante.label0"/><%-- Pasant&iacute;as --%></html:link></li>
                     <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_VistaEstudiante.label1"/><%-- Proyecto de Grado --%></html:link></li>
                 </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
             </div>
           <div id="header"></div>
 	<!-- end #header -->          

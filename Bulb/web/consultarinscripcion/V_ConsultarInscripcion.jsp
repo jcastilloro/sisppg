@@ -54,39 +54,17 @@
 
                                 <tr><th>Objetivos de la Pasantia </th><td><bean:write name="objetivos"/></td></tr>
 
-                                <tr><th>Fase</th><td><bean:write name="fases"/></td></tr>
+                                <tr><th>Fases</th><td><bean:write name="fases"/></td></tr>
 
                                 <tr><th><h1 align="center">Fase 1</h1></td></tr>
 
-                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosI"/></td></tr>
+                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosFase"/></td></tr>
 
-                                <tr><th>Actividades</th><td><bean:write name="actividadesI"/></td></tr>
+                                <tr><th>Actividades</th><td><bean:write name="actividadesFase"/></td></tr>
 
-                                <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoI"/></td></tr>
+                                <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoFase"/></td></tr>
 
-                                <tr><th><br><h1>Fase 2 </h1></td></tr>
-
-                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosII"/></td></tr>
-
-                                <tr><th>Actividades</th><td><bean:write name="actividadesII"/></td></tr>
-
-                                <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoII"/></td></tr>
-
-                                <tr><th><br><h1>Fase 3</h1></th></tr>
-
-                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosIII"/></td></tr>
-
-                                <tr><th>Actividades</th><td><bean:write name="actividadesIII"/></td></tr>
-
-                                <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoIII"/></td></tr>
-
-                                <tr><th><br><h1>Fase 4</h1></td></tr>
-
-                                <tr><th>Objetivos Espec&iacute;ficos</th><td><bean:write name="objetivosIV"/></td></tr>
-
-                                <tr><th>Actividades</th><td><bean:write name="actividadesIV"/><br></td></tr>
-
-                                <tr><th>Tiempo Estimado</th><td><bean:write name="tiempoIV"/></td></tr>
+ 
 
                                 <tr><th>Codigo PT</th><td><bean:write name="codigoPt"/></td></tr>                                
 

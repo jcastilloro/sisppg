@@ -15,14 +15,16 @@
       <!-- 2 -->
       <property name="nombreE" column="nombreE" type="string" not-null="true"/>
       <!-- 3 -->
-      <property name="cedulaE" column="cedulaE" type="string" not-null="true" unique="true"/>
+      <property name="apellidoE" column="apellidoE" type="string" not-null="true"/>
       <!-- 4 -->
-      <property name="indiceE" column="indiceE" type="double" not-null="true"/>
+      <property name="cedulaE" column="cedulaE" type="string" not-null="true" unique="true"/>
       <!-- 5 -->
-      <property name="sexoE" column="sexoE" type="string" not-null="true"/>
+      <property name="indiceE" column="indiceE" type="double" not-null="true"/>
       <!-- 6 -->
-      <property name="nacionalidadE" column="nacionalidadE" type="string" not-null="true"/>
+      <property name="sexoE" column="sexoE" type="string" not-null="true"/>
       <!-- 7 -->
+      <property name="nacionalidadE" column="nacionalidadE" type="string" not-null="true"/>
+      <!-- 8 -->
       <property name="fechaNacimientoE" column="fechaNacimientoE" type="date" not-null="true"/>
 
     </class>
