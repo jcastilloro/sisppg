@@ -48,7 +48,15 @@ public class Documento implements java.io.Serializable, ve.usb.cohesion.runtime.
         this.usuario = usuario;
     }
 
+    private String ruta = "";
 
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
 
     /**
      * Holds value of property codigo_Area.

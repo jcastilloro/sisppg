@@ -133,6 +133,7 @@ public class AccionesMontarDocumentosC extends CohesionAction {
                 Doc.setTipo("Culminacion");
                 Doc.setAprobado(false);
                 Doc.setActual(true);
+                Doc.setRuta(carnet + dateString + ext);
                 java.util.Date today = new java.util.Date();
                 Doc.setFecha(new java.sql.Timestamp(today.getTime()));
                 s.save(Doc);
