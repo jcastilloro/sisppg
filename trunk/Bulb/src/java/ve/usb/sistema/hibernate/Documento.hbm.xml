@@ -6,22 +6,22 @@
 <hibernate-mapping>
     <class name="ve.usb.sistema.hibernate.Documento" table="documento">
       <!-- 0 -->
-      <id name="id" column="id">
+      <id name="idDocumento" column="idDocumento">
         <generator class="native"/>
       </id>
 
       <!-- 1 -->
       <property name="usuario" column="usuario" type="string" not-null="true"/>
       <!-- 2 -->
-      <property name="file" column="file" type="byte[]" not-null="true"/>
+      <!--<property name="file" column="file" type="byte[]" not-null="true"/>-->
       <!-- 3 -->
       <property name="tipo" column="tipo" type="string" not-null="true"/>
       <!-- 4 -->
-      <property name="aprobado" column="aprobado" type="boolean"/>
+      <property name="aprobado" column="aprobado" type="boolean" not-null="true"/>
       <!-- 5 -->
       <property name="actual" column="actual" type="boolean" not-null="true"/>
       <!-- 6 -->
-      <property name="fecha" column="fecha" type="timestamp" not-null="true"/>
+      <property name="fecha" column="fecha" type="timestamp"/>
 
 
 

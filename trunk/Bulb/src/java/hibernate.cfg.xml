@@ -14,7 +14,7 @@
     <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
     <!-- Echo all executed SQL to stdout -->
     <property name="show_sql">true</property>
-    <!-- Uncomment this line to drop and re-create the database schema on startup
+    <!-- Uncomment this line to drop and re-create the database schema on startup 
        <property name="hbm2ddl.auto">create</property>
          -->
     <mapping resource="ve/usb/sistema/hibernate/Area.hbm.xml"/>

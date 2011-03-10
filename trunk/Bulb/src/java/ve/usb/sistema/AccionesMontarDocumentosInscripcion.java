@@ -124,8 +124,24 @@ public class AccionesMontarDocumentosInscripcion extends CohesionAction {
                 fileOutStream.write(myFile.getFileData());
                 fileOutStream.flush();
                 fileOutStream.close();
-            }
+                //codigo que inserta en la bd
+                Documento Doc = new Documento();
+                Doc.setUsuario(carnet);
+                Doc.setTipo("Inscripcion");
+                Doc.setAprobado(false);
+                Doc.setActual(true);
+                java.util.Date today = new java.util.Date();
+                Doc.setFecha(new java.sql.Timestamp(today.getTime()));
+                s.save(Doc);
+                tr.commit();
+         
 
+
+            }
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
 
             return mapping.findForward("success");
 
