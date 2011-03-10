@@ -16,21 +16,19 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
     </head>
+
     <body>
-
-
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_VistaAdmin.do">Gestionar Departamentos</html:link></li>
-                    <li><html:link action="/A_VistaAdmin.do">Agregar Coordinadores</html:link></li>
-                    <li><html:link action="/A_VistaAdmin.do">Modificar Coordinadores</html:link></li>
-                </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
-            </div>
-               <div id="header">
-               </div>
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_GestionarDepartamentos.do">Gestionar Departamentos</html:link></li>
+                <li><html:link action="/A_VistaAdmin.do">Agregar Coordinadores</html:link></li>
+                <li><html:link action="/A_VistaAdmin.do">Modificar Coordinadores</html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
+        </div>
+        <div id="header">
+        </div>
         <div id="body_wrapper">
             <div id="body">
                 <div id="split">
