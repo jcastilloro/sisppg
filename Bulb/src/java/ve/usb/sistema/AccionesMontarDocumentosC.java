@@ -113,22 +113,36 @@ public class AccionesMontarDocumentosC extends CohesionAction {
             Session s = HibernateUtil.getCurrentSession();
             Transaction tr = s.beginTransaction();
             Estudiante estudiante = (Estudiante) s.createQuery("from Estudiante where carnete = :login").setString("login", (String) request.getSession().getAttribute("login")).uniqueResult();
-            String carnet = (String)(estudiante.getCarnetE());
+            String carnet = (String) (estudiante.getCarnetE());
             SimpleDateFormat formatter = new SimpleDateFormat("-yyyy-MM-dd-hh-mm-ss");
             Date currentTime_1 = new Date();
             String dateString = formatter.format(currentTime_1);
             //Para los de culminacion se les mantiene el mismo nombre
             //File fileToCreate = new File(filePath, carnet + dateString + ext);
-            File fileToCreate = new File(filePath,fileName);
+            File fileToCreate = new File(filePath, fileName);
             //If file does not exists create file
             if (!fileToCreate.exists()) {
                 FileOutputStream fileOutStream = new FileOutputStream(fileToCreate);
                 fileOutStream.write(myFile.getFileData());
                 fileOutStream.flush();
                 fileOutStream.close();
+
+                //codigo que inserta en la bd
+                Documento Doc = new Documento();
+                Doc.setUsuario(carnet);
+                Doc.setTipo("Culminacion");
+                Doc.setAprobado(false);
+                Doc.setActual(true);
+                java.util.Date today = new java.util.Date();
+                Doc.setFecha(new java.sql.Timestamp(today.getTime()));
+                s.save(Doc);
+                tr.commit();
             }
 
-
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
             return mapping.findForward("success");
 
         } else {

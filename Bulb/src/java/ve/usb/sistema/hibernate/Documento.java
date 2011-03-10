@@ -25,6 +25,16 @@ public class Documento implements java.io.Serializable, ve.usb.cohesion.runtime.
     }
 
 
+    int idDocumento;
+
+    public int getIdDocumento() {
+        return idDocumento;
+    }
+
+    public void setIdDocumento(int idDocumento) {
+        this.idDocumento = idDocumento;
+    }
+
     /**
      * Holds value of property nombreArea.
      */
@@ -43,15 +53,15 @@ public class Documento implements java.io.Serializable, ve.usb.cohesion.runtime.
     /**
      * Holds value of property codigo_Area.
      */
-    private byte[] file = null;
-
-    public byte[] getFile() {
-        return file;
-    }
-
-    public void setFile(byte[] file) {
-        this.file = file;
-    }
+//    private byte[] file = null;
+//
+//    public byte[] getFile() {
+//        return file;
+//    }
+//
+//    public void setFile(byte[] file) {
+//        this.file = file;
+//    }
 
     private String tipo = "";
 
@@ -100,7 +110,7 @@ public class Documento implements java.io.Serializable, ve.usb.cohesion.runtime.
         return "<Area id='C" + this.id +
       //idArea
       "\" usuario =\"" + usuario +
-      "\" file =\"" + file +
+   //   "\" file =\"" + file +
       "\" tipo =\"" + tipo +
       "\" aprobado =\"" + aprobado +
       "\" actual =\"" + actual +
