@@ -7,7 +7,7 @@
     <head>
         <title><bean:message key="V_ConsultarEstudiante.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
         <style type="text/css">
@@ -30,17 +30,14 @@
           form#1689880 p#1689892_C input {clear: both; width: 396px; }
 
         </style>
-
     </head>
-    <body>
 
-            
+    <body>           
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_ConsultarEstudiante.label1"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_ConsultarEstudiante.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
-                </ul>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
         <div id="header">
         </div>
@@ -66,18 +63,18 @@
                                                 </logic:iterate>
 
                                         </select>    	
-                                        </p></td></tr>
-                                       <tr<th><p id="1689885_C"><label for="1689885"><bean:message key="F_ConsultarEstudiante.label1"/><%-- Por tutor: --%></label></th><td>
+                                        </td></tr>
+                                       <tr><th><p id="1689885_C"><label for="1689885"><bean:message key="F_ConsultarEstudiante.label1"/><%-- Por tutor: --%></label></th><td>
                                         <select name="tutorPPG">
                                                 <option value="">--Seleccione--</option>
-                                                <logic:iterate id="profesor" collection="${empty L_Profesor ? _vacio : L_Profesor}">
+<%--                                                <logic:iterate id="profesor" collection="${empty L_Profesor ? _vacio : L_Profesor}">
 
                                                          <option value=${profesor.codigoProfesor}><html:link action="/APre_profesor.do" paramId="idProfesor" paramName="profesor" paramProperty="idProfesor">${empty profesor.nombreProfesor ? "Editar" : profesor.nombreProfesor}</html:link></option>
 
                                                 </logic:iterate>
-
+--%>
                                         </select> 
-                                        </p></td></tr>
+                                        </td></tr>
                                        <tr><th><p id="1689889_C"><label for="1689889"><bean:message key="F_ConsultarEstudiante.label2"/><%-- Por per&iacute;odo: --%></label></th><td>
                                               <select name="periodoPPG">
                                                   <option value="">--Seleccione--</option>
@@ -85,7 +82,7 @@
                                                   <option value="Enero-Marzo">Enero-Marzo</option>
                                                   <option value="Abril-Julio">Abril-Julio</option>
                                               </select>
-                                        </p></td></tr>
+                                       </td></tr>
                                        <tr><th><p id="1689892_C"><label for="1689892"><bean:message key="F_ConsultarEstudiante.label3"/><%-- Por a&ntilde;o: --%></label></th><td>
                                               <select name="anoPPG">
                                                         <option value="0">--Seleccione--</option>
@@ -125,10 +122,10 @@
                                                         <option value="1981">1981</option>
                                                         <option value="1980">1980</option>			
                                               </select> 
-                                              </p></td></tr>
+                                              </td></tr>
                 </table>                         
                                               <br>
-                                              <p align="center"><html:submit styleClass="button"><bean:message key="V_ConsultarEstudiante.label0"/><%-- A_BusquedaEstudiante --%></html:submit> </html:form></div></p>
+                                              <p align="center"><html:submit styleClass="button"><bean:message key="V_ConsultarEstudiante.label0"/><%-- A_BusquedaEstudiante --%></html:submit> </html:form></div>
  
                         </div>
                     </div>

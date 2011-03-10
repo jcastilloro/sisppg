@@ -226,7 +226,7 @@
                 <div class="box1496666" align="center">
                     <html:form styleId="F1496666" action="/A_LlenarFIncripcion.do" method="post">
                     <br>
-                    <table border="1" width="400px" align="center">
+                    <table border="0" width="400px" align="center">
                       <tr><th width="125px"><p id="1508113_C" ><label for="1508113"><bean:message key="F_PlanTrabajo.label0"/><%-- Empresa:  --%></label></p></th><td><html:text styleId="1508113" property="empresa" size="28"/></td></tr>
                     </table>
                   
@@ -235,7 +235,7 @@
                        <h1>Tutor Industrial</h1>
 
                     <br>
-                    <table border="1" width="400px" align="center">
+                    <table border="0" width="400px" align="center">
                       <tr><th><p id="1508124_C"><label for="1508124"><bean:message key="F_PlanTrabajo.label1"/><%-- Tutor Industrial:  --%></label></p></th><td><html:text styleId="1508124" property="codigoTutorIndustrial" size="28"/></td></tr>
                     </table>
                    
@@ -244,7 +244,7 @@
                     <h1>Tutor Acad&eacute;mico</h1>
 
                     <br>
-                    <table border="1" width="400px" align="center">
+                    <table border="0" width="400px" align="center">
                         <tr><th><p id="1508166_C"><label for="1508166"><bean:message key="F_PlanTrabajo.label2"/><%-- Tutor Acad&eacute;mico: --%></label></p></th><td><html:text styleId="1508166" property="codigoTutorAcademico" size="28"/></td></tr>
                     </table>
                    
@@ -253,7 +253,7 @@
                     <h1>Pasant&iacute;a</h1>
 
                     <br>
-                    <table border="1" width="600px">
+                    <table border="0" width="600px">
                         <tr><th><p id="1508176_C"><label for="1508176"><bean:message key="F_PlanTrabajo.label3"/><%-- Titulo: --%></label></p></th><td><html:text styleId="1508176" property="tituloPasantia" size="28"/></td></tr>
                         <tr><th><p id="1508181_C"><label for="1508181"><bean:message key="F_PlanTrabajo.label4"/><%-- Area de Proyecto: --%></label></p></th><td><html:text styleId="1508181" property="areaProyecto" size="28"/></td></tr>
                         <tr><th><p id="1508203_C"><label for="1508203"><bean:message key="F_PlanTrabajo.label5"/><%-- Resumen del Proyecto:  --%></label></p></th><td><html:textarea styleId="1508203" property="resumenProyecto" cols="35" rows="10"></html:textarea></td></tr>
@@ -291,7 +291,7 @@
                    <h1>Fase 1</h1>
 
                    <br>
-                  <table border="1" width="400px">
+                  <table border="0" width="400px">
                         <tr><th><p id="1508224_C"><label for="1508224"><bean:message key="F_PlanTrabajo.label8"/><%-- Objetivos especificos: --%></label></th><td><html:textarea styleId="1508224" property="objetivoFaseI" cols="35" rows="10"></html:textarea></td></tr>
                         <tr><th><p id="1508227_C"><label for="1508227"><bean:message key="F_PlanTrabajo.label9"/><%-- Actividades:  --%></label></th><td><html:textarea styleId="1508227" property="actividadesFaseI" cols="35" rows="10"></html:textarea></td></tr>
                         <tr><th><p id="1508230_C"><label for="1508230"><bean:message key="F_PlanTrabajo.label10"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508230" property="tiempoFaseI" cols="35" rows="10"></html:textarea></td></tr>

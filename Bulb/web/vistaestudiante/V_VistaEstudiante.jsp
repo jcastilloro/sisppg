@@ -4,7 +4,7 @@
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html xmlns="http://www.w3.org/1999/xhtml">
-
+    <head>
         <title><bean:message key="V_VistaEstudiante.title"/></title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>

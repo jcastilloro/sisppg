@@ -7,7 +7,7 @@
     <head>
         <title>Gestionar Correos Electronicos</title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
@@ -18,6 +18,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_EspecificarCorreo.do">Especificar Correo</html:link></li>
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
 
 

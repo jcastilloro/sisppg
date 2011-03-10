@@ -7,7 +7,7 @@
     <head>
         <title><bean:message key="V_ConsultarPPGCoordinacion.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
         <style type="text/css">
@@ -30,22 +30,18 @@
           form#1700978 p#1700993_C input {clear: both; width: 396px; }
 
         </style>
-
     </head>
-    <body>
-       
-           
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_ConsultarPPGCoordinacion.label1"/><%-- Regresar --%></html:link></li>
-                    <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_ConsultarPPGCoordinacion.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
 
-                </ul>
+    <body>
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_Pre_GestionarConsultaCoordinacion.do"><bean:message key="V_ConsultarPPGCoordinacion.label1"/><%-- Regresar --%></html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
-                    <div id="header">
-                        
-                    </div>
-        </div>
+            <div id="header">
+            </div>
+
         <div id="body_wrapper">
             <div id="body">
                 <div id="split">
@@ -57,7 +53,7 @@
                 <div class="box1700978"><html:form styleId="F1700978"
                   action="/A_ConsultarPPGCoordinacion.do" method="post">
                     <table align="center">
-                  <tr><th><p id="1700983_C"><label for="1700983"><bean:message key="F_ConsultarPPG.label0"/><%-- Por Area: --%>
+                  <tr><th><p id="1700983_C"><label for="1700983"><bean:message key="F_ConsultarPPG.label0"/><%-- Por Area: --%></label>
 				       <select name="area">
                                             <option value="">--Seleccione--</option>
                                                 <logic:iterate id="area" collection="${empty L_Area ? _vacio : L_Area}">
@@ -70,14 +66,14 @@
 
 		  </p></th></tr>
                 <tr><th><p id="1700987_C"><label for="1700987"><bean:message key="F_ConsultarPPG.label1"/><%-- Por Tutor --%></label>
-                                       <select name="tutor">
+                                      <select name="tutor">
                                                 <option value="">--Seleccione--</option>
-                                                <logic:iterate id="profesor" collection="${empty L_Profesor ? _vacio : L_Profesor}">
+ <%--                                                <logic:iterate id="profesor" collection="${empty L_Profesor ? _vacio : L_Profesor}">
 
                                                          <option value=${profesor.codigoProfesor}><html:link action="/APre_profesor.do" paramId="idProfesor" paramName="profesor" paramProperty="idProfesor">${empty profesor.nombreProfesor ? "Editar" : profesor.nombreProfesor}</html:link></option>
 
                                                 </logic:iterate>
-
+--%>
                                         </select> 
 
 		  </p></th></tr>
@@ -134,7 +130,7 @@
                    </table>
                                               <br>
                  <p align="center"><html:submit styleClass="button"><bean:message key="V_ConsultarPPGCoordinacion.label0"/><%-- Consultar --%></html:submit>
-                </html:form></div></p>
+                </html:form></div>
 
                         </div>
                     </div>

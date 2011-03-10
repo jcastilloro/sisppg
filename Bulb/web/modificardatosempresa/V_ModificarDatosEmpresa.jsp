@@ -1,23 +1,14 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-
 %><%@ page contentType="text/html;charset=ISO-8859-1"
-
 %><html:html>
 
     <head>
-
         <title><bean:message key="V_ModificarDatosEmpresa.title"/></title>
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <style type="text/css">
 
         div#box1503587 {width: 400px; margin: 40px auto; }
@@ -87,61 +78,33 @@
 
 
         </style>
-
-
-
     </head>
 
     <body>
-
-        
-
-          
-
             <div id="menu">
-
                 <ul id="nav">
-
                     <li><html:link action="/A_Pre_VistaEmpresa.do"><bean:message key="V_ModificarDatosEmpresa.label1"/><%-- Regresar --%></html:link></li>
-
-
-
                 </ul>
-
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
             </div>
 
-        <div id="header">          
-
-		
-
+        <div id="header">      
 	</div>
 
 	<!-- end #header -->
 
-        </div>
 
         <div id="body_wrapper">
-
             <div id="body">
-
                 <div id="split">
-
                     <div class="top"></div>
-
                     <div id="left">
-
                         <div class="content">
-
                             <br>
-
                             <br>
-
                             <br>
-
                             <br>
-
                 <div class="box1503587" align="center"><html:form styleId="F1503587"
-
                   action="/A_ModificarDatosEmpresa.do" method="post">
 
                    <table border="0" width="500px">
@@ -152,13 +115,13 @@
 
                   <tr><th>RIF</th><td><bean:write name="rif"/></td></tr>
 
-                  <tr><th><p id="1503606_C"><label for="1503606"><bean:message key="F_RegistrarEmpresa.label5"/><%-- Telefono --%></label></th><td><html:text styleId="1503606" property="telefono"value='${telefono}' size="30"/></p></td></tr>
+                  <tr><th><p id="1503606_C"><label for="1503606"><bean:message key="F_RegistrarEmpresa.label5"/><%-- Telefono --%></label></p></th><td><html:text styleId="1503606" property="telefono"value='${telefono}' size="30"/></td></tr>
 
-                  <tr><th><p id="1503609_C"><label for="1503609"><bean:message key="F_RegistrarEmpresa.label6"/><%-- Direcci&oacute;n --%></label></th><td><html:text styleId="1503609" property="direccion"value='${direccion}' size="30"/></p></td></tr>
+                  <tr><th><p id="1503609_C"><label for="1503609"><bean:message key="F_RegistrarEmpresa.label6"/><%-- Direcci&oacute;n --%></label></p></th><td><html:text styleId="1503609" property="direccion"value='${direccion}' size="30"/></td></tr>
 
-                  <tr><th><p id="1503615_C"><label for="1503615"><bean:message key="F_RegistrarEmpresa.label7"/><%-- Ciudad --%></label></th><td><html:text styleId="1503615" property="ciudad" value='${ciudad}'size="30"/></p></td></tr>
+                  <tr><th><p id="1503615_C"><label for="1503615"><bean:message key="F_RegistrarEmpresa.label7"/><%-- Ciudad --%></label></p></th><td><html:text styleId="1503615" property="ciudad" value='${ciudad}'size="30"/></td></tr>
 
-                  <tr><th><p id="1503622_C"><label for="1503622"><bean:message key="F_RegistrarEmpresa.label8"/><%-- Pais --%></label></th><td><html:text styleId="1503622" property="pais" value='${pais}' size="30"/></p></td></tr>
+                  <tr><th><p id="1503622_C"><label for="1503622"><bean:message key="F_RegistrarEmpresa.label8"/><%-- Pais --%></label></p></th><td><html:text styleId="1503622" property="pais" value='${pais}' size="30"/></td></tr>
 
                  </table>
 
@@ -166,33 +129,22 @@
 
                 </html:form></div>
 
-
-
                         </div>
-
                     </div>
-
                     <div id="right"></div>
-
                     <div class="clearer"></div>
-
                     <div class="bottom"></div>
 
                 </div>
-
                 <div class="clearer"></div>
 
             </div>
-
             <div class="clearer"></div>
 
         </div>
-
         <div id="end_body"></div>
 
-        <div id="footer"> <bean:message key="bottom.label"/> </div>
-
-        
+        <div id="footer"> <bean:message key="bottom.label"/> </div>        
 
     </body>
 

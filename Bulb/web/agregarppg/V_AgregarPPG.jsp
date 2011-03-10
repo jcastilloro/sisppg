@@ -8,7 +8,7 @@
     <head>
         <title><bean:message key="V_AgregarPPG.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
         <script type="text/javascript" src="../scripts/datetimepicker.js"></script>
@@ -230,9 +230,9 @@
 
                   action="/A_AgregarPPG.do" method="post">
 
-                    <table border="0" width="450px" align ="center">
+                    <table border="0" width="650px" align ="center">
 
-                  <tr><th><p id="1388410_C"><label for="1388410"><bean:message key="F_AgregarPPG.label0"/><%-- Nombre del Plan de Proyecto de Grado: --%></label></th><td><html:text styleId="1388410" property="nombrePPG" size="30"/></p></td></tr>                 
+                  <tr><th><p id="1388410_C"><label for="1388410"><bean:message key="F_AgregarPPG.label0"/><%-- Nombre del Plan de Proyecto de Grado: --%></label></th><td><html:text styleId="1388410" property="nombrePPG" size="30"/></td></tr>                 
 
                   <tr><th><p id="1388707_C"><label for="1388707"><bean:message key="F_AgregarPPG.label1"/><%-- Codigo de Area --%></label></th><td> 
 
@@ -248,19 +248,19 @@
 
                   
 
-                  <tr><th><p id="1388711_C"><label for="1388711"><bean:message key="F_AgregarPPG.label2"/><%-- Fecha --%></label></th><td><html:text styleId="1388711" property="fechaPPG" size="30" readonly="true" onclick="NewCal('1388711','ddmmyyyy');"/></p></td></tr>
+                  <tr><th><p id="1388711_C"><label for="1388711"><bean:message key="F_AgregarPPG.label2"/><%-- Fecha --%></label></th><td><html:text styleId="1388711" property="fechaPPG" size="30" readonly="true" onclick="NewCal('1388711','ddmmyyyy');"/></td></tr>
 
-                  <tr><th><p id="1388714_C"><label for="1388714"><bean:message key="F_AgregarPPG.label3"/><%-- Propuesto por --%></label></th><td><html:text styleId="1388714" property="propuestop" size="30"/></p></td></tr>
+                  <tr><th><p id="1388714_C"><label for="1388714"><bean:message key="F_AgregarPPG.label3"/><%-- Propuesto por --%></label></th><td><html:text styleId="1388714" property="propuestop" size="30"/></td></tr>
 
-                  <tr><th><p id="1388717_C"><label for="1388717"><bean:message key="F_AgregarPPG.label4"/><%-- Actividades que involucra el proyecto --%></label></th><td><html:textarea styleId="1388717" property="actvPPG" cols="38" rows="10"></html:textarea></p></td></tr>
+                  <tr><th><p id="1388717_C"><label for="1388717"><bean:message key="F_AgregarPPG.label4"/><%-- Actividades que involucra el proyecto --%></label></th><td><html:textarea styleId="1388717" property="actvPPG" cols="38" rows="10"></html:textarea></td></tr>
 
-                  <tr><th><p id="1388720_C"><label for="1388720"><bean:message key="F_AgregarPPG.label5"/><%-- Puntos de Interes que han de ser tratados durante la ejecuci&oacute;n del proyecto de grado --%></th><td></label><html:textarea styleId="1388720" property="ptosInte" cols="38" rows="10"></html:textarea></p></td></tr>
+                  <tr><th><p id="1388720_C"><label for="1388720"><bean:message key="F_AgregarPPG.label5"/><%-- Puntos de Interes que han de ser tratados durante la ejecuci&oacute;n del proyecto de grado --%></label></th><td><html:textarea styleId="1388720" property="ptosInte" cols="38" rows="10"></html:textarea></td></tr>
 
-                  <tr><th><p id="1388723_C"><label for="1388723"><bean:message key="F_AgregarPPG.label6"/><%-- Areas o campos de la t&eacute;cnica que se aborda en el desarrollo del proyecto --%></label></th><td><html:textarea styleId="1388723" property="areas" cols="38" rows="10"></html:textarea></p></td></tr>
+                  <tr><th><p id="1388723_C"><label for="1388723"><bean:message key="F_AgregarPPG.label6"/><%-- Areas o campos de la t&eacute;cnica que se aborda en el desarrollo del proyecto --%></label></th><td><html:textarea styleId="1388723" property="areas" cols="38" rows="10"></html:textarea></td></tr>
 
-                  <tr><th><p id="1388726_C"><label for="1388726"><bean:message key="F_AgregarPPG.label7"/><%-- Estimaci&oacute;n de la duraci&oacute;n del proyecto y recursos requeridos --%></label></th><td><html:textarea styleId="1388726" property="duraYrec" cols="38" rows="10"></html:textarea></p></td></tr>
+                  <tr><th><p id="1388726_C"><label for="1388726"><bean:message key="F_AgregarPPG.label7"/><%-- Estimaci&oacute;n de la duraci&oacute;n del proyecto y recursos requeridos --%></label></th><td><html:textarea styleId="1388726" property="duraYrec" cols="38" rows="10"></html:textarea></td></tr>
 
-                  <tr><th><p id="1388729_C"><label for="1388729"><bean:message key="F_AgregarPPG.label8"/><%-- Nombre de la Primera Etapa (EP-1308) --%></label></th><td><html:text styleId="1388729" property="primeraE" size="30"/></p></td></tr>
+                  <tr><th><p id="1388729_C"><label for="1388729"><bean:message key="F_AgregarPPG.label8"/><%-- Nombre de la Primera Etapa (EP-1308) --%></label></th><td><html:text styleId="1388729" property="primeraE" size="30"/></td></tr>
 
                   <tr><th><p id="1388732_C"><label for="1388732"><bean:message key="F_AgregarPPG.label9"/><%-- Trimestre --%></label></th><td>
                        <select name="trimestreUno">
@@ -269,7 +269,7 @@
                       <option value="Enero-Marzo">Enero-Marzo</option>
                       <option value="Abril-Julio">Abril-Julio</option>
                   </select>
-                          </p></td></tr>
+                          </td></tr>
                   <tr><th><p id="1693070_C"><label for="1693070"><bean:message key="F_AgregarPPG.label27"/><%-- A&ntilde;o: --%></label></th><td>
                         <select name="anoUno">
                                 <option value="0">--Seleccione--</option>
@@ -281,24 +281,24 @@
                                 <option value="2014">2015</option>
                         </select>
       
-                   </p></td></tr>
+                   </td></tr>
 
-                  <tr><th><p id="1388735_C"><label for="1388735"><bean:message key="F_AgregarPPG.label10"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388735" property="resultMinUno" size="30"/></p></td></tr>
+                  <tr><th><p id="1388735_C"><label for="1388735"><bean:message key="F_AgregarPPG.label10"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388735" property="resultMinUno" size="30"/></td></tr>
 
-                  <tr><th><p id="1388738_C"><label for="1388738"><bean:message key="F_AgregarPPG.label11"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388738" property="actResulUno" size="30"/></p></td></tr>
+                  <tr><th><p id="1388738_C"><label for="1388738"><bean:message key="F_AgregarPPG.label11"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388738" property="actResulUno" size="30"/></td></tr>
 
-                  <tr><th><p id="1388741_C"><label for="1388741"><bean:message key="F_AgregarPPG.label12"/><%-- Descripci&oacute;n de t&oacute;picos en Ingenier&iacute;a de Computaci&oacute;n I (CI-5855) --%></label></th><td><html:text styleId="1388741" property="descTopicosICI" size="30"/></p></td></tr>
+                  <tr><th><p id="1388741_C"><label for="1388741"><bean:message key="F_AgregarPPG.label12"/><%-- Descripci&oacute;n de t&oacute;picos en Ingenier&iacute;a de Computaci&oacute;n I (CI-5855) --%></label></th><td><html:text styleId="1388741" property="descTopicosICI" size="30"/></td></tr>
 
-                  <tr><th><p id="1388744_C"><label for="1388744"><bean:message key="F_AgregarPPG.label13"/><%-- Nombre de la segunda etapa (EP-2308) --%></label></th><td><html:text styleId="1388744" property="segundaE" size="30"/></p></td></tr>
+                  <tr><th><p id="1388744_C"><label for="1388744"><bean:message key="F_AgregarPPG.label13"/><%-- Nombre de la segunda etapa (EP-2308) --%></label></th><td><html:text styleId="1388744" property="segundaE" size="30"/></td></tr>
 
                   <tr><th><p id="1388747_C"><label for="1388747"><bean:message key="F_AgregarPPG.label14"/><%-- Trimestre --%></label></th><td>
-                          <select name="trimestreDos">
+                  <select name="trimestreDos">
                      
                       <option value="Septiembre-Diciembre">Septiembre-Diciembre</option>
                       <option value="Enero-Marzo">Enero-Marzo</option>
                       <option value="Abril-Julio">Abril-Julio</option>
                   </select>
-                          </p></td></tr>
+                          </td></tr>
                   <tr><th><p id="1693073_C"><label for="1693073"><bean:message key="F_AgregarPPG.label28"/><%-- A&ntilde;o: --%></label></th><td>
                          <select name="anoDos">
                                 <option value="0">--Seleccione--</option>
@@ -309,26 +309,26 @@
                                 <option value="2013">2013</option>
                                 <option value="2014">2015</option>
                         </select>       
-                  </p></td></tr>
+                  </td></tr>
 
-                  <tr><th><p id="1388750_C"><label for="1388750"><bean:message key="F_AgregarPPG.label15"/><%-- Cursar&aacute; (EP-2308) y (EP-3308) Juntas --%></label></th><td><html:checkbox styleId="1388750" property="juntas"/></p></td></tr>
+                  <tr><th><p id="1388750_C"><label for="1388750"><bean:message key="F_AgregarPPG.label15"/><%-- Cursar&aacute; (EP-2308) y (EP-3308) Juntas --%></label></th><td><html:checkbox styleId="1388750" property="juntas"/></td></tr>
 
-                  <tr><th><p id="1388753_C"><label for="1388753"><bean:message key="F_AgregarPPG.label16"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388753" property="resultMinDos" size="30"/></p></td></tr>
+                  <tr><th><p id="1388753_C"><label for="1388753"><bean:message key="F_AgregarPPG.label16"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388753" property="resultMinDos" size="30"/></td></tr>
 
-                  <tr><th><p id="1388756_C"><label for="1388756"><bean:message key="F_AgregarPPG.label17"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388756" property="actResulDos" size="30"/></p></td></tr>
+                  <tr><th><p id="1388756_C"><label for="1388756"><bean:message key="F_AgregarPPG.label17"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388756" property="actResulDos" size="30"/></td></tr>
 
-                  <tr><th><p id="1388759_C"><label for="1388759"><bean:message key="F_AgregarPPG.label18"/><%-- Descripci&oacute;n de t&oacute;picos en Ingenier&iacute;a De Computaci&oacute;n II (CI-5856) --%></label></th><td><html:text styleId="1388759" property="descTopicosICII" size="30"/></p></td></tr>
+                  <tr><th><p id="1388759_C"><label for="1388759"><bean:message key="F_AgregarPPG.label18"/><%-- Descripci&oacute;n de t&oacute;picos en Ingenier&iacute;a De Computaci&oacute;n II (CI-5856) --%></label></th><td><html:text styleId="1388759" property="descTopicosICII" size="30"/></td></tr>
 
-                  <tr><th><p id="1388762_C"><label for="1388762"><bean:message key="F_AgregarPPG.label19"/><%-- Nombre de la Tercera etapa (EP-3308) --%></label></th><td><html:text styleId="1388762" property="terceraE" size="30"/></p></td></tr>
+                  <tr><th><p id="1388762_C"><label for="1388762"><bean:message key="F_AgregarPPG.label19"/><%-- Nombre de la Tercera etapa (EP-3308) --%></label></th><td><html:text styleId="1388762" property="terceraE" size="30"/></td></tr>
 
                   <tr><th><p id="1388765_C"><label for="1388765"><bean:message key="F_AgregarPPG.label20"/><%-- Trimestre --%></label></th><td>
-                          <select name="trimestreTres">
+                  <select name="trimestreTres">
                      
                       <option value="Septiembre-Diciembre">Septiembre-Diciembre</option>
                       <option value="Enero-Marzo">Enero-Marzo</option>
                       <option value="Abril-Julio">Abril-Julio</option>
                   </select>
-                          </p></td></tr>
+                          </td></tr>
                   <tr><th><p id="1693076_C"><label for="1693076"><bean:message key="F_AgregarPPG.label29"/><%-- A&ntilde;o: --%></label></th><td>
                          <select name="anoTres">
                                 <option value="0">--Seleccione--</option>
@@ -339,22 +339,22 @@
                                 <option value="2013">2013</option>
                                 <option value="2014">2015</option>
                         </select>       
-                  </p></td></tr>
+                  </td></tr>
 
-                  <tr><th><p id="1388768_C"><label for="1388768"><bean:message key="F_AgregarPPG.label21"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388768" property="resultMinTres" size="30"/></p></td></tr>
+                  <tr><th><p id="1388768_C"><label for="1388768"><bean:message key="F_AgregarPPG.label21"/><%-- Resultados espec&iacute;ficos m&iacute;nimos a alcanzar en esta etapa --%></label></th><td><html:text styleId="1388768" property="resultMinTres" size="30"/></td></tr>
 
-                  <tr><th><p id="1388771_C"><label for="1388771"><bean:message key="F_AgregarPPG.label22"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388771" property="actResulTres" size="30"/></p></td></tr>
+                  <tr><th><p id="1388771_C"><label for="1388771"><bean:message key="F_AgregarPPG.label22"/><%-- Actividades que se propone realizar para lograr estos resultados --%></label></th><td><html:text styleId="1388771" property="actResulTres" size="30"/></td></tr>
 
-                  <tr><th><p id="1388774_C"><label for="1388774"><bean:message key="F_AgregarPPG.label23"/><%-- Si las actividades de estas etapas dependen de recursos materiales, indique que previsiones se han tomado para lograr la disponibilidad  --%></label></th><td><html:textarea styleId="1388774" property="recurMate" cols="38" rows="10"></html:textarea></p></td></tr>
+                  <tr><th><p id="1388774_C"><label for="1388774"><bean:message key="F_AgregarPPG.label23"/><%-- Si las actividades de estas etapas dependen de recursos materiales, indique que previsiones se han tomado para lograr la disponibilidad  --%></label></th><td><html:textarea styleId="1388774" property="recurMate" cols="38" rows="10"></html:textarea></td></tr>
 
-                  <tr><th><p id="1435712_C"><label for="1435712"><bean:message key="F_AgregarPPG.label24"/><%-- Carnet Integrante 1: --%></label></th><td><html:text styleId="1435712" property="integrante1" size="30"/></p></td></tr>
+                  <tr><th><p id="1435712_C"><label for="1435712"><bean:message key="F_AgregarPPG.label24"/><%-- Carnet Integrante 1: --%></label></th><td><html:text styleId="1435712" property="integrante1" size="30"/></td></tr>
 
-                  <tr><th><p id="1435715_C"><label for="1435715"><bean:message key="F_AgregarPPG.label25"/><%-- Carnet Integrante 2: --%></label></th><td><html:text styleId="1435715" property="integrante2" size="30"/></p></td></tr>
+                  <tr><th><p id="1435715_C"><label for="1435715"><bean:message key="F_AgregarPPG.label25"/><%-- Carnet Integrante 2: --%></label></th><td><html:text styleId="1435715" property="integrante2" size="30"/></td></tr>
 
-                  <tr><th><p id="1435718_C"><label for="1435718"><bean:message key="F_AgregarPPG.label26"/><%-- Carnet Integrante 3: --%></label></th><td><html:text styleId="1435718" property="integrante3" size="30"/></p></td></tr>
+                  <tr><th><p id="1435718_C"><label for="1435718"><bean:message key="F_AgregarPPG.label26"/><%-- Carnet Integrante 3: --%></label></th><td><html:text styleId="1435718" property="integrante3" size="30"/></td></tr>
 
                   </table>
-                <table border="0" width="450px" align ="center">
+                <table border="0" width="650px" align ="center">
                   <th><html:submit styleClass="button" ><bean:message key="V_AgregarPPG.label0"/><%-- Agregar Plan --%></html:submit></th>
                 </table>
 
