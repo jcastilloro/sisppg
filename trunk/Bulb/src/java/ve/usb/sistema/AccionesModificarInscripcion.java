@@ -2,23 +2,17 @@ package ve.usb.sistema;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import ve.usb.sistema.hibernate.*;
-
 
 /**
  * 
@@ -51,29 +45,24 @@ public class AccionesModificarInscripcion extends CohesionAction {
         try {
      	/*aqui empieza */
              EstRealizaProy estudiante = (EstRealizaProy)s.createQuery("from EstRealizaProy where tipoproy='1' and carnetestudiante= :login").setString("login", (String)request.getSession().getAttribute("login")).uniqueResult();
-            int codigo = (int)estudiante.getCodigoproy();
+             int codigo = (int)estudiante.getCodigoproy();
              Plantrabajo plantrabajo = (Plantrabajo)s.createQuery("from Plantrabajo where codigoPt = '"+codigo+"'").uniqueResult();
-                      request.setAttribute("empresa",plantrabajo.getEmpresa());
-                      request.setAttribute("codigoTutorIndustrial",plantrabajo.getCodigoTI());
-                      request.setAttribute("codigoTutorAcademico",plantrabajo.getCodigoTA());
-                      request.setAttribute("tituloPasantia",plantrabajo.getTituloPasantia());
-                      request.setAttribute("areaProyecto",plantrabajo.getAreaProyecto());
-                      request.setAttribute("resumenProyecto",plantrabajo.getResumenProyecto());
-                      request.setAttribute("objetivosPasantias",plantrabajo.getObjetivosPasantias());
-                      request.setAttribute("fasesPasantia",plantrabajo.getFasesPasantia());
-                      request.setAttribute("objetivoFaseI",plantrabajo.getObjetivosFaseI());
-                      request.setAttribute("actividadesFaseI",plantrabajo.getActividadesFaseI());
-                      request.setAttribute("tiempoFaseI",plantrabajo.getTiempoFaseI());
-                      request.setAttribute("objetivoFaseII",plantrabajo.getObjetivosFaseII());
-                      request.setAttribute("actividadesFaseII",plantrabajo.getActividadesFaseII());
-                      request.setAttribute("tiempoFaseII",plantrabajo.getTiempoFaseII());
-                      request.setAttribute("objetivoFaseIII",plantrabajo.getObjetivosFaseIII());
-                      request.setAttribute("actividadesFaseIII",plantrabajo.getActividadesFaseIII());
-                      request.setAttribute("tiempoFaseIII",plantrabajo.getTiempoFaseIII());
-                      request.setAttribute("objetivoFaseIV",plantrabajo.getObjetivosFaseIV());
-                      request.setAttribute("actividadesFaseIV",plantrabajo.getActividadesFaseIV());
-                      request.setAttribute("tiempoFaseIV",plantrabajo.getTiempoFaseIV());
-                      request.setAttribute("codigoPt",plantrabajo.getCodigopt());
+             int pt = plantrabajo.getCodigopt();
+
+             request.setAttribute("empresa",plantrabajo.getEmpresa());
+             request.setAttribute("codigoTutorIndustrial",plantrabajo.getCodigoTI());
+             request.setAttribute("codigoTutorAcademico",plantrabajo.getCodigoTA());
+             request.setAttribute("tituloPasantia",plantrabajo.getTituloPasantia());
+             request.setAttribute("areaProyecto",plantrabajo.getAreaProyecto());
+             request.setAttribute("resumenProyecto",plantrabajo.getResumenProyecto());
+             request.setAttribute("objetivosPasantias",plantrabajo.getObjetivosPasantias());
+             request.setAttribute("fasesPasantia",plantrabajo.getFasesPasantia());
+             request.setAttribute("codigoPt",pt);
+
+             Fase fase = (Fase)s.createQuery("from Fase where idpasantia= :pt ").setInteger("pt", pt).uniqueResult();
+             request.setAttribute("objetivosFase",fase.getObjetivosFase());
+             request.setAttribute("actividadesFase",fase.getActividadesFase());
+             request.setAttribute("tiempoFase",fase.getTiempoFase());
               
         /*aqui termina */
             tr.commit();
@@ -113,13 +102,11 @@ public class AccionesModificarInscripcion extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             F_PlanTrabajo fF_PlanTrabajo = (F_PlanTrabajo)form;
- /* a echar codigo */
 
-            String  carnet = (String)request.getSession().getAttribute("login");
+            String carnet = (String)request.getSession().getAttribute("login");
             
             String empresa = fF_PlanTrabajo.getEmpresa();
-            String nombreTI = fF_PlanTrabajo.getCodigoTutorIndustrial();
-            
+            String nombreTI = fF_PlanTrabajo.getCodigoTutorIndustrial();            
             String nombreTA = fF_PlanTrabajo.getCodigoTutorAcademico();
             
             String titulo_pasantia = fF_PlanTrabajo.getTituloPasantia();
@@ -127,38 +114,33 @@ public class AccionesModificarInscripcion extends CohesionAction {
             String resumen_proy = fF_PlanTrabajo.getResumenProyecto();
             String objetivo_pasantia = fF_PlanTrabajo.getObjetivosPasantias();
             String fases = fF_PlanTrabajo.getFasesPasantia();
-            String fase1Obj = fF_PlanTrabajo.getObjetivoFaseI();
-            String fase1Act = fF_PlanTrabajo.getActividadesFaseI();
-            String fase1Time = fF_PlanTrabajo.getTiempoFaseI();
-            String fase2Obj = fF_PlanTrabajo.getObjetivoFaseII();
-            String fase2Act = fF_PlanTrabajo.getActividadesFaseII();
-            String fase2Time = fF_PlanTrabajo.getTiempoFaseII();
-            String fase3Obj = fF_PlanTrabajo.getObjetivoFaseIII();
-            String fase3Act = fF_PlanTrabajo.getActividadesFaseIII();
-            String fase3Time = fF_PlanTrabajo.getTiempoFaseIII();
-            String fase4Obj = fF_PlanTrabajo.getObjetivoFaseIV();
-            String fase4Act = fF_PlanTrabajo.getActividadesFaseIV();
-            String fase4Time = fF_PlanTrabajo.getTiempoFaseIV();
-            
+            String faseObj = fF_PlanTrabajo.getObjetivoFaseI();
+            String faseAct = fF_PlanTrabajo.getActividadesFaseI();
+            String faseTime = fF_PlanTrabajo.getTiempoFaseI();
+            int codpt = fF_PlanTrabajo.getCodigopt();
 
             if(!(( empresa.equals("")|| nombreTI.equals("") || nombreTA.equals("")
                  || titulo_pasantia.equals("")|| area_proy.equals("") || resumen_proy.equals("")
-                 || objetivo_pasantia.equals("") || fases.equals("") || fase4Time.equals("") || fase4Act.equals("") ||fase4Obj.equals("") 
-                 || fase3Act.equals("")||fase3Obj.equals("") || fase3Time.equals("") || fase2Act.equals("")||fase2Obj.equals("")||fase2Time.equals("")
-                 || fase1Time.equals("")||fase1Obj.equals("")||fase1Act.equals("")))){
+                 || objetivo_pasantia.equals("") || fases.equals("") ))){
                 
             
             EstRealizaProy estudiante = (EstRealizaProy)s.createQuery("from EstRealizaProy where carnetestudiante = :carnet").setString("carnet", carnet).uniqueResult();
             int codigopt = (int)estudiante.getCodigoproy();
             Plantrabajo plantrabajo =(Plantrabajo)s.createQuery("from Plantrabajo where codigoPt = :codigopt").setInteger("codigopt", codigopt).uniqueResult();
             EstRealizaProy estrealizaproy = new EstRealizaProy();
+            int pt = plantrabajo.getCodigopt();
             
             estrealizaproy.setCarnetEstudiante(carnet);
             estrealizaproy.setTipoProy(1);
-            
+
+            // FASE / ETAPA
+            Fase fase = (Fase)s.createQuery("from Fase where idpasantia= :pt").setInteger("pt", pt).uniqueResult();
+            fase.setObjetivosFase(faseObj);
+            fase.setActividadesFase(faseAct);
+            fase.setTiempoFase(faseTime);
+
             plantrabajo.setEmpresa(empresa);
-            plantrabajo.setCodigoTA(nombreTA);
-            
+            plantrabajo.setCodigoTA(nombreTA);            
             plantrabajo.setCodigoTI(nombreTI);
             
             plantrabajo.setTituloPasantia(titulo_pasantia);
@@ -166,20 +148,9 @@ public class AccionesModificarInscripcion extends CohesionAction {
             plantrabajo.setResumenProyecto(resumen_proy);
             plantrabajo.setObjetivosPasantias(objetivo_pasantia);
             plantrabajo.setFasesPasantia(fases);
-            plantrabajo.setObjetivosFaseI(fase1Obj);
-            plantrabajo.setActividadesFaseI(fase1Act);
-            plantrabajo.setTiempoFaseI(fase1Time);
-            plantrabajo.setObjetivosFaseII(fase2Obj);
-            plantrabajo.setActividadesFaseII(fase2Act);
-            plantrabajo.setTiempoFaseII(fase2Time);
-            plantrabajo.setObjetivosFaseIII(fase3Obj);
-            plantrabajo.setActividadesFaseIII(fase3Act);
-            plantrabajo.setTiempoFaseIII(fase3Time);
-            plantrabajo.setObjetivosFaseIV(fase4Obj);
-            plantrabajo.setActividadesFaseIV(fase4Act);
-            plantrabajo.setTiempoFaseIV(fase4Time);
             
             s.update(plantrabajo);
+            s.update(fase);
             }
             else {salida=1;}
             /* aqui termina */
@@ -202,7 +173,5 @@ public class AccionesModificarInscripcion extends CohesionAction {
 
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
 
 }

@@ -203,13 +203,13 @@
 
     <body>   
 
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_LlenarFInscripcion.label1"/><%-- Regresar --%></html:link></li>
-                </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
-            </div>
-            <div id="header"></div>
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_LlenarFInscripcion.label1"/><%-- Regresar --%></html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
+        </div>
+        <div id="header"></div>
 
         <div id="body_wrapper">
             <div id="body">
@@ -223,89 +223,80 @@
                             <br>
                             <br>
 
-                <div class="box1496666" align="center"><html:form styleId="F1496666"
-
-                  action="/A_LlenarFIncripcion.do" method="post">
+                <div class="box1496666" align="center">
+                    <html:form styleId="F1496666" action="/A_LlenarFIncripcion.do" method="post">
                     <br>
-                    <table border="0" width="400px" align="center">
-                      <tr><th width="125px"><p id="1508113_C" ><label for="1508113"><bean:message key="F_PlanTrabajo.label0"/><%-- Empresa:  --%></label></th><td><html:text styleId="1508113" property="empresa" size="28"/></p></th></tr>
+                    <table border="1" width="400px" align="center">
+                      <tr><th width="125px"><p id="1508113_C" ><label for="1508113"><bean:message key="F_PlanTrabajo.label0"/><%-- Empresa:  --%></label></p></th><td><html:text styleId="1508113" property="empresa" size="28"/></td></tr>
                     </table>
                   
                     <br>
                     
                        <h1>Tutor Industrial</h1>
 
-                   <br>
-                   <table border="0" width="400px" align="center">
-                      <tr><th><p id="1508124_C"><label for="1508124"><bean:message key="F_PlanTrabajo.label1"/><%-- Tutor Industrial:  --%></label></th><td><html:text styleId="1508124" property="codigoTutorIndustrial" size="28"/></p></th></tr>
-                   </table>
+                    <br>
+                    <table border="1" width="400px" align="center">
+                      <tr><th><p id="1508124_C"><label for="1508124"><bean:message key="F_PlanTrabajo.label1"/><%-- Tutor Industrial:  --%></label></p></th><td><html:text styleId="1508124" property="codigoTutorIndustrial" size="28"/></td></tr>
+                    </table>
                    
-                  <br>
+                    <br>
 
-                   <h1>Tutor Acad&eacute;mico</h1>
+                    <h1>Tutor Acad&eacute;mico</h1>
 
-                   <br>
-                   <table border="0" width="400px" align="center">
-                        <tr><th><p id="1508166_C"><label for="1508166"><bean:message key="F_PlanTrabajo.label2"/><%-- Tutor Acad&eacute;mico: --%></label></th><td><html:text styleId="1508166" property="codigoTutorAcademico" size="28"/></p></th></tr>
-                   </table>
+                    <br>
+                    <table border="1" width="400px" align="center">
+                        <tr><th><p id="1508166_C"><label for="1508166"><bean:message key="F_PlanTrabajo.label2"/><%-- Tutor Acad&eacute;mico: --%></label></p></th><td><html:text styleId="1508166" property="codigoTutorAcademico" size="28"/></td></tr>
+                    </table>
                    
-                   <br>
+                    <br>
 
-                   <h1>Pasant&iacute;a</h1>
+                    <h1>Pasant&iacute;a</h1>
 
-                   <br>
-                   <table border="0" width="400px">
-                        <tr><th><p id="1508176_C"><label for="1508176"><bean:message key="F_PlanTrabajo.label3"/><%-- Titulo: --%></label></th><td><html:text styleId="1508176" property="tituloPasantia" size="28"/></p></td></tr>
-                        <tr><th><p id="1508181_C"><label for="1508181"><bean:message key="F_PlanTrabajo.label4"/><%-- Area de Proyecto: --%></label></th><td><html:text styleId="1508181" property="areaProyecto" size="28"/></p></td></tr>
-                        <tr><th><p id="1508203_C"><label for="1508203"><bean:message key="F_PlanTrabajo.label5"/><%-- Resumen del Proyecto:  --%></label></th><td><html:textarea styleId="1508203" property="resumenProyecto" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508210_C"><label for="1508210"><bean:message key="F_PlanTrabajo.label6"/><%-- Objetivos de la Pasantia:  --%></label></th><td><html:textarea styleId="1508210" property="objetivosPasantias" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508221_C"><label for="1508221"><bean:message key="F_PlanTrabajo.label7"/><%-- Fases:  --%></label></th><td><html:textarea styleId="1508221" property="fasesPasantia" cols="35" rows="10"></html:textarea></p></td></tr>
-                  </table>
-                  
+                    <br>
+                    <table border="1" width="600px">
+                        <tr><th><p id="1508176_C"><label for="1508176"><bean:message key="F_PlanTrabajo.label3"/><%-- Titulo: --%></label></p></th><td><html:text styleId="1508176" property="tituloPasantia" size="28"/></td></tr>
+                        <tr><th><p id="1508181_C"><label for="1508181"><bean:message key="F_PlanTrabajo.label4"/><%-- Area de Proyecto: --%></label></p></th><td><html:text styleId="1508181" property="areaProyecto" size="28"/></td></tr>
+                        <tr><th><p id="1508203_C"><label for="1508203"><bean:message key="F_PlanTrabajo.label5"/><%-- Resumen del Proyecto:  --%></label></p></th><td><html:textarea styleId="1508203" property="resumenProyecto" cols="35" rows="10"></html:textarea></td></tr>
+                        <tr><th><p id="1508210_C"><label for="1508210"><bean:message key="F_PlanTrabajo.label6"/><%-- Objetivos de la Pasantia:  --%></label></p></th><td><html:textarea styleId="1508210" property="objetivosPasantias" cols="35" rows="10"></html:textarea></td></tr>
+                        <tr><th><p id="1637449_C"><label for="1637449"><bean:message key="F_PlanTrabajo.label20"/><%-- Codigo PT: --%></label></p></th><td><html:text styleId="1637449" property="codigopt" size="28"/></td></tr>
+                        <tr><th><p id="1508221_C"><label for="1508221"><bean:message key="F_PlanTrabajo.label7"/><%-- Fases:  --%></label></p></th>
+                            <td>
+                            <select name="fasesPasantia" onchange='OnChange(this.form.fasesPasantia);' style='width: 200px;'>
+                                <option value="0">Ninguna</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            </td></tr>                        
+                    </table>
+                    <SCRIPT LANGUAGE="javascript">
+
+                        function OnChange(fases){
+                            var i=1;
+                            for (i=1;i<=fases;i++)
+                            {
+                                document.write("The number is " + i);
+                                document.write("<br />");
+                            }
+
+                            return true;
+                        }
+
+                    </SCRIPT>
+
                   <br>
 
                    <h1>Fase 1</h1>
 
                    <br>
-                  <table border="0" width="400px">
-                        <tr><th><p id="1508224_C"><label for="1508224"><bean:message key="F_PlanTrabajo.label8"/><%-- Objetivos especificos: --%></label></th><td><html:textarea styleId="1508224" property="objetivoFaseI" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508227_C"><label for="1508227"><bean:message key="F_PlanTrabajo.label9"/><%-- Actividades:  --%></label></th><td><html:textarea styleId="1508227" property="actividadesFaseI" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508230_C"><label for="1508230"><bean:message key="F_PlanTrabajo.label10"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508230" property="tiempoFaseI" cols="35" rows="10"></html:textarea></p></td></tr>
+                  <table border="1" width="400px">
+                        <tr><th><p id="1508224_C"><label for="1508224"><bean:message key="F_PlanTrabajo.label8"/><%-- Objetivos especificos: --%></label></th><td><html:textarea styleId="1508224" property="objetivoFaseI" cols="35" rows="10"></html:textarea></td></tr>
+                        <tr><th><p id="1508227_C"><label for="1508227"><bean:message key="F_PlanTrabajo.label9"/><%-- Actividades:  --%></label></th><td><html:textarea styleId="1508227" property="actividadesFaseI" cols="35" rows="10"></html:textarea></td></tr>
+                        <tr><th><p id="1508230_C"><label for="1508230"><bean:message key="F_PlanTrabajo.label10"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508230" property="tiempoFaseI" cols="35" rows="10"></html:textarea></td></tr>
                   </table>
-                   
-                   <br>
 
-                    <h1>Fase 2</h1>
-
-                   <br>
-                  <table border="0" width="400px">
-                        <tr><th><p id="1508233_C"><label for="1508233"><bean:message key="F_PlanTrabajo.label11"/><%-- Objetivos especificos: --%></label></th><td><html:textarea styleId="1508233" property="objetivoFaseII" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508236_C"><label for="1508236"><bean:message key="F_PlanTrabajo.label12"/><%-- Actividades: --%></label></th><td><html:textarea styleId="1508236" property="actividadesFaseII" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508239_C"><label for="1508239"><bean:message key="F_PlanTrabajo.label13"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508239" property="tiempoFaseII" cols="35" rows="10"></html:textarea></p></td></tr>
-                    </table>
-                   
-                    <br>
-
-                    <h1>Fase 3</h1>
-
-                    <br>
-                    
-                   <table border="0" width="400px">
-                        <tr><th><p id="1508244_C"><label for="1508244"><bean:message key="F_PlanTrabajo.label14"/><%-- Objetivos especificos: --%></label></th><td><html:textarea styleId="1508244" property="objetivoFaseIII" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508247_C"><label for="1508247"><bean:message key="F_PlanTrabajo.label15"/><%-- Actividades: --%></label></th><td><html:textarea styleId="1508247" property="actividadesFaseIII" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508250_C"><label for="1508250"><bean:message key="F_PlanTrabajo.label16"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508250" property="tiempoFaseIII" cols="35" rows="10"></html:textarea></p></td></tr>
-                   </table>
-                  <br>
-
-                   <h1>Fase 4</h1>
-
-                   <br>
-                   <table border="0" width="400px">
-                        <tr><th><p id="1508253_C"><label for="1508253"><bean:message key="F_PlanTrabajo.label17"/><%-- Objetivos especificos:  --%></label></th><td><html:textarea styleId="1508253" property="objetivoFaseIV" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508256_C"><label for="1508256"><bean:message key="F_PlanTrabajo.label18"/><%-- Actividades: --%></label></th><td><html:textarea styleId="1508256" property="actividadesFaseIV" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1508259_C"><label for="1508259"><bean:message key="F_PlanTrabajo.label19"/><%-- Tiempo estimado: --%></label></th><td><html:textarea styleId="1508259" property="tiempoFaseIV" cols="35" rows="10"></html:textarea></p></td></tr>
-                        <tr><th><p id="1637449_C"><label for="1637449"><bean:message key="F_PlanTrabajo.label20"/><%-- Codigo PT: --%></label></th><td><html:text styleId="1637449" property="codigopt" size="28"/></p></td></tr>
-                   </table>
                           
 
                   <html:submit styleClass="button"><bean:message key="V_LlenarFInscripcion.label0"/><%-- Ingresar --%></html:submit>

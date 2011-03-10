@@ -84,6 +84,27 @@ public class Estudiante implements java.io.Serializable, ve.usb.cohesion.runtime
     }
 
     /**
+     * Holds value of property apellidoE.
+     */
+    private String apellidoE = "";
+
+    /**
+     * Getter for property apellidoE.
+     * @return Value of property apellidoE.
+     */
+    public String getApellidoE() {
+        return this.apellidoE;
+    }
+
+    /**
+     * Setter for property apellidoE.
+     * @param apellidoE New value of property apellidoE.
+     */
+    public void setApellidoE(String apellidoE) {
+        this.apellidoE = apellidoE;
+    }
+
+    /**
      * Holds value of property cedulaE.
      */
     private String cedulaE = "";

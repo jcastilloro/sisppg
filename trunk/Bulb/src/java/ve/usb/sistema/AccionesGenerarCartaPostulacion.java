@@ -84,6 +84,7 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                 String carnet = (String)(estudiante.getCarnetE());
                 Double indice = estudiante.getIndiceE();
                 String nombre = estudiante.getNombreE();
+                String apellido = estudiante.getApellidoE();
                 String cedula = estudiante.getCedulaE();
                 String sexo = estudiante.getSexoE();
                 Date fn = estudiante.getFechaNacimientoE();
@@ -187,12 +188,12 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                         bloque = "BLOQUE B (No me graduo con la pasantía)";
                     }
 
-                    float[] widths = { 3f, 2f, 3f };
+                    float[] widths = { 5f, 4f, 5f };
                     PdfPTable t = new PdfPTable(widths);
-                    t.addCell("APELLIDOS: "+nombre);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
+                    t.addCell("APELLIDOS: "+apellido);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
                     t.addCell("EDAD: "+calcularEdad(fn));     t.addCell("SEXO: "+sexo);    t.addCell("NACIONALIDAD: "+nacionalidad);
                     t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlfhab); t.addCell("OTROS TELEFONOS: "+tlfotro);
-                    t.addCell("BLOQUE: "+bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
+                    t.addCell(bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
                     pdf.add(blank);

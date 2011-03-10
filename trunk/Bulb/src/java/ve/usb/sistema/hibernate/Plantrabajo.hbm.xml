@@ -22,30 +22,6 @@
       <property name="objetivosPasantias" column="objetivosPasantias" type="string" not-null="true"/>
       <!-- 6 -->
       <property name="fasesPasantia" column="fasesPasantia" type="string" not-null="true"/>
-      <!-- 7 -->
-      <property name="objetivosFaseI" column="objetivosFaseI" type="string" not-null="true"/>
-      <!-- 8 -->
-      <property name="actividadesFaseI" column="actividadesFaseI" type="string" not-null="true"/>
-      <!-- 9 -->
-      <property name="tiempoFaseI" column="tiempoFaseI" type="string" not-null="true"/>
-      <!-- 10 -->
-      <property name="objetivosFaseII" column="objetivosFaseII" type="string" not-null="true"/>
-      <!-- 11 -->
-      <property name="actividadesFaseII" column="actividadesFaseII" type="string" not-null="true"/>
-      <!-- 12 -->
-      <property name="tiempoFaseII" column="tiempoFaseII" type="string" not-null="true"/>
-      <!-- 13 -->
-      <property name="objetivosFaseIII" column="objetivosFaseIII" type="string" not-null="true"/>
-      <!-- 14 -->
-      <property name="actividadesFaseIII" column="actividadesFaseIII" type="string" not-null="true"/>
-      <!-- 15 -->
-      <property name="tiempoFaseIII" column="tiempoFaseIII" type="string" not-null="true"/>
-      <!-- 16 -->
-      <property name="objetivosFaseIV" column="objetivosFaseIV" type="string" not-null="true"/>
-      <!-- 17 -->
-      <property name="actividadesFaseIV" column="actividadesFaseIV" type="string" not-null="true"/>
-      <!-- 18 -->
-      <property name="tiempoFaseIV" column="tiempoFaseIV" type="string" not-null="true"/>
       <!-- 19 -->
       <property name="codigopt" column="codigopt" type="integer" not-null="true" unique="true"/>
       <!-- 20 -->

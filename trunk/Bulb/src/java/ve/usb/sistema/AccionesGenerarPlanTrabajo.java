@@ -69,10 +69,12 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
 
                 request.setAttribute("tutorA", plantrabajo.getCodigoTA());
 
+                int pt = plantrabajo.getCodigopt();
                 String tutorIn = plantrabajo.getCodigoTI();
                 String tutorAc = plantrabajo.getCodigoTA();
                 String carnet = (String)(estudiante.getCarnetE());
                 String nombre = estudiante.getNombreE();
+                String apellido = estudiante.getApellidoE();
                 String cedula = estudiante.getCedulaE();
                 String periodopasantia = (String)(consulta.getPeriodoPasantia());
                 int ano = (int)(consulta.getAno());
@@ -83,10 +85,11 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                 String resumen = plantrabajo.getResumenProyecto();
                 String obj = plantrabajo.getObjetivosPasantias();
                 String fases = plantrabajo.getFasesPasantia();
-                String objI = plantrabajo.getObjetivosFaseI();
-                String actI = plantrabajo.getActividadesFaseI();
-                String tiempoI = plantrabajo.getTiempoFaseI();
-                String objII = plantrabajo.getObjetivosFaseII();
+                Fase fase = (Fase)s.createQuery("from Fase where idpasantia= :pt ").setInteger("pt", pt).uniqueResult();
+                String objFase = fase.getObjetivosFase();
+                String actFase = fase.getActividadesFase();
+                String tiempoFase = fase.getTiempoFase();
+/*                String objII = plantrabajo.getObjetivosFaseII();
                 String actII = plantrabajo.getActividadesFaseII();
                 String tiempoII = plantrabajo.getTiempoFaseII();
                 String objIII = plantrabajo.getObjetivosFaseIII();
@@ -95,7 +98,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                 String objIV = plantrabajo.getObjetivosFaseIV();
                 String actIV = plantrabajo.getActividadesFaseIV();
                 String tiempoIV = plantrabajo.getTiempoFaseIV();
-
+*/
                 String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
 
                 /**************************************/
@@ -137,7 +140,7 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     pdf.add(est);
 
                     float[] w = { 1f, 2f };
-                    String[] linea = { "Nombre y Apellido", " "+nombre };
+                    String[] linea = { "Nombre y Apellido", " "+nombre+" "+apellido };
                     pdf.add(crearTabla(w, linea));
                     pdf.add(blank);
 
@@ -236,11 +239,11 @@ public class AccionesGenerarPlanTrabajo extends CohesionAction {
                     float[] widths = { 1f, 2f, 2f, 1f };
                     PdfPTable t = new PdfPTable(widths);
                     t.addCell("Fase");  t.addCell("Objetivos"); t.addCell("Actividades");   t.addCell("Tiempo Estimado");
-                    t.addCell("1");     t.addCell(objI);        t.addCell(actI);            t.addCell(tiempoI);
-                    t.addCell("2");     t.addCell(objII);       t.addCell(actII);           t.addCell(tiempoII);
+                    t.addCell("1");     t.addCell(objFase);        t.addCell(actFase);            t.addCell(tiempoFase);
+/*                    t.addCell("2");     t.addCell(objII);       t.addCell(actII);           t.addCell(tiempoII);
                     t.addCell("3");     t.addCell(objIII);      t.addCell(actIII);          t.addCell(tiempoIII);
                     t.addCell("4");     t.addCell(objIV);       t.addCell(actIV);           t.addCell(tiempoIV);
-                    t.setHorizontalAlignment(Element.ALIGN_LEFT);
+ */                   t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
 
                     Chunk space = new Chunk(' ');

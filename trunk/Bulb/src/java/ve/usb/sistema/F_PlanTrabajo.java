@@ -23,15 +23,6 @@ public class F_PlanTrabajo extends org.apache.struts.action.ActionForm {
         objetivoFaseI = "";
         actividadesFaseI = "";
         tiempoFaseI = "";
-        objetivoFaseII = "";
-        actividadesFaseII = "";
-        tiempoFaseII = "";
-        objetivoFaseIII = "";
-        actividadesFaseIII = "";
-        tiempoFaseIII = "";
-        objetivoFaseIV = "";
-        actividadesFaseIV = "";
-        tiempoFaseIV = "";
         codigopt = 0;
 
     }
@@ -47,16 +38,7 @@ public class F_PlanTrabajo extends org.apache.struts.action.ActionForm {
         fasesPasantia = "";
         objetivoFaseI = "";
         actividadesFaseI = "";
-        tiempoFaseI = "";
-        objetivoFaseII = "";
-        actividadesFaseII = "";
-        tiempoFaseII = "";
-        objetivoFaseIII = "";
-        actividadesFaseIII = "";
-        tiempoFaseIII = "";
-        objetivoFaseIV = "";
-        actividadesFaseIV = "";
-        tiempoFaseIV = "";
+        tiempoFaseI = "";;
         codigopt = 0;
 
     }
@@ -309,196 +291,7 @@ public class F_PlanTrabajo extends org.apache.struts.action.ActionForm {
     public void setTiempoFaseI(String tiempoFaseI) {
         this.tiempoFaseI = tiempoFaseI;
     }
-
-    /**
-     * Holds value of property objetivoFaseII.
-     */
-    private String objetivoFaseII;
-
-    /**
-     * Getter for property objetivoFaseII.
-     * @return Value of property objetivoFaseII.
-     */
-    public String getObjetivoFaseII() {
-        return this.objetivoFaseII;
-    }
-
-    /**
-     * Setter for property objetivoFaseII.
-     * @param objetivoFaseII New value of property objetivoFaseII.
-     */
-    public void setObjetivoFaseII(String objetivoFaseII) {
-        this.objetivoFaseII = objetivoFaseII;
-    }
-
-    /**
-     * Holds value of property actividadesFaseII.
-     */
-    private String actividadesFaseII;
-
-    /**
-     * Getter for property actividadesFaseII.
-     * @return Value of property actividadesFaseII.
-     */
-    public String getActividadesFaseII() {
-        return this.actividadesFaseII;
-    }
-
-    /**
-     * Setter for property actividadesFaseII.
-     * @param actividadesFaseII New value of property actividadesFaseII.
-     */
-    public void setActividadesFaseII(String actividadesFaseII) {
-        this.actividadesFaseII = actividadesFaseII;
-    }
-
-    /**
-     * Holds value of property tiempoFaseII.
-     */
-    private String tiempoFaseII;
-
-    /**
-     * Getter for property tiempoFaseII.
-     * @return Value of property tiempoFaseII.
-     */
-    public String getTiempoFaseII() {
-        return this.tiempoFaseII;
-    }
-
-    /**
-     * Setter for property tiempoFaseII.
-     * @param tiempoFaseII New value of property tiempoFaseII.
-     */
-    public void setTiempoFaseII(String tiempoFaseII) {
-        this.tiempoFaseII = tiempoFaseII;
-    }
-
-    /**
-     * Holds value of property objetivoFaseIII.
-     */
-    private String objetivoFaseIII;
-
-    /**
-     * Getter for property objetivoFaseIII.
-     * @return Value of property objetivoFaseIII.
-     */
-    public String getObjetivoFaseIII() {
-        return this.objetivoFaseIII;
-    }
-
-    /**
-     * Setter for property objetivoFaseIII.
-     * @param objetivoFaseIII New value of property objetivoFaseIII.
-     */
-    public void setObjetivoFaseIII(String objetivoFaseIII) {
-        this.objetivoFaseIII = objetivoFaseIII;
-    }
-
-    /**
-     * Holds value of property actividadesFaseIII.
-     */
-    private String actividadesFaseIII;
-
-    /**
-     * Getter for property actividadesFaseIII.
-     * @return Value of property actividadesFaseIII.
-     */
-    public String getActividadesFaseIII() {
-        return this.actividadesFaseIII;
-    }
-
-    /**
-     * Setter for property actividadesFaseIII.
-     * @param actividadesFaseIII New value of property actividadesFaseIII.
-     */
-    public void setActividadesFaseIII(String actividadesFaseIII) {
-        this.actividadesFaseIII = actividadesFaseIII;
-    }
-
-    /**
-     * Holds value of property tiempoFaseIII.
-     */
-    private String tiempoFaseIII;
-
-    /**
-     * Getter for property tiempoFaseIII.
-     * @return Value of property tiempoFaseIII.
-     */
-    public String getTiempoFaseIII() {
-        return this.tiempoFaseIII;
-    }
-
-    /**
-     * Setter for property tiempoFaseIII.
-     * @param tiempoFaseIII New value of property tiempoFaseIII.
-     */
-    public void setTiempoFaseIII(String tiempoFaseIII) {
-        this.tiempoFaseIII = tiempoFaseIII;
-    }
-
-    /**
-     * Holds value of property objetivoFaseIV.
-     */
-    private String objetivoFaseIV;
-
-    /**
-     * Getter for property objetivoFaseIV.
-     * @return Value of property objetivoFaseIV.
-     */
-    public String getObjetivoFaseIV() {
-        return this.objetivoFaseIV;
-    }
-
-    /**
-     * Setter for property objetivoFaseIV.
-     * @param objetivoFaseIV New value of property objetivoFaseIV.
-     */
-    public void setObjetivoFaseIV(String objetivoFaseIV) {
-        this.objetivoFaseIV = objetivoFaseIV;
-    }
-
-    /**
-     * Holds value of property actividadesFaseIV.
-     */
-    private String actividadesFaseIV;
-
-    /**
-     * Getter for property actividadesFaseIV.
-     * @return Value of property actividadesFaseIV.
-     */
-    public String getActividadesFaseIV() {
-        return this.actividadesFaseIV;
-    }
-
-    /**
-     * Setter for property actividadesFaseIV.
-     * @param actividadesFaseIV New value of property actividadesFaseIV.
-     */
-    public void setActividadesFaseIV(String actividadesFaseIV) {
-        this.actividadesFaseIV = actividadesFaseIV;
-    }
-
-    /**
-     * Holds value of property tiempoFaseIV.
-     */
-    private String tiempoFaseIV;
-
-    /**
-     * Getter for property tiempoFaseIV.
-     * @return Value of property tiempoFaseIV.
-     */
-    public String getTiempoFaseIV() {
-        return this.tiempoFaseIV;
-    }
-
-    /**
-     * Setter for property tiempoFaseIV.
-     * @param tiempoFaseIV New value of property tiempoFaseIV.
-     */
-    public void setTiempoFaseIV(String tiempoFaseIV) {
-        this.tiempoFaseIV = tiempoFaseIV;
-    }
-
+    
     /**
      * Holds value of property codigopt.
      */
@@ -519,8 +312,6 @@ public class F_PlanTrabajo extends org.apache.struts.action.ActionForm {
     public void setCodigopt(int codigopt) {
         this.codigopt = codigopt;
     }
-
-
-
+    
 
 }
