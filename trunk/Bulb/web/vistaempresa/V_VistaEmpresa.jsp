@@ -7,7 +7,7 @@
     <head>
         <title><bean:message key="V_VistaEmpresa.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
@@ -19,11 +19,10 @@
                     <li><html:link action="/A_Pre_EvaluarPasantia.do"><bean:message key="V_VistaEmpresa.label1"/><%-- Evaluar Pasantias --%></html:link></li>
                     <li><html:link action="/A_Pre_ModificarDatosEmpresa.do"><bean:message key="V_VistaEmpresa.label3"/><%-- Modificar Datos --%></html:link></li>
                     <li><html:link action="/A_Pre_CancelarRegistro.do"><bean:message key="V_VistaEmpresa.label2"/><%-- Cancelar Registro --%></html:link></li>                    
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaEmpresa.label0"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
             </div>
-                    <div id="header">
-                    </div>
+        <div id="header">
         </div>
         <div id="body_wrapper">
             <div id="body">
@@ -32,28 +31,21 @@
                     <div id="left">
                         <div class="content">
                             <h3 align="center">${empty msg ? "" : msg}</h3>
+                            <br>                            
                             <br>
-                            
+                            <br>                                                        
                             <br>
+                            <br>                                                        
                             <br>
-                                                        
+                            <br>                                                        
                             <br>
+                            <br>                                                        
                             <br>
-                                                        
-                            <br>
-                            <br>
-                                                        
-                            <br>
-                            <br>
-                                                        
-                            <br>
-                            <br>
-                                                        
+                            <br>                                                        
                             <br>
                             
                         </div>
-                    </div>
-                    
+                    </div>                    
                     <div class="clearer"></div>
                     <div class="bottom"></div>
                 </div>

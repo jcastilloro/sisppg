@@ -2,18 +2,13 @@ package ve.usb.sistema;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
@@ -143,8 +138,7 @@ public class AccionesConsultarPPGCoordinacion extends CohesionAction {
 	    if (ano != 0) { 
 			consulta += "and (pg.anoUno ='"+ano+"' or pg.anoDos ='"+ano+"' or pg.anoTres = '"+ano+"') "; 
             }
-            else {  consulta += "and pg.anoUno = pg.anoUno "; }
-                
+            else {  consulta += "and pg.anoUno = pg.anoUno "; }                
             
 
          

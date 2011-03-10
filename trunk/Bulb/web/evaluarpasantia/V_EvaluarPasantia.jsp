@@ -7,19 +7,17 @@
     <head>
         <title><bean:message key="V_EvaluarPasantia.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
-    <body>
-        
-          
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_Pre_VistaEmpresa.do"><bean:message key="V_EvaluarPasantia.label0"/><%-- Regresar --%></html:link></li>
 
-                </ul>
-           </div>
-                 <div id="header">
-                        </div>
+    <body>     
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_Pre_VistaEmpresa.do"><bean:message key="V_EvaluarPasantia.label0"/><%-- Regresar --%></html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
+        </div>
+        <div id="header">
         </div>
         <div id="body_wrapper">
             <div id="body">

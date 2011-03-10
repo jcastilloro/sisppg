@@ -5,9 +5,9 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title>Escribir Correo Electronico</title>
+        <title>Escribir Correo Electrónico</title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
@@ -18,6 +18,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_VistaCoordinacion.do">Regresar</html:link></li>
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
 
 
@@ -36,8 +37,8 @@
                             <table border="1" align="center" width="400px">
 
                                 <tr>
-                                    <th>Nombre</th>
                                     <th>Carnet</th>
+                                    <th>Nombre</th>
                                 </tr>
                                 <logic:empty name="Estudiantes">
                                     <span style="font-weight: bold;">No existen estudiantes de la carrera registrados en el sistema.</span>

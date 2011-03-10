@@ -19,7 +19,7 @@ import ve.usb.sistema.hibernate.*;
  */
 public class AccionesModificarInscripcion extends CohesionAction {
     
-/**
+    /**
      * Called by Struts for the execution of action A_Pre_ModificarInscripcion.
      * 
      * @param mapping The ActionMapping used to select this instance.
@@ -28,7 +28,7 @@ public class AccionesModificarInscripcion extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_Pre_ModificarInscripcion(ActionMapping mapping, ActionForm  form,
@@ -76,7 +76,7 @@ public class AccionesModificarInscripcion extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-/**
+    /**
      * Called by Struts for the execution of action A_ModificarInscripcion.
      * 
      * @param mapping The ActionMapping used to select this instance.
@@ -85,7 +85,7 @@ public class AccionesModificarInscripcion extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_ModificarInscripcion(ActionMapping mapping, ActionForm  form,

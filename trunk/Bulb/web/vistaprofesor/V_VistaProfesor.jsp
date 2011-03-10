@@ -7,21 +7,18 @@
     <head>
         <title><bean:message key="V_VistaProfesor.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
     </head>
+
     <body>
-        
-           
             <div id="menu">
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPPG.do"><bean:message key="V_VistaProfesor.label0"/><%-- Plan de Proyecto de Grado --%></html:link></li>
                     <li><html:link action="/A_GestionarConsultaTutor.do">Consultas Tutor Academico<%-- Estudiantes Tutoreados --%></html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaProfesor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>
                <div id="header">                        
                </div>

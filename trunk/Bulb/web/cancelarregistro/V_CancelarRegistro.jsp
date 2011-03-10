@@ -7,7 +7,7 @@
     <head>
         <title><bean:message key="V_CancelarRegistro.title"/></title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <style type="text/css">
         div#box1617352 {width: 400px; margin: 40px auto; }
         form#1617352 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
@@ -19,18 +19,17 @@
           form#1617352 p#1617354_C input {clear: both; width: 396px; }
 
         </style>
-
     </head>
-    <body>
-        
-            
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_Pre_VistaEmpresa.do"><bean:message key="V_EvaluarPasantia.label0"/><%-- Regresar --%></html:link></li>
-                </ul>
-            </div>
-            <div id="header">
-            </div>
+
+    <body>      
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_Pre_VistaEmpresa.do"><bean:message key="V_EvaluarPasantia.label0"/><%-- Regresar --%></html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
+        </div>
+        <div id="header">
+        </div>
         <div id="body_wrapper">
             <div id="body">
                 <div id="split">
@@ -38,11 +37,9 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <br>                            
                             <br>
-                            
-                            <br>
-                            <br>
-                            
+                            <br>                            
                             <br>
                 <div class="box1617352" align="center"><html:form styleId="F1617352"
                   action="/A_CancelarRegistro.do" method="post">
@@ -56,8 +53,7 @@
                     <div id="right"></div>
                     <div class="clearer"></div>
                     <div class="bottom"></div>
-                    <br>
-                            
+                    <br>                            
                     <br>
                 </div>
                 <div class="clearer"></div>
