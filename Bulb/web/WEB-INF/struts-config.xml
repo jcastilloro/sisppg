@@ -142,10 +142,10 @@
         <forward name="A_Pre_GestionarPreinscripcion" path="/A_Pre_GestionarPreinscripcion.do"/>
         <forward name="V_GestionarPreinscripcion" path="/gestionarpreinscripcion/V_GestionarPreinscripcion.jsp"/>
 
-        <!-- Gestionar Profesores -->
+        <!-- Gestionar Departamentos -->
 
         <forward name="A_GestionarDepartamentos" path="/A_GestionarDepartamentos.do"/>
-        <forward name="V_GestionarDepartamentos" path="/GestionarDepartamentos/V_GestionarDepartamentos.jsp"/>
+        <forward name="V_GestionarDepartamentos" path="/gestionardepartamentos/V_GestionarDepartamentos.jsp"/>
 
         <!-- ConsultarPreinscripcion -->
 
@@ -429,7 +429,7 @@
                 type="ve.usb.sistema.AccionesGestionarPreinscripcion"/>
 
 
-        <!-- Gestionar Profesores -->
+        <!-- Gestionar Departamentos -->
         <action path="/A_GestionarDepartamentos" parameter="A_GestionarDepartamentos"
            type="ve.usb.sistema.AccionesGestionarDepartamentos"/>
 

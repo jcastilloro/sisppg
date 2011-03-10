@@ -1,5 +1,5 @@
 <%-- 
-    Document   : V_GestionarProfesores
+    Document   : V_GestionarDepartamentos
     Created on : Feb 25, 2011, 8:57:10 AM
     Author     : chitty
 --%>
@@ -11,21 +11,22 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"%>
 <html:html>
     <head>
-        <title>Gestionar PDepartamentos</title>
+        <title>Gestionar Departamentos</title>
         <html:base/>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
     </head>
+    
     <body>
-            <div id="menu">
-                <ul id="nav">
-                    <li><html:link action="/A_GestionarProfesores.do">Consultar Profesores</html:link></li>
-                    <li><html:link action="/A_GestionarProfesores.do">Agregar Profesores</html:link></li>
-                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_VistaProfesor.label2"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
-
-                </ul>
+        <div id="menu">
+            <ul id="nav">
+                <li><html:link action="/A_GestionarDepartamentos.do">Consultar</html:link></li>
+                <li><html:link action="/A_GestionarDepartamentos.do">Agregar</html:link></li>
+                <li><html:link action="/A_GestionarDepartamentos.do">Modificar</html:link></li>
+                <li><html:link action="/A_GestionarDepartamentos.do">Eliminar</html:link></li>
+            </ul>
+            <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
             </div>
                <div id="header">
                </div>
