@@ -18,7 +18,7 @@
 
     <head>
 
-        <title><bean:message key="V_MontarDocumentosC.title"/></title>
+        <title><bean:message key="V_MontarDocumentosP.title"/></title>
 
         <html:base/>
 
@@ -36,9 +36,11 @@
 
             <ul id="nav">
 
-                    <li><html:link action="/A_Pre_GestionarCulminacion.do"><bean:message key="V_GestionarPasantia.label7"/><%-- Regresar --%></html:link></li>
-                </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
+                    <li><html:link action="/A_Pre_GestionarProrroga.do"><bean:message key="V_GestionarProrroga.label4"/><%-- Regresar --%></html:link></li>
+                    <li><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="V_GestionarProrroga.label5"/><%-- Cerrar Sesi&oacute;n --%></html:link></li>
+
+            </ul>
+
         </div>
 
         <div id="header">
@@ -66,7 +68,7 @@
 
                             <br>
                             <center>
-                                <html:form action="/A_MontarDocumentosC" method="post" enctype="multipart/form-data">
+                                <html:form action="/A_MontarDocumentosP" method="post" enctype="multipart/form-data">
                                     <table>
                                         <tr>
                                             <td align="center" colspan="2">

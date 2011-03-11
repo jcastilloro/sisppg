@@ -18,6 +18,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_GestionarPasantia.label0"/><%-- Pre-Inscripci&oacute;n --%></html:link></li>
                     <li><html:link action="/A_Pre_GestionarInscripcion.do"><bean:message key="V_GestionarPasantia.label1"/><%-- Inscripcion --%></html:link></li>
+                    <li><html:link action="/A_Pre_GestionarProrroga.do"><bean:message key="V_GestionarPasantia.label4"/><%-- Prorroga --%></html:link></li>
                     <li><html:link action="/A_Pre_GestionarCulminacion.do"><bean:message key="V_GestionarPasantia.label2"/><%-- Culminacion --%></html:link></li>
                 </ul>
                 <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>

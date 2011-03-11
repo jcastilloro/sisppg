@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Prorroga" table="PRORROGA">
+      <!-- 0 -->
+      <id name="idp" column="idp">
+      <generator class="native"/>
+      </id>
+      <!-- 1 -->
+      <property name="idc" column="idc" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="coordinacion" column="coordinacion" type="string" not-null="true"/>
+      <!-- 3 -->
+      <property name="tituloPasantia" column="tituloPasantia" type="string"/>
+      <!-- 4 -->
+      <property name="areaProyecto" column="areaProyecto" type="string" />
+      <!-- 5 -->
+      <property name="nombre" column="nombre" type="string" />
+      <!-- 6 -->
+      <property name="fecha" column="fecha" type="string" />
+      <!-- 7 -->
+      <property name="justificacion" column="justificacion" type="string" />
+      
+
+    </class>
+</hibernate-mapping>
