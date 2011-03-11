@@ -3,6 +3,13 @@ insert into area values (2,'Quimica','0900');
 insert into area values (3,'Matemáticas','0500');
 insert into area values (4,'Gerencia','0300');
 
+insert into departamento values (1,'Computación y Tecnología de la Información');
+insert into departamento values (2,'Cómputo Científico y Estadística');
+insert into departamento values (3,'Procesos y Sistemas');
+insert into departamento values (4,'Física');
+insert into departamento values (5,'Química');
+insert into departamento values (6,'Electrónica y Circuitos');
+
 insert into carrera values (1,'0100', 'Ingeniería Eléctrica');
 insert into carrera values (2,'0200', 'Ingeniería Mecánica');
 insert into carrera values (3,'0300', 'Ingeniería Química');
@@ -39,10 +46,10 @@ insert into estcursacarrera values (6,'06-39123','0800');
 insert into estcursacarrera values (7,'06-39456','0800');
 insert into estcursacarrera values (8,'07-41896','0800');
 
-insert into profesor values (1,'Soraya Abad','sabad','Computación y TI','0212-1234567','sabad@usb.ve','Bases de Datos');
-insert into profesor values (2,'Kenyer Dominguez','kdominguez','Computación y TI','0212-9876543','kdominguez@usb.ve','Sistemas de Información');
+insert into profesor values (1,'Soraya Abad','sabad','Computación y Tecnología de la Información','0212-1234567','sabad@usb.ve','Bases de Datos');
+insert into profesor values (2,'Kenyer Dominguez','kdominguez','Procesos y Sistemas','0212-9876543','kdominguez@usb.ve','Sistemas de Información');
 insert into profesor values (3,'Zoraida Chiquin','zchiquin','Procesos y Sistemas','0416-1111111','zchiquin@usb.ve','Sistemas de Información');
-insert into profesor values (4,'Pedro Pérez','pperez','Matemáticas','0212-121212','pperez@usb.ve','Estadística');
+insert into profesor values (4,'Pedro Pérez','pperez','Electrónica y Circuitos','0212-121212','pperez@usb.ve','Estadística');
 
 insert into usuario values (1,'06-39223','12345','estudiante');
 insert into usuario values (2,'06-39239','12345','estudiante');

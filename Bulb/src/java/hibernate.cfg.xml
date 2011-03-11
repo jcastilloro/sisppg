@@ -37,5 +37,6 @@
     <mapping resource="ve/usb/sistema/hibernate/Usuario.hbm.xml"/>
     <mapping resource="ve/usb/sistema/hibernate/Documento.hbm.xml"/>
     <mapping resource="ve/usb/sistema/hibernate/Fase.hbm.xml"/>
+    <mapping resource="ve/usb/sistema/hibernate/Departamento.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
