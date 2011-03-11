@@ -19,6 +19,7 @@
         <form-bean name="FplanPG" type="ve.usb.sistema.FplanPG"/>
         <form-bean name="FplanPGBuscar" type="ve.usb.sistema.FplanPGBuscar"/>
         <form-bean name="F_PlanTrabajo" type="ve.usb.sistema.F_PlanTrabajo"/>
+        <form-bean name="F_Prorroga" type="ve.usb.sistema.F_Prorroga"/>
         <form-bean name="F_PreInscripcion" type="ve.usb.sistema.F_PreInscripcion"/>
         <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
         <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
@@ -74,6 +75,9 @@
         <!-- Montar Documento C -->
         <forward name="V_MontarDocumentosC" path="/montardocumentosc/V_MontarDocumentosC.jsp"/>
 
+        <!-- Montar Documento P -->
+        <forward name="V_MontarDocumentosP" path="/montardocumentosp/V_MontarDocumentosP.jsp"/>
+
 
         <!-- IniciarSesion -->
 
@@ -97,6 +101,12 @@
         <forward name="A_Pre_LlenarFInscripcion" path="/A_Pre_LlenarFInscripcion.do"/>
         <forward name="V_LlenarFInscripcion" path="/llenarfinscripcion/V_LlenarFInscripcion.jsp"/>
         <forward name="A_LlenarFIncripcion" path="/A_LlenarFIncripcion.do"/>
+
+        <!-- LlenarFProrroga -->
+
+        <forward name="A_Pre_LlenarFProrroga" path="/A_Pre_LlenarFProrroga.do"/>
+        <forward name="V_LlenarFProrroga" path="/llenarfprorroga/V_LlenarFProrroga.jsp"/>
+        <forward name="A_LlenarFProrroga" path="/A_LlenarFProrroga.do"/>
 
         <!-- Agregar Departamento -->
 
@@ -138,7 +148,12 @@
         <forward name="A_Pre_GestionarPasantia" path="/A_Pre_GestionarPasantia.do"/>
         <forward name="V_GestionarPasantia" path="/gestionarpasantia/V_GestionarPasantia.jsp"/>
 
-        <!-- GestionarCulminacionPasantia -->
+        <!-- GestionarProrrogaPasantia -->
+
+        <forward name="A_Pre_GestionarProrroga" path="/A_Pre_GestionarProrroga.do"/>
+        <forward name="V_GestionarProrroga" path="/gestionarprorroga/V_GestionarProrroga.jsp"/>
+
+         <!-- GestionarCulminacionPasantia -->
 
         <forward name="A_Pre_GestionarCulminacion" path="/A_Pre_GestionarCulminacion.do"/>
         <forward name="V_GestionarCulminacion" path="/gestionarculminacion/V_GestionarCulminacion.jsp"/>
@@ -323,7 +338,9 @@
         <action path="/A_GenerarPlanTrabajo" parameter="A_GenerarPlanTrabajo"
                 type="ve.usb.sistema.AccionesGenerarPlanTrabajo"/>
 
-
+        <!-- GenerarPlanillaProrroga -->
+        <action path="/A_GenerarPlanillaProrroga" parameter="A_GenerarPlanillaProrroga"
+           type="ve.usb.sistema.AccionesGenerarPlanillaProrroga"/>
 
 
         <action path="/A_Pre_MontarDocumentosInscripcion" parameter="A_Pre_MontarDocumentosInscripcion"
@@ -358,6 +375,24 @@
             <forward name="vacio" path="/montardocumentosc/uploadfailure1.jsp"/>
             <forward name="formato" path="/montardocumentosc/uploadfailure2.jsp"/>
             <forward name="tamano" path="/montardocumentosc/uploadfailure3.jsp"/>
+        </action>
+
+        <!-- MontarDocumentosP -->
+
+        <action path="/A_Pre_MontarDocumentosP" parameter="A_Pre_MontarDocumentosP"
+                type="ve.usb.sistema.AccionesMontarDocumentosP"/>
+
+        <action path="/A_MontarDocumentosP" parameter="A_MontarDocumentosP"
+                type="ve.usb.sistema.AccionesMontarDocumentosP"
+                name="F_Upload"
+                scope="request"
+                validate="true"
+                input="/montardocumentosp/V_MontarDocumentosP.jsp"
+                >
+            <forward name="success" path="/montardocumentosp/uploadsuccess.jsp"/>
+            <forward name="vacio" path="/montardocumentosp/uploadfailure1.jsp"/>
+            <forward name="formato" path="/montardocumentosp/uploadfailure2.jsp"/>
+            <forward name="tamano" path="/montardocumentosp/uploadfailure3.jsp"/>
         </action>
 
         <!-- IniciarSesion -->
@@ -398,6 +433,10 @@
         <action path="/A_Pre_GestionarCulminacion" parameter="A_Pre_GestionarCulminacion"
                 type="ve.usb.sistema.AccionesGestionarCulminacion"/>
 
+        <!-- GestionarProrroga -->
+        <action path="/A_Pre_GestionarProrroga" parameter="A_Pre_GestionarProrroga"
+           type="ve.usb.sistema.AccionesGestionarProrroga"/>
+
         <!-- ConsultarDocumentos -->
         <action path="/A_Pre_ConsultarDocumentos" parameter="A_Pre_ConsultarDocumentos"
                 type="ve.usb.sistema.AccionesConsultarDocumentos"/>
@@ -420,6 +459,14 @@
                 name="F_PlanTrabajo"
                 scope="session"/>
 
+        <!-- LlenarFProrroga -->
+        <action path="/A_Pre_LlenarFProrroga" parameter="A_Pre_LlenarFProrroga"
+           type="ve.usb.sistema.AccionesLlenarFProrroga"/>
+        <action path="/A_LlenarFProrroga" parameter="A_LlenarFProrroga"
+           type="ve.usb.sistema.AccionesLlenarFProrroga"
+           input="/llenarfprorroga/V_LlenarFProrroga.jsp"
+           name="F_Prorroga"
+           scope="session"/>
 
         <!-- ConsultarPPG -->
         <action path="/A_Pre_ConsultarPPG" parameter="A_Pre_ConsultarPPG"
