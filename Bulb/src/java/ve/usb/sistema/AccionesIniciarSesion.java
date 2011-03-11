@@ -72,12 +72,13 @@ public class AccionesIniciarSesion extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"A_Pre_VistaEstudiante", "A_Pre_VistaProfesor", "A_Pre_IniciarSesion", "A_Pre_VistaCoordinacion", "A_VistaAdmin"};
+        final String[] SALIDAS = {"A_Pre_VistaEstudiante", "A_Pre_VistaProfesor", "A_Pre_IniciarSesion", "A_Pre_VistaCoordinacion", "A_VistaAdmin", "A_Pre_VistaUsuarioCCTDS"};
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
         final int SALIDA_2 = 2;
         final int SALIDA_3 = 3;
         final int SALIDA_4 = 4;
+        final int SALIDA_5 = 5;
 
         int salida = SALIDA_0;
         Session s = HibernateUtil.getCurrentSession();
@@ -96,11 +97,20 @@ public class AccionesIniciarSesion extends CohesionAction {
                 }
                 else if (((String)consulta.get(0)).equals("profesor")){
                     consulta =   s.createSQLQuery("select coordinacarrera from EsCoordinador where codigoprofesor='"+login+"';").list();
+                    List<Boolean> consulta2 =   s.createSQLQuery("select escoordinador from UsuarioCCTDS where codigoprofesor='"+login+"';").list();
+                    System.out.println("CHECKPOINT 1 -#####################################");
                     if (!consulta.isEmpty()){
                         salida = SALIDA_3;
                         request.getSession().setAttribute("carrera", consulta.get(0));
                     }
-                    else { salida = SALIDA_1; }
+                    else if (!consulta2.isEmpty()){
+                        //aqui verificar si es coord
+                        salida = SALIDA_5;
+                        System.out.println("CHECKPOINT 2 -#####################################");
+                    }
+ else {
+                        salida = SALIDA_1;
+                    }
                 }  else if (((String)consulta.get(0)).equals("admin")){
                     salida = SALIDA_4;
                 }
