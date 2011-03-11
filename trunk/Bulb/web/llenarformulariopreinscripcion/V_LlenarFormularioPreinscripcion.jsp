@@ -149,7 +149,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Pre_GestionarPreinscripcion.do"><bean:message key="V_LlenarFormularioPreinscripcion.label1"/><%-- Regresar --%></html:link></li>
                 </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
+                <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link></p>
             </div>
         </div>
         <div id="header">          
@@ -182,9 +182,9 @@
                               <option value="1420">1420 (Pasant&iacute;a Corta)</option>
                         </select>  
                      </p></td></tr>
-                     <tr><th><p id="1409232_C"><label for="1409232"><bean:message key="F_PreInscripcion.label1"/><%-- Per&iacute;odo Pasant&iacute;a --%></label></th><td> <html:text styleId="1409232" property="periodo_pasantia" size="30"/></p></td></tr>
-                     <tr><th><p id="1409259_C"><label for="1409259"><bean:message key="F_PreInscripcion.label2"/><%-- A&ntilde;o --%></label></th><td> <html:text styleId="1409259" property="ano" size="30"/></p></td></tr>
-                     <tr><th><p id="1409303_C"><label for="1409303"><bean:message key="F_PreInscripcion.label3"/><%-- Edo. Civil --%></label></th><td>
+                     <tr><th><p id="1409232_C"><label for="1409232"><bean:message key="F_PreInscripcion.label1"/><%-- Per&iacute;odo Pasant&iacute;a --%></label></p></th><td> <html:text styleId="1409232" property="periodo_pasantia" size="30"/></td></tr>
+                     <tr><th><p id="1409259_C"><label for="1409259"><bean:message key="F_PreInscripcion.label2"/><%-- A&ntilde;o --%></label></p></th><td> <html:text styleId="1409259" property="ano" size="30"/></td></tr>
+                     <tr><th><p id="1409303_C"><label for="1409303"><bean:message key="F_PreInscripcion.label3"/><%-- Edo. Civil --%></label></p></th><td>
                          <select name="estado_civil">	
                                  <option value="Soltero">Soltero</option>
                                  <option value="Casado">Casado</option>

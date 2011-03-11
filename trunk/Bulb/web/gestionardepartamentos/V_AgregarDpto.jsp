@@ -1,8 +1,9 @@
 <%-- 
-    Document   : V_ConsultarDpto
-    Created on : Mar 10, 2011, 6:41:05 PM
+    Document   : V_AgregarDpto
+    Created on : Mar 10, 2011, 8:32:09 PM
     Author     : chitty
 --%>
+
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
@@ -43,20 +44,14 @@
                             <h3 align="center">${empty msg ? "" : msg}</h3>
                             <br>
                             <br>
-                            
-                                
-                                <logic:empty name="Dpto">
-                                    <h2><center> ¡No hay Departamentos! </center></h2>
-                                </logic:empty>
-                                <logic:notEmpty name="Dpto">
-                                    <table border="1" width="400px" align="center">
-                                        <tr><th>Departamento</th></tr>
-                                        <logic:iterate id="nombreDpto" name="Dpto">
-                                        <tr><td><bean:write name="nombreDpto" filter="false"/></td></tr>
-                                        </logic:iterate>
-                                    </table>
-                                </logic:notEmpty>
-                            
+                            <html:form action="/A_AgregarDpto.do" method="post">
+                            <table border="0" align="center">
+                                <tr><td><bean:message key="F_AgregarDpto.label0"/><%-- Nombre del Departamento --%></td>
+                                    <td><html:text property="dpto" size="30"/></td>
+                                <tr><td></td>
+                                    <td><html:submit styleClass="button"><bean:message key="Agregar.label"/><%-- Agregar --%></html:submit></td></tr>
+                            </table>
+                            </html:form>
                             <br>
                             <br>
                             <br>

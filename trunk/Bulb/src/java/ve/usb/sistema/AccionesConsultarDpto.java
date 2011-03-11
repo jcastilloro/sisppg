@@ -53,12 +53,10 @@ public class AccionesConsultarDpto extends CohesionAction {
 
             Devolucion.clear();
             for (int i = 0; i < departamentos.size(); i++) {
-                System.out.print("En el for i vale: "+i);
                 Devolucion.add(" " +departamentos.get(i).getNombreDpto() + " ");
             }
 
             if (!departamentos.isEmpty()) {
-                System.out.print("EMPPPPPPPPPPTY");
                 request.setAttribute("Dpto", Devolucion);
             }
 
