@@ -26,6 +26,7 @@
         <form-bean name="F_ConsultarJurados" type="ve.usb.sistema.F_ConsultarJurados"/>
         <form-bean name="F_ConfirmarDocumento" type="ve.usb.sistema.F_ConfirmarDocumento"/>
         <form-bean name="F_AgregarDpto" type="ve.usb.sistema.F_AgregarDpto"/>
+        <form-bean name="F_ConsultarEmpresa" type="ve.usb.sistema.F_ConsultarEmpresa"/>
     </form-beans>
 
     <global-exceptions>
@@ -296,6 +297,13 @@
         <forward name="V_MostrarJurados" path="/consultarjurados/V_MostrarJurados.jsp"/>
         <forward name="A_ConsultarJurados" path="/A_ConsultarJurados.do"/>
 
+
+        <!-- Consultar Empresa -->
+
+        <forward name="A_Pre_ConsultarEmpresa" path="/A_Pre_ConsultarEmpresa.do"/>
+        <forward name="V_ConsultarEmpresa" path="/consultarempresa/V_ConsultarEmpresa.jsp"/>
+        <forward name="V_MostrarEmpresa" path="/consultarempresa/V_MostrarEmpresa.jsp"/>
+        <forward name="A_ConsultarEmpresa" path="/A_ConsultarEmpresa.do"/>
 
         <!-- ConsultarPPGCoordinacion -->
 
@@ -708,6 +716,15 @@
                 type="ve.usb.sistema.AccionesConsultarJurados"
                 input="/ConsultarJurados/V_ConsultarJurados.jsp"
                 name="F_ConsultarJurados"
+                scope="session"/>
+
+        <!-- Consultar Empresa -->
+        <action path="/A_Pre_ConsultarEmpresa" parameter="A_Pre_ConsultarEmpresa"
+                type="ve.usb.sistema.AccionesConsultarEmpresa"/>
+        <action path="/A_ConsultarEmpresa" parameter="A_ConsultarEmpresa"
+                type="ve.usb.sistema.AccionesConsultarEmpresa"
+                input="/consultarempresa/V_ConsultarEmpresa.jsp"
+                name="F_ConsultarEmpresa"
                 scope="session"/>
 
         <action path="/tooltip" parameter="tooltip"
