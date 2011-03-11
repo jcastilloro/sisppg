@@ -147,6 +147,11 @@
         <forward name="A_GestionarDepartamentos" path="/A_GestionarDepartamentos.do"/>
         <forward name="V_GestionarDepartamentos" path="/gestionardepartamentos/V_GestionarDepartamentos.jsp"/>
 
+        <!-- Consultar Departamentos -->
+
+        <forward name="A_ConsultarDpto" path="/A_ConsultarDpto.do"/>
+        <forward name="V_ConsultarDpto" path="/gestionardepartamentos/V_ConsultarDpto.jsp"/>
+
         <!-- ConsultarPreinscripcion -->
 
         <forward name="A_Pre_ConsultarPreinscripcion" path="/A_Pre_ConsultarPreinscripcion.do"/>
@@ -432,6 +437,11 @@
         <!-- Gestionar Departamentos -->
         <action path="/A_GestionarDepartamentos" parameter="A_GestionarDepartamentos"
            type="ve.usb.sistema.AccionesGestionarDepartamentos"/>
+
+
+        <!-- Consultar Departamentos -->
+        <action path="/A_ConsultarDpto" parameter="A_ConsultarDpto"
+           type="ve.usb.sistema.AccionesConsultarDpto"/>
 
 
         <!-- ConsultarPreinscripcion -->

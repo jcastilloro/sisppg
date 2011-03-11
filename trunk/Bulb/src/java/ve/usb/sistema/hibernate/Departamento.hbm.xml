@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ve.usb.sistema.hibernate.Departamento" table="DEPARTAMENTO">
+      <!-- 0 -->
+      <id name="idDpto" column="idDpto">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombreDpto" column="nombreDpto" type="string" not-null="true"/>
+
+    </class>
+</hibernate-mapping>
