@@ -15,7 +15,7 @@
     <body>
         <div id="menu">
             <ul id="nav">
-                <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do">Consultar Empresa</html:link></li>
+                <li><html:link action="/A_Pre_ConsultarEmpresa.do">Consultar Empresa</html:link></li>
                 <li><html:link action="/A_Pre_GestionarCorreos.do">Consultar Pasantes</html:link></li>
             </ul>
             <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
