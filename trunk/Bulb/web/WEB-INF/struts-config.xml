@@ -24,6 +24,7 @@
         <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
         <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
         <form-bean name="F_ConsultarJurados" type="ve.usb.sistema.F_ConsultarJurados"/>
+        <form-bean name="F_ConfirmarDocumento" type="ve.usb.sistema.F_ConfirmarDocumento"/>
         <form-bean name="F_AgregarDpto" type="ve.usb.sistema.F_AgregarDpto"/>
     </form-beans>
 
@@ -299,6 +300,13 @@
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
+
+         <!-- RevisarDocumentos -->
+
+        <forward name="A_Pre_RevisarDocumentos" path="/A_Pre_RevisarDocumentos.do"/>
+        <forward name="V_RevisarDocumentos" path="/V_RevisarDocumentos.jsp"/>
+        <forward name="A_ConfirmarDocumento" path="/A_ConfirmarDocumento.do"/>
+
     </global-forwards>
 
     <action-mappings>
@@ -676,6 +684,16 @@
 
         <action path="/tooltip" parameter="tooltip"
                 type="ve.usb.sistema.Acciones_tooltips"/>
+
+        <!-- RevisarDocumentos -->
+        <action path="/A_Pre_RevisarDocumentos" parameter="A_Pre_RevisarDocumentos"
+                type="ve.usb.sistema.AccionesRevisarDocumentos"/>
+        <action path="/A_ConfirmarDocumento" parameter="A_ConfirmarDocumento"
+                type="ve.usb.sistema.AccionesConfirmarDocumento"
+                input="/V_RevisarDocumentos.jsp"
+                name="F_ConfirmarDocumento"
+                scope="session"/>
+
     </action-mappings>
 
     <!--

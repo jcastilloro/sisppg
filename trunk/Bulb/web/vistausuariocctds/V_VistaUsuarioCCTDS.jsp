@@ -18,7 +18,7 @@
                 <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label0"/><%-- Crear Alarma --%></html:link></li>
                 <li><html:link action="/A_Pre_GestionarCorreos.do">Gestionar Correos</html:link></li>
                 <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label1"/><%-- Expedir Constancia de Tutor --%></html:link></li>
-                <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label2"/><%-- Revisar Documentos --%></html:link></li>
+                <li><html:link action="/A_Pre_RevisarDocumentos.do"><bean:message key="V_VistaUsuarioCCTDS.label2"/><%-- Revisar Documentos --%></html:link></li>
                 <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label3"/><%-- Gestionar Consulta --%></html:link></li>
             </ul>
             <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
