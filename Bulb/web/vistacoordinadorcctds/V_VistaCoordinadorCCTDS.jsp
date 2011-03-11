@@ -20,6 +20,7 @@
                 <li><html:link action="/A_Pre_VistaUsuarioCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label1"/><%-- Expedir Constancia de Tutor --%></html:link></li>
                 <li><html:link action="/A_Pre_RevisarDocumentos.do"><bean:message key="V_VistaUsuarioCCTDS.label2"/><%-- Revisar Documentos --%></html:link></li>
                 <li><html:link action="/A_Pre_GestionarConsultaCCTDS.do"><bean:message key="V_VistaUsuarioCCTDS.label3"/><%-- Gestionar Consulta --%></html:link></li>
+                <li><html:link action="/A_Pre_GestionarConsultaCoordinadorCCTDS.do">Consulta Coordinador<%-- Gestionar Consulta Coordinador --%></html:link></li>
             </ul>
             <p align="right"><html:link action="/A_Pre_CerrarSesion.do"><bean:message key="CerrarSesion.label"/><%-- Cerrar Sesión --%></html:link>
             </div>

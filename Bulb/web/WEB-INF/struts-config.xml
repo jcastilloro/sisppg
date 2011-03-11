@@ -140,6 +140,22 @@
         <forward name="A_Pre_VistaUsuarioCCTDS" path="/A_Pre_VistaUsuarioCCTDS.do"/>
         <forward name="V_VistaUsuarioCCTDS" path="/vistausuariocctds/V_VistaUsuarioCCTDS.jsp"/>
 
+        <!-- Vista CoordinadorCCTDS -->
+
+        <forward name="A_Pre_VistaCoordinadorCCTDS" path="/A_Pre_VistaCoordinadorCCTDS.do"/>
+        <forward name="V_VistaCoordinadorCCTDS" path="/vistacoordinadorcctds/V_VistaCoordinadorCCTDS.jsp"/>
+
+        <!-- Vista GestionarConsultaCoordinadorCCTDS -->
+
+        <forward name="A_Pre_GestionarConsultaCoordinadorCCTDS" path="/A_Pre_GestionarConsultaCoordinadorCCTDS.do"/>
+        <forward name="V_GestionarConsultaCoordinadorCCTDS" path="/vistacoordinadorcctds/V_GestionarConsultaCoordinadorCCTDS.jsp"/>
+
+         <!-- Vista GestionarConsultaCCTDS -->
+
+        <forward name="A_Pre_GestionarConsultaCCTDS" path="/A_Pre_GestionarConsultaCCTDS.do"/>
+        <forward name="V_GestionarConsultaCCTDS" path="/gestionarconsultacctds/V_GestionarConsultaCCTDS.jsp"/>
+
+
         <!-- CerrarSesion -->
 
         <forward name="A_Pre_CerrarSesion" path="/A_Pre_CerrarSesion.do"/>
@@ -498,6 +514,18 @@
          <!-- Vista UsuarioCCTDS -->
         <action path="/A_Pre_VistaUsuarioCCTDS" parameter="A_Pre_VistaUsuarioCCTDS"
            type="ve.usb.sistema.AccionesVistaUsuarioCCTDS"/>
+
+           <!-- Vista CoordinadorCCTDS -->
+        <action path="/A_Pre_VistaCoordinadorCCTDS" parameter="A_Pre_VistaCoordinadorCCTDS"
+           type="ve.usb.sistema.AccionesVistaCoordinadorCCTDS"/>
+
+        <!-- Gestionar Consulta CoordinadorCCTDS -->
+        <action path="/A_Pre_GestionarConsultaCoordinadorCCTDS" parameter="A_Pre_GestionarConsultaCoordinadorCCTDS"
+           type="ve.usb.sistema.AccionesGestionarConsultaCoordinadorCCTDS"/>
+
+            <!-- Gestionar Consulta CCTDS -->
+        <action path="/A_Pre_GestionarConsultaCCTDS" parameter="A_Pre_GestionarConsultaCCTDS"
+           type="ve.usb.sistema.AccionesGestionarConsultaCCTDS"/>
 
         <!-- CerrarSesion -->
         <action path="/A_Pre_CerrarSesion" parameter="A_Pre_CerrarSesion"
