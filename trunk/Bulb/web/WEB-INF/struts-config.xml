@@ -118,6 +118,11 @@
         <forward name="A_VistaAdmin" path="/A_VistaAdmin.do"/>
         <forward name="V_VistaAdmin" path="/vistaadmin/V_VistaAdmin.jsp"/>
 
+         <!-- Vista UsuarioCCTDS -->
+
+        <forward name="A_Pre_VistaUsuarioCCTDS" path="/A_Pre_VistaUsuarioCCTDS.do"/>
+        <forward name="V_VistaUsuarioCCTDS" path="/vistausuariocctds/V_VistaUsuarioCCTDS.jsp"/>
+
         <!-- CerrarSesion -->
 
         <forward name="A_Pre_CerrarSesion" path="/A_Pre_CerrarSesion.do"/>
@@ -418,6 +423,10 @@
         <action path="/A_VistaAdmin" parameter="A_VistaAdmin"
            type="ve.usb.sistema.AccionesVistaAdmin"/>
 
+
+         <!-- Vista UsuarioCCTDS -->
+        <action path="/A_Pre_VistaUsuarioCCTDS" parameter="A_Pre_VistaUsuarioCCTDS"
+           type="ve.usb.sistema.AccionesVistaUsuarioCCTDS"/>
 
         <!-- CerrarSesion -->
         <action path="/A_Pre_CerrarSesion" parameter="A_Pre_CerrarSesion"
