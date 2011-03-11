@@ -22,7 +22,7 @@
         <div id="menu">
             <ul id="nav">
                 <li><html:link action="/A_ConsultarDpto.do">Consultar</html:link></li>
-                <li><html:link action="/A_GestionarDepartamentos.do">Agregar</html:link></li>
+                <li><html:link action="/A_Pre_AgregarDpto.do">Agregar</html:link></li>
                 <li><html:link action="/A_GestionarDepartamentos.do">Modificar</html:link></li>
                 <li><html:link action="/A_GestionarDepartamentos.do">Eliminar</html:link></li>
             </ul>
@@ -35,11 +35,11 @@
                 <div id="split">
                     <div class="top"></div>
                     <div id="left">
-                        <div class="content">
-                            ${empty msg ? "" : msg}
+                        <div class="content">                            
                             <br>
                             <br>
                             <br>
+                            <center><h2>${empty msg ? "" : msg}</h2></center>
                             <br>
                             <br>
                             <br>

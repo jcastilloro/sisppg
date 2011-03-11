@@ -23,7 +23,7 @@
         <form-bean name="F_RegistrarEmpresa" type="ve.usb.sistema.F_RegistrarEmpresa"/>
         <form-bean name="F_Upload" type="ve.usb.sistema.F_Upload"/>
         <form-bean name="F_ConsultarJurados" type="ve.usb.sistema.F_ConsultarJurados"/>
-
+        <form-bean name="F_AgregarDpto" type="ve.usb.sistema.F_AgregarDpto"/>
     </form-beans>
 
     <global-exceptions>
@@ -97,6 +97,12 @@
         <forward name="A_Pre_LlenarFInscripcion" path="/A_Pre_LlenarFInscripcion.do"/>
         <forward name="V_LlenarFInscripcion" path="/llenarfinscripcion/V_LlenarFInscripcion.jsp"/>
         <forward name="A_LlenarFIncripcion" path="/A_LlenarFIncripcion.do"/>
+
+        <!-- Agregar Departamento -->
+
+        <forward name="A_Pre_AgregarDpto" path="/A_Pre_AgregarDpto.do"/>
+        <forward name="V_AgregarDpto" path="/gestionardepartamentos/V_AgregarDpto.jsp"/>
+        <forward name="A_AgregarDpto" path="/A_AgregarDpto.do"/>
 
         <!-- ConsultarPPG -->
 
@@ -371,6 +377,16 @@
                 type="ve.usb.sistema.AccionesLlenarFormularioPreinscripcion"
                 input="/LlenarFormularioPreinscripcion/A_LlenarFormularioPreinscripcion.jsp"
                 name="F_PreInscripcion"
+                scope="session"/>
+
+
+        <!-- Agregar Departamento -->
+        <action path="/A_Pre_AgregarDpto" parameter="A_Pre_AgregarDpto"
+                type="ve.usb.sistema.AccionesAgregarDpto"/>
+        <action path="/A_AgregarDpto" parameter="A_AgregarDpto"
+                type="ve.usb.sistema.AccionesAgregarDpto"
+                input="/gestionardepartamentos/A_AgregarDpto.jsp"
+                name="F_AgregarDpto"
                 scope="session"/>
 
 
