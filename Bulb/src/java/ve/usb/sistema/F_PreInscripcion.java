@@ -8,12 +8,13 @@ import org.apache.struts.action.ActionMessage;
 
 
 public class F_PreInscripcion extends org.apache.struts.action.ActionForm {
-    
-    
+
+
     public F_PreInscripcion() {
         super();
         ep = 0;
-        periodo_pasantia = "";
+        periodo_pasantia1 = "";
+        periodo_pasantia2 = "";
         ano = 0;
         estado_civil = "";
         telef_hab = "";
@@ -27,10 +28,11 @@ public class F_PreInscripcion extends org.apache.struts.action.ActionForm {
         ciudad = "";
 
     }
-    
+
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         ep = 0;
-        periodo_pasantia = "";
+        periodo_pasantia1 = "";
+        periodo_pasantia2 = "";
         ano = 0;
         estado_civil = "";
         telef_hab = "";
@@ -85,25 +87,35 @@ public class F_PreInscripcion extends org.apache.struts.action.ActionForm {
     }
 
     /**
-     * Holds value of property periodo_pasantia.
-     */
-    private String periodo_pasantia;
-
-    /**
      * Getter for property periodo_pasantia.
      * @return Value of property periodo_pasantia.
      */
     public String getPeriodo_pasantia() {
-        return this.periodo_pasantia;
+        return this.periodo_pasantia1+"-"+this.periodo_pasantia2;
     }
 
-    /**
-     * Setter for property periodo_pasantia.
-     * @param periodo_pasantia New value of property periodo_pasantia.
-     */
-    public void setPeriodo_pasantia(String periodo_pasantia) {
-        this.periodo_pasantia = periodo_pasantia;
+
+
+    private String periodo_pasantia1;
+
+    public String getPeriodo_pasantia1() {
+        return periodo_pasantia1;
     }
+
+    public void setPeriodo_pasantia1(String periodo_pasantia1) {
+        this.periodo_pasantia1 = periodo_pasantia1;
+    }
+
+    public String getPeriodo_pasantia2() {
+        return periodo_pasantia2;
+    }
+
+    public void setPeriodo_pasantia2(String periodo_pasantia2) {
+        this.periodo_pasantia2 = periodo_pasantia2;
+    }
+
+
+    private String periodo_pasantia2;
 
     /**
      * Holds value of property ano.

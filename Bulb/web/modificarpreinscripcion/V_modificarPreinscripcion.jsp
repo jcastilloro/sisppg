@@ -85,16 +85,47 @@
                             <br>
                 <div class="box1409001" align="center"><html:form styleId="F1409001"
                   action="/A_ModificarPreinscripcion.do" method="post">
-                  <table border="0" width="450px">
-                    <tr><th><p id="1409009_C"><label for="1409009"><bean:message key="F_PreInscripcion.label0"/><%-- EP --%></label></th><td>
+                  <table border="0" width="550px">
+                    <tr><th width="200"><p id="1409009_C"><label for="1409009"><bean:message key="F_PreInscripcion.label0"/><%-- EP --%></label></th><td>
                              <select name="ep">	
                               <option value="3420">3420 (Pasant&iacute;a Larga)</option>
                               <option value="2420">2420 (Pasant&iacute;a Intermedia)</option>
                               <option value="1420">1420 (Pasant&iacute;a Corta)</option>
                         </select>  
                     </p></td></tr>
-                    <tr><th><p id="1409232_C"><label for="1409232"><bean:message key="F_PreInscripcion.label1"/><%-- Per&iacute;odo Pasant&iacute;a --%></label></th><td><html:text styleId="1409232" property="periodo_pasantia" value='${periodopasantia}' size="30"/></p></td></tr>
-                    <tr><th><p id="1409259_C"><label for="1409259"><bean:message key="F_PreInscripcion.label2"/><%-- A&ntilde;o --%></label></th><td><html:text styleId="1409259" property="ano" value='${ano}' size="30"/></p></td></tr>
+                     <tr><th><p id="1409232_C"><label for="1409009"><bean:message key="F_PreInscripcion.label1"/><%-- EP --%></label></th><td>
+
+                                                <select name="periodo_pasantia1">
+                                                    <option value="Enero">Enero</option>
+                                                    <option value="Febrero">Febrero</option>
+                                                    <option value="Marzo">Marzo</option>
+                                                    <option value="Abril">Abril</option>
+                                                    <option value="Mayo">Mayo</option>
+                                                    <option value="Junio">Junio</option>
+                                                    <option value="Julio">Julio</option>
+                                                    <option value="Agosto">Agosto</option>
+                                                    <option value="Septiembre">Septiembre</option>
+                                                    <option value="Octubre">Octubre</option>
+                                                    <option value="Noviembre">Noviembre</option>
+                                                    <option value="Diciembre">Diciembre</option>
+                                                </select>
+                                                -
+                                                <select name="periodo_pasantia2">
+                                                    <option value="Enero">Enero</option>
+                                                    <option value="Febrero">Febrero</option>
+                                                    <option value="Marzo">Marzo</option>
+                                                    <option value="Abril">Abril</option>
+                                                    <option value="Mayo">Mayo</option>
+                                                    <option value="Junio">Junio</option>
+                                                    <option value="Julio">Julio</option>
+                                                    <option value="Agosto">Agosto</option>
+                                                    <option value="Septiembre">Septiembre</option>
+                                                    <option value="Octubre">Octubre</option>
+                                                    <option value="Noviembre">Noviembre</option>
+                                                    <option value="Diciembre">Diciembre</option>
+                                                </select>
+                                                </p></td></tr>
+                     <tr><th><p id="1409259_C"><label for="1409259"><bean:message key="F_PreInscripcion.label2"/><%-- A&ntilde;o --%></label></th><td><html:text styleId="1409259" property="ano" value='${ano}' size="30"/></p></td></tr>
                     <tr><th><p id="1409303_C"><label for="1409303"><bean:message key="F_PreInscripcion.label3"/><%-- Edo. Civil --%></label></th><td>
                          <select name="estado_civil">	
                                  <option value="Soltero">Soltero</option>

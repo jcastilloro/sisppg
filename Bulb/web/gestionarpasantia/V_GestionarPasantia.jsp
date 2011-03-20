@@ -34,7 +34,7 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
-                            <h3>${empty msg ? "" : msg}</h3>
+                            <h3><center>${empty msg ? "" : msg}</center></h3>
                             <br>
                             
                             <br>
