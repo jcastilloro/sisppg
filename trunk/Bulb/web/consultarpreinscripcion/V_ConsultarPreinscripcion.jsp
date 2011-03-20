@@ -38,9 +38,9 @@
                             <h3 align="center">${empty msg ? "" : msg}</h3>
                             <br>
                            
-                           <table border="0" align="center" width="400px">
+                           <table border="0" align="center" width="450px">
 
-                                <tr><th>EP</th><td><bean:write name="ep"/><br></td></tr>
+                                <tr><th width="200px">EP</th><td><bean:write name="ep"/><br></td></tr>
 
                                 <tr><th>Per&iacute;odo Pasant&iacute;a</th><td><bean:write name="periodopasantia"/><br></td></tr>
 
