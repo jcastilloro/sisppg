@@ -26,7 +26,16 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
-                         </div>
+
+                            <logic:empty name="EstudianteRealizaProyecto">
+                                <h1>¡Usted no está realizando ningun tipo de proyecto!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="EstudianteRealizaProyecto">
+                                <logic:iterate id="proy" collection="${empty EstudianteRealizaProyecto ? _vacio : EstudianteRealizaProyecto}">
+                                    Proyecto: ${proy.proyecto.id_proyecto} <br>
+                                </logic:iterate>
+                            </logic:notEmpty>
+                        </div>
                     </div>
                     <div id="right"></div>
                     <div class="clearer"></div>
