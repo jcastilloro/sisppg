@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="F_Actividad_Etapa" type="jc2s.sistppg.F_Actividad_Etapa"/>
+        <form-bean name="F_Actividad_Fase" type="jc2s.sistppg.F_Actividad_Fase"/>
+        <form-bean name="F_Area" type="jc2s.sistppg.F_Area"/>
+        <form-bean name="F_Etapa_PG" type="jc2s.sistppg.F_Etapa_PG"/>
+        <form-bean name="F_Fase_Pasantia" type="jc2s.sistppg.F_Fase_Pasantia"/>
+        <form-bean name="F_Inicio_Sesion" type="jc2s.sistppg.F_Inicio_Sesion"/>
+        <form-bean name="F_Inicio_Sesion_Empresa" type="jc2s.sistppg.F_Inicio_Sesion_Empresa"/>
+        <form-bean name="F_Inscripcion_PG" type="jc2s.sistppg.F_Inscripcion_PG"/>
+        <form-bean name="F_Inscripcion_Pasantia" type="jc2s.sistppg.F_Inscripcion_Pasantia"/>
+        <form-bean name="F_Perfil_Estudiante" type="jc2s.sistppg.F_Perfil_Estudiante"/>
+        <form-bean name="F_Perfil_Profesor" type="jc2s.sistppg.F_Perfil_Profesor"/>
+        <form-bean name="F_Prorroga_Evaluacion" type="jc2s.sistppg.F_Prorroga_Evaluacion"/>
+        <form-bean name="F_Prorroga_Inscripcion" type="jc2s.sistppg.F_Prorroga_Inscripcion"/>
+        <form-bean name="F_Registro_Empresa" type="jc2s.sistppg.F_Registro_Empresa"/>
+        <form-bean name="F_Retiro_Pasantia" type="jc2s.sistppg.F_Retiro_Pasantia"/>
+        <form-bean name="F_Tutor_Industrial" type="jc2s.sistppg.F_Tutor_Industrial"/>
+
+    </form-beans>
+    
+    <global-exceptions>
+        
+    </global-exceptions>
+    
+    <global-forwards>
+
+        <!-- C_Inicio_Sesion -->
+
+        <forward name="A_Prep_Inicio_Sesion" path="/A_Prep_Inicio_Sesion.do"/>
+        <forward name="V_Inicio_Sesion" path="/c_inicio_sesion/V_Inicio_Sesion.jsp"/>
+        <forward name="A_Inicio_Sesion" path="/A_Inicio_Sesion.do"/>
+
+        <!-- C_Sesion_Estudiante -->
+
+        <forward name="A_Prep_Inicio_Sesion_Est" path="/A_Prep_Inicio_Sesion_Est.do"/>
+        <forward name="V_Sesion_Estudiante" path="/c_sesion_estudiante/V_Sesion_Estudiante.jsp"/>
+
+        <!-- C_Perfil_Estudiante -->
+
+        <forward name="A_prep_crear_perfil_estudiante" path="/A_prep_crear_perfil_estudiante.do"/>
+        <forward name="V_perfil_est" path="/c_perfil_estudiante/V_perfil_est.jsp"/>
+        <forward name="A_guardar_perfil" path="/A_guardar_perfil.do"/>
+        <forward name="A_prep_modif_perfil_estudiante" path="/A_prep_modif_perfil_estudiante.do"/>
+
+        <!-- C_Empresa -->
+
+        <forward name="A_Prep_Inicio_Sesion_Empresa" path="/A_Prep_Inicio_Sesion_Empresa.do"/>
+        <forward name="V_Inicio_Sesion_Empresa" path="/c_empresa/V_Inicio_Sesion_Empresa.jsp"/>
+        <forward name="A_Prep_Registro_Empresa" path="/A_Prep_Registro_Empresa.do"/>
+        <forward name="V_Registro_Empresa" path="/c_empresa/V_Registro_Empresa.jsp"/>
+        <forward name="A_Registrar_Empresa" path="/A_Registrar_Empresa.do"/>
+        <forward name="A_Inicio_Sesion_Empresa" path="/A_Inicio_Sesion_Empresa.do"/>
+        <forward name="V_Sesion_Empresa" path="/c_empresa/V_Sesion_Empresa.jsp"/>
+        <forward name="A_prep_agregar_tutor_I" path="/A_prep_agregar_tutor_I.do"/>
+        <forward name="V_Agregar_Tutor_I" path="/c_empresa/V_Agregar_Tutor_I.jsp"/>
+        <forward name="A_Agregar_Tutor_Ind" path="/A_Agregar_Tutor_Ind.do"/>
+
+        <!-- C_Gestionar_proyectos_Estudiante -->
+
+        <forward name="A_Prep_Gestion_Proy_Est" path="/A_Prep_Gestion_Proy_Est.do"/>
+        <forward name="V_Gestion_Proy_Est" path="/c_gestionar_proyectos_estudiante/V_Gestion_Proy_Est.jsp"/>
+
+        <!-- C_Gestionar_Pasantias_Estudiante -->
+
+        <forward name="A_Prep_Gestion_Pasantias_Estudiante" path="/A_Prep_Gestion_Pasantias_Estudiante.do"/>
+        <forward name="V_Gestion_Pasantias_Est" path="/c_gestionar_pasantias_estudiante/V_Gestion_Pasantias_Est.jsp"/>
+
+        <!-- C_Gestionar_PG_Estudiante -->
+
+        <forward name="A_Prep_Gestion_PG_Est" path="/A_Prep_Gestion_PG_Est.do"/>
+        <forward name="V_Gestion_PG_Est" path="/c_gestionar_pg_estudiante/V_Gestion_PG_Est.jsp"/>
+
+        <!-- C_Consultar_PG_Est -->
+
+        <forward name="A_prep_Consultar_PG" path="/A_prep_Consultar_PG.do"/>
+        <forward name="V_Consultar_PG" path="/c_consultar_pg_est/V_Consultar_PG.jsp"/>
+
+        <!-- C_Consultar_Pasantia_Est -->
+
+        <forward name="V_Consultar_Pasantia_Est" path="/c_consultar_pasantia_est/V_Consultar_Pasantia_Est.jsp"/>
+        <forward name="A_prep_Consultar_Pasantia" path="/A_prep_Consultar_Pasantia.do"/>
+
+        <!-- C_Retiro_Pasantia_Est -->
+
+        <forward name="A_prep_retirar_pasantia" path="/A_prep_retirar_pasantia.do"/>
+        <forward name="V_Retirar_Pasantia" path="/c_retiro_pasantia_est/V_Retirar_Pasantia.jsp"/>
+        <forward name="A_Retirar_Pasantia" path="/A_Retirar_Pasantia.do"/>
+
+        <!-- C_Solicitar_Prorroga_Evaluacion -->
+
+        <forward name="A_prep_solicitar_prorroga_evaluacion" path="/A_prep_solicitar_prorroga_evaluacion.do"/>
+        <forward name="V_solicitar_prorroga_evaluacion" path="/c_solicitar_prorroga_evaluacion/V_solicitar_prorroga_evaluacion.jsp"/>
+        <forward name="A_solicitar_prorroga_evaluacion" path="/A_solicitar_prorroga_evaluacion.do"/>
+
+        <!-- C_Generar_Inscripcion_Pasantia -->
+
+        <forward name="A_prep_generar_inscripcion" path="/A_prep_generar_inscripcion.do"/>
+        <forward name="V_generar_inscripcion" path="/c_generar_inscripcion_pasantia/V_generar_inscripcion.jsp"/>
+        <forward name="A_generar_inscripcion" path="/A_generar_inscripcion.do"/>
+        <forward name="V_areas" path="/c_generar_inscripcion_pasantia/V_areas.jsp"/>
+        <forward name="A_agregar_area" path="/A_agregar_area.do"/>
+        <forward name="A_guardar_areas" path="/A_guardar_areas.do"/>
+        <forward name="V_fases_pasantia" path="/c_generar_inscripcion_pasantia/V_fases_pasantia.jsp"/>
+        <forward name="A_finalizar_inscripcion" path="/A_finalizar_inscripcion.do"/>
+        <forward name="A_agregar_fase" path="/A_agregar_fase.do"/>
+        <forward name="V_actividad_fase" path="/c_generar_inscripcion_pasantia/V_actividad_fase.jsp"/>
+        <forward name="A_guardar_fase" path="/A_guardar_fase.do"/>
+        <forward name="A_agregar_actividad" path="/A_agregar_actividad.do"/>
+
+        <!-- C_Gestionar_Preinscripcion -->
+
+        <forward name="A_prep_gestionar_preinscripcion" path="/A_prep_gestionar_preinscripcion.do"/>
+        <forward name="V_gestionar_preinscripcion" path="/c_gestionar_preinscripcion/V_gestionar_preinscripcion.jsp"/>
+        <forward name="A_generar_preinscripcion_corta" path="/A_generar_preinscripcion_corta.do"/>
+        <forward name="A_generar_preinscripcion_intermedia" path="/A_generar_preinscripcion_intermedia.do"/>
+        <forward name="A_generar_preinscripcion_larga" path="/A_generar_preinscripcion_larga.do"/>
+
+        <!-- C_Sesion_Profesor -->
+
+        <forward name="A_Prep_Inicio_Sesion_Prof" path="/A_Prep_Inicio_Sesion_Prof.do"/>
+        <forward name="V_Sesion_Profesor" path="/c_sesion_profesor/V_Sesion_Profesor.jsp"/>
+
+        <!-- C_Perfil_Profesor -->
+
+        <forward name="A_prep_crear_perfil_profesor" path="/A_prep_crear_perfil_profesor.do"/>
+        <forward name="V_perfil_prof" path="/c_perfil_profesor/V_perfil_prof.jsp"/>
+        <forward name="A_guardar_perfil_prof" path="/A_guardar_perfil_prof.do"/>
+        <forward name="A_prep_modif_perfil_profesor" path="/A_prep_modif_perfil_profesor.do"/>
+
+        <!-- C_Gestionar_PG_Prof -->
+
+        <forward name="A_prep_gestionar_PG_prof" path="/A_prep_gestionar_PG_prof.do"/>
+        <forward name="V_gestionar_PG_prof" path="/c_gestionar_pg_prof/V_gestionar_PG_prof.jsp"/>
+        <forward name="A_prep_agregar_PG" path="/A_prep_agregar_PG.do"/>
+        <forward name="V_agregar_PG" path="/c_gestionar_pg_prof/V_agregar_PG.jsp"/>
+        <forward name="A_agregar_PG" path="/A_agregar_PG.do"/>
+        <forward name="V_areas_pg" path="/c_gestionar_pg_prof/V_areas_pg.jsp"/>
+        <forward name="A_agregar_area_PG" path="/A_agregar_area_PG.do"/>
+        <forward name="A_prep_etapas_ppg" path="/A_prep_etapas_ppg.do"/>
+        <forward name="V_etapas_pg" path="/c_gestionar_pg_prof/V_etapas_pg.jsp"/>
+        <forward name="A_prep_agregar_primera_etapa" path="/A_prep_agregar_primera_etapa.do"/>
+        <forward name="V_agregar_primera_etapa" path="/c_gestionar_pg_prof/V_agregar_primera_etapa.jsp"/>
+        <forward name="A_guardar_primera_etapa" path="/A_guardar_primera_etapa.do"/>
+        <forward name="V_actividades_etapa" path="/c_gestionar_pg_prof/V_actividades_etapa.jsp"/>
+        <forward name="A_agregar_actividad_etapa" path="/A_agregar_actividad_etapa.do"/>
+        <forward name="A_finalizar_actividades_etapa" path="/A_finalizar_actividades_etapa.do"/>
+        <forward name="A_finalizar_generar_PG" path="/A_finalizar_generar_PG.do"/>
+        <forward name="A_prep_agregar_segunda_etapa" path="/A_prep_agregar_segunda_etapa.do"/>
+        <forward name="V_agregar_segunda_etapa" path="/c_gestionar_pg_prof/V_agregar_segunda_etapa.jsp"/>
+        <forward name="A_guardar_segunda_etapa" path="/A_guardar_segunda_etapa.do"/>
+        <forward name="A_prep_agregar_tercera_etapa" path="/A_prep_agregar_tercera_etapa.do"/>
+        <forward name="V_agregar_tercera_etapa" path="/c_gestionar_pg_prof/V_agregar_tercera_etapa.jsp"/>
+        <forward name="A_guardar_tercera_etapa" path="/A_guardar_tercera_etapa.do"/>
+
+        <!-- C_Consultar_PG_propio -->
+
+        <forward name="A_consultar_PG_propios" path="/A_consultar_PG_propios.do"/>
+        <forward name="V_consulta_pg_propia" path="/c_consultar_pg_propio/V_consulta_pg_propia.jsp"/>
+        <forward name="A_mostrar_pg_propio" path="/A_mostrar_pg_propio.do"/>
+        <forward name="V_mostrar_pg_propio" path="/c_consultar_pg_propio/V_mostrar_pg_propio.jsp"/>
+
+        <!-- C_Consultar_Proyectos -->
+
+        <forward name="A_prep_consultar_proyectos" path="/A_prep_consultar_proyectos.do"/>
+        <forward name="V_consulta_proyectos" path="/c_consultar_proyectos/V_consulta_proyectos.jsp"/>
+        <forward name="A_consultar_PG" path="/A_consultar_PG.do"/>
+        <forward name="V_consulta_pg" path="/c_consultar_proyectos/V_consulta_pg.jsp"/>
+        <forward name="A_mostrar_pg" path="/A_mostrar_pg.do"/>
+        <forward name="V_mostrar_pg" path="/c_consultar_proyectos/V_mostrar_pg.jsp"/>
+        <forward name="A_consultar_pasantias" path="/A_consultar_pasantias.do"/>
+        <forward name="V_consulta_pasantia" path="/c_consultar_proyectos/V_consulta_pasantia.jsp"/>
+        <forward name="A_mostrar_pasantia" path="/A_mostrar_pasantia.do"/>
+        <forward name="V_mostrar_pasantia" path="/c_consultar_proyectos/V_mostrar_pasantia.jsp"/>
+
+        <!-- C_Gestionar_Pasantia_Prof -->
+
+        <forward name="A_prep_gestionar_pasantia_prof" path="/A_prep_gestionar_pasantia_prof.do"/>
+        <forward name="V_gestionar_pasantias_prof" path="/c_gestionar_pasantia_prof/V_gestionar_pasantias_prof.jsp"/>
+        <forward name="A_consultar_pasantias_propias" path="/A_consultar_pasantias_propias.do"/>
+        <forward name="V_consulta_pasantia_propias" path="/c_gestionar_pasantia_prof/V_consulta_pasantia_propias.jsp"/>
+        <forward name="A_mostrar_pasantia_propia" path="/A_mostrar_pasantia_propia.do"/>
+        <forward name="V_mostrar_pasantia_propia" path="/c_gestionar_pasantia_prof/V_mostrar_pasantia_propia.jsp"/>
+
+        <!-- C_Solicitar_Prorroga_Inscripcion -->
+
+        <forward name="A_prep_solicitar_prorroga_inscripcion" path="/A_prep_solicitar_prorroga_inscripcion.do"/>
+        <forward name="V_solicitar_prorroga_inscripcion" path="/c_solicitar_prorroga_inscripcion/V_solicitar_prorroga_inscripcion.jsp"/>
+        <forward name="A_solicitar_prorroga_inscripcion" path="/A_solicitar_prorroga_inscripcion.do"/>
+
+        <forward name="tooltip" path="/tooltip.do"/>
+        <forward name="Info" path="/_tooltips/Info.jsp"/>
+    </global-forwards>
+    
+    <action-mappings>
+
+        <!-- C_Inicio_Sesion -->
+        <action path="/A_Prep_Inicio_Sesion" parameter="A_Prep_Inicio_Sesion"
+           type="jc2s.sistppg.AccionesC_Inicio_Sesion"/>
+        <action path="/A_Inicio_Sesion" parameter="A_Inicio_Sesion"
+           type="jc2s.sistppg.AccionesC_Inicio_Sesion"
+           input="/C_Inicio_Sesion/V_Inicio_Sesion.jsp"
+           name="F_Inicio_Sesion"
+           scope="session"/>
+
+
+        <!-- C_Sesion_Estudiante -->
+        <action path="/A_Prep_Inicio_Sesion_Est" parameter="A_Prep_Inicio_Sesion_Est"
+           type="jc2s.sistppg.AccionesC_Sesion_Estudiante"/>
+
+
+        <!-- C_Perfil_Estudiante -->
+        <action path="/A_prep_crear_perfil_estudiante" parameter="A_prep_crear_perfil_estudiante"
+           type="jc2s.sistppg.AccionesC_Perfil_Estudiante"/>
+        <action path="/A_guardar_perfil" parameter="A_guardar_perfil"
+           type="jc2s.sistppg.AccionesC_Perfil_Estudiante"
+           input="/C_Perfil_Estudiante/V_perfil_est.jsp"
+           name="F_Perfil_Estudiante"
+           scope="session"/>
+        <action path="/A_prep_modif_perfil_estudiante" parameter="A_prep_modif_perfil_estudiante"
+           type="jc2s.sistppg.AccionesC_Perfil_Estudiante"/>
+
+
+        <!-- C_Empresa -->
+        <action path="/A_Prep_Inicio_Sesion_Empresa" parameter="A_Prep_Inicio_Sesion_Empresa"
+           type="jc2s.sistppg.AccionesC_Empresa"/>
+        <action path="/A_Prep_Registro_Empresa" parameter="A_Prep_Registro_Empresa"
+           type="jc2s.sistppg.AccionesC_Empresa"/>
+        <action path="/A_Registrar_Empresa" parameter="A_Registrar_Empresa"
+           type="jc2s.sistppg.AccionesC_Empresa"
+           input="/C_Empresa/V_Registro_Empresa.jsp"
+           name="F_Registro_Empresa"
+           scope="session"/>
+        <action path="/A_Inicio_Sesion_Empresa" parameter="A_Inicio_Sesion_Empresa"
+           type="jc2s.sistppg.AccionesC_Empresa"
+           input="/C_Empresa/V_Inicio_Sesion_Empresa.jsp"
+           name="F_Inicio_Sesion_Empresa"
+           scope="session"/>
+        <action path="/A_prep_agregar_tutor_I" parameter="A_prep_agregar_tutor_I"
+           type="jc2s.sistppg.AccionesC_Empresa"/>
+        <action path="/A_Agregar_Tutor_Ind" parameter="A_Agregar_Tutor_Ind"
+           type="jc2s.sistppg.AccionesC_Empresa"
+           input="/C_Empresa/V_Agregar_Tutor_I.jsp"
+           name="F_Tutor_Industrial"
+           scope="session"/>
+
+
+        <!-- C_Gestionar_proyectos_Estudiante -->
+        <action path="/A_Prep_Gestion_Proy_Est" parameter="A_Prep_Gestion_Proy_Est"
+           type="jc2s.sistppg.AccionesC_Gestionar_proyectos_Estudiante"/>
+
+
+        <!-- C_Gestionar_Pasantias_Estudiante -->
+        <action path="/A_Prep_Gestion_Pasantias_Estudiante" parameter="A_Prep_Gestion_Pasantias_Estudiante"
+           type="jc2s.sistppg.AccionesC_Gestionar_Pasantias_Estudiante"/>
+
+
+        <!-- C_Gestionar_PG_Estudiante -->
+        <action path="/A_Prep_Gestion_PG_Est" parameter="A_Prep_Gestion_PG_Est"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Estudiante"/>
+
+
+        <!-- C_Consultar_PG_Est -->
+        <action path="/A_prep_Consultar_PG" parameter="A_prep_Consultar_PG"
+           type="jc2s.sistppg.AccionesC_Consultar_PG_Est"/>
+
+
+        <!-- C_Consultar_Pasantia_Est -->
+        <action path="/A_prep_Consultar_Pasantia" parameter="A_prep_Consultar_Pasantia"
+           type="jc2s.sistppg.AccionesC_Consultar_Pasantia_Est"/>
+
+
+        <!-- C_Retiro_Pasantia_Est -->
+        <action path="/A_prep_retirar_pasantia" parameter="A_prep_retirar_pasantia"
+           type="jc2s.sistppg.AccionesC_Retiro_Pasantia_Est"/>
+        <action path="/A_Retirar_Pasantia" parameter="A_Retirar_Pasantia"
+           type="jc2s.sistppg.AccionesC_Retiro_Pasantia_Est"
+           input="/C_Retiro_Pasantia_Est/V_Retirar_Pasantia.jsp"
+           name="F_Retiro_Pasantia"
+           scope="session"/>
+
+
+        <!-- C_Solicitar_Prorroga_Evaluacion -->
+        <action path="/A_prep_solicitar_prorroga_evaluacion" parameter="A_prep_solicitar_prorroga_evaluacion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>
+        <action path="/A_solicitar_prorroga_evaluacion" parameter="A_solicitar_prorroga_evaluacion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>
+
+
+        <!-- C_Generar_Inscripcion_Pasantia -->
+        <action path="/A_prep_generar_inscripcion" parameter="A_prep_generar_inscripcion"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"/>
+        <action path="/A_generar_inscripcion" parameter="A_generar_inscripcion"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"
+           input="/C_Generar_Inscripcion_Pasantia/V_generar_inscripcion.jsp"
+           name="F_Inscripcion_Pasantia"
+           scope="session"/>
+        <action path="/A_agregar_area" parameter="A_agregar_area"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"
+           input="/C_Generar_Inscripcion_Pasantia/V_areas.jsp"
+           name="F_Area"
+           scope="session"/>
+        <action path="/A_guardar_areas" parameter="A_guardar_areas"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"/>
+        <action path="/A_finalizar_inscripcion" parameter="A_finalizar_inscripcion"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"/>
+        <action path="/A_agregar_fase" parameter="A_agregar_fase"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"
+           input="/C_Generar_Inscripcion_Pasantia/V_fases_pasantia.jsp"
+           name="F_Fase_Pasantia"
+           scope="session"/>
+        <action path="/A_guardar_fase" parameter="A_guardar_fase"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"/>
+        <action path="/A_agregar_actividad" parameter="A_agregar_actividad"
+           type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"
+           input="/C_Generar_Inscripcion_Pasantia/V_actividad_fase.jsp"
+           name="F_Actividad_Fase"
+           scope="session"/>
+
+
+        <!-- C_Gestionar_Preinscripcion -->
+        <action path="/A_prep_gestionar_preinscripcion" parameter="A_prep_gestionar_preinscripcion"
+           type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
+        <action path="/A_generar_preinscripcion_corta" parameter="A_generar_preinscripcion_corta"
+           type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
+        <action path="/A_generar_preinscripcion_intermedia" parameter="A_generar_preinscripcion_intermedia"
+           type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
+        <action path="/A_generar_preinscripcion_larga" parameter="A_generar_preinscripcion_larga"
+           type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
+
+
+        <!-- C_Sesion_Profesor -->
+        <action path="/A_Prep_Inicio_Sesion_Prof" parameter="A_Prep_Inicio_Sesion_Prof"
+           type="jc2s.sistppg.AccionesC_Sesion_Profesor"/>
+
+
+        <!-- C_Perfil_Profesor -->
+        <action path="/A_prep_crear_perfil_profesor" parameter="A_prep_crear_perfil_profesor"
+           type="jc2s.sistppg.AccionesC_Perfil_Profesor"/>
+        <action path="/A_guardar_perfil_prof" parameter="A_guardar_perfil_prof"
+           type="jc2s.sistppg.AccionesC_Perfil_Profesor"
+           input="/C_Perfil_Profesor/V_perfil_prof.jsp"
+           name="F_Perfil_Profesor"
+           scope="session"/>
+        <action path="/A_prep_modif_perfil_profesor" parameter="A_prep_modif_perfil_profesor"
+           type="jc2s.sistppg.AccionesC_Perfil_Profesor"/>
+
+
+        <!-- C_Gestionar_PG_Prof -->
+        <action path="/A_prep_gestionar_PG_prof" parameter="A_prep_gestionar_PG_prof"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_prep_agregar_PG" parameter="A_prep_agregar_PG"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_agregar_PG" parameter="A_agregar_PG"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"
+           input="/C_Gestionar_PG_Prof/V_agregar_PG.jsp"
+           name="F_Inscripcion_PG"
+           scope="session"/>
+        <action path="/A_agregar_area_PG" parameter="A_agregar_area_PG"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_prep_etapas_ppg" parameter="A_prep_etapas_ppg"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_prep_agregar_primera_etapa" parameter="A_prep_agregar_primera_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_guardar_primera_etapa" parameter="A_guardar_primera_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"
+           input="/C_Gestionar_PG_Prof/V_agregar_primera_etapa.jsp"
+           name="F_Etapa_PG"
+           scope="session"/>
+        <action path="/A_agregar_actividad_etapa" parameter="A_agregar_actividad_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"
+           input="/C_Gestionar_PG_Prof/V_actividades_etapa.jsp"
+           name="F_Actividad_Etapa"
+           scope="session"/>
+        <action path="/A_finalizar_actividades_etapa" parameter="A_finalizar_actividades_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_finalizar_generar_PG" parameter="A_finalizar_generar_PG"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_prep_agregar_segunda_etapa" parameter="A_prep_agregar_segunda_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_guardar_segunda_etapa" parameter="A_guardar_segunda_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"
+           input="/C_Gestionar_PG_Prof/V_agregar_segunda_etapa.jsp"
+           name="F_Etapa_PG"
+           scope="session"/>
+        <action path="/A_prep_agregar_tercera_etapa" parameter="A_prep_agregar_tercera_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"/>
+        <action path="/A_guardar_tercera_etapa" parameter="A_guardar_tercera_etapa"
+           type="jc2s.sistppg.AccionesC_Gestionar_PG_Prof"
+           input="/C_Gestionar_PG_Prof/V_agregar_tercera_etapa.jsp"
+           name="F_Etapa_PG"
+           scope="session"/>
+
+
+        <!-- C_Consultar_PG_propio -->
+        <action path="/A_consultar_PG_propios" parameter="A_consultar_PG_propios"
+           type="jc2s.sistppg.AccionesC_Consultar_PG_propio"/>
+        <action path="/A_mostrar_pg_propio" parameter="A_mostrar_pg_propio"
+           type="jc2s.sistppg.AccionesC_Consultar_PG_propio"/>
+
+
+        <!-- C_Consultar_Proyectos -->
+        <action path="/A_prep_consultar_proyectos" parameter="A_prep_consultar_proyectos"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"/>
+        <action path="/A_consultar_PG" parameter="A_consultar_PG"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"/>
+        <action path="/A_mostrar_pg" parameter="A_mostrar_pg"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"/>
+        <action path="/A_consultar_pasantias" parameter="A_consultar_pasantias"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"/>
+        <action path="/A_mostrar_pasantia" parameter="A_mostrar_pasantia"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"/>
+
+
+        <!-- C_Gestionar_Pasantia_Prof -->
+        <action path="/A_prep_gestionar_pasantia_prof" parameter="A_prep_gestionar_pasantia_prof"
+           type="jc2s.sistppg.AccionesC_Gestionar_Pasantia_Prof"/>
+        <action path="/A_consultar_pasantias_propias" parameter="A_consultar_pasantias_propias"
+           type="jc2s.sistppg.AccionesC_Gestionar_Pasantia_Prof"/>
+        <action path="/A_mostrar_pasantia_propia" parameter="A_mostrar_pasantia_propia"
+           type="jc2s.sistppg.AccionesC_Gestionar_Pasantia_Prof"/>
+
+
+        <!-- C_Solicitar_Prorroga_Inscripcion -->
+        <action path="/A_prep_solicitar_prorroga_inscripcion" parameter="A_prep_solicitar_prorroga_inscripcion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Inscripcion"/>
+        <action path="/A_solicitar_prorroga_inscripcion" parameter="A_solicitar_prorroga_inscripcion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Inscripcion"
+           input="/C_Solicitar_Prorroga_Inscripcion/V_solicitar_prorroga_inscripcion.jsp"
+           name="F_Prorroga_Inscripcion"
+           scope="session"/>
+
+
+        <action path="/tooltip" parameter="tooltip"
+           type="jc2s.sistppg.Acciones_tooltips"/>
+    </action-mappings>
+    
+    <!--
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    -->
+    
+    <message-resources parameter="jc2s/sistppg/ApplicationResource"/>
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <!--
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    -->
+    <!-- ========================= Validator plugin ================================= -->
+    <!--
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+    -->
+</struts-config>

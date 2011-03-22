@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.TutorIndustrial" table="TUTORINDUSTRIAL">
+      <!-- 0 -->
+      <id name="idTutorIndustrial" column="idTutorIndustrial">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="nombre" column="nombre" type="string" not-null="true"/>
+      <!-- 2 -->
+      <property name="cedula" column="cedula" type="string" not-null="true" unique="true"/>
+      <!-- 3 -->
+      <property name="email" column="email" type="string" not-null="true" unique="true"/>
+      <!-- 4 -->
+      <property name="telefono" column="telefono" type="string"/>
+      <!-- 5 -->
+      <many-to-one name="empresa" column="empresa" />
+    </class>
+</hibernate-mapping>

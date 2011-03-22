@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.DepartamentoArea" table="DEPARTAMENTOAREA">
+      <!-- 0 -->
+      <id name="idDepartamentoArea" column="idDepartamentoArea">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <many-to-one name="area" column="area" not-null="true" />      <!-- 2 -->
+      <many-to-one name="departamento" column="departamento" not-null="true" />
+    </class>
+</hibernate-mapping>

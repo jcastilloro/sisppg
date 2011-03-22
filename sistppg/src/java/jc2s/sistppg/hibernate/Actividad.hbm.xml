@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.Actividad" table="ACTIVIDAD">
+      <!-- 0 -->
+      <id name="idActividad" column="idActividad">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="descripcion" column="descripcion" type="text" not-null="true"/>
+      <!-- 2 -->
+      <many-to-one name="etapa" column="etapa" not-null="true" />      <!-- 3 -->
+      <many-to-one name="primera_etapa" column="primera_etapa" />      <!-- 4 -->
+      <many-to-one name="segunda_etapa" column="segunda_etapa" />      <!-- 5 -->
+      <many-to-one name="tercera_etapa" column="tercera_etapa" />
+    </class>
+</hibernate-mapping>
