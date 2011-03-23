@@ -25,6 +25,11 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
+                            Nombre Proyecto: <bean:write name="ProyectoDeGrado" property="nombre"></bean:write> <br>
+                            Recursos Necesarios: <bean:write name="ProyectoDeGrado" property="recursos"></bean:write><br>
+                            Duración de Recursos: <bean:write name="ProyectoDeGrado" property="duracion_recursos"></bean:write><br>
+                            Puntos de Interes: <bean:write name="ProyectoDeGrado" property="puntos_de_interes"></bean:write><br><br><br>
+
                             ${empty msg ? "" : msg}
                          </div>
                     </div>

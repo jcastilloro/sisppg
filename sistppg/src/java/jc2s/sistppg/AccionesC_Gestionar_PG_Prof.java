@@ -142,7 +142,59 @@ public class AccionesC_Gestionar_PG_Prof extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Inscripcion_PG fF_Inscripcion_PG = (F_Inscripcion_PG)form;
+            // Mi codigo
+            Profesor prof = (Profesor) request.getSession().getAttribute("Profesor");
+            ProyectoDeGrado pg = new ProyectoDeGrado();
+
+            F_Inscripcion_PG fF_Inscripcion_PG = (F_Inscripcion_PG)form;            
+
+            Boolean formOK = true;
+
+            pg.setProfesor(prof);
+            //verifico nombre
+            if (formOK && !fF_Inscripcion_PG.getNombre().equals(""))
+                pg.setNombre(fF_Inscripcion_PG.getNombre());
+             else
+                formOK = false;
+
+            //verifico recursos
+            if (formOK && !fF_Inscripcion_PG.getRecursos().equals(""))
+                pg.setRecursos(fF_Inscripcion_PG.getRecursos());
+             else
+                formOK = false;
+
+            //verifico duracion
+            if (formOK && !fF_Inscripcion_PG.getDuracion_recursos().equals(""))
+                pg.setDuracion_recursos(fF_Inscripcion_PG.getDuracion_recursos());
+             else
+                formOK = false;
+
+            //verifico puntos de interes
+            if (formOK && !fF_Inscripcion_PG.getPuntos_de_interes().equals("")) {
+                pg.setPuntos_de_interes(fF_Inscripcion_PG.getPuntos_de_interes());
+            } else {
+                formOK = false;
+            }
+
+            if (formOK) {
+                // Guardo pg momentaneamente en la sesión
+                request.getSession().setAttribute("ProyectoDeGrado", pg);
+                salida = SALIDA_1;
+            } else {
+                salida = SALIDA_0;
+            }
+
+            // De hecho todo esto se puede hacer al final!!
+            Proyecto pr = new Proyecto();
+            java.util.Date today = new java.util.Date();
+            pr.setCreated_at(new java.sql.Timestamp(today.getTime()));
+
+            pg.setProyecto(pr);
+
+            s.save(pr); // este save no deberia ir hasta q se cree del todo
+                        // deberia guardarse en la sesion como lo demas
+            //Mi codigo
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -192,6 +244,12 @@ public class AccionesC_Gestionar_PG_Prof extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //mi codigo
+
+            // OK este formulario parece que NO es debe ser un formulario
+            // que tenga un dropdown menu con las areas para asignarle a un pg
+            F_Area fF_Area = (F_Area)form;
+            //mi codigo
             tr.commit();
 
         } catch (Exception ex) {

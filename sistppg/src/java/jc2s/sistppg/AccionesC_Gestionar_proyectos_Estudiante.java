@@ -55,22 +55,23 @@ public class AccionesC_Gestionar_proyectos_Estudiante extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             //micodigo
-            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-            // Tabla esta mala!!! el usbid tiene que ser un varchar!!!!
-           // List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante= :var").setString("var",u.getUsbid()).list();
 
-            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto").list();
+            Estudiante e = (Estudiante) request.getSession().getAttribute("Estudiante");
+
+            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante= :var").setLong("var", e.getId()).list();
+
             request.getSession().setAttribute("EstudianteRealizaProyecto", proyectos);
-            if (!proyectos.isEmpty()){
+            if (!proyectos.isEmpty()) {
 
                 // cambiar por un for para hacerlo por cada proyecto
-                Proyecto id_proy = proyectos.get(0).getProyecto();
-                List<ProyectoDeGrado> pg = s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var",id_proy.getId_proyecto()).list();
+                Proyecto proy = proyectos.get(0).getProyecto();
+                List<ProyectoDeGrado> pg = s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var", proy.getId_proyecto()).list();
 
-                if(!pg.isEmpty()){ // Es proyecto de grado
+                if (!pg.isEmpty()) { // Es proyecto de grado
                     request.getSession().setAttribute("ProyectoDeGrado", pg);
                 } else { // Puede ser pasantia
-                         // hacer consulta pasantía y ver si la lista es vacía o no
+                    // si no es proyecto de grado DEBE ser ajuro pasantía, si no es un ERROR!
+                    List<Pasantia> pasantia = s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getId_proyecto()).list();
                 }
             }
 

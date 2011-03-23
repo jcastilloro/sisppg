@@ -98,11 +98,15 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
             Usuario u = (Usuario) s.createQuery("from Usuario where usbid= :var").setString("var", usbid).uniqueResult();
 
             if(u!=null){
-                if(u.getTipo_actor().equals("estudiante"))
+                if(u.getTipo_actor().equals("estudiante")){
                     salida=SALIDA_1;
-                else if(u.getTipo_actor().equals("profesor"))
+                    Estudiante e = (Estudiante) s.createQuery("from Estudiante where usbid= :var").setString("var", usbid).uniqueResult();
+                    request.getSession().setAttribute("Estudiante", e);
+                } else if (u.getTipo_actor().equals("profesor")){
                     salida=SALIDA_2;
-
+                    Profesor prof = (Profesor) s.createQuery("from Profesor where usbid= :var").setString("var", usbid).uniqueResult();
+                    request.getSession().setAttribute("Profesor", prof);
+                }
                 request.getSession().setAttribute("usuario", u);
             }
             //micodigo
