@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,10 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+             List<Departamento> d = s.createQuery("from Departamento").list();
+
+            request.setAttribute("L_Departamentos", d);
             tr.commit();
 
         } catch (Exception ex) {
@@ -99,6 +104,87 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             F_Perfil_Profesor fF_Perfil_Profesor = (F_Perfil_Profesor)form;
+
+            //mi codigo
+            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+            List<Profesor> lp = s.createQuery("from Profesor where usbid= :var").setString("var",u.getUsbid()).list();
+
+            Profesor p;
+            if(lp.isEmpty()){
+                p = new Profesor();
+
+                p.setUsbid(u.getUsbid());
+
+                Boolean formOK = true;
+
+                //verifico nombre
+                if(formOK && !fF_Perfil_Profesor.getNombre().equals(""))
+                    p.setNombre(fF_Perfil_Profesor.getNombre());
+                else
+                    formOK=false;
+                //verifico apellido
+                if(formOK && !fF_Perfil_Profesor.getApellido().equals(""))
+                    p.setApellido(fF_Perfil_Profesor.getApellido());
+                else
+                    formOK=false;
+                //verifico cedula
+                if(formOK && !fF_Perfil_Profesor.getCedula().equals(""))
+                    p.setCedula(fF_Perfil_Profesor.getCedula());
+                else
+                    formOK=false;
+
+                //verifico email
+                if(formOK && !fF_Perfil_Profesor.getEmail().equals(""))
+                    p.setEmail(fF_Perfil_Profesor.getEmail());
+                else
+                    formOK=false;
+
+                //verifico telefono
+
+                int idDepartamento = Integer.parseInt(fF_Perfil_Profesor.getDepartamento());
+                Departamento c = (Departamento) s.createQuery("from Departamento where idDepartamento = :var").setInteger("var",idDepartamento).uniqueResult();
+                if(c!=null)
+                    p.setDepartamento(c);
+
+                if(formOK){
+    //                e.setUsbid(u.getUsbid());
+                    s.save(p);
+                    request.getSession().setAttribute("Profesor", p);
+                    salida=SALIDA_1;
+                }
+            }else{
+                p = lp.get(0);
+
+                p.setUsbid(u.getUsbid());
+
+                //verifico nombre
+                if(!fF_Perfil_Profesor.getNombre().equals(""))
+                    p.setNombre(fF_Perfil_Profesor.getNombre());
+
+                //verifico apellido
+                if(!fF_Perfil_Profesor.getApellido().equals(""))
+                    p.setApellido(fF_Perfil_Profesor.getApellido());
+
+                //verifico cedula
+                if(!fF_Perfil_Profesor.getCedula().equals(""))
+                    p.setCedula(fF_Perfil_Profesor.getCedula());
+
+                //verifico email
+                if(!fF_Perfil_Profesor.getEmail().equals(""))
+                    p.setEmail(fF_Perfil_Profesor.getEmail());
+
+
+                int idDepartamento = Integer.parseInt(fF_Perfil_Profesor.getDepartamento());
+                Departamento c = (Departamento) s.createQuery("from Departamento where idDepartamento = :var").setInteger("var",idDepartamento).uniqueResult();
+                p.setDepartamento(c);
+                s.save(p);
+                request.getSession().setAttribute("Profesor", p);
+                salida=SALIDA_1;
+            }
+
+
+            //mi codigo
+
             tr.commit();
 
         } catch (Exception ex) {

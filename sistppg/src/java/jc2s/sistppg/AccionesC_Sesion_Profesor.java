@@ -42,7 +42,7 @@ public class AccionesC_Sesion_Profesor extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"A_prep_crear_perfil_profesor", "V_Sesion_Profesor", };
+        final String[] SALIDAS = {"V_Sesion_Profesor", "A_prep_crear_perfil_profesor", };
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
 
@@ -54,6 +54,19 @@ public class AccionesC_Sesion_Profesor extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+            //mi codigo
+            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+            Profesor p = (Profesor) s.createQuery("from Profesor where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
+
+            if(p!=null)
+                salida=SALIDA_0;
+            else
+                salida=SALIDA_1;
+            //micodigo
+
+
+
             tr.commit();
 
         } catch (Exception ex) {
