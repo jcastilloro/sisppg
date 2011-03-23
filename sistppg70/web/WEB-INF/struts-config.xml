@@ -231,23 +231,23 @@
         <forward name="A_solicitar_pasante" path="/A_solicitar_pasante.do"/>
         <forward name="A_eliminar_solicitud" path="/A_eliminar_solicitud.do"/>
 
-        <!-- C_Inicio_Sesion_T_industrial -->
+         <!-- C_Inicio_Sesion_T_industrial -->
 
         <forward name="A_prep_inicio_sesion_t_industrial" path="/A_prep_inicio_sesion_t_industrial.do"/>
         <forward name="V_inicio_sesion_t_industrial" path="/c_inicio_sesion_t_industrial/V_inicio_sesion_t_industrial.jsp"/>
         <forward name="A_inicio_sesion_t_industrial" path="/A_inicio_sesion_t_industrial.do"/>
         <forward name="V_sesion_tutor_i" path="/c_inicio_sesion_t_industrial/V_sesion_tutor_i.jsp"/>
         <forward name="A_modificar_perfil" path="/A_modificar_perfil.do"/>
-        <forward name="V_gestionar_pasantias_TI" path="/c_inicio_sesion_t_industrial/V_gestionar_pasantias_TI.jsp"/>
-        <forward name="A_prep_gestionar_pasatias_TI" path="/A_prep_gestionar_pasatias_TI.do"/>
         <forward name="V_modificar_perfil_TI" path="/c_inicio_sesion_t_industrial/V_modificar_perfil_TI.jsp"/>
         <forward name="A_actualizar_perfil_TI" path="/A_actualizar_perfil_TI.do"/>
+        <forward name="A_prep_gestionar_pasatias_TI" path="/A_prep_gestionar_pasatias_TI.do"/>
+        <forward name="V_gestionar_pasantias_TI" path="/c_inicio_sesion_t_industrial/V_gestionar_pasantias_TI.jsp"/>
 
-        <!-- C_Inicio_Sesion_T_industrial -->
+        <!-- C_Sesion_CCTDS -->
 
         <forward name="A_prep_sesion_ccds" path="/A_prep_sesion_ccds.do"/>
-        <forward name="V_sesion_cctds" path="/c_inicio_sesion_t_industrial/V_sesion_cctds.jsp"/>
-
+        <forward name="V_sesion_cctds" path="/c_sesion_cctds/V_sesion_cctds.jsp"/>
+        
         <!-- C_Pasantias_CCTDS -->
 
         <forward name="A_prep_gestionar_pasantias_cctds" path="/A_prep_gestionar_pasantias_cctds.do"/>
@@ -568,7 +568,7 @@
            type="jc2s.sistppg.AccionesC_Solicitar_pasantes"/>
 
 
-        <!-- C_Inicio_Sesion_T_industrial -->
+         <!-- C_Inicio_Sesion_T_industrial -->
         <action path="/A_prep_inicio_sesion_t_industrial" parameter="A_prep_inicio_sesion_t_industrial"
            type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"/>
         <action path="/A_inicio_sesion_t_industrial" parameter="A_inicio_sesion_t_industrial"
@@ -581,18 +581,19 @@
            input="/C_Inicio_Sesion_T_industrial/V_sesion_tutor_i.jsp"
            name="F_Tutor_Industrial"
            scope="session"/>
-        <action path="/A_prep_gestionar_pasatias_TI" parameter="A_prep_gestionar_pasatias_TI"
-           type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"/>
         <action path="/A_actualizar_perfil_TI" parameter="A_actualizar_perfil_TI"
            type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"
            input="/C_Inicio_Sesion_T_industrial/V_modificar_perfil_TI.jsp"
            name="F_Tutor_Industrial"
            scope="session"/>
-
-
-        <!-- C_Inicio_Sesion_T_industrial -->
-        <action path="/A_prep_sesion_ccds" parameter="A_prep_sesion_ccds"
+        <action path="/A_prep_gestionar_pasatias_TI" parameter="A_prep_gestionar_pasatias_TI"
            type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"/>
+
+
+        <!-- C_Sesion_CCTDS -->
+        <action path="/A_prep_sesion_ccds" parameter="A_prep_sesion_ccds"
+           type="jc2s.sistppg.AccionesC_Sesion_CCTDS"/>
+
 
 
         <!-- C_Pasantias_CCTDS -->
