@@ -159,30 +159,15 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
                 }
 
-                 SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd//MM//yyyy");
-                Date fecha = null;
-                try {
-
-                  fecha = formatoDelTexto.parse("12//12//1988");
-
-                } catch (ParseException ex) {
-
-                  ex.printStackTrace();
-
+                //verifico fecha
+                if (Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", fperfil.getFecha_nacimiento())) {
+                    SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
+                    e.setFecha_nacimiento(fecha);
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Fecha Válida");
                 }
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println(fperfil.getFecha_nacimiento());
-                e.setFecha_nacimiento(fecha);
 
 
                 if (salida != SALIDA_0) {
@@ -203,7 +188,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 
                 e.setUsbid(u.getUsbid());
 
-               //verifico nombre
+                //verifico nombre
                 if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
                     e.setNombre(fperfil.getNombre());
                 } else {
@@ -241,30 +226,17 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
                 }
 
-                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("E M dd 00:00:00 zzz yyyy");
-                Date fecha = null;
-                try {
-
-                  fecha = formatoDelTexto.parse("12//12//1988");
-
-                } catch (ParseException ex) {
-
-                  ex.printStackTrace();
-
+                //verifico fecha
+                if (Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", fperfil.getFecha_nacimiento())) {
+                    SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
+                    e.setFecha_nacimiento(fecha);
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Fecha Válida");
                 }
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println(fperfil.getFecha_nacimiento());
-                e.setFecha_nacimiento(fecha);
+
+
 
 
                 if (salida != SALIDA_0) {
@@ -286,9 +258,9 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 //          request.setAttribute("msg",
 //            getResources(request).getMessage("A_guardar_perfil_prof.msg0"));
                 List<Carrera> c = s.createQuery("from Carrera").list();
-            Estudiante ee = (Estudiante) s.createQuery("from Estudiante where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
-            request.setAttribute("L_Carreras", c);
-            request.setAttribute("Datos", ee);
+                Estudiante ee = (Estudiante) s.createQuery("from Estudiante where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
+                request.setAttribute("L_Carreras", c);
+                request.setAttribute("Datos", ee);
             }
 
             //mi codigo
