@@ -1,9 +1,13 @@
 package jc2s.sistppg;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.regex.*;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -19,30 +23,29 @@ import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
 
-
 /**
- * 
+ *
  */
 public class AccionesC_Perfil_Estudiante extends CohesionAction {
-    
-/**
+
+    /**
      * Called by Struts for the execution of action A_prep_crear_perfil_estudiante.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
-    public ActionForward A_prep_crear_perfil_estudiante(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_prep_crear_perfil_estudiante(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_perfil_est", };
+        final String[] SALIDAS = {"V_perfil_est",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -51,8 +54,9 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
         try {
             //micodigo
             List<Carrera> c = s.createQuery("from Carrera").list();
-
-            request.setAttribute("L_Carrera", c);
+            Estudiante e = new Estudiante();
+            request.setAttribute("L_Carreras", c);
+            request.setAttribute("Datos", e);
             //micodigo
             tr.commit();
 
@@ -60,134 +64,232 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
-        }
-            if (salida == 0) {
-                new CohesionActor(CohesionActor.ACTOR_estudiante)
-                        .setMe(request);
+            try {
+                s.close();
+            } catch (Exception ex2) {
             }
-        if (salida==0) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_prep_crear_perfil_estudiante.msg0"));
+        }
+        if (salida == 0) {
+            new CohesionActor(CohesionActor.ACTOR_estudiante).setMe(request);
+        }
+        if (salida == 0) {
+            request.setAttribute("msg",
+                    getResources(request).getMessage("A_prep_crear_perfil_estudiante.msg0"));
         }
 
         return mapping.findForward(SALIDAS[salida]);
     }
 
-/**
+    /**
      * Called by Struts for the execution of action A_guardar_perfil.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
-    public ActionForward A_guardar_perfil(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_guardar_perfil(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_perfil_est", "A_Prep_Inicio_Sesion_Est", };
+        final String[] SALIDAS = {"V_perfil_est", "A_Prep_Inicio_Sesion_Est",};
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
 
-        int salida = SALIDA_0;
+        int salida = SALIDA_1;
 //Checking for actors estudiante
-            if (!CohesionActor.checkActor(request, 4)) {
-                return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-            }
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Perfil_Estudiante fperfil = (F_Perfil_Estudiante)form;
+            F_Perfil_Estudiante fperfil = (F_Perfil_Estudiante) form;
             //mi codigo
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-            List<Estudiante> lu = s.createQuery("from Estudiante where usbid= :var").setString("var",u.getUsbid()).list();
+            List<Estudiante> lu = s.createQuery("from Estudiante where usbid= :var").setString("var", u.getUsbid()).list();
 
             Estudiante e;
-            if(lu.isEmpty()){
+            if (lu.isEmpty()) {
                 e = new Estudiante();
 
                 e.setUsbid(u.getUsbid());
 
-                Boolean formOK = true;
 
                 //verifico nombre
-                if(formOK && !fperfil.getNombre().equals(""))
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
                     e.setNombre(fperfil.getNombre());
-                else
-                    formOK=false;
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                }
                 //verifico apellido
-                if(formOK && !fperfil.getApellido().equals(""))
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
                     e.setApellido(fperfil.getApellido());
-                else
-                    formOK=false;
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
+                }
                 //verifico cedula
-                if(formOK && !fperfil.getCedula().equals(""))
+                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
                     e.setCedula(Integer.parseInt(fperfil.getCedula()));
-                else
-                    formOK=false;
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
+                }
 
                 //verifico email
-                if(formOK && !fperfil.getEmail().equals(""))
+                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fperfil.getEmail())) {
                     e.setEmail(fperfil.getEmail());
-                else
-                    formOK=false;
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
+                }
 
                 //verifico telefono
-                if(formOK && !fperfil.getTelefono().equals(""))
+                if (Pattern.matches("(\\d){0,4}-?\\d{7}", fperfil.getTelefono())) {
                     e.setTelefono(fperfil.getTelefono());
-                else
-                    formOK=false;
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
+                }
 
-                int idCarrera = Integer.parseInt(fperfil.getCarrera());
-                Carrera c = (Carrera) s.createQuery("from Carrera where idCarrera = :var").setInteger("var",idCarrera).uniqueResult();
-                if(c!=null)
-                    e.setCarrera(c);
+                 SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd//MM//yyyy");
+                Date fecha = null;
+                try {
 
-                if(formOK){
-    //                e.setUsbid(u.getUsbid());
+                  fecha = formatoDelTexto.parse("12//12//1988");
+
+                } catch (ParseException ex) {
+
+                  ex.printStackTrace();
+
+                }
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(fperfil.getFecha_nacimiento());
+                e.setFecha_nacimiento(fecha);
+
+
+                if (salida != SALIDA_0) {
+                    int idCarrera = Integer.parseInt(fperfil.getCarrera());
+                    Carrera c = (Carrera) s.createQuery("from Carrera where idCarrera = :var").setInteger("var", idCarrera).uniqueResult();
+                    if (c != null) {
+                        e.setCarrera(c);
+                    }
+
+
+                    //                e.setUsbid(u.getUsbid());
                     s.save(e);
                     request.getSession().setAttribute("Estudiante", e);
-                    salida=SALIDA_1;
+                    salida = SALIDA_1;
                 }
-            }else{
+            } else {
                 e = lu.get(0);
 
                 e.setUsbid(u.getUsbid());
 
-                //verifico nombre
-                if(!fperfil.getNombre().equals(""))
+               //verifico nombre
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
                     e.setNombre(fperfil.getNombre());
-
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                }
                 //verifico apellido
-                if(!fperfil.getApellido().equals(""))
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
                     e.setApellido(fperfil.getApellido());
-
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
+                }
                 //verifico cedula
-                if(!fperfil.getCedula().equals(""))
+                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
                     e.setCedula(Integer.parseInt(fperfil.getCedula()));
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
+                }
 
                 //verifico email
-                if(!fperfil.getEmail().equals(""))
+                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fperfil.getEmail())) {
                     e.setEmail(fperfil.getEmail());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
+                }
 
                 //verifico telefono
-                if(!fperfil.getTelefono().equals(""))
+                if (Pattern.matches("(\\d){0,4}-?\\d{7}", fperfil.getTelefono())) {
                     e.setTelefono(fperfil.getTelefono());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
+                }
 
-                int idCarrera = Integer.parseInt(fperfil.getCarrera());
-                Carrera c = (Carrera) s.createQuery("from Carrera where idCarrera = :var").setInteger("var",idCarrera).uniqueResult();
-                e.setCarrera(c);
-                s.save(e);
-                request.getSession().setAttribute("Estudiante", e);
-                salida=SALIDA_1;
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("E M dd 00:00:00 zzz yyyy");
+                Date fecha = null;
+                try {
+
+                  fecha = formatoDelTexto.parse("12//12//1988");
+
+                } catch (ParseException ex) {
+
+                  ex.printStackTrace();
+
+                }
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(fperfil.getFecha_nacimiento());
+                e.setFecha_nacimiento(fecha);
+
+
+                if (salida != SALIDA_0) {
+                    int idCarrera = Integer.parseInt(fperfil.getCarrera());
+                    Carrera c = (Carrera) s.createQuery("from Carrera where idCarrera = :var").setInteger("var", idCarrera).uniqueResult();
+                    if (c != null) {
+                        e.setCarrera(c);
+                    }
+
+
+                    //                e.setUsbid(u.getUsbid());
+                    s.update(e);
+                    request.getSession().setAttribute("Estudiante", e);
+                    salida = SALIDA_1;
+                }
             }
 
+            if (salida == 0) {
+//          request.setAttribute("msg",
+//            getResources(request).getMessage("A_guardar_perfil_prof.msg0"));
+                List<Carrera> c = s.createQuery("from Carrera").list();
+            Estudiante ee = (Estudiante) s.createQuery("from Estudiante where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
+            request.setAttribute("L_Carreras", c);
+            request.setAttribute("Datos", ee);
+            }
 
             //mi codigo
             tr.commit();
@@ -196,48 +298,55 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
         }
-        if (salida==0) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_guardar_perfil.msg0"));
+        if (salida == 1) {
+            request.setAttribute("msg",
+                    getResources(request).getMessage("A_guardar_perfil_prof.msg1"));
         }
 
         return mapping.findForward(SALIDAS[salida]);
     }
 
-/**
+    /**
      * Called by Struts for the execution of action A_prep_modif_perfil_estudiante.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
-    public ActionForward A_prep_modif_perfil_estudiante(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_prep_modif_perfil_estudiante(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_perfil_est", };
+        final String[] SALIDAS = {"V_perfil_est",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-            if (!CohesionActor.checkActor(request, 4)) {
-                return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-            }
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            //micodigo
-            List<Carrera> c = s.createQuery("from Carrera").list();
 
+            //micodigo
+
+            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+            List<Carrera> c = s.createQuery("from Carrera").list();
+            Estudiante e = (Estudiante) s.createQuery("from Estudiante where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
             request.setAttribute("L_Carreras", c);
+            request.setAttribute("Datos", e);
             //micodigo
             tr.commit();
 
@@ -245,16 +354,16 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
         }
-        if (salida==0) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_prep_modif_perfil_estudiante.msg0"));
+        if (salida == 0) {
+            request.setAttribute("msg",
+                    getResources(request).getMessage("A_prep_modif_perfil_estudiante.msg0"));
         }
 
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
-
 }
