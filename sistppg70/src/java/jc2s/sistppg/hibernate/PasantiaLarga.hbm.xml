@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.PasantiaLarga" table="PASANTIALARGA">
+      <!-- 0 -->
+      <id name="idPasantiaLarga" column="idPasantiaLarga">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <many-to-one name="periodo" column="periodo" not-null="true" />      <!-- 2 -->
+      <many-to-one name="pasantia" column="pasantia" not-null="true" unique="true" />
+    </class>
+</hibernate-mapping>

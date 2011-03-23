@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.JuradoProyecto" table="JURADOPROYECTO">
+      <!-- 0 -->
+      <id name="idJuradoProyecto" column="idJuradoProyecto">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <many-to-one name="profesor" column="profesor" not-null="true" />      <!-- 2 -->
+      <many-to-one name="proyecto" column="proyecto" not-null="true" />
+    </class>
+</hibernate-mapping>

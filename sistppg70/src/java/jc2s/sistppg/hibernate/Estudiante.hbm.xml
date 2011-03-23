@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="jc2s.sistppg.hibernate.Estudiante" table="ESTUDIANTE">
+      <!-- 0 -->
+      <id name="idEstudiante" column="idEstudiante">
+        <generator class="native"/>
+      </id>
+
+      <!-- 1 -->
+      <property name="usbid" column="usbid" type="string" not-null="true" unique="true"/>
+      <!-- 2 -->
+      <many-to-one name="carrera" column="carrera" not-null="true" />      <!-- 3 -->
+      <property name="nombre" column="nombre" type="string" not-null="true"/>
+      <!-- 4 -->
+      <property name="apellido" column="apellido" type="string" not-null="true"/>
+      <!-- 5 -->
+      <property name="cedula" column="cedula" type="integer" not-null="true" unique="true"/>
+      <!-- 6 -->
+      <property name="email" column="email" type="string"/>
+      <!-- 7 -->
+      <property name="telefono" column="telefono" type="string" not-null="true"/>
+      <!-- 8 -->
+      <property name="fecha_nacimiento" column="fecha_nacimiento" type="date" not-null="true"/>
+      <!-- 9 -->
+      <property name="sexo" column="sexo" type="string" not-null="true"/>
+      <!-- 10 -->
+      <property name="nacionalidad" column="nacionalidad" type="string" not-null="true"/>
+      <!-- 11 -->
+      <property name="direccion" column="direccion" type="text" not-null="true"/>
+      <!-- 12 -->
+      <property name="indice" column="indice" type="double" not-null="true"/>
+
+    </class>
+</hibernate-mapping>
