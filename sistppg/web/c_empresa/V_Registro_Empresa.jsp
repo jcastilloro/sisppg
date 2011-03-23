@@ -61,12 +61,14 @@
                             ${empty msg ? "" : msg}
                 <div class="box1840529"><html:form
                   action="/A_Registrar_Empresa.do" method="post">
-                  <p id="1840531_C"><label for="1840531"><bean:message key="F_Registro_Empresa.label0"/><%-- Login: --%></label><html:text styleId="1840531" property="login" size="30"/></p>
-                  <p id="1840534_C"><label for="1840534"><bean:message key="F_Registro_Empresa.label1"/><%-- Password: --%></label><html:password styleId="1840534" property="password" size="30"/></p>
-                  <p id="1840537_C"><label for="1840537"><bean:message key="F_Registro_Empresa.label2"/><%-- Confirmar Password: --%></label><html:password styleId="1840537" property="confirmar_password" size="30"/></p>
-                  <p id="1840540_C"><label for="1840540"><bean:message key="F_Registro_Empresa.label3"/><%-- Nombre Empresa: --%></label><html:text styleId="1840540" property="nombre" size="30"/></p>
-                  <p id="1840543_C"><label for="1840543"><bean:message key="F_Registro_Empresa.label4"/><%-- RIF: --%></label><html:text styleId="1840543" property="rif" size="30"/></p>
-                  <p id="1840546_C"><label for="1840546"><bean:message key="F_Registro_Empresa.label5"/><%-- Telefono: --%></label><html:text styleId="1840546" property="telefono" size="30"/></p>
+                    <table border="0">
+                  <tr><td><p id="1840531_C"><label for="1840531"><bean:message key="F_Registro_Empresa.label0"/><%-- Login: --%></label></td><td><html:text styleId="1840531" property="login" size="30"/></td></tr></p>
+                  <tr><td><p id="1840534_C"><label for="1840534"><bean:message key="F_Registro_Empresa.label1"/><%-- Password: --%></label></td><td><html:password styleId="1840534" property="password" size="30"/></td></tr></p>
+                  <tr><td><p id="1840537_C"><label for="1840537"><bean:message key="F_Registro_Empresa.label2"/><%-- Confirmar Password: --%></label></td><td><html:password styleId="1840537" property="confirmar_password" size="30"/></td></tr></p>
+                  <tr><td><p id="1840540_C"><label for="1840540"><bean:message key="F_Registro_Empresa.label3"/><%-- Nombre Empresa: --%></label></td><td><html:text styleId="1840540" property="nombre" size="30"/></td></tr></p>
+                  <tr><td><p id="1840543_C"><label for="1840543"><bean:message key="F_Registro_Empresa.label4"/><%-- RIF: --%></label></td><td><html:text styleId="1840543" property="rif" size="30"/></td></tr></p>
+                  <tr><td><p id="1840546_C"><label for="1840546"><bean:message key="F_Registro_Empresa.label5"/><%-- Telefono: --%></label></td><td><html:text styleId="1840546" property="telefono" size="30"/></td></tr></p>
+                  </table>
                   <p id="1840550_C"><label for="1840550"><bean:message key="F_Registro_Empresa.label6"/><%-- Direccion: --%></label><html:textarea styleId="1840550" property="direccion" cols="60" rows="10"></html:textarea></p>
                   <p id="1840557_C"><label for="1840557"><bean:message key="F_Registro_Empresa.label8"/><%-- Ciudad: --%></label>                  <html:select styleId="1840557" property="ciudad">
                         <logic:iterate id="ciudad" collection="${empty L_Ciudades ? _vacio : L_Ciudades}">
@@ -76,8 +78,9 @@
 
                   <br>
 
-                  <html:submit styleClass="button"><bean:message key="V_Registro_Empresa.label0"/><%-- RegistrarEmpresa --%></html:submit>
-                </html:form></div>
+                  <center><html:submit styleClass="button"><bean:message key="V_Registro_Empresa.label0"/><%-- RegistrarEmpresa --%></html:submit></center>
+                <center><bean:message key="V_Obligatorios.msg0"/></center>
+                    </html:form></div>
 
                          </div>
                     </div>

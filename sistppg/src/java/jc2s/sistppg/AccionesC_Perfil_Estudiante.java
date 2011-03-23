@@ -119,21 +119,21 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 
 
                 //verifico nombre
-                if (Pattern.matches("[a-zA-Z]+", fperfil.getNombre())) {
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
                     e.setNombre(fperfil.getNombre());
                 } else {
                     salida = SALIDA_0;
                     request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
                 }
                 //verifico apellido
-                if (Pattern.matches("[a-zA-Z]+", fperfil.getApellido())) {
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
                     e.setApellido(fperfil.getApellido());
                 } else {
                     salida = SALIDA_0;
                     request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
                 }
                 //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?[0-9]+", fperfil.getCedula())) {
+                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
                     e.setCedula(Integer.parseInt(fperfil.getCedula()));
                 } else {
                     salida = SALIDA_0;
@@ -178,21 +178,21 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                 e.setUsbid(u.getUsbid());
 
                //verifico nombre
-                if (Pattern.matches("[a-zA-Z]+", fperfil.getNombre())) {
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
                     e.setNombre(fperfil.getNombre());
                 } else {
                     salida = SALIDA_0;
                     request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
                 }
                 //verifico apellido
-                if (Pattern.matches("[a-zA-Z]+", fperfil.getApellido())) {
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
                     e.setApellido(fperfil.getApellido());
                 } else {
                     salida = SALIDA_0;
                     request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
                 }
                 //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?[0-9]+", fperfil.getCedula())) {
+                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
                     e.setCedula(Integer.parseInt(fperfil.getCedula()));
                 } else {
                     salida = SALIDA_0;

@@ -52,20 +52,22 @@
                             ${empty msg ? "" : msg}
                             <div class="box1840396"><html:form
                                     action="/A_guardar_perfil.do" method="post">
-                                    <p id="1840398_C"><label for="1840398"><bean:message key="F_Perfil_Estudiante.label0"/><%-- Nombre: --%></label><html:text styleId="1840398" property="nombre" size="30" value="${Datos.nombre}"/></p>
-                                    <p id="1840402_C"><label for="1840402"><bean:message key="F_Perfil_Estudiante.label1"/><%-- Apellido: --%></label><html:text styleId="1840402" property="apellido" size="30" value="${Datos.apellido}"/></p>
-                                    <p id="1840405_C"><label for="1840405"><bean:message key="F_Perfil_Estudiante.label2"/><%-- Cedula: --%></label><html:text styleId="1840405" property="cedula" size="30" value="${Datos.cedula}"/></p>
-                                    <p id="1840408_C"><label for="1840408"><bean:message key="F_Perfil_Estudiante.label3"/><%-- Email: --%></label><html:text styleId="1840408" property="email" size="30" value="${Datos.email}"/></p>
-                                    <p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}"/></p>
-                                    <p id="1843493_C"><label for="1843493"><bean:message key="F_Perfil_Estudiante.label5"/>
-                                            <html:select styleId="1843493" property="carrera">
-                                                <logic:iterate id="carrera" collection="${empty L_Carreras ? _vacio : L_Carreras}">
-                                                    <option value="${carrera.idCarrera}">${carrera.nombre}</option>
-                                                </logic:iterate>
-                                            </html:select>
+                                    <table border="0">
+                                        <tr><td><p id="1840398_C"><label for="1840398"><bean:message key="F_Perfil_Estudiante.label0"/><%-- Nombre: --%></label></td><td><html:text styleId="1840398" property="nombre" size="30" value="${Datos.nombre}"/></td></tr></p>
+                                        <tr><td><p id="1840402_C"><label for="1840402"><bean:message key="F_Perfil_Estudiante.label1"/><%-- Apellido: --%></label></td><td><html:text styleId="1840402" property="apellido" size="30" value="${Datos.apellido}"/></td></tr></p>
+                                        <tr><td><p id="1840405_C"><label for="1840405"><bean:message key="F_Perfil_Estudiante.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840405" property="cedula" size="30" value="${Datos.cedula}"/></td></tr></p>
+                                        <tr><td><p id="1840408_C"><label for="1840408"><bean:message key="F_Perfil_Estudiante.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840408" property="email" size="30" value="${Datos.email}"/></td></tr></p>
+                                        <tr><td><p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label></td><td><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}"/></td></tr></p>
+                                        <tr><td><p id="1843493_C"><label for="1843493"><bean:message key="F_Perfil_Estudiante.label5"/></td><td>
+                                                <html:select styleId="1843493" property="carrera">
+                                                    <logic:iterate id="carrera" collection="${empty L_Carreras ? _vacio : L_Carreras}">
+                                                        <option value="${carrera.idCarrera}">${carrera.nombre}</option>
+                                                    </logic:iterate>
+                                                </html:select></td></tr>
+                                    </table>
                                     </p>
                                     <html:submit styleClass="button"><bean:message key="V_perfil_est.label0"/><%-- CrearPerfilEst --%></html:submit>
-                                    <center><bean:message key="V_Obligatorios.msg0"/></center>
+                                    <p><bean:message key="V_Obligatorios.msg0"/>
                                 </html:form></div>
 
                         </div>
