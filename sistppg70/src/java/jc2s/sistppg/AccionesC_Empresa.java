@@ -401,6 +401,43 @@ public class AccionesC_Empresa extends CohesionAction {
                 request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
             }
 
+            String profesion = findustrial.getProfesion();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", profesion)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Profesión Válida");
+            }
+
+            String direccion = findustrial.getDireccion();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", direccion)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Dirección Válida");
+            }
+
+            String departamento = findustrial.getDepartamento();
+            if (!Pattern.matches(".+", departamento)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Departamento Válido");
+            }
+
+            String cargo = findustrial.getCargo();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", cargo)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Cargo Válido");
+            }
+
+            String login = findustrial.getLogin();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", login)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Login Válido");
+            }
+
+            String password = findustrial.getPassword();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", password)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Password Válido");
+            }
+
+
             if (salida == SALIDA_1) {
 
                 TutorIndustrial ti = new TutorIndustrial();
@@ -409,6 +446,12 @@ public class AccionesC_Empresa extends CohesionAction {
                 ti.setEmpresa((Empresa) request.getSession().getAttribute("empresa"));
                 ti.setNombre(nombre);
                 ti.setTelefono(telefono);
+                ti.setProfesion(profesion);
+                ti.setDireccion(direccion);
+                ti.setDepartamento(departamento);
+                ti.setCargo(cargo);
+                ti.setLogin(login);
+                ti.setPassword(password);
 
                 s.save(ti);
                 findustrial.reset(mapping, request);
