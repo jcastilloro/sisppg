@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
@@ -28,6 +29,21 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <logic:empty name="Pasantias">
+                                <h1>¡Usted no tiene ninguna pasantía asociada!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="Pasantias">
+                                <h1>Usted tiene las siguientes pasantías asociadas: </h1>
+                                <table border="1">
+                                    <tr><th>Título</th><th>Resumen</th></tr>
+                                <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">                                       
+                                       <tr><td><html:link action="/A_prep_Consultar_Pasantia.do" paramName="pas">${pas.titulo}</html:link></td>
+                                        <td> ${pas.resumen} </td>
+                                    </tr>
+                                </logic:iterate>
+                                </table>
+                            </logic:notEmpty>
+                                
                          </div>
                     </div>
                     <div id="right"></div>

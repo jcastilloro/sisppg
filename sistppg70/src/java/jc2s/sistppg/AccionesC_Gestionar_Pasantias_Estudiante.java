@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,6 +51,36 @@ public class AccionesC_Gestionar_Pasantias_Estudiante extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //micodigo
+
+            Estudiante e = (Estudiante) request.getSession().getAttribute("Estudiante");
+
+            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante= :var").setLong("var", e.getId()).list();
+
+            // Debe haber una manera de crear esta lista sin hacer una consulta inecesaria!
+            List<Pasantia> pasantias = s.createQuery("from Pasantia").list();
+            pasantias.clear();
+
+            if (!proyectos.isEmpty()) {
+
+                EstudianteRealizaProyecto proy = new EstudianteRealizaProyecto  ();
+                Iterator it = proyectos.iterator();
+
+                while(it.hasNext()){
+                    proy = (EstudianteRealizaProyecto) it.next();
+
+                    Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getId()).uniqueResult();
+
+                    if (!pasantia.equals(null)) {
+                        pasantias.add(pasantia);
+                    }
+                }
+                request.getSession().setAttribute("Pasantias", pasantias);
+
+            }
+
+            //micodigo
+
             tr.commit();
 
         } catch (Exception ex) {

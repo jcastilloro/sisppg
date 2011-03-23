@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,15 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //mi codigo
+            // DEscabliar!
+       //     List<Pasantia> pasantias = (List<Pasantia>)request.getSession().getAttribute("Pasantias");
+       //     Pasantia pasantia = pasantias.get(0); // Cable agarra siempre la 1ra pasantia
+
+          //  EstatusPasantia status = (EstatusPasantia) s.createQuery("from EstatusPasantia where idEstatusPasantia= :var").setLong("var", pasantia.getEstatus().getId() ).uniqueResult();
+          //  request.getSession().setAttribute("EstatusPasantia", status);
+
+            //mi codigo
             tr.commit();
 
         } catch (Exception ex) {

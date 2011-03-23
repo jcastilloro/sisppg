@@ -1,6 +1,6 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
@@ -26,7 +26,17 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
-                         </div>
+
+                            <logic:empty name="EstudianteRealizaProyecto">
+                                <h1>¡Usted no está realizando ningun tipo de proyecto!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="EstudianteRealizaProyecto">
+                                <h1>Usted tiene los siguientes proyectos asociados: </h1>
+                                <logic:iterate id="proy" collection="${empty EstudianteRealizaProyecto ? _vacio : EstudianteRealizaProyecto}">
+                                    Proyecto: ${proy.proyecto.id_proyecto} <br>
+                                </logic:iterate>
+                            </logic:notEmpty>
+                        </div>
                     </div>
                     <div id="right"></div>
                     <div class="clearer"></div>
@@ -38,6 +48,6 @@
         </div>
         <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+
     </body>
 </html:html>

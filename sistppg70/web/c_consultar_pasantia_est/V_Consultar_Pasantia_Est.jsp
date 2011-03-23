@@ -26,6 +26,18 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <%-- Al descabliarlo hay que quitar el Iterate! Y usar el valor Id que es! --%>
+                            <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                <h1>${pas.titulo}</h1>
+                                <table>
+                                    <tr><th>Resumen:</th><td> ${pas.resumen} </td></tr>
+                                    <tr><th>Objetivos Generales:</th><td> ${pas.objetivos_generales} </td></tr>
+                            </logic:iterate>
+                     <%--       <logic:iterate id="status" collection="${empty EstatusPasantia ? _vacio : EstatusPasantia}">
+                                    <tr><th>Estatus:</th><td> ${status.estatus} </td></tr>
+                                </table>
+                            </logic:iterate> --%>
+                                </table>
                          </div>
                     </div>
                     <div id="right"></div>
