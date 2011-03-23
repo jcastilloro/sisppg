@@ -265,7 +265,7 @@ public class AccionesC_Empresa extends CohesionAction {
                 Empresa e = le.get(0);
                 if (e.getPassword().equals(fempresa.getPassword())) {
                     request.getSession().setAttribute("empresa", e);
-                    request.setAttribute("tutores", s.createQuery("from TutorIndustrial where empresa = :var").setLong("var", e.getId()).uniqueResult());
+//                    request.setAttribute("tutores", s.createQuery("from TutorIndustrial where empresa = :var").setLong("var", e.getId()).uniqueResult());
                     salida = SALIDA_1;
                     fempresa.reset(mapping, request);
                     request.setAttribute("L_Tutores", s.createQuery("from TutorIndustrial where empresa = :var").setLong("var", e.getId()).list());

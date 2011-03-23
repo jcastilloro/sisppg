@@ -227,7 +227,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 
 
                     //                e.setUsbid(u.getUsbid());
-                    s.save(e);
+                    s.update(e);
                     request.getSession().setAttribute("Estudiante", e);
                     salida = SALIDA_1;
                 }
