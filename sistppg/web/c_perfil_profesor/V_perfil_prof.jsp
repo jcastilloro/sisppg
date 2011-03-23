@@ -49,10 +49,10 @@
                             ${empty msg ? "" : msg}
                 <div class="box1840411"><html:form
                   action="/A_guardar_perfil_prof.do" method="post">
-                  <p id="1840413_C"><label for="1840413"><bean:message key="F_Perfil_Profesor.label0"/><%-- Nombre: --%></label><html:text styleId="1840413" property="nombre" size="30"/></p>
-                  <p id="1840416_C"><label for="1840416"><bean:message key="F_Perfil_Profesor.label1"/><%-- Apellido: --%></label><html:text styleId="1840416" property="apellido" size="30"/></p>
-                  <p id="1840419_C"><label for="1840419"><bean:message key="F_Perfil_Profesor.label2"/><%-- Cedula: --%></label><html:text styleId="1840419" property="cedula" size="30"/></p>
-                  <p id="1840423_C"><label for="1840423"><bean:message key="F_Perfil_Profesor.label3"/><%-- Email: --%></label><html:text styleId="1840423" property="email" size="30"/></p>
+                  <p id="1840413_C"><label for="1840413"><bean:message key="F_Perfil_Profesor.label0"/><%-- Nombre: --%></label><html:text styleId="1840413" property="nombre" size="30" value="${Datos.nombre}"/></p>
+                  <p id="1840416_C"><label for="1840416"><bean:message key="F_Perfil_Profesor.label1"/><%-- Apellido: --%></label><html:text styleId="1840416" property="apellido" size="30" value="${Datos.apellido}"/></p>
+                  <p id="1840419_C"><label for="1840419"><bean:message key="F_Perfil_Profesor.label2"/><%-- Cedula: --%></label><html:text styleId="1840419" property="cedula" size="30" value="${Datos.cedula}"/></p>
+                  <p id="1840423_C"><label for="1840423"><bean:message key="F_Perfil_Profesor.label3"/><%-- Email: --%></label><html:text styleId="1840423" property="email" size="30" value="${Datos.email}"/></p>
                   <p id="1840426_C"><label for="1840426"><bean:message key="F_Perfil_Profesor.label4"/><%-- Departamento: --%></label>
 
                   <html:select styleId="1840426" property="departamento">
@@ -62,7 +62,8 @@
                   </html:select>
                 </p>
                   <html:submit styleClass="button"><bean:message key="V_perfil_prof.label0"/><%-- Crear --%></html:submit>
-                </html:form></div>
+                <center><bean:message key="V_Obligatorios.msg0"/></center>
+                    </html:form></div>
 
                          </div>
                     </div>
