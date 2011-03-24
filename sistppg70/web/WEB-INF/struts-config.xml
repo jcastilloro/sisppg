@@ -25,6 +25,7 @@
         <form-bean name="F_Retiro_Pasantia" type="jc2s.sistppg.F_Retiro_Pasantia"/>
         <form-bean name="F_Solicitud_Pasante" type="jc2s.sistppg.F_Solicitud_Pasante"/>
         <form-bean name="F_Tutor_Industrial" type="jc2s.sistppg.F_Tutor_Industrial"/>
+        <form-bean name="F_Carrera" type="jc2s.sistppg.F_Carrera"/>
 
     </form-beans>
     
@@ -280,6 +281,20 @@
         <forward name="V_consultar_prorrogas_i" path="/c_gestionar_prorogas_cctds/V_consultar_prorrogas_i.jsp"/>
         <forward name="A_mostrar_prorroga" path="/A_mostrar_prorroga.do"/>
         <forward name="V_mostrar_prorroga" path="/c_gestionar_prorogas_cctds/V_mostrar_prorroga.jsp"/>
+
+        <!-- C_Sesion_Administrador -->
+
+        <forward name="A_Inicio_Sesion_Adm" path="/A_Inicio_Sesion_Adm.do"/>
+        <forward name="V_Sesion_Administrador" path="/c_sesion_administrador/V_Sesion_Administrador.jsp"/>
+        <forward name="A_Prep_Inicio_Sesion_Adm" path="/A_Prep_Inicio_Sesion_Adm.do"/>
+        <forward name="V_inicio_sesion_administrador" path="/c_inicio_sesion_administrador/V_inicio_sesion_administrador.jsp"/>
+
+         <!-- C_Gestionar_Carreras -->
+
+        <forward name="A_Prep_Gestionar_Carreras" path="/A_Prep_Gestionar_Carreras.do"/>
+        <forward name="V_Gestionar_Carreras" path="/c_sesion_administrador/V_Gestionar_Carreras.jsp"/>
+        <forward name="A_insertar_area" path="/A_insertar_area.do"/>
+        <forward name="A_eliminar_area" path="/A_eliminar_area.do"/>
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
@@ -629,6 +644,26 @@
            type="jc2s.sistppg.AccionesC_gestionar_prorogas_cctds"/>
         <action path="/A_mostrar_prorroga" parameter="A_mostrar_prorroga"
            type="jc2s.sistppg.AccionesC_gestionar_prorogas_cctds"/>
+
+        <!-- C_Sesion_Administrador -->
+        <action path="/A_Prep_Inicio_Sesion_Adm" parameter="A_Prep_Inicio_Sesion_Adm"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+         <action path="/A_Inicio_Sesion_Adm" parameter="A_Inicio_Sesion_Adm"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/C_inicio_sesion_administrador/V_inicio_sesion_administrador.jsp"
+           name="F_Inicio_Sesion_externo"
+           scope="session"/>
+
+        <!-- C_Gestionar_Carreras -->
+        <action path="/A_Prep_Gestionar_Carreras" parameter="A_Prep_Gestionar_Carreras"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_area" parameter="A_insertar_area"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Carreras.jsp"
+           name="F_Carrera"
+           scope="session"/>
+         <action path="/A_eliminar_area" parameter="A_eliminar_area"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
         <action path="/tooltip" parameter="tooltip"

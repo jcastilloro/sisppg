@@ -30,6 +30,7 @@
                 <ul id="nav">
                     <li><html:link action="/A_Prep_Inicio_Sesion_Empresa.do"><bean:message key="V_Inicio_Sesion.label1"/><%-- Empresas --%></html:link></li>
                     <li><html:link action="/A_prep_inicio_sesion_t_industrial.do"><bean:message key="V_Inicio_Sesion.label2"/><%-- Tutores Industriales --%></html:link></li>
+                    <li><html:link action="/A_Prep_Inicio_Sesion_Adm.do"><bean:message key="V_Inicio_Sesion.label3"/><%-- Administrador --%></html:link></li>
 
                 </ul>
             </div>
