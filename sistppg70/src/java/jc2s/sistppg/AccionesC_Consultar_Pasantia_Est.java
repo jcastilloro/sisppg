@@ -61,8 +61,8 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
         try {
             //mi codigo
 
-            // VALOR CABLIADO !!!!!
-            long idPasantia = 1;
+            String pas = request.getParameter("idPasantia");
+            long idPasantia = Long.valueOf(pas).longValue();
             
             Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", idPasantia).uniqueResult();
             request.setAttribute("Pasantia", pasantia);

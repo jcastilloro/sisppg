@@ -37,7 +37,7 @@
                                 <table border="1">
                                     <tr><th>Título</th><th>Resumen</th></tr>
                                 <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">                                       
-                                       <tr><td><html:link action="/A_prep_Consultar_Pasantia.do" paramName="pas">${pas.titulo}</html:link></td>
+                                       <tr><td><html:link action="/A_prep_Consultar_Pasantia.do" paramName="pas" paramProperty="idPasantia" paramId="idPasantia">${pas.titulo}</html:link></td>
                                         <td> ${pas.resumen} </td>
                                     </tr>
                                 </logic:iterate>
