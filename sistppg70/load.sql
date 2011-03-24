@@ -1,5 +1,10 @@
 insert into usuario values (1, '07-41896', 'estudiante');
 insert into usuario values (2, 'zchiquin', 'profesor');
+insert into usuario values (3, '05-37862', 'estudiante');
+insert into usuario values (4, '06-40073', 'estudiante');
+insert into usuario values (5, 'cctds', 'cctds');
+insert into usuario values (6, 'coord-comp', 'coordinacion');
+insert into usuario values (7, 'sabad', 'profesor');
 
 insert into carrera values (1, 'Ingeniería Eléctrica', 'coord-ee@usb.ve');
 insert into carrera values (2, 'Ingeniería de Computación', 'coord-comp@usb.ve');
@@ -31,24 +36,33 @@ insert into departamentoarea values (6, 6, 2);
 insert into departamentoarea values (7, 7, 2);
 insert into departamentoarea values (8, 8, 2);
 
-insert into estatuspasantia values (1, 'Inscrita');
-insert into estatuspasantia values (2, 'Aprobada');
+insert into pais values (1, 'Argentina');
+insert into pais values (2, 'Brasil');
+insert into pais values (3, 'España');
+insert into pais values (4, 'Portugal');
+insert into pais values (5, 'Venezuela');
 
-insert into pais values (1, 'Venezuela');
-insert into pais values (2, 'Colombia');
-insert into pais values (3, 'Brasil');
+insert into ciudad values (1, 'Brasilia',2);
+insert into ciudad values (2, 'Buenos Aires',1);
+insert into ciudad values (3, 'Caracas',5);
+insert into ciudad values (4, 'Lisboa',4);
+insert into ciudad values (5, 'Madrid',3);
+insert into ciudad values (6, 'Maracaibo',5);
+insert into ciudad values (7, 'Puerto Ordaz',5);
+insert into ciudad values (8, 'Rio de Janeiro',2);
 
-insert into ciudad values (1, 'Caracas', 1);
-insert into ciudad values (2, 'Valencia', 1);
-insert into ciudad values (3, 'Maracaibo', 1);
-insert into ciudad values (4, 'Bogotá', 2);
-insert into ciudad values (5, 'Rio de Janeiro', 3);
+insert into estatuspasantia values (1, 'Aprobado');
+insert into estatuspasantia values (2, 'Retirado');
+insert into estatuspasantia values (3, 'Reprobado');
+insert into estatuspasantia values (4, 'Rezagado');
+insert into estatuspasantia values (5, 'Revisado');
+insert into estatuspasantia values (6, 'Por revisar');
+insert into estatuspasantia values (7, 'Pasar por CCTDS');
 
-insert into empresa values (1, 'cantv', '12345', 'CANTV','J-12348','0212-3721331', 'Av Andres Bello',1);
-
-insert into tutorindustrial values (1, 'Carlos', '1812345', 'cars@cantv.net','0212-3721731', 1, 'Sistemas','Ingeniero Informático','Av. Baralt Casa #12','Gerente','cars','12345');
-
-insert into pasantia values (1, 'Pasantía de Investigación', 1, 1, 1, 1, 'Investigar cosas en mi pasantía', 'objetivos');
+insert into estatusprorroga values (1, 'Aprobada');
+insert into estatusprorroga values (2, 'Por revisar');
+insert into estatusprorroga values (3, 'Pasar por coordinacion');
+insert into estatusprorroga values (4, 'Rechazada');
 
 insert into periodopasantiaintermedia values (1, 'Enero-Marzo');
 insert into periodopasantiaintermedia values (2, 'Abril-Julio');
@@ -59,4 +73,8 @@ insert into periodopasantialarga values (1, 'Enero-Mayo');
 insert into periodopasantialarga values (2, 'Abril-Septiembre');
 insert into periodopasantialarga values (3, 'Julio-Diciembre');
 insert into periodopasantialarga values (4, 'Octubre-Febrero');
+
+insert into trimestre values (1,'Septiembre-Diciembre');
+insert into trimestre values (2,'Enero-Marzo');
+insert into trimestre values (3,'Abril-Julio');
 

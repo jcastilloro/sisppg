@@ -16,6 +16,7 @@ public class F_Etapa_PG extends org.apache.struts.action.ActionForm {
         resultados_minimos = "";
         trimestre = "";
         ano = 0;
+        topicos = "";
 
     }
     
@@ -24,6 +25,7 @@ public class F_Etapa_PG extends org.apache.struts.action.ActionForm {
         resultados_minimos = "";
         trimestre = "";
         ano = 0;
+        topicos = "";
 
     }
 
@@ -127,6 +129,24 @@ public class F_Etapa_PG extends org.apache.struts.action.ActionForm {
      */
     public void setAno(int ano) {
         this.ano = ano;
+    }
+
+        private String topicos;
+
+    /**
+     * Getter for property nombre.
+     * @return Value of property nombre.
+     */
+    public String getTopicos() {
+        return this.topicos;
+    }
+
+    /**
+     * Setter for property nombre.
+     * @param nombre New value of property nombre.
+     */
+    public void setTopicos(String topicos) {
+        this.topicos = topicos;
     }
 
 

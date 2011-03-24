@@ -59,9 +59,10 @@ public class AccionesC_Sesion_Profesor extends CohesionAction {
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
             Profesor p = (Profesor) s.createQuery("from Profesor where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
 
-            if(p!=null)
+            if(p!=null){
                 salida=SALIDA_1;
-            else
+                request.getSession().setAttribute("profesor", p);
+            }else
                 salida=SALIDA_0;
             //micodigo
 

@@ -13,8 +13,8 @@
             <div id="title"><bean:message key="V_gestionar_PG_prof.title"/></div>
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="8"><html:link action="/A_prep_agregar_PG.do"><bean:message key="V_gestionar_PG_prof.label0"/><%-- A_prep_agregar_PG --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_PG_propios.do"><bean:message key="V_gestionar_PG_prof.label1"/><%-- A_consultar_PG_propios --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="8"><html:link action="/A_prep_agregar_PG.do">Agregar PG</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_PG_propios.do">PG Tutoreados</html:link></cohesion:actor></li>
 
                 </ul>
             </div>

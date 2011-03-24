@@ -168,7 +168,7 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
 
 
                     s.save(p);
-                    request.getSession().setAttribute("Profesor", p);
+                    request.getSession().setAttribute("profesor", p);
                     salida = SALIDA_1;
                 }
 

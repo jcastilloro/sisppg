@@ -13,6 +13,7 @@ public class F_Inscripcion_PG extends org.apache.struts.action.ActionForm {
     public F_Inscripcion_PG() {
         super();
         nombre = "";
+        estudiante = "";
         recursos = "";
         duracion_recursos = "";
         puntos_de_interes = "";
@@ -21,6 +22,7 @@ public class F_Inscripcion_PG extends org.apache.struts.action.ActionForm {
     
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         nombre = "";
+        estudiante = "";
         recursos = "";
         duracion_recursos = "";
         puntos_de_interes = "";
@@ -64,6 +66,27 @@ public class F_Inscripcion_PG extends org.apache.struts.action.ActionForm {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+        /**
+     * Holds value of property nombre.
+     */
+    private String estudiante;
+
+    /**
+     * Getter for property nombre.
+     * @return Value of property nombre.
+     */
+    public String getEstudiante() {
+        return this.estudiante;
+    }
+
+    /**
+     * Setter for property nombre.
+     * @param nombre New value of property nombre.
+     */
+    public void setEstudiante(String estudiante) {
+        this.estudiante = estudiante;
     }
 
     /**

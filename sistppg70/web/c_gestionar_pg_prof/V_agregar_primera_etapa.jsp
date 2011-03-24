@@ -44,11 +44,21 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <br>
+                            <br>
                 <div class="box1840596"><html:form
                   action="/A_guardar_primera_etapa.do" method="post">
                   <p id="1840610_C"><label for="1840610"><bean:message key="F_Etapa_PG.label0"/><%-- Nombre Etapa: --%></label><html:text styleId="1840610" property="nombre" size="30"/></p>
                   <p id="1840613_C"><label for="1840613"><bean:message key="F_Etapa_PG.label1"/><%-- Resultados Minimos: --%></label><html:textarea styleId="1840613" property="resultados_minimos" cols="60" rows="10"></html:textarea></p>
-                  <p id="1840616_C"><label for="1840616"><bean:message key="F_Etapa_PG.label2"/><%-- Trimestre: --%></label><html:text styleId="1840616" property="trimestre" size="30"/></p>
+                  <p id="18406131_C">Descripcion Topicos:<html:textarea styleId="18406131" property="topicos" cols="60" rows="10"></html:textarea></p>
+                  <p id="1840616_C"><label for="1840616">
+                          <logic:notEmpty name="L_Trim">
+                          <html:select styleId="18405891" property="trimestre">
+                            <logic:iterate id="trim" collection="${L_Trim }">
+                                <option value="${trim.idTrimestre}">${trim.nombre}</option>
+                            </logic:iterate>
+                          </html:select>
+                          </logic:notEmpty></p>
                   <p id="1840620_C"><label for="1840620"><bean:message key="F_Etapa_PG.label3"/><%-- A&ntilde;o: --%></label><html:text styleId="1840620" property="ano" size="30"/></p>
 
                   <html:submit styleClass="button"><bean:message key="V_agregar_primera_etapa.label0"/><%-- Continuar --%></html:submit>

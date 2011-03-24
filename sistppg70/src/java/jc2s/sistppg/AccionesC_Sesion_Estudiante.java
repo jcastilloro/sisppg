@@ -54,9 +54,10 @@ public class AccionesC_Sesion_Estudiante extends CohesionAction {
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
             Estudiante e = (Estudiante) s.createQuery("from Estudiante where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
 
-            if(e!=null)
+            if(e!=null){
                 salida=SALIDA_0;
-            else
+            request.getSession().setAttribute("estudiante", e);
+            }else
                 salida=SALIDA_1;
             //micodigo
             tr.commit();
