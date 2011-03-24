@@ -1,4 +1,6 @@
 package jc2s.sistppg;
+
+import java.util.regex.*;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -154,7 +156,17 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Tutor_Industrial fF_Tutor_Industrial = (F_Tutor_Industrial) form;
+
+
+            TutorIndustrial ti = (TutorIndustrial) request.getSession().getAttribute("tutorindustrial");
+            List<Empresa> em = s.createQuery("from Empresa").list();
+
+//            TutorIndustrial p = (TutorIndustrial) s.createQuery("from TutorIndustrial where login = :var").setString("var", p.getUsbid()).uniqueResult();
+
+
+            request.setAttribute("Datos", ti);
+            request.setAttribute("L_Empresas", em);
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -195,7 +207,7 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
 
-        int salida = SALIDA_0;
+        int salida = SALIDA_1;
 //Checking for actors tutor_industrial
         if (!CohesionActor.checkActor(request, 16)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
@@ -204,6 +216,110 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             F_Tutor_Industrial fF_Tutor_Industrial = (F_Tutor_Industrial) form;
+
+            //Mi Codigo
+
+            String nombre = fF_Tutor_Industrial.getNombre();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s)+", nombre)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+            }
+
+
+            String cedula = fF_Tutor_Industrial.getCedula();
+            if (!Pattern.matches("(v|V|e|E)?-?[0-9]+", cedula)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Cédula Válida");
+            }
+
+            String email = fF_Tutor_Industrial.getEmail();
+            if (!Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", email)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Email Válido");
+            }
+
+            String telefono = fF_Tutor_Industrial.getTelefono();
+            if (!Pattern.matches("(\\d){0,4}-?\\d{7}", telefono)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
+            }
+
+            String profesion = fF_Tutor_Industrial.getProfesion();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", profesion)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Profesión Válida");
+            }
+
+            String direccion = fF_Tutor_Industrial.getDireccion();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", direccion)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte una Dirección Válida");
+            }
+
+            String departamento = fF_Tutor_Industrial.getDepartamento();
+            if (!Pattern.matches(".+", departamento)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Departamento Válido");
+            }
+
+            String cargo = fF_Tutor_Industrial.getCargo();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", cargo)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Cargo Válido");
+            }
+
+
+            String password = fF_Tutor_Industrial.getPassword();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", password)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Por Favor Inserte un Password Válido");
+            }
+
+            String login = fF_Tutor_Industrial.getLogin();
+            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", login)) {
+                salida = SALIDA_0;
+                request.setAttribute("msg", "Login Incorrecto");
+            }
+
+            if (salida == SALIDA_1) {
+
+                TutorIndustrial ti = new TutorIndustrial();
+              
+                
+                int idEmpresa = Integer.parseInt(fF_Tutor_Industrial.getEmpresa());
+                Empresa c = (Empresa) s.createQuery("from Empresa where idEmpresa = :var").setInteger("var", idEmpresa).uniqueResult();
+
+//               List<TutorIndustrial> lp = s.createQuery("from TutorIndustrial where login= :var").setString("var", login).list();
+//               TutorIndustrial tt = lp.get(0);
+                ti.setEmpresa(c);
+                ti.setCedula(cedula);
+                ti.setEmail(email);
+                ti.setNombre(nombre);
+                ti.setTelefono(telefono);
+                ti.setProfesion(profesion);
+                ti.setDireccion(direccion);
+                ti.setDepartamento(departamento);
+                ti.setCargo(cargo);
+                ti.setLogin(login);
+                ti.setPassword(password);
+               ti.setIdTutorIndustrial(((TutorIndustrial) request.getSession().getAttribute("tutorindustrial")).getIdTutorIndustrial());
+
+                s.update(ti);
+                request.getSession().setAttribute("tutorindustrial", ti);
+                fF_Tutor_Industrial.reset(mapping, request);
+            } else {
+                TutorIndustrial ti = (TutorIndustrial) request.getSession().getAttribute("tutorindustrial");
+                List<Empresa> em = s.createQuery("from Empresa").list();
+
+//            TutorIndustrial p = (TutorIndustrial) s.createQuery("from TutorIndustrial where login = :var").setString("var", p.getUsbid()).uniqueResult();
+
+
+                request.setAttribute("Datos", ti);
+                request.setAttribute("L_Empresas", em);
+            }
+
+            //Mi Codigo
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -215,10 +331,7 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
             } catch (Exception ex2) {
             }
         }
-        if (salida == 0) {
-            request.setAttribute("msg",
-                    getResources(request).getMessage("A_actualizar_perfil_TI.msg0"));
-        }
+       
         if (salida == 1) {
             request.setAttribute("msg",
                     getResources(request).getMessage("A_actualizar_perfil_TI.msg1"));
