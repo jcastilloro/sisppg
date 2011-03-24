@@ -82,11 +82,12 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Inicio_Sesion", "A_Prep_Inicio_Sesion_Est", "A_Prep_Inicio_Sesion_Prof", "A_Prep_Sesion_Coordinador", };
+        final String[] SALIDAS = {"V_Inicio_Sesion", "A_Prep_Inicio_Sesion_Est", "A_Prep_Inicio_Sesion_Prof", "A_Prep_Sesion_Coordinador", "A_prep_sesion_ccds" };
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
         final int SALIDA_2 = 2;
         final int SALIDA_3 = 3;
+        final int SALIDA_4 = 4;
 
         int salida = SALIDA_0;
         Session s = HibernateUtil.getCurrentSession();
@@ -107,6 +108,10 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
                     salida=SALIDA_2;
                     Profesor prof = (Profesor) s.createQuery("from Profesor where usbid= :var").setString("var", usbid).uniqueResult();
                     request.getSession().setAttribute("Profesor", prof);
+                } else if (u.getTipo_actor().equals("coordinacion")){
+                    salida=SALIDA_3;
+                } else if (u.getTipo_actor().equals("cctds")){
+                    salida=SALIDA_4;
                 }
 
                 request.getSession().setAttribute("usuario", u);

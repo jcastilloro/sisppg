@@ -26,6 +26,20 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <logic:empty name="Pasantias">
+                                <h1>¡No hay estudiantes haciendo pasantías!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="Pasantias">
+                                <h1>Pasantías: </h1>
+                                <table border="1">
+                                    <tr><th>Título</th><th>Resumen</th></tr>
+                                <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                       <tr><td><html:link action="/A_mostrar_pasantia.do" paramName="pas" paramProperty="idPasantia" paramId="idPasantia">${pas.titulo}</html:link></td>
+                                        <td> ${pas.resumen} </td>
+                                    </tr>
+                                </logic:iterate>
+                                </table>
+                            </logic:notEmpty>
                          </div>
                     </div>
                     <div id="right"></div>

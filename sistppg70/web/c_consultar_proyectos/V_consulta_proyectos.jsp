@@ -26,6 +26,37 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+
+                            <logic:empty name="EstudianteRealizaProyecto">
+                                <h1>¡No hay estudiantes realizando proyectos!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="EstudianteRealizaProyecto">
+                                <h1>Proyectos: </h1>
+                                <logic:empty name="Pasantias">
+                                </logic:empty>
+                                <logic:notEmpty name="Pasantias">
+                                    <h2><html:link action="/A_consultar_pasantias.do">Pasantias:</html:link></h2>
+                                    <table border="1">
+                                        <tr><th>Título</th></tr>
+                                        <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                            <tr><td>${pas.titulo}</td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </table>
+                                </logic:notEmpty>
+                                <logic:empty name="ProyectoDeGrado">
+                                </logic:empty>
+                                <logic:notEmpty name="ProyectoDeGrado">
+                                    <br><br><h2><html:link action="/A_consultar_PG.do">Proyectos De Grado:</html:link></h2>
+                                    <table border="1">
+                                        <tr><th>Nombre</th></tr>
+                                        <logic:iterate id="pg" collection="${empty ProyectoDeGrado ? _vacio : ProyectoDeGrado}">
+                                            <tr><td>${pg.nombre}</td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </table>
+                                </logic:notEmpty>
+                            </logic:notEmpty>
                          </div>
                     </div>
                     <div id="right"></div>

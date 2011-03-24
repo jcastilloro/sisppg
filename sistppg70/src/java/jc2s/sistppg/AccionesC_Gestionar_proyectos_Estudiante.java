@@ -85,8 +85,6 @@ public class AccionesC_Gestionar_proyectos_Estudiante extends CohesionAction {
 
                 request.setAttribute("ProyectoDeGrado", tesis);
                 request.setAttribute("Pasantias", pasantias);
-
-
             }
 
             //micodigo

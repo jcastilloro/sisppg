@@ -1,21 +1,17 @@
 package jc2s.sistppg;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
@@ -52,31 +48,27 @@ public class AccionesC_Gestionar_Pasantias_Estudiante extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             //micodigo
-
             Estudiante e = (Estudiante) request.getSession().getAttribute("Estudiante");
-
             List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante= :var").setLong("var", e.getId()).list();
 
-            // Debe haber una manera de crear esta lista sin hacer una consulta inecesaria!
-            List<Pasantia> pasantias = s.createQuery("from Pasantia").list();
-            pasantias.clear();
+            request.setAttribute("EstudianteRealizaProyecto", proyectos);
 
             if (!proyectos.isEmpty()) {
 
-                EstudianteRealizaProyecto proy = new EstudianteRealizaProyecto  ();
                 Iterator it = proyectos.iterator();
+                EstudianteRealizaProyecto proy = new EstudianteRealizaProyecto();
+                List<Pasantia> pasantias = new LinkedList<Pasantia>();
 
-                while(it.hasNext()){
+                while (it.hasNext()) {
                     proy = (EstudianteRealizaProyecto) it.next();
 
-                    Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getId()).uniqueResult();
-
+                    Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getProyecto().getId()).uniqueResult();
                     if (pasantia != null) {
                         pasantias.add(pasantia);
                     }
+
                 }
                 request.setAttribute("Pasantias", pasantias);
-
             }
 
             //micodigo
@@ -91,7 +83,5 @@ public class AccionesC_Gestionar_Pasantias_Estudiante extends CohesionAction {
         }
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
 
 }
