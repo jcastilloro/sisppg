@@ -35,12 +35,11 @@
                                 <logic:empty name="Pasantias">
                                 </logic:empty>
                                 <logic:notEmpty name="Pasantias">
-                                    <h2>Pasantias: </h2>
+                                    <h2><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do">Pasantias:</html:link></h2>
                                     <table border="1">
-                                        <tr><th>Título</th><th>Resumen</th></tr>
+                                        <tr><th>Título</th></tr>
                                         <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
                                             <tr><td>${pas.titulo}</td>
-                                                <td> ${pas.resumen} </td>
                                             </tr>
                                         </logic:iterate>
                                     </table>
@@ -48,12 +47,11 @@
                                 <logic:empty name="ProyectoDeGrado">
                                 </logic:empty>
                                 <logic:notEmpty name="ProyectoDeGrado">
-                                    <br><br><h2>Proyectos De Grado: </h2>
+                                    <br><br><h2><html:link action="/A_Prep_Gestion_PG_Est.do">Proyectos De Grado:</html:link></h2>
                                     <table border="1">
-                                        <tr><th>Nombre</th><th>Puntos de Interés</th></tr>
+                                        <tr><th>Nombre</th></tr>
                                         <logic:iterate id="pg" collection="${empty ProyectoDeGrado ? _vacio : ProyectoDeGrado}">
                                             <tr><td>${pg.nombre}</td>
-                                                <td> ${pg.puntos_de_interes} </td>
                                             </tr>
                                         </logic:iterate>
                                     </table>

@@ -71,7 +71,7 @@ public class AccionesC_Gestionar_Pasantias_Estudiante extends CohesionAction {
 
                     Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getId()).uniqueResult();
 
-                    if (!pasantia.equals(null)) {
+                    if (pasantia != null) {
                         pasantias.add(pasantia);
                     }
                 }
