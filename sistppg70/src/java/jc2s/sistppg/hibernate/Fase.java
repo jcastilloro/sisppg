@@ -1,6 +1,7 @@
 package jc2s.sistppg.hibernate;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Fase implements java.io.Serializable, ve.usb.cohesion.runtime.Auditable {
@@ -124,7 +125,7 @@ public class Fase implements java.io.Serializable, ve.usb.cohesion.runtime.Audit
         this.pasantia = pasantia;
     }
 
-
+ 
 
     public String toString() {
         return "<Fase id='C" + this.id +

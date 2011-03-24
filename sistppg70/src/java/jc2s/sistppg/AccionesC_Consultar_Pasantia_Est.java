@@ -1,5 +1,10 @@
 package jc2s.sistppg;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,13 +60,66 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             //mi codigo
-            // DEscabliar!
-       //     List<Pasantia> pasantias = (List<Pasantia>)request.getSession().getAttribute("Pasantias");
-       //     Pasantia pasantia = pasantias.get(0); // Cable agarra siempre la 1ra pasantia
 
-          //  EstatusPasantia status = (EstatusPasantia) s.createQuery("from EstatusPasantia where idEstatusPasantia= :var").setLong("var", pasantia.getEstatus().getId() ).uniqueResult();
-          //  request.getSession().setAttribute("EstatusPasantia", status);
+            // VALOR CABLIADO !!!!!
+            long idPasantia = 1;
+            
+            Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", idPasantia).uniqueResult();
+            request.setAttribute("Pasantia", pasantia);
 
+            EstatusPasantia status = (EstatusPasantia) s.createQuery("from EstatusPasantia where idEstatusPasantia= :var").setLong("var", pasantia.getEstatus().getId() ).uniqueResult();
+            request.setAttribute("Estatus", status);
+
+            Profesor prof = (Profesor) s.createQuery("from Profesor where idProfesor= :var").setLong("var", pasantia.getTutor_academico().getId() ).uniqueResult();
+            request.setAttribute("Profesor", prof);
+
+            TutorIndustrial ti = (TutorIndustrial) s.createQuery("from TutorIndustrial where idTutorIndustrial= :var").setLong("var", pasantia.getTutor_industrial().getId() ).uniqueResult();
+            request.setAttribute("TutorIndustrial", ti);
+
+            // Tipo de Pasantía //
+            PasantiaLarga larga = (PasantiaLarga) s.createQuery("from PasantiaLarga where pasantia= :var").setLong("var", idPasantia).uniqueResult();
+            if (larga != null){                
+                PeriodoPasantiaLarga periodoL = (PeriodoPasantiaLarga) s.createQuery("from PeriodoPasantiaLarga where idPeriodoPasantiaLarga= :var").setLong("var", larga.getPeriodo().getId() ).uniqueResult();
+                request.setAttribute("PasantiaLarga", larga);
+                request.setAttribute("Periodo", periodoL);
+            } else {
+                PasantiaCorta corta = (PasantiaCorta) s.createQuery("from PasantiaCorta where pasantia= :var").setLong("var", idPasantia).uniqueResult();
+
+                if (corta != null){
+                    request.setAttribute("PasantiaCorta", corta);
+                } else {
+                    PasantiaIntermedia media = (PasantiaIntermedia) s.createQuery("from PasantiaIntermedia where pasantia= :var").setLong("var", idPasantia).uniqueResult();
+                    request.setAttribute("PasantiaIntermedia", media);
+                    // Por si acaso...
+                    if( media != null ){
+                        PeriodoPasantiaIntermedia periodoI = (PeriodoPasantiaIntermedia) s.createQuery("from PeriodoPasantiaIntermedia where idPeriodoPasantiaIntermedia= :var").setLong("var", media.getPeriodo().getId() ).uniqueResult();
+                        request.setAttribute("Periodo", periodoI);
+                    }
+                }
+            }
+
+            Proyecto pro = (Proyecto) s.createQuery("from Proyecto where id_proyecto= :var").setLong("var", pasantia.getProyecto().getId() ).uniqueResult();
+            String ano = getDateTime(pro.getCreated_at());
+            request.setAttribute("Ano", ano);
+
+            // FASES
+            List<Fase> fases = s.createQuery("from Fase where pasantia= :var").setLong("var", idPasantia ).list();
+            request.setAttribute("Fases", fases);
+          /*
+            Iterator it = fases.iterator();
+            Fase fase = new Fase();
+            List<Fase> fases2 = new LinkedList<Fase>();
+
+            while(it.hasNext()){
+                fase = (Fase) it.next();
+                
+                List<ActividadFase> actividades = s.createQuery("from ActividadFase where fase= :var").setLong("var", fase.getId() ).list();
+                fase.setActividadFase(actividades);
+                fases2.add(fase);
+            }
+            
+            request.setAttribute("Fases", fases2);
+            */
             //mi codigo
             tr.commit();
 
@@ -74,6 +132,11 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
+    private String getDateTime(Date fecha) {
+       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.ms");
+       Date date = fecha;
+       return dateFormat.format(date);
+   }
 
 
 }

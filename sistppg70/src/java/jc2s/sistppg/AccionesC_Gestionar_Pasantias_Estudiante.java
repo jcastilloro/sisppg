@@ -75,7 +75,7 @@ public class AccionesC_Gestionar_Pasantias_Estudiante extends CohesionAction {
                         pasantias.add(pasantia);
                     }
                 }
-                request.getSession().setAttribute("Pasantias", pasantias);
+                request.setAttribute("Pasantias", pasantias);
 
             }
 
