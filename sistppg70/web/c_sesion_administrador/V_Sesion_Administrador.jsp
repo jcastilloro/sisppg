@@ -32,7 +32,7 @@
                                             <html:link action="/A_Prep_Gestionar_Carreras.do">Carreras</html:link>
                                         </th>
                                         <th>
-                                            Areas
+                                            <html:link action="/A_Prep_Gestionar_Areas.do">Areas</html:link>
                                         </th>
                                         <th>
                                             Departamentos

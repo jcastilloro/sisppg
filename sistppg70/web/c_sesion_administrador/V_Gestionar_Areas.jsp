@@ -23,7 +23,7 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
-                            ${empty msg ? "" : msg}   
+                            ${empty msg ? "" : msg}
                             <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
 
 
@@ -33,7 +33,7 @@
                                 <center>
 
                                     <h2>
-                                        Carreras
+                                        Areas
                                     </h2>
 
                                     <table border="0">
@@ -42,19 +42,12 @@
                                             <th width="250px">
                                                 Nombre
                                             </th>
-                                            <th width="250px">
-                                                Email
-                                            </th>
                                         </tr>
                                         <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
                                             <tr>
                                                 <td>
-                                                    <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                               paramId="idCarrera">${dato.nombre}</html:link>
-                                                </td>
-                                                <td>
-                                                    <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                               paramId="idCarrera">${dato.email}</html:link>
+                                                    <html:link action="/A_Prep_Gestionar_Areas.do" paramName="dato" paramProperty="idArea"
+                                                               paramId="idArea">${dato.nombre}</html:link>
                                                 </td>
                                             </tr>
                                         </logic:iterate>
@@ -66,14 +59,13 @@
 
                                 <logic:notEmpty name="Singular">
                                     <html:form
-                                        action="/A_insertar_carrera.do" method="post">
+                                        action="/A_insertar_area.do" method="post">
                                     <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                        <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="${Singular.email}"/></td></tr>
-                                        <html:hidden property="idCarrera" value="${Singular.idCarrera}"/>
+                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="area" size="30" value="${Singular.nombre}"/></td></tr></p>
+                                        <html:hidden property="idArea" value="${Singular.idArea}"/>
 
 
-                                        <tr><td><html:link action="/A_eliminar_carrera.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                        <tr><td><html:link action="/A_eliminar_area.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
                                             </td></tr>
                                     </table>
                                     <p><bean:message key="V_Obligatorios.msg0"/>
@@ -93,8 +85,8 @@
                                 <logic:empty name="Agregar">
                                 <bean:define id="Agregare" value="Agregare"/>
                                 <table><th>
-                                <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="Agregare"
-                                                               paramId="Agregar">Agregar Carrera</html:link>
+                                <html:link action="/A_Prep_Gestionar_Areas.do" paramName="Agregare"
+                                                               paramId="Agregar">Agregar Area</html:link>
                                     </th></table>
 
                                 </logic:empty>
@@ -102,11 +94,10 @@
                                 <logic:notEmpty name="Agregar">
 
                                     <html:form
-                                        action="/A_insertar_carrera.do" method="post">
+                                        action="/A_insertar_area.do" method="post">
                                     <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
-                                        <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value=""/></td></tr>
-                                        <html:hidden property="idCarrera" value=""/>
+                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="area" size="30" value=""/></td></tr></p>
+                                        <html:hidden property="idArea" value=""/>
 
 
                                         <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
