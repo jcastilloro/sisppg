@@ -35,10 +35,11 @@
                                     <table>
                                         <tr><th>Nombre</th><td>${proy.nombre}</td></tr>
                                         <tr><th>Código</th><td>${proy.codigo}</td></tr>
-
-                                        <html:link action="/A_prep_Consultar_PG.do" paramName="proy" paramProperty="idProyectoDeGrado"
-                                                   paramId="idProyectoDeGrado">Consultar</html:link>
-
+                                        <tr><th>
+                                                <html:link action="/A_prep_Consultar_PG.do" paramName="proy" paramProperty="idProyectoDeGrado"
+                                                           paramId="idProyectoDeGrado">Consultar</html:link>
+                                            </th>
+                                        </tr>
                                     </table<p><p>
                                     </logic:iterate>
                                 </logic:notEmpty>

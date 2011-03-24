@@ -3,7 +3,7 @@ package jc2s.sistppg;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.List;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -19,13 +19,12 @@ import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
 
-
 /**
  * 
  */
 public class AccionesC_Consultar_PG_Est extends CohesionAction {
-    
-/**
+
+    /**
      * Called by Struts for the execution of action A_prep_Consultar_PG.
      * 
      * @param mapping The ActionMapping used to select this instance.
@@ -37,25 +36,70 @@ public class AccionesC_Consultar_PG_Est extends CohesionAction {
      * These exceptios will normally be treated with 
      * the default exception action.
      */
-    public ActionForward A_prep_Consultar_PG(ActionMapping mapping, ActionForm  form,
+    public ActionForward A_prep_Consultar_PG(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Consultar_PG", };
+        final String[] SALIDAS = {"V_Consultar_PG",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-            if (!CohesionActor.checkActor(request, 4)) {
-                return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-            }
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
 
-            String pg = request.getParameter("idProyectoDeGrado");
-            
+
+            Long key = Long.parseLong(request.getParameter("idProyectoDeGrado"));
+            ProyectoDeGrado pg = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado where idProyectoDeGrado= :var").setLong("var", key).uniqueResult();
+            AreaProyectoDeGrado apg = (AreaProyectoDeGrado) s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).uniqueResult();
+            List<Etapa> etapas = s.createQuery("from Etapa where proyecto_de_grado= :var").setLong("var", key).list();
+            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
+
+
+            request.getSession().setAttribute("Proyecto", pg);
+            request.getSession().setAttribute("Tutor", pg.getProfesor());
+            request.getSession().setAttribute("Area", apg.getArea().getNombre());
+            request.getSession().setAttribute("JuradoProyecto", jurados);
+
+
+            for (int i = 0; i < etapas.size(); i++) {
+
+                List<PrimeraEtapa> etapa = s.createQuery("from PrimeraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapa.isEmpty()) {
+                    PrimeraEtapa indirecto = etapa.get(0);
+                    request.getSession().setAttribute("Etapa1", indirecto.getEtapa());
+                    request.getSession().setAttribute("Trimestre1", indirecto.getEtapa().getTrimestre().getNombre());
+                    request.getSession().setAttribute("Descripcion1", indirecto.getDescripcion_topicos());
+
+                }
+
+
+                List<SegundaEtapa> etapaa = s.createQuery("from SegundaEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaa.isEmpty()) {
+                    SegundaEtapa indirecto = etapaa.get(0);
+                    request.getSession().setAttribute("Etapa2", indirecto.getEtapa());
+                    request.getSession().setAttribute("Trimestre2", indirecto.getEtapa().getTrimestre().getNombre());
+                    request.getSession().setAttribute("Descripcion2", indirecto.getDescripcion_topicos());
+
+                }
+
+
+                List<TerceraEtapa> etapaaa = s.createQuery("from TerceraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaaa.isEmpty()) {
+                    TerceraEtapa indirecto = etapaaa.get(0);
+                    request.getSession().setAttribute("Etapa3", indirecto.getEtapa());
+                    request.getSession().setAttribute("Trimestre3", indirecto.getEtapa().getTrimestre().getNombre());
+//                    request.getSession().setAttribute("Descripcion3", indirecto.getDescripcion_topicos());
+
+                }
+            }
+
+
             System.out.println(pg);
             tr.commit();
 
@@ -63,11 +107,11 @@ public class AccionesC_Consultar_PG_Est extends CohesionAction {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
         }
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
-
 }
