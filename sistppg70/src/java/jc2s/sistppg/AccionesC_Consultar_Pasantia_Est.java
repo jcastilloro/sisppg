@@ -64,17 +64,12 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
             String pas = request.getParameter("idPasantia");
             long idPasantia = Long.valueOf(pas).longValue();
             
-            Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", idPasantia).uniqueResult();
+            Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia as p join fetch p.estatus join fetch p.proyecto join fetch p.tutor_academico join fetch p.tutor_industrial where idpasantia= :var").setLong("var", idPasantia).uniqueResult();
             request.setAttribute("Pasantia", pasantia);
-
-            EstatusPasantia status = (EstatusPasantia) s.createQuery("from EstatusPasantia where idEstatusPasantia= :var").setLong("var", pasantia.getEstatus().getId() ).uniqueResult();
-            request.setAttribute("Estatus", status);
-
-            Profesor prof = (Profesor) s.createQuery("from Profesor where idProfesor= :var").setLong("var", pasantia.getTutor_academico().getId() ).uniqueResult();
-            request.setAttribute("Profesor", prof);
-
-            TutorIndustrial ti = (TutorIndustrial) s.createQuery("from TutorIndustrial where idTutorIndustrial= :var").setLong("var", pasantia.getTutor_industrial().getId() ).uniqueResult();
-            request.setAttribute("TutorIndustrial", ti);
+            request.setAttribute("Estatus", pasantia.getEstatus());
+            request.setAttribute("Profesor", pasantia.getTutor_academico());
+            request.setAttribute("TutorIndustrial", pasantia.getTutor_industrial());
+            request.setAttribute( "Ano", getDateTime( pasantia.getProyecto().getCreated_at() ) );
 
             // Tipo de Pasantía //
             PasantiaLarga larga = (PasantiaLarga) s.createQuery("from PasantiaLarga where pasantia= :var").setLong("var", idPasantia).uniqueResult();
@@ -98,28 +93,22 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
                 }
             }
 
-            Proyecto pro = (Proyecto) s.createQuery("from Proyecto where id_proyecto= :var").setLong("var", pasantia.getProyecto().getId() ).uniqueResult();
-            String ano = getDateTime(pro.getCreated_at());
-            request.setAttribute("Ano", ano);
-
             // FASES
             List<Fase> fases = s.createQuery("from Fase as fase join fetch fase.actividades as actividades where fase.pasantia= :var").setLong("var", idPasantia ).list();
             request.setAttribute("Fases", fases);
-          /*
+
             Iterator it = fases.iterator();
             Fase fase = new Fase();
             List<Fase> fases2 = new LinkedList<Fase>();
 
             while(it.hasNext()){
                 fase = (Fase) it.next();
-                
-                List<ActividadFase> actividades = s.createQuery("from ActividadFase where fase= :var").setLong("var", fase.getId() ).list();
-                fase.setActividadFase(actividades);
-                fases2.add(fase);
+                if(!fases2.contains(fase))
+                    fases2.add(fase);
             }
             
             request.setAttribute("Fases", fases2);
-            */
+
             //mi codigo
             tr.commit();
 
@@ -133,7 +122,7 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
     }
 
     private String getDateTime(Date fecha) {
-       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.ms");
+       DateFormat dateFormat = new SimpleDateFormat("yyyy");
        Date date = fecha;
        return dateFormat.format(date);
    }
