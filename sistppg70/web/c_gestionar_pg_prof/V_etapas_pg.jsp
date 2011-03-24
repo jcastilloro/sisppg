@@ -32,26 +32,26 @@
                             </div>
                             <%--${empty msg ? "" : msg}<br><br>--%>
                             <br><br><br>
-                            <div id="infopg">
-                                <table>
+                            <div class="pgInfo">
+                                <table id="pgInfo">
                                     <tr>
-                                        <td>Nombre PG:</td>
+                                        <td id="titulo">Nombre PG:</td>
                                         <td>${pg.nombre}</td>
                                     </tr>
                                     <tr>
-                                        <td>Recursos:</td>
+                                        <td id="titulo">Recursos:</td>
                                         <td>${pg.recursos}</td>
                                     </tr>
                                     <tr>
-                                        <td>Duracion de recursos:</td>
+                                        <td id="titulo">Duracion de recursos:</td>
                                         <td>${pg.duracion_recursos}</td>
                                     </tr>
                                     <tr>
-                                        <td>Puntos de interes:</td>
+                                        <td id="titulo">Puntos de interes:</td>
                                         <td>${pg.puntos_de_interes}</td>
                                     </tr>
                                     <tr>
-                                        <td>Areas:</td>
+                                        <td id="titulo">Areas:</td>
                                         <logic:notEmpty name="L_Areas_PG">
                                             <td></td>
                                             </tr>
@@ -67,9 +67,61 @@
                                 </table>
                             </div>
                                     <br>
-
-                                    <h1>Etapas</h1>
-
+                                <div class="tablaEtapas">
+                                    <div class="etapasPG" id="etapa1">
+                                        <h1>Etapa1</h1>
+                                        <table id="etapa1" border="0">
+                                            <tr>
+                                                <td id="titulo">Nombre:</td>
+                                                <td id="contenido">Nombre</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Recursos:</td>
+                                                <td id="contenido">recursos</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Actividad:</td>
+                                                <td id="contenido">actividad</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="etapasPG" id="etapa2">
+                                        <h1>Etapa2</h1>
+                                        <table id="etapa1" border="0">
+                                            <tr>
+                                                <td id="titulo">Nombre:</td>
+                                                <td id="contenido">Nombre</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Recursos:</td>
+                                                <td id="contenido">recursos</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Actividad:</td>
+                                                <td id="contenido">actividad</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="etapasPG" id="etapa3">
+                                        <h1>Etapa3</h1>
+                                        <table id="etapa1" border="0">
+                                            <tr>
+                                                <td id="titulo">Nombre:</td>
+                                                <td id="contenido">Nombre</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Recursos:</td>
+                                                <td id="contenido">recursos</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="titulo">Actividad:</td>
+                                                <td id="contenido">actividad</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                 </div>
+                                    
+                        </div>
 
 
                          </div>
@@ -81,7 +133,6 @@
                 <div class="clearer"></div>
             </div>
             <div class="clearer"></div>
-        </div>
         <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
         

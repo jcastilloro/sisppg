@@ -534,3 +534,46 @@ blockquote[cite]:after {
 #etapaspgcontent {
     font-size: 10px;
 }
+
+.tablaEtapas {
+    position: relative;
+}
+
+.etapasPG{
+    float: left;
+    margin-left: 10px;
+    width: 155px;
+    border: solid 1px #ff5e1e;
+}
+
+.etapasPG h1{
+    text-align: center;
+}
+
+.etapasPG td#titulo{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+.etapasPG td#contenido{
+    font-size: 10px;
+    color: #4D4D56;
+}
+
+.pgInfo{
+    border: solid 1px #ff5e1e;
+    font-size: 10px;
+    color: #4D4D56;
+}
+
+
+#pgInfo #titulo{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#pgInfo td{
+    padding-left: 10px;
+}
