@@ -32,9 +32,32 @@
                             </logic:empty>
                             <logic:notEmpty name="EstudianteRealizaProyecto">
                                 <h1>Usted tiene los siguientes proyectos asociados: </h1>
-                                <logic:iterate id="proy" collection="${empty EstudianteRealizaProyecto ? _vacio : EstudianteRealizaProyecto}">
-                                    Proyecto: ${proy.proyecto.id_proyecto} <br>
-                                </logic:iterate>
+                                <logic:empty name="Pasantias">
+                                </logic:empty>
+                                <logic:notEmpty name="Pasantias">
+                                    <h2>Pasantias: </h2>
+                                    <table border="1">
+                                        <tr><th>Título</th><th>Resumen</th></tr>
+                                        <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                            <tr><td>${pas.titulo}</td>
+                                                <td> ${pas.resumen} </td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </table>
+                                </logic:notEmpty>
+                                <logic:empty name="ProyectoDeGrado">
+                                </logic:empty>
+                                <logic:notEmpty name="ProyectoDeGrado">
+                                    <br><br><h2>Proyectos De Grado: </h2>
+                                    <table border="1">
+                                        <tr><th>Nombre</th><th>Puntos de Interés</th></tr>
+                                        <logic:iterate id="pg" collection="${empty ProyectoDeGrado ? _vacio : ProyectoDeGrado}">
+                                            <tr><td>${pg.nombre}</td>
+                                                <td> ${pg.puntos_de_interes} </td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </table>
+                                </logic:notEmpty>
                             </logic:notEmpty>
                         </div>
                     </div>

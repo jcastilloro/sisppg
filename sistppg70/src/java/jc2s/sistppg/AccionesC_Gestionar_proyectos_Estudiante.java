@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,19 +60,33 @@ public class AccionesC_Gestionar_proyectos_Estudiante extends CohesionAction {
 
             List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante= :var").setLong("var", e.getId()).list();
 
-            request.getSession().setAttribute("EstudianteRealizaProyecto", proyectos);
+            request.setAttribute("EstudianteRealizaProyecto", proyectos);
+
             if (!proyectos.isEmpty()) {
 
-                // cambiar por un for para hacerlo por cada proyecto
-                Proyecto proy = proyectos.get(0).getProyecto();
-                List<ProyectoDeGrado> pg = s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var", proy.getId_proyecto()).list();
+                Iterator it = proyectos.iterator();
+                EstudianteRealizaProyecto proy = new EstudianteRealizaProyecto();
+                List<ProyectoDeGrado> tesis = new LinkedList<ProyectoDeGrado>();
+                List<Pasantia> pasantias = new LinkedList<Pasantia>();
 
-                if (!pg.isEmpty()) { // Es proyecto de grado
-                    request.getSession().setAttribute("ProyectoDeGrado", pg);
-                } else { // Puede ser pasantia
-                    // si no es proyecto de grado DEBE ser ajuro pasantía, si no es un ERROR!
-                    List<Pasantia> pasantia = s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getId_proyecto()).list();
+                while (it.hasNext()) {
+                    proy = (EstudianteRealizaProyecto) it.next();
+                    ProyectoDeGrado pg = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var", proy.getProyecto().getId()).uniqueResult();
+
+                    if (pg != null) { // Es proyecto de grado
+                        tesis.add(pg);
+                    } else {                       
+                        Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where proyecto= :var").setLong("var", proy.getProyecto().getId()).uniqueResult();
+                        if (pasantia != null) {
+                            pasantias.add(pasantia);
+                        }
+                    }
                 }
+
+                request.setAttribute("ProyectoDeGrado", tesis);
+                request.setAttribute("Pasantias", pasantias);
+
+
             }
 
             //micodigo
