@@ -97,8 +97,8 @@
                                 <tr><th>Fase:</th><td> No tiene fases asociadas</td></tr>
                             </logic:empty>
                             <logic:notEmpty name="Fases">
-                                <logic:iterate id="fase" collection="${empty Fases ? _vacio : Fases}">
-                                <tr><th>Fase:</th><td> ${fase.idFase} </td></tr>
+                                <logic:iterate id="fase" indexId="i" collection="${empty Fases ? _vacio : Fases}">
+                                <tr><th>Fase:</th><td> ${i+1} </td></tr>
                                 <tr><th>Objetivos Específicos:</th><td> ${fase.objetivos_especificos} </td></tr>
                                 </logic:iterate>
                             </logic:notEmpty>

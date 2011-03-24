@@ -103,7 +103,7 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
             request.setAttribute("Ano", ano);
 
             // FASES
-            List<Fase> fases = s.createQuery("from Fase where pasantia= :var").setLong("var", idPasantia ).list();
+            List<Fase> fases = s.createQuery("from Fase where pasantia= :var order by idFase").setLong("var", idPasantia ).list();
             request.setAttribute("Fases", fases);
           /*
             Iterator it = fases.iterator();
@@ -133,7 +133,7 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
     }
 
     private String getDateTime(Date fecha) {
-       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.ms");
+       DateFormat dateFormat = new SimpleDateFormat("yyyy");
        Date date = fecha;
        return dateFormat.format(date);
    }
