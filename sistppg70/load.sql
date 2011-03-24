@@ -48,4 +48,15 @@ insert into empresa values (1, 'cantv', '12345', 'CANTV','J-12348','0212-3721331
 
 insert into tutorindustrial values (1, 'Carlos', '1812345', 'cars@cantv.net','0212-3721731', 1, 'Sistemas','Ingeniero Informático','Av. Baralt Casa #12','Gerente','cars','12345');
 
-insert into pasantia values (1, 'Pasantía de Investigación', 1, 1, 1, 1, 'Investigar cosas en mi pasantía', 'objetivos'); 
+insert into pasantia values (1, 'Pasantía de Investigación', 1, 1, 1, 1, 'Investigar cosas en mi pasantía', 'objetivos');
+
+insert into periodopasantiaintermedia values (1, 'Enero-Marzo');
+insert into periodopasantiaintermedia values (2, 'Abril-Julio');
+insert into periodopasantiaintermedia values (3, 'Septiembre-Diciembre');
+insert into periodopasantiaintermedia values (4, 'Octubre-Febrero');
+
+insert into periodopasantialarga values (1, 'Enero-Mayo');
+insert into periodopasantialarga values (2, 'Abril-Septiembre');
+insert into periodopasantialarga values (3, 'Julio-Diciembre');
+insert into periodopasantialarga values (4, 'Octubre-Febrero');
+
