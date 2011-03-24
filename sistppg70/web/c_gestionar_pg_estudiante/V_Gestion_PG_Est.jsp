@@ -1,9 +1,9 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-%><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
-%><html:html>
+           %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+           %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
+           %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
+           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><html:html>
     <head>
         <title><bean:message key="V_Gestion_PG_Est.title"/></title>
         <link rel="stylesheet" type="text/css" href="_css/style.css"/>
@@ -25,7 +25,24 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
-                         </div>
+
+                            <logic:empty name="L_PGS">
+                                <h1>¡Usted no está realizando ningun proyecto de grado!</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="L_PGS">
+                                <h1>Mis Proyectos de Grado: </h1>
+                                <logic:iterate id="proy" collection="${empty L_PGS ? _vacio : L_PGS}">
+                                    <table>
+                                        <tr><th>Nombre</th><td>${proy.nombre}</td></tr>
+                                        <tr><th>Código</th><td>${proy.codigo}</td></tr>
+
+                                        <html:link action="/A_prep_Consultar_PG.do" paramName="proy" paramProperty="idProyectoDeGrado"
+                                                   paramId="idProyectoDeGrado">Consultar</html:link>
+
+                                    </table<p><p>
+                                    </logic:iterate>
+                                </logic:notEmpty>
+                        </div>
                     </div>
                     <div id="right"></div>
                     <div class="clearer"></div>
@@ -37,6 +54,6 @@
         </div>
         <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+
     </body>
 </html:html>

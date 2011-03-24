@@ -53,6 +53,10 @@ public class AccionesC_Consultar_PG_Est extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+            String pg = request.getParameter("idProyectoDeGrado");
+            
+            System.out.println(pg);
             tr.commit();
 
         } catch (Exception ex) {
