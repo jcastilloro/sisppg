@@ -100,7 +100,10 @@
                                 <logic:iterate id="fase" indexId="i" collection="${empty Fases ? _vacio : Fases}">
                                 <tr><th>Fase:</th><td> ${i+1} </td></tr>
                                 <tr><th>Objetivos Específicos:</th><td> ${fase.objetivos_especificos} </td></tr>
-                                </logic:iterate>
+                                    <logic:iterate id="act" indexId="j" collection="${empty fase.actividades ? _vacio : fase.actividades}">
+                                    <tr><th>Actividad ${j+1}:</th><td> ${act.descripcion} </td></tr>
+                                    </logic:iterate> 
+                                </logic:iterate> 
                             </logic:notEmpty>
                             
                                 </table>
