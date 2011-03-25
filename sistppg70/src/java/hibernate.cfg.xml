@@ -22,9 +22,9 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Uncomment this line to drop and re-create the database schema on startup -->
+        <!-- Uncomment this line to drop and re-create the database schema on startup 
         <property name="hbm2ddl.auto">create</property>
-        
+        -->
           
         <mapping resource="jc2s/sistppg/hibernate/Actividad.hbm.xml"/>
         <mapping resource="jc2s/sistppg/hibernate/ActividadFase.hbm.xml"/>
