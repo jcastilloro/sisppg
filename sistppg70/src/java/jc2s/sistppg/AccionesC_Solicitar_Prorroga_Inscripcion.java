@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -93,8 +94,27 @@ public class AccionesC_Solicitar_Prorroga_Inscripcion extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Prorroga_Inscripcion fF_Prorroga_Inscripcion = (F_Prorroga_Inscripcion)form;
+            F_Prorroga_Inscripcion fprorroga = (F_Prorroga_Inscripcion)form;
+            if(!fprorroga.getJustificacion().equals("")){
+                Prorroga p = new Prorroga();
+                p.setCreated_at(new Date());
+                p.setUpdated_at(new Date());
+                EstatusProrroga e = (EstatusProrroga) s.createQuery("from EstatusProrroga where estatus = 'Por revisar'").uniqueResult();
+                p.setEstatus(e);
+                String justificacion = fprorroga.getJustificacion();
+                p.setJustificacion(justificacion);
+                Estudiante est = (Estudiante) request.getSession().getAttribute("estudiante");
+                p.setEstudiante(est);
+                s.save(p);
+
+                ProrrogaInscripcion pi = new ProrrogaInscripcion();
+                pi.setProrroga(p);
+
+                s.save(pi);
+                salida = SALIDA_1;
+            }
             tr.commit();
+            fprorroga.reset(mapping, request);
 
         } catch (Exception ex) {
             tr.rollback();

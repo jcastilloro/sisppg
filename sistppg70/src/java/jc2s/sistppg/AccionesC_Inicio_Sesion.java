@@ -60,6 +60,9 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
         if (salida==0) {
           request.setAttribute("msg",
             getResources(request).getMessage("A_Prep_Inicio_Sesion.msg0"));
+
+          new CohesionActor(CohesionActor.NO_ACTOR)
+                        .setMe(request);
         }
 
         return mapping.findForward(SALIDAS[salida]);

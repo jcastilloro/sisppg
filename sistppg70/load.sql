@@ -13,7 +13,7 @@ insert into carrera values (3, 'Ingeniería Mecánica', 'coord-mec@usb.ve');
 insert into carrera values (4, 'Ingeniería Eléctronica', 'coord-electronica@usb.ve');
 insert into carrera values (5, 'Ingeniería Química', 'coord-iq@usb.ve');
 insert into carrera values (6, 'Ingeniería de Producción', 'coord-prod@usb.ve');
-insert into carrera values (6, 'Urbanismo', 'coord-urb@usb.ve');
+insert into carrera values (7, 'Urbanismo', 'coord-urb@usb.ve');
 
 insert into departamento values (1, 'Computación y Tecnología de la Información');
 insert into departamento values (2, 'Procesos y Sistemas');

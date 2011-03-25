@@ -72,7 +72,7 @@
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_pasantia_prof.do">Gestionar Pasantias</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_PG_prof.do">Gestionar PG</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do">Consultar Proyectos</html:link></cohesion:actor></li>
-
+                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
 
 
                 </ul>

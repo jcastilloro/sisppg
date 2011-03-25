@@ -85,6 +85,27 @@ public class ProrrogaEvaluacion implements java.io.Serializable, ve.usb.cohesion
         this.prorroga = prorroga;
     }
 
+        /**
+     * Holds value of property pasantia.
+     */
+    private Pasantia pasantia;
+
+    /**
+     * Getter for property pasantia.
+     * @return Value of property pasantia.
+     */
+    public Pasantia getPasantia() {
+        return this.pasantia;
+    }
+
+    /**
+     * Setter for property pasantia.
+     * @param pasantia New value of property pasantia.
+     */
+    public void setPasantia(Pasantia pasantia) {
+        this.pasantia = pasantia;
+    }
+
 
 
     public String toString() {

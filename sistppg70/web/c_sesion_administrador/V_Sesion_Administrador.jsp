@@ -65,11 +65,7 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
-
+                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
                 </ul>
             </div>
 

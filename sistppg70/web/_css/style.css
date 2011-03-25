@@ -577,6 +577,11 @@ blockquote[cite]:after {
     margin-left: 10px;
 }
 
+.pgInfo #aprobarBtm{
+	margin-left: 5px;
+	margin-top: 10px;
+}
+
 
 #pgInfo #titulo{
     font-size: 14px;
@@ -587,4 +592,20 @@ blockquote[cite]:after {
 
 #pgInfo td{
     padding-left: 10px;
+}
+
+.preinscripcionesTabla td#preProc{
+	background-color: #7dff3d;
+}
+
+.preinscripcionesTabla td#prePend{
+	background-color: #6d79ff;
+}
+
+.preinscripcionesTabla td a {
+	color: #4f4f4f 
+}
+
+.preinscripcionesTabla th a {
+	color: #646a96
 }

@@ -4,6 +4,27 @@ import ve.usb.cohesion.runtime.Timestamp;
 
 public class Prorroga implements java.io.Serializable, ve.usb.cohesion.runtime.Auditable {
 
+    /**
+     * Holds value of property estudiante.
+     */
+    private Estudiante estudiante;
+
+    /**
+     * Getter for property estudiante.
+     * @return Value of property estudiante.
+     */
+    public Estudiante getEstudiante() {
+        return this.estudiante;
+    }
+
+    /**
+     * Setter for property estudiante.
+     * @param estudiante New value of property estudiante.
+     */
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
     /** Creates a new instance of Prorroga */
     public Prorroga() {}
     
@@ -41,26 +62,7 @@ public class Prorroga implements java.io.Serializable, ve.usb.cohesion.runtime.A
         this.id = this.idProrroga = idProrroga;
     }
 
-    /**
-     * Holds value of property pasantia.
-     */
-    private Pasantia pasantia;
 
-    /**
-     * Getter for property pasantia.
-     * @return Value of property pasantia.
-     */
-    public Pasantia getPasantia() {
-        return this.pasantia;
-    }
-
-    /**
-     * Setter for property pasantia.
-     * @param pasantia New value of property pasantia.
-     */
-    public void setPasantia(Pasantia pasantia) {
-        this.pasantia = pasantia;
-    }
     /**
      * Holds value of property justificacion.
      */
@@ -173,8 +175,6 @@ public class Prorroga implements java.io.Serializable, ve.usb.cohesion.runtime.A
     public String toString() {
         return "<Prorroga id='C" + this.id +
       //idProrroga
-        ((pasantia==null) ? "" : "\" pasantia =\"C" + pasantia.getId()) +
-
       "\" justificacion =\"" + justificacion +
       "\" attachment =\"" + attachment +
         ((estatus==null) ? "" : "\" estatus =\"C" + estatus.getId()) +

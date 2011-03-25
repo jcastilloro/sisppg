@@ -16,6 +16,7 @@
                                 <ul id="nav">
                     <li><cohesion:actor actors="16"><html:link action="/A_modificar_perfil.do"><bean:message key="V_sesion_tutor_i.label0"/><%-- Modificar Perfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="16"><html:link action="/A_prep_gestionar_pasatias_TI.do"><bean:message key="V_sesion_tutor_i.label1"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>
+                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
                 </ul>
             </div>
 

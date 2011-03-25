@@ -17,7 +17,7 @@
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do"><bean:message key="V_sesion_cctds.label1"/><%-- gestionar Preinscripciones --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_pasantias_cctds.do"><bean:message key="V_sesion_cctds.label2"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_prorrogas.do"><bean:message key="V_sesion_cctds.label3"/><%-- Gestionar Prorrogas --%></html:link></cohesion:actor></li>
-
+                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
                 </ul>
             </div>
         </div>

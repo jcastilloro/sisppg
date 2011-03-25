@@ -10,5 +10,7 @@
     <property column="fecha_propuesta" name="fecha_propuesta" not-null="true" type="date"/>
     <!-- 2 -->
     <many-to-one column="prorroga" name="prorroga" not-null="true"/>
+    <!-- 1 -->
+    <many-to-one column="pasantia" name="pasantia" not-null="true"/>
   </class>
 </hibernate-mapping>
