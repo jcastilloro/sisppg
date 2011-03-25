@@ -89,22 +89,27 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center>${empty msg ? "" : msg}</center>
+                                    <center><h1>${empty msg ? "" : msg}</h1></center><hr><p><p>
                                     <div class="box1465928" align="center">
 
 
                                         <html:form styleId="pgForm"
                                                    action="/A_agregar_PG.do" method="post">
-                                            <p id="1840580_C"><label for="1840580"><bean:message key="F_Inscripcion_PG.label0"/><%-- Nombre Proyecto: --%></label><html:text styleId="1840580" property="nombre" size="30" styleClass="validate[required]"/></p>
-                                            <p id="1840583_C"><label for="1840583"><bean:message key="F_Inscripcion_PG.label1"/><%-- Recursos Necesarios: --%></label><html:textarea styleId="1840583" property="recursos" cols="60" rows="10" styleClass="validate[required]"></html:textarea></p>
-                                            <p id="1840586_C"><label for="1840586"><bean:message key="F_Inscripcion_PG.label2"/><%-- Duracion de Recursos: --%></label><html:textarea styleId="1840586" property="duracion_recursos" cols="60" rows="10" styleClass="validate[required]"></html:textarea></p>
-                                            <p id="1840589_C"><label for="1840589"><bean:message key="F_Inscripcion_PG.label3"/><%-- Puntos de Interes: --%></label><html:textarea styleId="1840589" property="puntos_de_interes" cols="60" rows="10" styleClass="validate[required]"></html:textarea></p>
-                                            <p id="18405891_C">Estudiante:<html:select styleId="18405891" property="estudiante">
+                                            <table border="0">
+                                                <tr><td>
+                                            <p id="1840580_C"><label for="1840580"><bean:message key="F_Inscripcion_PG.label0"/><%-- Nombre Proyecto: --%></label></td><td><html:text styleId="1840580" property="nombre" size="60" styleClass="validate[required]"/></td></tr></p>
+                                            <tr><td><p id="1840583_C"><label for="1840583"><bean:message key="F_Inscripcion_PG.label1"/><%-- Recursos Necesarios: --%></label></td><td><html:textarea styleId="1840583" property="recursos" cols="60" rows="10" styleClass="validate[required]"></html:textarea></td></tr></p>
+                                            <tr><td><p id="1840586_C"><label for="1840586"><bean:message key="F_Inscripcion_PG.label2"/><%-- Duracion de Recursos: --%></label></td><td><html:textarea styleId="1840586" property="duracion_recursos" cols="60" rows="10" styleClass="validate[required]"></html:textarea></td></tr></p>
+                                            <tr><td><p id="1840589_C"><label for="1840589"><bean:message key="F_Inscripcion_PG.label3"/><%-- Puntos de Interes: --%></label></td><td><html:textarea styleId="1840589" property="puntos_de_interes" cols="60" rows="10" styleClass="validate[required]"></html:textarea></td></tr></p>
+                                            </center></td></tr></table><center><p id="18405891_C">Estudiante:<html:select styleId="18405891" property="estudiante">
+                                                    
                                                     <logic:iterate id="estudiante" collection="${empty L_Est ? _vacio : L_Est}">
                                                     <option value="${estudiante.usbid}">${estudiante.apellido}, ${estudiante.nombre}</option>
                                                 </logic:iterate>
-                                            </html:select></p>
 
+                                            </html:select></p>
+                                            </center></td></tr></table>
+                                    <hr>
                                             <html:submit styleClass="button">Adelante</html:submit>
                                         </html:form>
                                         <script>

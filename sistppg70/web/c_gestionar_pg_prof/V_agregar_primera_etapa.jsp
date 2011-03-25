@@ -1,61 +1,112 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
-%><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
-%><html:html>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+           %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+           %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
+           %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
+           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><html:html>
     <head>
-        <title><bean:message key="V_agregar_primera_etapa.title"/></title>
-        <link rel="stylesheet" href="_css/style.css" type="text/css"/>
-        <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
-        <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
-        <script src="_js/jquery.validationEngine.js" type="text/javascript"></script>
-        <script src="_js/jquery.validationEngine-es.js" type="text/javascript"></script>
+        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+
+
+        <html:base/>
+
+        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+
+        <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+
         <style type="text/css">
-        div#box1840596 {width: 400px; margin: 40px auto; }
-        form#1840596 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
-        form#1840596 p {float: left; margin: 0; padding: 0; display: inline; }
-        form#1840596 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
-        form#1840596 input {float: left; margin: 0; padding: 0; display: inline; }
-          form#1840596 p#1840610_C {clear: both; width: 400px; }
-          form#1840596 p#1840610_C label {clear: both; width: 400px; }
-          form#1840596 p#1840610_C input {clear: both; width: 396px; }
-          form#1840596 p#1840613_C {clear: both; width: 400px; }
-          form#1840596 p#1840613_C label {clear: both; width: 400px; }
-          form#1840596 p#1840613_C input {clear: both; width: 396px; }
-          form#1840596 p#1840616_C {clear: both; width: 400px; }
-          form#1840596 p#1840616_C label {clear: both; width: 400px; }
-          form#1840596 p#1840616_C input {clear: both; width: 396px; }
-          form#1840596 p#1840620_C {clear: both; width: 400px; }
-          form#1840596 p#1840620_C label {clear: both; width: 400px; }
-          form#1840596 p#1840620_C input {clear: both; width: 396px; }
+
+            div#box1465928 {width: 400px; margin: 40px auto; }
+
+            form#1465928 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
+
+            form#1465928 p {float: left; margin: 0; padding: 0; display: inline; }
+
+            form#1465928 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
+
+            form#1465928 input {float: left; margin: 0; padding: 0; display: inline; }
+
+            form#1465928 p#1465930_C {clear: both; width: 400px; }
+
+            form#1465928 p#1465930_C label {clear: both; width: 400px; }
+
+            form#1465928 p#1465930_C input {clear: both; width: 396px; }
+
+            form#1465928 p#1465933_C {clear: both; width: 400px; }
+
+            form#1465928 p#1465933_C label {clear: both; width: 400px; }
+
+            form#1465928 p#1465933_C input {clear: both; width: 396px; }
+
+
 
         </style>
 
+        <%--   <link rel="stylesheet" type="text/css" href="_css/style.css"/>
+           <style type="text/css">
+           div#box1840387 {width: 400px; margin: 40px auto; }
+           form#1840387 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
+           form#1840387 p {float: left; margin: 0; padding: 0; display: inline; }
+           form#1840387 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
+           form#1840387 input {float: left; margin: 0; padding: 0; display: inline; }
+             form#1840387 p#1840389_C {clear: both; width: 400px; }
+             form#1840387 p#1840389_C label {clear: both; width: 400px; }
+             form#1840387 p#1840389_C input {clear: both; width: 396px; }
+             form#1840387 p#1840392_C {clear: both; width: 400px; }
+             form#1840387 p#1840392_C label {clear: both; width: 400px; }
+             form#1840387 p#1840392_C input {clear: both; width: 396px; }
+
+        </style> --%>
+
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_agregar_primera_etapa.title"/></div>
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
+
+
+
+
+
                 </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
-                            ${empty msg ? "" : msg}
-                            <br>
-                            <br>
-                            <div class="box1840596"><html:form styleId="etapa1Form"
+
+
+
+            <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            </div>
+            <div id="page">
+
+
+
+                <div id="content">
+
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
+                                    <h1><center>${empty msg ? "" : msg}</center></h1><hr>
+                                    <div class="box1465928" align="center">
+
+
+
+
+                    <html:form styleId="etapa1Form"
                   action="/A_guardar_primera_etapa.do" method="post">
-                    <p id="1840610_C"><label for="1840610"><bean:message key="F_Etapa_PG.label0"/><%-- Nombre Etapa: --%></label><html:text styleClass="validate[required]" styleId="1840610" property="nombre" size="30"/></p>
-                  <p id="1840613_C"><label for="1840613"><bean:message key="F_Etapa_PG.label1"/><%-- Resultados Minimos: --%></label><html:textarea styleClass="validate[required]" styleId="1840613" property="resultados_minimos" cols="60" rows="10"></html:textarea></p>
-                  <p id="18406131_C">Descripcion Topicos:<html:textarea styleClass="validate[required]" styleId="18406131" property="topicos" cols="60" rows="10"></html:textarea></p>
-                  <p id="1840616_C"><label for="1840616">
+                        <table borde="0">
+
+                   <tr><th> <p id="1840610_C"><label for="1840610"><bean:message key="F_Etapa_PG.label0"/><%-- Nombre Etapa: --%></label></th><td><html:text styleClass="validate[required]" styleId="1840610" property="nombre" size="30"/></td></tr></p>
+                  <tr><th><p id="1840613_C"><label for="1840613"><bean:message key="F_Etapa_PG.label1"/><%-- Resultados Minimos: --%></label></th><td><html:textarea styleClass="validate[required]" styleId="1840613" property="resultados_minimos" cols="60" rows="10"></html:textarea></td></tr></p>
+                  <tr><th><p id="18406131_C">Descripcion Tópicos:</th><td><html:textarea styleClass="validate[required]" styleId="18406131" property="topicos" cols="60" rows="10"></html:textarea></td></tr></p>
+                  <tr><th><p id="1840616_C"><label for="1840616">
+
+                          </table>
+
                           <logic:notEmpty name="L_Trim">
                           <html:select styleId="18405891" property="trimestre">
                             <logic:iterate id="trim" collection="${L_Trim }">
@@ -64,7 +115,7 @@
                           </html:select>
                           </logic:notEmpty></p>
                   <p id="1840620_C"><label for="1840620"><bean:message key="F_Etapa_PG.label3"/><%-- A&ntilde;o: --%></label><html:text styleId="1840620" property="ano" size="30"/></p>
-
+                  <hr>
                   <html:submit styleClass="button"><bean:message key="V_agregar_primera_etapa.label0"/><%-- Continuar --%></html:submit>
                 </html:form>
                             <script>
@@ -72,20 +123,27 @@
                                 $("#etapa1Form").validationEngine('attach');
                                });
                             </script>
+
+
+                                    </div>
+                                </div>
                             </div>
 
-                         </div>
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
+            <div style="clear: both;">&nbsp;</div>
         </div>
-        <div id="end_body"></div>
-        <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+        <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
+
+
+
     </body>
 </html:html>

@@ -21,20 +21,20 @@ import jc2s.sistppg.hibernate.*;
 
 
 /**
- * 
+ *
  */
 public class AccionesC_Inicio_Sesion extends CohesionAction {
-    
+
 /**
      * Called by Struts for the execution of action A_Prep_Inicio_Sesion.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_Prep_Inicio_Sesion(ActionMapping mapping, ActionForm  form,
@@ -67,14 +67,14 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_Inicio_Sesion.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_Inicio_Sesion(ActionMapping mapping, ActionForm  form,
