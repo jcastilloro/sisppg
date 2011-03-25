@@ -26,7 +26,18 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
-                            ${empty msg ? "" : msg}
+                            ${empty msg ? "" : msg}<br><br>
+
+                            <logic:empty name="L_preins">
+                                <h1>Usted no tiene preinscripciones registradas</h1>
+                            </logic:empty>
+                            <logic:notEmpty name="L_preins">
+                                <ul id="preinscripciones">
+                                <logic:iterate id="p" name="L_preins">
+                                    <li id="${p.por_graduar ? "preinsNo" : "preinsSi"}"><p>Preinscripcion de pasantia ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""}  <small>${p.created_at}</small> <html:link href="#">carta postulacion</html:link></p></li>
+                                </logic:iterate>
+                                </ul>
+                            </logic:notEmpty>
                          </div>
                     </div>
                     <div id="right"></div>

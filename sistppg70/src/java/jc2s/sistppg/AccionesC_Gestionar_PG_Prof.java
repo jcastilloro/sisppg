@@ -615,6 +615,25 @@ public class AccionesC_Gestionar_PG_Prof extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+                List<Actividad> la;
+                int netapa = (Integer) request.getSession().getAttribute("netapa");
+                switch(netapa){
+                    case 1:
+                        PrimeraEtapa pe = (PrimeraEtapa) request.getSession().getAttribute("etapa1");
+                        la = (List<Actividad>) s.createQuery("from Actividad where primera_etapa = :peId").setLong("peId", pe.getIdPrimeraEtapa()).list();
+                        request.getSession().setAttribute("L_etapa1", la);
+                        break;
+                    case 2:
+                        SegundaEtapa se = (SegundaEtapa) request.getSession().getAttribute("etapa2");
+                        la = (List<Actividad>) s.createQuery("from Actividad where segunda_etapa = :peId").setLong("peId", se.getIdSegundaEtapa()).list();
+                        request.getSession().setAttribute("L_etapa2", la);
+                        break;
+                    case 3:
+                        TerceraEtapa te = (TerceraEtapa) request.getSession().getAttribute("etapa3");
+                        la = (List<Actividad>) s.createQuery("from Actividad where tercera_etapa = :peId").setLong("peId", te.getIdTerceraEtapa()).list();
+                        request.getSession().setAttribute("L_etapa3", la);
+                        break;
+                }
             tr.commit();
 
         } catch (Exception ex) {
@@ -663,11 +682,26 @@ public class AccionesC_Gestionar_PG_Prof extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            request.getSession().removeAttribute("netapa");
+            request.getSession().removeAttribute("etapa1");
+            request.getSession().removeAttribute("etapa2");
+            request.getSession().removeAttribute("etapa3");
+            request.getSession().removeAttribute("etapa");
+            request.getSession().removeAttribute("L_etapa1");
+            request.getSession().removeAttribute("L_etapa2");
+            request.getSession().removeAttribute("L_etapa3");
+            request.getSession().removeAttribute("L_Areas_PG");
+            request.getSession().removeAttribute("L_Areas");
+            request.getSession().removeAttribute("etapa");
+            request.getSession().removeAttribute("pg");
+            request.getSession().removeAttribute("proyecto");
+
+
             tr.commit();
 
         } catch (Exception ex) {
-            tr.rollback();
-            throw ex;
+            //tr.rollback();
+            //throw ex;
         } finally {
             try { s.close(); } catch (Exception ex2) {}
         }
@@ -954,7 +988,6 @@ public class AccionesC_Gestionar_PG_Prof extends CohesionAction {
                 te.setEtapa(e);
                 s.save(te);
                 request.getSession().setAttribute("etapa3",te);
-
 
                 fetapa_PG.reset(mapping, request);
             }else{

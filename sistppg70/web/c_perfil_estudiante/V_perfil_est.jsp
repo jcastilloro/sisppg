@@ -6,7 +6,10 @@
            %><html:html>
     <head>
         <title><bean:message key="V_perfil_est.title"/></title>
-        <link rel="stylesheet" type="text/css" href="_css/style.css"/>
+        <link rel="stylesheet" href="_css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
+        <script src="_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="_js/jquery.validationEngine-es.js" type="text/javascript"></script>
         <script type="text/javascript" src="_js/jquery-1.4.4.min.js"></script>
         <link type="text/css" href="_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="_js/jquery-ui-1.8.10.custom.min.js"></script>
@@ -64,23 +67,31 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
-                            <div class="box1840396"><html:form
+                            <div class="box1840396"><html:form styleId="perfilEForm"
                                     action="/A_guardar_perfil.do" method="post">
                                     <table border="0">
-                                        <tr><td><p id="1840398_C"><label for="1840398"><bean:message key="F_Perfil_Estudiante.label0"/><%-- Nombre: --%></label></td><td><html:text styleId="1840398" property="nombre" size="30" value="${Datos.nombre}"/></td></tr>
-                                        <tr><td><p id="1840402_C"><label for="1840402"><bean:message key="F_Perfil_Estudiante.label1"/><%-- Apellido: --%></label></td><td><html:text styleId="1840402" property="apellido" size="30" value="${Datos.apellido}"/></td></tr>
-                                        <tr><td><p id="1840405_C"><label for="1840405"><bean:message key="F_Perfil_Estudiante.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840405" property="cedula" size="30" value="${Datos.cedula}"/></td></tr>
-                                        <tr><td><p id="1840408_C"><label for="1840408"><bean:message key="F_Perfil_Estudiante.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840408" property="email" size="30" value="${Datos.email}"/></td></tr>
-                                        <tr><td><p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label></td><td><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}"/></td></tr>
+                                        <tr><td><p id="1840398_C"><label for="1840398"><bean:message key="F_Perfil_Estudiante.label0"/><%-- Nombre: --%></label></td><td><html:text styleId="1840398" property="nombre" size="30" value="${Datos.nombre}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840402_C"><label for="1840402"><bean:message key="F_Perfil_Estudiante.label1"/><%-- Apellido: --%></label></td><td><html:text styleId="1840402" property="apellido" size="30" value="${Datos.apellido}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840405_C"><label for="1840405"><bean:message key="F_Perfil_Estudiante.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840405" property="cedula" size="30" value="${Datos.cedula}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840408_C"><label for="1840408"><bean:message key="F_Perfil_Estudiante.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840408" property="email" size="30" value="${Datos.email}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label></td><td><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840459_C"><label for="18404591">Direccion:</label></td><td><html:textarea styleId="18404591" property="direccion" cols="30" rows="5" value="${Datos.direccion}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840459_C"><label for="18404592">Sexo: </label></td><td>
+                                                <html:select styleId="18404592" property="sexo" value="${Datos.sexo}">
+                                                <option value="masculino" >Masculino</option>
+                                                <option value="femenino">Femenino</option>
+                                                </html:select></td></tr>
+                            <tr><td><p id="1840459_C"><label for="18404593">Nacionalidad(pais):</label></td><td><html:text property="nacionalidad" size="30" value="${Datos.nacionalidad}" styleClass="validate[required]"/></td></tr>
+                                        <tr><td><p id="1840459_C"><label for="18404594">Indice:</label></td><td><html:text styleId="1840459" property="indice" size="5" value="${Datos.indice}" styleClass="validate[required]"/></td></tr>
                                         <tr><td><p id="1843493_C"><label for="1843493"><bean:message key="F_Perfil_Estudiante.label5"/><%-- Carrera: --%></label></td><td>
                                                 <html:select styleId="1843493" property="carrera" value="${Datos.carrera}">
                                                     <logic:iterate id="carrera" collection="${empty L_Carreras ? _vacio : L_Carreras}">
                                                 <option value="${carrera.idCarrera}">${carrera.nombre}</option>
                                             </logic:iterate>
                                         </html:select></td></tr></td></tr>
-                                        <tr><td><p id="1843588_C"><label for="1843588"><bean:message key="F_Perfil_Estudiante.label6"/><%-- Fecha Nacimiento: --%></label></td><td><html:text styleId="1843588" property="fecha_nacimiento" size="30"/></td></tr>
+                                        <tr><td><p id="1843588_C"><label for="1843588"><bean:message key="F_Perfil_Estudiante.label6" /><%-- Fecha Nacimiento: --%></label></td><td><html:text styleId="1843588" property="fecha_nacimiento" size="30" styleClass="validate[required]"/></td></tr>
                                         <tr><td><p id="1843591_C"><label for="1843591"><bean:message key="F_Perfil_Estudiante.label7"/><%-- Estado Civil --%></label></td><td>
-                                                 <html:select styleId="1843591" property="carrera">
+                                                 <html:select styleId="1843591" property="estadoCivil">
                                                       <option value="Soltero"> Soltero </option>
                                                       <option value="Casado"> Casado </option>
                                                       <option value="Divorciado"> Divorciado </option>
@@ -90,6 +101,12 @@
                                     </table>
                                     <center><html:submit styleClass="button"><bean:message key="V_perfil_est.label0"/><%-- CrearPerfilEst --%></html:submit></center>
                                 </html:form></div>
+                            <script>
+                            $(document).ready(function(){
+                                $("#perfilEForm").validationEngine('attach');
+                               });
+                            </script>
+
                             <p><bean:message key="V_Obligatorios.msg0"/>
                         </div>
                     </div>

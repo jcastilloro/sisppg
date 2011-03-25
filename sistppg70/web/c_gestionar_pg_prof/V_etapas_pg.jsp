@@ -29,6 +29,7 @@
                         <div class="content">
                             <div id="etapasimg">
                                 <logic:lessEqual value="2" name="netapa"><img src="_css/images/pg-e${netapa+1}.png"></logic:lessEqual>
+                                <logic:greaterThan value="2" name="netapa"><h2>Proceso Finalizado</h2></logic:greaterThan>
                             </div>
                             <%--${empty msg ? "" : msg}<br><br>--%>
                             <br><br><br>
@@ -73,50 +74,70 @@
                                         <table id="etapa1" border="0">
                                             <tr>
                                                 <td id="titulo">Nombre:</td>
-                                                <td id="contenido">Nombre</td>
+                                                <td id="contenido">${etapa1.etapa.nombre}</td>
                                             </tr>
                                             <tr>
-                                                <td id="titulo">Recursos:</td>
-                                                <td id="contenido">recursos</td>
+                                                <td id="titulo">Resultados Minimos:</td>
+                                                <td id="contenido">${etapa1.etapa.resultados_minimos}</td>
                                             </tr>
-                                            <tr>
-                                                <td id="titulo">Actividad:</td>
-                                                <td id="contenido">actividad</td>
-                                            </tr>
+                                            
+                                                <logic:notEmpty name="L_etapa1">
+                                                    <logic:iterate id="a" name="L_etapa1">
+                                                        <tr>
+                                                            <td id="actividad">Actividad:</td>
+                                                            <td id="contenido">${a.descripcion}</td>
+                                                        </tr>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
+                                            
                                         </table>
                                     </div>
+
                                     <div class="etapasPG" id="etapa2">
                                         <h1>Etapa2</h1>
                                         <table id="etapa1" border="0">
                                             <tr>
                                                 <td id="titulo">Nombre:</td>
-                                                <td id="contenido">Nombre</td>
+                                                <td id="contenido">${etapa2.etapa.nombre}</td>
                                             </tr>
                                             <tr>
-                                                <td id="titulo">Recursos:</td>
-                                                <td id="contenido">recursos</td>
+                                                <td id="titulo">Resultados Minimos:</td>
+                                                <td id="contenido">${etapa2.etapa.resultados_minimos}</td>
                                             </tr>
-                                            <tr>
-                                                <td id="titulo">Actividad:</td>
-                                                <td id="contenido">actividad</td>
-                                            </tr>
+                                            
+                                                <logic:notEmpty name="L_etapa2">
+                                                    <logic:iterate id="a" name="L_etapa2">
+                                                        <tr>
+                                                            <td id="actividad">Actividad:</td>
+                                                            <td id="contenido">${a.descripcion}</td>
+                                                        </tr>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
+                                            
                                         </table>
                                     </div>
+
                                     <div class="etapasPG" id="etapa3">
                                         <h1>Etapa3</h1>
                                         <table id="etapa1" border="0">
                                             <tr>
                                                 <td id="titulo">Nombre:</td>
-                                                <td id="contenido">Nombre</td>
+                                                <td id="contenido">${etapa3.etapa.nombre}</td>
                                             </tr>
                                             <tr>
-                                                <td id="titulo">Recursos:</td>
-                                                <td id="contenido">recursos</td>
+                                                <td id="titulo">Resultados Minimos:</td>
+                                                <td id="contenido">${etapa3.etapa.resultados_minimos}</td>
                                             </tr>
-                                            <tr>
-                                                <td id="titulo">Actividad:</td>
-                                                <td id="contenido">actividad</td>
-                                            </tr>
+                                            
+                                                <logic:notEmpty name="L_etapa3">
+                                                    <logic:iterate id="a" name="L_etapa3">
+                                                        <tr>
+                                                            <td id="actividad">Actividad:</td>
+                                                            <td id="contenido">${a.descripcion}</td>
+                                                        </tr>
+                                                        </logic:iterate>
+                                                </logic:notEmpty>
+
                                         </table>
                                     </div>
                                  </div>

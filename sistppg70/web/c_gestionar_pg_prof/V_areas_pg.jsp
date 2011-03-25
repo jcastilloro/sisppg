@@ -36,26 +36,27 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
-                           <div id="infopg">
-                                <table>
+
+                            <div class="pgInfo">
+                                <table id="pgInfo">
                                     <tr>
-                                        <td>Nombre PG:</td>
+                                        <td id="titulo">Nombre PG:</td>
                                         <td>${pg.nombre}</td>
                                     </tr>
                                     <tr>
-                                        <td>Recursos:</td>
+                                        <td id="titulo">Recursos:</td>
                                         <td>${pg.recursos}</td>
                                     </tr>
                                     <tr>
-                                        <td>Duracion de recursos:</td>
+                                        <td id="titulo">Duracion de recursos:</td>
                                         <td>${pg.duracion_recursos}</td>
                                     </tr>
                                     <tr>
-                                        <td>Puntos de interes:</td>
+                                        <td id="titulo">Puntos de interes:</td>
                                         <td>${pg.puntos_de_interes}</td>
                                     </tr>
                                     <tr>
-                                        <td>Areas:</td>
+                                        <td id="titulo">Areas:</td>
                                         <logic:notEmpty name="L_Areas_PG">
                                             <td></td>
                                             </tr>
@@ -69,7 +70,7 @@
                                         </logic:empty>
 
                                 </table>
-                            </div>
+                            </div>                            </div>
                                     <br>
 
                  ${empty msg ? "" : msg}

@@ -1,4 +1,4 @@
-insert into usuario values (1, '07-41896', 'estudiante');
+﻿insert into usuario values (1, '07-41896', 'estudiante');
 insert into usuario values (2, 'zchiquin', 'profesor');
 insert into usuario values (3, '05-37862', 'estudiante');
 insert into usuario values (4, '06-40073', 'estudiante');
@@ -12,6 +12,7 @@ insert into carrera values (3, 'Ingeniería Mecánica', 'coord-mec@usb.ve');
 insert into carrera values (4, 'Ingeniería Eléctronica', 'coord-electronica@usb.ve');
 insert into carrera values (5, 'Ingeniería Química', 'coord-iq@usb.ve');
 insert into carrera values (6, 'Ingeniería de Producción', 'coord-prod@usb.ve');
+insert into carrera values (6, 'Urbanismo', 'coord-urb@usb.ve');
 
 insert into departamento values (1, 'Computación y Tecnología de la Información');
 insert into departamento values (2, 'Procesos y Sistemas');
@@ -52,6 +53,7 @@ insert into ciudad values (5, 'Madrid',3);
 insert into ciudad values (6, 'Maracaibo',5);
 insert into ciudad values (7, 'Puerto Ordaz',5);
 insert into ciudad values (8, 'Rio de Janeiro',2);
+
 
 insert into estatuspasantia values (1, 'Aprobado');
 insert into estatuspasantia values (2, 'Retirado');

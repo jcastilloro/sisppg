@@ -537,13 +537,14 @@ blockquote[cite]:after {
 
 .tablaEtapas {
     position: relative;
+    padding-left: 10px;
 }
 
 .etapasPG{
     float: left;
-    margin-left: 10px;
-    width: 155px;
-    border: solid 1px #ff5e1e;
+    margin-left: 3px;
+    width: 158px;
+    border: solid 1px #ffd454;
 }
 
 .etapasPG h1{
@@ -551,7 +552,7 @@ blockquote[cite]:after {
 }
 
 .etapasPG td#titulo{
-    font-size: 14px;
+    font-size: 11px;
     color: black;
     font-weight: bold;
 }
@@ -559,12 +560,21 @@ blockquote[cite]:after {
 .etapasPG td#contenido{
     font-size: 10px;
     color: #4D4D56;
+    width: 80px;
 }
+
+.etapasPG td#actividad{
+    font-size: 10px;    
+    color: black;
+    font-weight: bold;
+}
+
 
 .pgInfo{
     border: solid 1px #ff5e1e;
-    font-size: 10px;
+    font-size: 12px;
     color: #4D4D56;
+    margin-left: 10px;
 }
 
 
@@ -573,6 +583,7 @@ blockquote[cite]:after {
     color: black;
     font-weight: bold;
 }
+
 
 #pgInfo td{
     padding-left: 10px;

@@ -20,6 +20,10 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         carrera = "";
         fecha_nacimiento = "";
         estadoCivil = "";
+        sexo="";
+        nacionalidad="";
+        direccion="";
+        indice=0.0;
 
     }
     
@@ -32,6 +36,11 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         carrera = "";
         fecha_nacimiento = "";
         estadoCivil = "";
+        sexo="";
+        nacionalidad="";
+        direccion="";
+        indice=0.0;
+
 
     }
 
@@ -221,7 +230,91 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         this.estadoCivil = estadoCivil;
     }
 
+        /**
+     * Holds value of property sexo.
+     */
+    private String sexo;
 
+    /**
+     * Getter for property nombre.
+     * @return Value of property nombre.
+     */
+    public String getSexo() {
+        return this.sexo;
+    }
+
+    /**
+     * Setter for property nombre.
+     * @param nombre New value of property nombre.
+     */
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+        /**
+     * Holds value of property nacionalidad.
+     */
+    private String nacionalidad;
+
+    /**
+     * Getter for property nacionalidad.
+     * @return Value of property nacionalidad.
+     */
+    public String getNacionalidad() {
+        return this.nacionalidad;
+    }
+
+    /**
+     * Setter for property nacionalidad.
+     * @param nombre New value of property nacionalidad.
+     */
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+
+        /**
+     * Holds value of property nacionalidad.
+     */
+    private String direccion;
+
+    /**
+     * Getter for property nacionalidad.
+     * @return Value of property nacionalidad.
+     */
+    public String getDireccion() {
+        return this.direccion;
+    }
+
+    /**
+     * Setter for property nacionalidad.
+     * @param nombre New value of property nacionalidad.
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
+        /**
+     * Holds value of property nacionalidad.
+     */
+    private Double indice;
+
+    /**
+     * Getter for property nacionalidad.
+     * @return Value of property nacionalidad.
+     */
+    public Double getIndice() {
+        return this.indice;
+    }
+
+    /**
+     * Setter for property nacionalidad.
+     * @param nombre New value of property nacionalidad.
+     */
+    public void setIndice(Double indice) {
+        this.indice = indice;
+    }
 
 
 }
