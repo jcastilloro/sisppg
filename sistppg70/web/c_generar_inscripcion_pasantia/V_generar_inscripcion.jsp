@@ -6,53 +6,69 @@
 %><html:html>
     <head>
         <title><bean:message key="V_generar_inscripcion.title"/></title>
-       <link rel="stylesheet" href="_css/style.css" type="text/css"/>
+   <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
         <script src="_js/jquery.validationEngine.js" type="text/javascript"></script>
         <script src="_js/jquery.validationEngine-es.js" type="text/javascript"></script>
-        <style type="text/css">
-        div#box1840463 {width: 400px; margin: 40px auto; }
-        form#1840463 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
-        form#1840463 p {float: left; margin: 0; padding: 0; display: inline; }
-        form#1840463 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
-        form#1840463 input {float: left; margin: 0; padding: 0; display: inline; }
-          form#1840463 p#1840465_C {clear: both; width: 400px; }
-          form#1840463 p#1840465_C label {clear: both; width: 400px; }
-          form#1840463 p#1840465_C input {clear: both; width: 396px; }
-          form#1840463 p#1843570_C {clear: both; width: 400px; }
-          form#1840463 p#1843570_C label {clear: both; width: 400px; }
-          form#1840463 p#1843570_C input {clear: both; width: 396px; }
-          form#1840463 p#1843573_C {clear: both; width: 400px; }
-          form#1840463 p#1843573_C label {clear: both; width: 400px; }
-          form#1840463 p#1843573_C input {clear: both; width: 396px; }
-          form#1840463 p#1843577_C {clear: both; width: 400px; }
-          form#1840463 p#1843577_C label {clear: both; width: 400px; }
-          form#1840463 p#1843577_C input {clear: both; width: 396px; }
-          form#1840463 p#1840471_C {clear: both; width: 400px; }
-          form#1840463 p#1840471_C label {clear: both; width: 400px; }
-          form#1840463 p#1840471_C input {clear: both; width: 396px; }
-          form#1840463 p#1840468_C {clear: both; width: 400px; }
-          form#1840463 p#1840468_C label {clear: both; width: 400px; }
-          form#1840463 p#1840468_C input {clear: both; width: 396px; }
+  
+                <style type="text/css">
+
+            div#box1465928 {width: 400px; margin: 40px auto; }
+
+            form#1465928 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
+
+            form#1465928 p {float: left; margin: 0; padding: 0; display: inline; }
+
+            form#1465928 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
+
+            form#1465928 input {float: left; margin: 0; padding: 0; display: inline; }
+
+            form#1465928 p#1465930_C {clear: both; width: 400px; }
+
+            form#1465928 p#1465930_C label {clear: both; width: 400px; }
+
+            form#1465928 p#1465930_C input {clear: both; width: 396px; }
+
+            form#1465928 p#1465933_C {clear: both; width: 400px; }
+
+            form#1465928 p#1465933_C label {clear: both; width: 400px; }
+
+            form#1465928 p#1465933_C input {clear: both; width: 396px; }
+
+
 
         </style>
+       
 
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_generar_inscripcion.title"/></div>
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
+
                 </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
+
+
+
+            <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            </div>
+            <div id="page">
+
+
+
+                <div id="content">
+
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
+
                             ${empty msg ? "" : msg}
                             <div class="box1840463"><html:form styleId="pasForm"
                   action="/A_generar_inscripcion.do" method="post">
@@ -101,17 +117,21 @@
 
                 </div>
 
-                         </div>
+                        </div>
+                                </div>
+                            </div>
+
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
-        </div>
-        <div id="end_body"></div>
+            <div style="clear: both;">&nbsp;</div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
         
     </body>

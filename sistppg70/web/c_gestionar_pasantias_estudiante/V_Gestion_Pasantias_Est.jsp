@@ -67,22 +67,9 @@
                 <ul id="nav">
 
 
-
-
-
-
-
-
-
-
-                    <li><cohesion:actor actors="4"><html:link action="/A_prep_Consultar_Pasantia.do"><bean:message key="V_Gestion_Pasantias_Est.label0"/><%-- Consultar Pasantia --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_gestionar_preinscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label1"/><%-- Gestionar Preinscripcion --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_generar_inscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label2"/><%-- Generar Inscripcion --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_solicitar_prorroga_inscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label3"/><%-- Solicitud Prorrogra Inscripcion --%></html:link></cohesion:actor></li>
-
-
-
-
 
 
                 </ul>
@@ -114,7 +101,7 @@
                                             <h1>¡Usted no tiene ninguna pasantía asociada!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantias">
-                                            <h1>Usted tiene las siguientes pasantías asociadas: </h1>
+                                            <h1>Usted tiene las siguientes pasantías asociadas: </h1><br>
                                             <table border="1" width="500">
                                                 <tr><th><center>Título</center></th><th><center>Resumen</center></th></tr>
                                                 <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
