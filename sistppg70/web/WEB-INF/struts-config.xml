@@ -28,6 +28,7 @@
         <form-bean name="F_Carrera" type="jc2s.sistppg.F_Carrera"/>
         <form-bean name="F_Area2" type="jc2s.sistppg.F_Area2"/>
         <form-bean name="F_Estatus_Pasantia" type="jc2s.sistppg.F_Estatus_Pasantia"/>
+        <form-bean name="F_Estatus_Prorroga" type="jc2s.sistppg.F_Estatus_Prorroga"/>
 
     </form-beans>
     
@@ -311,6 +312,13 @@
         <forward name="V_Gestionar_Estatus_Pasantias" path="/c_sesion_administrador/V_Gestionar_Estatus_Pasantias.jsp"/>
         <forward name="A_insertar_estatus_pasantia" path="/A_insertar_estatus_pasantia.do"/>
         <forward name="A_eliminar_estatus_pasantia" path="/A_eliminar_estatus_pasantia.do"/>
+
+        <!-- C_Gestionar_Estatus_Prorrogas -->
+
+        <forward name="A_Prep_Gestionar_Estatus_Prorrogas" path="/A_Prep_Gestionar_Estatus_Prorrogas.do"/>
+        <forward name="V_Gestionar_Estatus_Prorrogas" path="/c_sesion_administrador/V_Gestionar_Estatus_Prorrogas.jsp"/>
+        <forward name="A_insertar_estatus_prorroga" path="/A_insertar_estatus_prorroga.do"/>
+        <forward name="A_eliminar_estatus_prorroga" path="/A_eliminar_estatus_prorroga.do"/>
 
 
 
@@ -705,6 +713,18 @@
            name="F_Estatus_Pasantia"
            scope="session"/>
          <action path="/A_eliminar_estatus_pasantia" parameter="A_eliminar_estatus_pasantia"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+
+            <!-- C_Gestionar_Estatus_Prorrogas -->
+        <action path="/A_Prep_Gestionar_Estatus_Prorrogas" parameter="A_Prep_Gestionar_Estatus_Prorrogas"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_estatus_prorroga" parameter="A_insertar_estatus_prorroga"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Estatus_Prorrogas.jsp"
+           name="F_Estatus_Prorroga"
+           scope="session"/>
+         <action path="/A_eliminar_estatus_prorroga" parameter="A_eliminar_estatus_prorroga"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 

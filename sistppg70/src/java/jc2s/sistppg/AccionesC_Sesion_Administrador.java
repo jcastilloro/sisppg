@@ -985,4 +985,300 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Estatus_Prorrogas",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+        //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+            }
+            String parameter = request.getParameter("idEstatus_Prorroga");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null) {                                                                //AQUI ABAJO
+                EstatusProrroga singular = (EstatusProrroga) s.createQuery("from EstatusProrroga where idEstatusProrroga= :var").setLong("var", Long.parseLong(request.getParameter("idEstatus_Prorroga"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+            List<EstatusProrroga> dato = s.createQuery("from EstatusProrroga ").list();                             //CAMBIAR LA TABLA
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    public ActionForward A_insertar_estatus_prorroga(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Estatus_Prorrogas",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Estatus_Prorroga fF_EstatusProrroga = (F_Estatus_Prorroga) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            // request.getSession().removeAttribute("Singular");
+
+            request.getSession().removeAttribute("Datos");
+            String parameter = request.getParameter("idEstatus_Prorroga");               //CAMBIAR CLAVE
+            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+                EstatusProrroga singular = (EstatusProrroga) s.createQuery("from EstatusProrroga where idEstatusProrroga= :var").setLong("var", Long.parseLong(request.getParameter("idEstatus_Prorroga"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+
+
+
+
+
+
+
+            EstatusProrroga p;
+            boolean guarda = true;
+            if (!fF_EstatusProrroga.getIdEstatusProrroga().equals("")) {                                        //CAMBIAR CLASES
+                p = (EstatusProrroga) request.getSession().getAttribute("Singular");
+                guarda = false;
+            } else {
+                p = new EstatusProrroga();
+            }
+
+
+//            p.setIdEstatus_Prorroga(Long.parseLong(fF_Estatus_Prorroga.getIdEstatus_Prorroga()));
+
+
+
+            //verifico estatus
+            if (Pattern.matches(".+", fF_EstatusProrroga.getEstatus())) {
+                p.setEstatus(fF_EstatusProrroga.getEstatus());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un estatus Válido"+"LOOOOOOCOOOOOOOOO"+fF_EstatusProrroga.getEstatus());
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+            } else {
+                s.update(p);
+            }
+            List<EstatusProrroga> dato = s.createQuery("from EstatusProrroga ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+    public ActionForward A_eliminar_estatus_prorroga(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Estatus_Prorrogas",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+//            request.getSession().removeAttribute("Singular");
+//            request.getSession().removeAttribute("Datos");
+            EstatusProrroga p = (EstatusProrroga) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
+            request.getSession().removeAttribute("Singular");
+
+
+            //List<Estatus_Prorroga> dato = s.createQuery("from EstatusProrroga ").list();
+//            List<Estatus_Prorroga> dato = (List<Estatus_Prorroga>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
+
+
+
+
+            s.delete(p);
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

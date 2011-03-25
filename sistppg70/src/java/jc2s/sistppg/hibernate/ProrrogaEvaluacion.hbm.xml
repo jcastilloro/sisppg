@@ -1,18 +1,14 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="jc2s.sistppg.hibernate.ProrrogaEvaluacion" table="PRORROGAEVALUACION">
-      <!-- 0 -->
-      <id name="idProrrogaEvaluacion" column="idProrrogaEvaluacion">
-        <generator class="native"/>
-      </id>
-
-      <!-- 1 -->
-      <property name="fecha_propuesta" column="fecha_propuesta" type="date" not-null="true"/>
-      <!-- 2 -->
-      <many-to-one name="prorroga" column="prorroga" not-null="true" />
-    </class>
+  <class name="jc2s.sistppg.hibernate.ProrrogaEvaluacion" table="PRORROGAEVALUACION">
+    <!-- 0 -->
+    <id column="idProrrogaEvaluacion" name="idProrrogaEvaluacion">
+      <generator class="native"/>
+    </id>
+    <!-- 1 -->
+    <property column="fecha_propuesta" name="fecha_propuesta" not-null="true" type="date"/>
+    <!-- 2 -->
+    <many-to-one column="prorroga" name="prorroga" not-null="true"/>
+  </class>
 </hibernate-mapping>

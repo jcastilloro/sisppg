@@ -62,6 +62,18 @@
                                             País
                                         </th>
                                     </tr>
+                                    <tr><p></p></tr>
+                                    <tr>
+                                        <th>
+                                            <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do">Estatus de Prorrogas</html:link>
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                        <th>
+                                            
+                                        </th>
+                                    </tr>
                                 </table>
                             </center>
                         </div>

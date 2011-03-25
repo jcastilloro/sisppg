@@ -1,25 +1,24 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="jc2s.sistppg.hibernate.Pasantia" table="PASANTIA">
-      <!-- 0 -->
-      <id name="idPasantia" column="idPasantia">
-        <generator class="native"/>
-      </id>
-
-      <!-- 1 -->
-      <property name="titulo" column="titulo" type="string" not-null="true"/>
-      <!-- 2 -->
-      <many-to-one name="tutor_academico" column="tutor_academico" not-null="true" />      <!-- 3 -->
-      <many-to-one name="tutor_industrial" column="tutor_industrial" not-null="true" />      <!-- 4 -->
-      <many-to-one name="proyecto" column="proyecto" not-null="true" unique="true" />      <!-- 5 -->
-      <many-to-one name="estatus" column="estatus" not-null="true" />      <!-- 6 -->
-      <property name="resumen" column="resumen" type="text" not-null="true"/>
-      <!-- 7 -->
-      <property name="objetivos_generales" column="objetivos_generales" type="text" not-null="true"/>
-
-    </class>
+  <class name="jc2s.sistppg.hibernate.Pasantia" table="PASANTIA">
+    <!-- 0 -->
+    <id column="idPasantia" name="idPasantia">
+      <generator class="native"/>
+    </id>
+    <!-- 1 -->
+    <property column="titulo" name="titulo" not-null="true" type="string"/>
+    <!-- 2 -->
+    <many-to-one column="tutor_academico" name="tutor_academico" not-null="true"/>
+    <!-- 3 -->
+    <many-to-one column="tutor_industrial" name="tutor_industrial" not-null="true"/>
+    <!-- 4 -->
+    <many-to-one column="proyecto" name="proyecto" not-null="true" unique="true"/>
+    <!-- 5 -->
+    <many-to-one column="estatus" name="estatus" not-null="true"/>
+    <!-- 6 -->
+    <property column="resumen" name="resumen" not-null="true" type="text"/>
+    <!-- 7 -->
+    <property column="objetivos_generales" name="objetivos_generales" not-null="true" type="text"/>
+  </class>
 </hibernate-mapping>

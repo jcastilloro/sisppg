@@ -1,36 +1,32 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="jc2s.sistppg.hibernate.TutorIndustrial" table="TUTORINDUSTRIAL">
-      <!-- 0 -->
-      <id name="idTutorIndustrial" column="idTutorIndustrial">
-        <generator class="native"/>
-      </id>
-
-      <!-- 1 -->
-      <property name="nombre" column="nombre" type="string" not-null="true"/>
-      <!-- 2 -->
-      <property name="cedula" column="cedula" type="string" not-null="true" unique="true"/>
-      <!-- 3 -->
-      <property name="email" column="email" type="string" not-null="true" unique="true"/>
-      <!-- 4 -->
-      <property name="telefono" column="telefono" type="string"/>
-      <!-- 5 -->
-      <many-to-one name="empresa" column="empresa" />      <!-- 6 -->
-      <property name="departamento" column="departamento" type="string" not-null="true"/>
-      <!-- 7 -->
-      <property name="profesion" column="profesion" type="string" not-null="true"/>
-      <!-- 8 -->
-      <property name="direccion" column="direccion" type="text" not-null="true"/>
-      <!-- 9 -->
-      <property name="cargo" column="cargo" type="string" not-null="true"/>
-      <!-- 10 -->
-      <property name="login" column="login" type="string" not-null="true" unique="true"/>
-      <!-- 11 -->
-      <property name="password" column="password" type="string" not-null="true"/>
-
-    </class>
+  <class name="jc2s.sistppg.hibernate.TutorIndustrial" table="TUTORINDUSTRIAL">
+    <!-- 0 -->
+    <id column="idTutorIndustrial" name="idTutorIndustrial">
+      <generator class="native"/>
+    </id>
+    <!-- 1 -->
+    <property column="nombre" name="nombre" not-null="true" type="string"/>
+    <!-- 2 -->
+    <property column="cedula" name="cedula" not-null="true" type="string" unique="true"/>
+    <!-- 3 -->
+    <property column="email" name="email" not-null="true" type="string" unique="true"/>
+    <!-- 4 -->
+    <property column="telefono" name="telefono" type="string"/>
+    <!-- 5 -->
+    <many-to-one column="empresa" name="empresa"/>
+    <!-- 6 -->
+    <property column="departamento" name="departamento" not-null="true" type="string"/>
+    <!-- 7 -->
+    <property column="profesion" name="profesion" not-null="true" type="string"/>
+    <!-- 8 -->
+    <property column="direccion" name="direccion" not-null="true" type="text"/>
+    <!-- 9 -->
+    <property column="cargo" name="cargo" not-null="true" type="string"/>
+    <!-- 10 -->
+    <property column="login" name="login" not-null="true" type="string" unique="true"/>
+    <!-- 11 -->
+    <property column="password" name="password" not-null="true" type="string"/>
+  </class>
 </hibernate-mapping>

@@ -1,17 +1,14 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="jc2s.sistppg.hibernate.AreaProfesor" table="AREAPROFESOR">
-      <!-- 0 -->
-      <id name="idAreaProfesor" column="idAreaProfesor">
-        <generator class="native"/>
-      </id>
-
-      <!-- 1 -->
-      <many-to-one name="profesor" column="profesor" not-null="true" />      <!-- 2 -->
-      <many-to-one name="area" column="area" not-null="true" />
-    </class>
+  <class name="jc2s.sistppg.hibernate.AreaProfesor" table="AREAPROFESOR">
+    <!-- 0 -->
+    <id column="idAreaProfesor" name="idAreaProfesor">
+      <generator class="native"/>
+    </id>
+    <!-- 1 -->
+    <many-to-one column="profesor" name="profesor" not-null="true"/>
+    <!-- 2 -->
+    <many-to-one column="area" name="area" not-null="true"/>
+  </class>
 </hibernate-mapping>
