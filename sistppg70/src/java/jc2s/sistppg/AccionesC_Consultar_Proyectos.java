@@ -65,8 +65,10 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             // Que debe ser el id de la carrera de la coordinación q se logueo
             long idCarrera = 2;
 
+            List<Carrera> c = s.createQuery("from Carrera").list();
+            request.setAttribute("L_Carreras", c);
             // TODOS los proyectos, toca filtrarlos por carrera
-            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto ").list();
+            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var)").setLong("var", idCarrera).list();
 
             request.setAttribute("EstudianteRealizaProyecto", proyectos);
 
@@ -219,12 +221,45 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
-            // VALOR CABLIAO
-            // Debe mostrar las pasantias de la carrera, no todas!
-            List<Pasantia> pas = s.createQuery("from Pasantia as p join fetch p.proyecto").list();
-            
-            request.setAttribute("Pasantias", pas);       
+            List<Pasantia> pas = s.createQuery("from Pasantia").list();
+            List<Carrera> career = s.createQuery("from Carrera").list();
+            List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
+            request.setAttribute("Carreras", career);
+            request.setAttribute("Estatus", estatus);
 
+            F_Sinai f_sinai = (F_Sinai) form;
+
+            if(f_sinai.getIdCarrera() != -1){
+                pas = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", f_sinai.getIdCarrera()).list();
+            }
+            
+            String tipo = f_sinai.getTipo();
+            String query = new String();
+            // Tipo de pasantía
+            if (tipo.equals("larga")) {
+                query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaLarga)";
+                pas = s.createQuery(query).list();
+            } else if (tipo.equals("corta")) {
+                query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaCorta)";
+                pas = s.createQuery(query).list();
+            } else if (tipo.equals("intermedia")) {
+                query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaIntermedia)";
+                pas = s.createQuery(query).list();
+            }
+
+            if (f_sinai.getStatus() != -1){
+                pas = s.createQuery("from Pasantia where estatus IN (select idEstatusPasantia from EstatusPasantia where idEstatusPasantia= :var)").setLong("var", f_sinai.getStatus()).list();
+            }
+
+            /*  QUE WEBO TAN PELAO NO TENER UN PUTO ATRIBUTO AÑO!!!!
+            if (f_sinai.getAno() != -1){
+                pas = s.createQuery("from Pasantia where proyecto IN (select id_proyecto from Proyecto where created_at= :var)").setLong("var", f_sinai.getStatus()).list();
+            }
+*/
+            
+
+            request.setAttribute("Pasantias", pas);
+            
             //micodigo
             tr.commit();
 

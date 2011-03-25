@@ -26,6 +26,60 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+
+                            <html:form action="/A_consultar_pasantias.do" method="post">
+                                <table>
+                                    <tr><th>Criterios de Búsqueda</th><td></td></tr>
+                                    <tr><td>Carrera: </td>                                        
+                                        <td>
+                                    <html:select property="idCarrera">
+                                        <html:option value="-1"> Todas </html:option>
+                                        <logic:iterate id="car" collection="${empty Carreras ? _vacio : Carreras}">
+                                            <html:option value="${car.idCarrera}"> ${car.nombre}</html:option>
+                                        </logic:iterate>
+                                    </html:select>
+                                        </td></tr>
+
+                                    <tr><td>Tipo: </td>
+                                        <td>
+                                    <html:select property="tipo">
+                                        <html:option value="all"> Todos</html:option>
+                                        <html:option value="larga"> Pasantía Larga</html:option>
+                                        <html:option value="intermedia"> Pasantía Intermedia</html:option>
+                                        <html:option value="corta"> Pasantía Corta</html:option>
+                                    </html:select>
+                                        </td>
+                                    </tr>
+
+                                    <tr><td>Año: </td>
+                                        <td>
+                                    <html:select property="ano">
+                                        <html:option value="-1"> Todos </html:option>
+                                        <html:option value="2008"> 2008</html:option>
+                                        <html:option value="2009"> 2009</html:option>
+                                        <html:option value="2010"> 2010</html:option>
+                                        <html:option value="2011"> 2011</html:option>
+                                        <html:option value="2012"> 2012</html:option>
+                                        <html:option value="2013"> 2013</html:option>
+                                        <html:option value="2014"> 2014</html:option>
+                                    </html:select>
+                                        </td></tr>
+
+                                    <tr><td>Estatus: </td>
+                                        <td>
+                                    <html:select property="status">
+                                        <html:option value="-1"> Todos </html:option>
+                                        <logic:iterate id="stats" collection="${empty Estatus ? _vacio : Estatus}">
+                                            <html:option value="${stats.idEstatusPasantia}"> ${stats.estatus}</html:option>
+                                        </logic:iterate>
+                                    </html:select>
+                                        </td></tr>
+                                    
+                            <tr><td></td><td><html:submit styleClass="button">Buscar</html:submit></td></tr>
+                                </table>
+                            </html:form>
+                            
+
                             <logic:empty name="Pasantias">
                                 <h1>¡No hay estudiantes haciendo pasantías!</h1>
                             </logic:empty>

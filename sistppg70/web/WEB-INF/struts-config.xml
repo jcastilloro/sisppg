@@ -26,6 +26,7 @@
         <form-bean name="F_Solicitud_Pasante" type="jc2s.sistppg.F_Solicitud_Pasante"/>
         <form-bean name="F_Tutor_Industrial" type="jc2s.sistppg.F_Tutor_Industrial"/>
         <form-bean name="F_Carrera" type="jc2s.sistppg.F_Carrera"/>
+        <form-bean name="F_Sinai" type="jc2s.sistppg.F_Sinai"/>
         <form-bean name="F_Area2" type="jc2s.sistppg.F_Area2"/>
         <form-bean name="F_Estatus_Pasantia" type="jc2s.sistppg.F_Estatus_Pasantia"/>
         <form-bean name="F_Estatus_Prorroga" type="jc2s.sistppg.F_Estatus_Prorroga"/>
@@ -728,6 +729,12 @@
          <action path="/A_eliminar_area" parameter="A_eliminar_area"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
+         <!-- Consultas Sinai -->
+         <action path="/A_consultar_pasantias" parameter="A_consultar_pasantias"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"
+           input="/c_consultar_proyectos/V_consulta_pasantia.jsp"
+           name="F_Sinai"
+           scope="session"/>
 
            <!-- C_Gestionar_Estatus_Pasantias -->
         <action path="/A_Prep_Gestionar_Estatus_Pasantias" parameter="A_Prep_Gestionar_Estatus_Pasantias"
