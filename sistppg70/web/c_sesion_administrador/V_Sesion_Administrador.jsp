@@ -41,7 +41,7 @@
                                     <tr><p></p></tr>
                                     <tr>
                                         <th>
-                                            Status de Pasantías
+                                            <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do">Estatus de Pasantías</html:link>
                                         </th>
                                         <th>
                                             Periodos Pasantías Intermedias

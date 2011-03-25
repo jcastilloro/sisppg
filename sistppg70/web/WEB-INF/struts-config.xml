@@ -27,6 +27,7 @@
         <form-bean name="F_Tutor_Industrial" type="jc2s.sistppg.F_Tutor_Industrial"/>
         <form-bean name="F_Carrera" type="jc2s.sistppg.F_Carrera"/>
         <form-bean name="F_Area2" type="jc2s.sistppg.F_Area2"/>
+        <form-bean name="F_Estatus_Pasantia" type="jc2s.sistppg.F_Estatus_Pasantia"/>
 
     </form-beans>
     
@@ -303,6 +304,15 @@
         <forward name="V_Gestionar_Areas" path="/c_sesion_administrador/V_Gestionar_Areas.jsp"/>
         <forward name="A_insertar_area" path="/A_insertar_area.do"/>
         <forward name="A_eliminar_area" path="/A_eliminar_area.do"/>
+
+        <!-- C_Gestionar_Estatus_Pasantias -->
+
+        <forward name="A_Prep_Gestionar_Estatus_Pasantias" path="/A_Prep_Gestionar_Estatus_Pasantias.do"/>
+        <forward name="V_Gestionar_Estatus_Pasantias" path="/c_sesion_administrador/V_Gestionar_Estatus_Pasantias.jsp"/>
+        <forward name="A_insertar_estatus_pasantia" path="/A_insertar_estatus_pasantia.do"/>
+        <forward name="A_eliminar_estatus_pasantia" path="/A_eliminar_estatus_pasantia.do"/>
+
+
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
@@ -684,6 +694,19 @@
            scope="session"/>
          <action path="/A_eliminar_area" parameter="A_eliminar_area"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+
+           <!-- C_Gestionar_Estatus_Pasantias -->
+        <action path="/A_Prep_Gestionar_Estatus_Pasantias" parameter="A_Prep_Gestionar_Estatus_Pasantias"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_estatus_pasantia" parameter="A_insertar_estatus_pasantia"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Estatus_Pasantias.jsp"
+           name="F_Estatus_Pasantia"
+           scope="session"/>
+         <action path="/A_eliminar_estatus_pasantia" parameter="A_eliminar_estatus_pasantia"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
 
 
         <action path="/tooltip" parameter="tooltip"
