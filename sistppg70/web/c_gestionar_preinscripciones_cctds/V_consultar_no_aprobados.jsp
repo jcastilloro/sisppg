@@ -13,9 +13,6 @@
             <div id="title"><bean:message key="V_consultar_no_aprobados.title"/></div>
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do"><bean:message key="V_consultar_no_aprobados.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_mostrar_preinscripcion.do"><bean:message key="V_consultar_no_aprobados.label1"/><%-- mostrar --%></html:link></cohesion:actor></li>
-
                 </ul>
             </div>
         </div>
@@ -26,6 +23,30 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <br><br>
+
+                            <div class="preinscripcionesTabla">
+                                <table border="1" cellspacing="1" cellpadding="5">
+                                    <tr>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do?orderby=1">Tipo</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do?orderby=2">Carnet</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do?orderby=4">Fecha Solicitud</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do?orderby=3">Estatus</html:link></cohesion:actor></th>
+
+                                    </tr>
+                                    <logic:notEmpty name="L_preinscripciones">
+                                        <logic:iterate id="p" name="L_preinscripciones">
+                                            <tr>
+                                                <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${ p.tipo==1 ? "Corta" : ""}${ p.tipo==2 ? "Intermedia" : ""}${ p.tipo==3 ? "Larga" : ""}</html:link></td>
+                                                <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.estudiante.usbid}</html:link></td>
+                                                <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.created_at}</html:link></td>
+                                                    <td id="pre${p.por_graduar ? "Proc" : "Pend"}"><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.por_graduar ? "Procesado" : "Pendiente"}</html:link></td>
+
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
+                                </table>
+                            </div>
                          </div>
                     </div>
                     <div id="right"></div>

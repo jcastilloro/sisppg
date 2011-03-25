@@ -137,6 +137,11 @@ public class AccionesC_Inicio_Sesion extends CohesionAction {
                 new CohesionActor(CohesionActor.ACTOR_cordiacion_de_carrera)
                         .setMe(request);
             }
+            if (salida == SALIDA_4) {
+                new CohesionActor(CohesionActor.ACTOR_coordinador_cctds)
+                        .setMe(request);
+            }
+
         if (salida==0) {
           request.setAttribute("msg",
             getResources(request).getMessage("A_Inicio_Sesion.msg0"));

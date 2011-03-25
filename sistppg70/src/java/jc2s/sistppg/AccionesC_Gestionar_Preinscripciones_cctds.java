@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
+import jc2s.sistppg.hibernate.Preinscripcion;
 
 
 /**
@@ -53,6 +56,24 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            String orderby = (String) request.getParameter("orderby");//request.getAttribute("orderby");
+            List<Preinscripcion> preinscripciones;
+            if(orderby!=null){
+                if(orderby.equals("1")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by tipo asc").list();
+                }else if(orderby.equals("2")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by estudiante asc").list();
+                }else if(orderby.equals("3")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by por_graduar asc").list();
+                }else if(orderby.equals("4")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by created_at desc").list();
+                }else{
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by created_at desc").list();
+                }
+            }else{
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion").list();
+                }
+            request.setAttribute("L_preinscripciones", preinscripciones);
             tr.commit();
 
         } catch (Exception ex) {
@@ -92,6 +113,24 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            String orderby = (String) request.getParameter("orderby");//request.getAttribute("orderby");
+            List<Preinscripcion> preinscripciones;
+            if(orderby!=null){
+                if(orderby.equals("1")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by tipo asc").setBoolean("bool", false).list();
+                }else if(orderby.equals("2")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by estudiante asc").setBoolean("bool", false).list();
+                }else if(orderby.equals("3")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by tipo asc").setBoolean("bool", false).list();
+                }else if(orderby.equals("4")){
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by created_at desc").setBoolean("bool", false).list();
+                }else{
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by created_at desc").setBoolean("bool", false).list();
+                }
+            }else{
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool").setBoolean("bool", false).list();
+                }
+            request.setAttribute("L_preinscripciones", preinscripciones);
             tr.commit();
 
         } catch (Exception ex) {
@@ -120,7 +159,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_gestionar_preinscripciones_cctds", };
+        final String[] SALIDAS = {"A_prep_gestionar_preinscripcion_cctds", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -131,6 +170,14 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            List<Preinscripcion> preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool").setBoolean("bool", true).list();
+            Iterator i = preinscripciones.iterator();
+            while(i.hasNext()){
+                Preinscripcion p = (Preinscripcion) i.next();
+                s.delete(p);
+
+            }
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -164,8 +211,9 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_mostrar_preinscripcion", };
+        final String[] SALIDAS = {"V_mostrar_preinscripcion", "A_prep_consultar_no_aprobados"};
         final int SALIDA_0 = 0;
+        final int SALIDA_1 = 1;
 
         int salida = SALIDA_0;
 //Checking for actors coordinador_cctds
@@ -175,6 +223,14 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            String parametro = (String) request.getParameter("preId");
+            long preId = Long.parseLong(parametro);
+            Preinscripcion p = (Preinscripcion) s.createQuery("from Preinscripcion where idPreinscripcion = :id").setLong("id", preId).uniqueResult();
+            if(p==null){
+                salida = SALIDA_1;
+            }else{
+                request.setAttribute("p", p);
+            }
             tr.commit();
 
         } catch (Exception ex) {
@@ -203,7 +259,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"A_mostrar_preinscripcion", };
+        final String[] SALIDAS = {"A_prep_gestionar_preinscripcion_cctds", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -214,6 +270,12 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            String parametro = (String) request.getParameter("preId");
+            long preId = Long.parseLong(parametro);
+            Preinscripcion p = (Preinscripcion) s.createQuery("from Preinscripcion where idPreinscripcion = :id").setLong("id", preId).uniqueResult();
+            p.setPor_graduar(true);
+            s.update(p);
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -223,8 +285,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             try { s.close(); } catch (Exception ex2) {}
         }
         if (salida==0) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_cambiar_estatus.msg0"));
+          request.setAttribute("msg","Estatus Cambiado Satisfactoriamente");
         }
 
         return mapping.findForward(SALIDAS[salida]);

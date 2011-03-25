@@ -14,7 +14,7 @@
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="1"><html:link action="/A_procesar_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label0"/><%-- Procesar Aprobados --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label1"/><%-- A_prep_consultar_no_aprobados --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do">Consultar PENDIENTES</html:link></cohesion:actor></li>
 
                 </ul>
             </div>
@@ -26,6 +26,30 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <br><br>
+                            <h1>Preinscripciones registradas</h1>
+                            <div class="preinscripcionesTabla">
+                                <table border="1" cellspacing="1" cellpadding="5">
+                                    <tr>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do?orderby=1">Tipo</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do?orderby=2">Carnet</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do?orderby=4">Fecha Solicitud</html:link></cohesion:actor></th>
+                                        <th><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do?orderby=3">Estatus</html:link></cohesion:actor></th>
+
+                                    </tr>
+                                    <logic:notEmpty name="L_preinscripciones">
+                                        <logic:iterate id="p" name="L_preinscripciones">
+                                            <tr>
+                                                <td>${ p.tipo==1 ? "Corta" : ""}${ p.tipo==2 ? "Intermedia" : ""}${ p.tipo==3 ? "Larga" : ""}</td>
+                                                <td>${p.estudiante.usbid}</td>
+                                                <td>${p.created_at}</td>
+                                                <td id="pre${p.por_graduar ? "Proc" : "Pend"}">${p.por_graduar ? "Procesado" : "Pendiente"}</td>
+
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
+                                </table>
+                            </div>
                          </div>
                     </div>
                     <div id="right"></div>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
+<hibernate-mapping auto-import="true" default-lazy="false">
   <class name="jc2s.sistppg.hibernate.Preinscripcion" table="PREINSCRIPCION">
     <!-- 0 -->
     <id column="idPreinscripcion" name="idPreinscripcion">
@@ -15,7 +15,7 @@
     <!-- 4 -->
     <property column="por_graduar" name="por_graduar" type="boolean"/>
     <!-- 5 -->
-   <many-to-one column="estudiante" name="estudiante" not-null="true"/>
+   <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
     <!-- 6 -->
     <property column="created_at" name="created_at" not-null="true" type="timestamp"/>
   </class>
