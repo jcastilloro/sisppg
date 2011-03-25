@@ -59,7 +59,7 @@
                                             Ciudad
                                         </th>
                                         <th>
-                                            País
+                                            <html:link action="/A_Prep_Gestionar_Paises.do">Paises</html:link>
                                         </th>
                                     </tr>
                                     <tr><p></p></tr>

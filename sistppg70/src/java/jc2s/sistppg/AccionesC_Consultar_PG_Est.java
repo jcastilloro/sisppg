@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -54,17 +55,54 @@ public class AccionesC_Consultar_PG_Est extends CohesionAction {
         try {
 
 
+
+//            request.getSession().removeAttribute("Proyecto");
+//            request.getSession().removeAttribute("Tutor");
+//            request.getSession().removeAttribute("Area");
+//            request.getSession().removeAttribute("JuradoProyecto");
+//            request.getSession().removeAttribute("Etapa1");
+//            request.getSession().removeAttribute("Trimestre1");
+//            request.getSession().removeAttribute("Descripcion1");
+//            request.getSession().removeAttribute("Etapa2");
+//            request.getSession().removeAttribute("Trimestre2");
+//            request.getSession().removeAttribute("Descripcion2");
+//            request.getSession().removeAttribute("Etapa3");
+//            request.getSession().removeAttribute("Trimestre3");
+
+
+
             Long key = Long.parseLong(request.getParameter("idProyectoDeGrado"));
             ProyectoDeGrado pg = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado where idProyectoDeGrado= :var").setLong("var", key).uniqueResult();
-            AreaProyectoDeGrado apg = (AreaProyectoDeGrado) s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).uniqueResult();
+            List<AreaProyectoDeGrado> apg = s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).list();
             List<Etapa> etapas = s.createQuery("from Etapa where proyecto_de_grado= :var").setLong("var", key).list();
-            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
+//            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
 
 
             request.getSession().setAttribute("Proyecto", pg);
             request.getSession().setAttribute("Tutor", pg.getProfesor());
-            request.getSession().setAttribute("Area", apg.getArea().getNombre());
-            request.getSession().setAttribute("JuradoProyecto", jurados);
+
+            String[] res = new String[apg.size()];
+            for (int i = 0; i < res.length; i++) {
+                res[i] = apg.get(i).getArea().getNombre();
+            }
+
+
+//            String[] res2 = new String[jurados.size()*3];
+//            int j = 0;
+//            Iterator it = jurados.iterator();
+//            while (it.hasNext()) {
+//                Profesor pro = ((JuradoProyecto) it.next()).getProfesor();
+//                res2[j] = pro.getNombre();
+//                j++;
+//                res2[j] = pro.getApellido();
+//                j++;
+//                res2[j] = pro.getEmail();
+//
+//            }
+
+
+            request.getSession().setAttribute("Area", res);
+//            request.getSession().setAttribute("JuradoProyecto", jurados);
 
 
             for (int i = 0; i < etapas.size(); i++) {

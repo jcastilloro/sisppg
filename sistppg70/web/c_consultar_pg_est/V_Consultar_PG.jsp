@@ -46,9 +46,18 @@
                                     <td>${Proyecto.puntos_de_interes}</td>
                                 </tr>
                                 <tr>
-                                    <th>Área</th>
-                                    <td>${Area}</td>
-                                </tr>
+                                    <th>Áreas</th>
+                                  </tr>
+
+                                        <logic:iterate id="element" name="Area" >
+                                           <tr> <td></td><td><bean:write name="element" /></td></tr>
+                                        </logic:iterate>
+
+
+                                        
+
+                                  
+                                
                             </table>
                             <p>
                             </p>
@@ -164,7 +173,7 @@
                                 </table>
                             </logic:notEmpty>
                             <p></p>
-                            <logic:notEmpty name="JuradoProyecto">
+                          <%--  <logic:notEmpty name="JuradoProyecto">
                                 <table width="500px">
                                     <tr><th>Jurados</th></tr>
                                 </table>
@@ -172,6 +181,14 @@
                                 </p>
                                 </table>
                                 <table border="0" width="500px">
+
+
+
+                                  
+
+
+                               
+
                                     <logic:iterate id="jur" collection="${empty JuradoProyecto ? _vacio : JuradoProyecto}">
                                         <tr>
                                             <th width="200px">Nombre</th>
@@ -185,10 +202,10 @@
                                             <th>Email</th>
                                             <td>${jur.profesor.email}</td>
                                         </tr>
-                                    </logic:iterate>>
+                                    </logic:iterate>> 
                                 </table>
                                 <p></p>
-                            </logic:notEmpty>
+                            </logic:notEmpty>--%>
 
                         </div>
                     </div>

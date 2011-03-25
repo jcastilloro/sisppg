@@ -33,6 +33,7 @@
         <form-bean name="F_Periodo_Pasantia_Intermedia" type="jc2s.sistppg.F_Periodo_Pasantia_Intermedia"/>
         <form-bean name="F_Periodo_Pasantia_Larga" type="jc2s.sistppg.F_Periodo_Pasantia_Larga"/>
         <form-bean name="F_Trimestre" type="jc2s.sistppg.F_Trimestre"/>
+        <form-bean name="F_Pais" type="jc2s.sistppg.F_Pais"/>
         
     </form-beans>
     
@@ -346,6 +347,14 @@
         <forward name="V_Gestionar_Trimestres" path="/c_sesion_administrador/V_Gestionar_Trimestres.jsp"/>
         <forward name="A_insertar_trimestre" path="/A_insertar_trimestre.do"/>
         <forward name="A_eliminar_trimestre" path="/A_eliminar_trimestre.do"/>
+
+
+         <!-- C_Gestionar_Paises -->
+
+        <forward name="A_Prep_Gestionar_Paises" path="/A_Prep_Gestionar_Paises.do"/>
+        <forward name="V_Gestionar_Paises" path="/c_sesion_administrador/V_Gestionar_Paises.jsp"/>
+        <forward name="A_insertar_pais" path="/A_insertar_pais.do"/>
+        <forward name="A_eliminar_pais" path="/A_eliminar_pais.do"/>
 
 
         <forward name="tooltip" path="/tooltip.do"/>
@@ -700,7 +709,7 @@
         <!-- C_Sesion_Administrador -->
         <action path="/A_Prep_Inicio_Sesion_Adm" parameter="A_Prep_Inicio_Sesion_Adm"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
-         <action path="/A_Inicio_Sesion_Adm" parameter="A_Inicio_Sesion_Adm"
+        <action path="/A_Inicio_Sesion_Adm" parameter="A_Inicio_Sesion_Adm"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"
            input="/C_inicio_sesion_administrador/V_inicio_sesion_administrador.jsp"
            name="F_Inicio_Sesion_externo"
@@ -714,7 +723,7 @@
            input="/c_sesion_administrador/V_Gestionar_Carreras.jsp"
            name="F_Carrera"
            scope="session"/>
-         <action path="/A_eliminar_carrera" parameter="A_eliminar_carrera"
+        <action path="/A_eliminar_carrera" parameter="A_eliminar_carrera"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
@@ -726,7 +735,7 @@
            input="/c_sesion_administrador/V_Gestionar_Areas.jsp"
            name="F_Area2"
            scope="session"/>
-         <action path="/A_eliminar_area" parameter="A_eliminar_area"
+        <action path="/A_eliminar_area" parameter="A_eliminar_area"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
          <!-- Consultas Sinai -->
@@ -744,7 +753,7 @@
            input="/c_sesion_administrador/V_Gestionar_Estatus_Pasantias.jsp"
            name="F_Estatus_Pasantia"
            scope="session"/>
-         <action path="/A_eliminar_estatus_pasantia" parameter="A_eliminar_estatus_pasantia"
+        <action path="/A_eliminar_estatus_pasantia" parameter="A_eliminar_estatus_pasantia"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
@@ -756,7 +765,7 @@
            input="/c_sesion_administrador/V_Gestionar_Estatus_Prorrogas.jsp"
            name="F_Estatus_Prorroga"
            scope="session"/>
-         <action path="/A_eliminar_estatus_prorroga" parameter="A_eliminar_estatus_prorroga"
+        <action path="/A_eliminar_estatus_prorroga" parameter="A_eliminar_estatus_prorroga"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
@@ -769,7 +778,7 @@
            input="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Intermedia.jsp"
            name="F_Periodo_Pasantia_Intermedia"
            scope="session"/>
-         <action path="/A_eliminar_periodo_pasantia_intermedia" parameter="A_eliminar_periodo_pasantia_intermedia"
+        <action path="/A_eliminar_periodo_pasantia_intermedia" parameter="A_eliminar_periodo_pasantia_intermedia"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
@@ -781,7 +790,7 @@
            input="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Larga.jsp"
            name="F_Periodo_Pasantia_Larga"
            scope="session"/>
-         <action path="/A_eliminar_periodo_pasantia_larga" parameter="A_eliminar_periodo_pasantia_larga"
+        <action path="/A_eliminar_periodo_pasantia_larga" parameter="A_eliminar_periodo_pasantia_larga"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
@@ -794,7 +803,19 @@
            input="/c_sesion_administrador/V_Gestionar_Trimestres.jsp"
            name="F_Trimestre"
            scope="session"/>
-         <action path="/A_eliminar_trimestre" parameter="A_eliminar_trimestre"
+        <action path="/A_eliminar_trimestre" parameter="A_eliminar_trimestre"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+
+            <!-- C_Gestionar_Paises -->
+        <action path="/A_Prep_Gestionar_Paises" parameter="A_Prep_Gestionar_Paises"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_pais" parameter="A_insertar_pais"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Paises.jsp"
+           name="F_Pais"
+           scope="session"/>
+        <action path="/A_eliminar_pais" parameter="A_eliminar_pais"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 

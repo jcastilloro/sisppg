@@ -2174,4 +2174,303 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Paises",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+        //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+            }
+            String parameter = request.getParameter("idPais");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null) {                                                                //AQUI ABAJO
+                Pais singular = (Pais) s.createQuery("from Pais where idPais= :var").setLong("var", Long.parseLong(request.getParameter("idPais"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+            List<Pais> dato = s.createQuery("from Pais ").list();                             //CAMBIAR LA TABLA
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    public ActionForward A_insertar_pais(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Paises",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Pais fF_Pais = (F_Pais) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            // request.getSession().removeAttribute("Singular");
+
+            request.getSession().removeAttribute("Datos");
+            String parameter = request.getParameter("idPais");               //CAMBIAR CLAVE
+            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+                Pais singular = (Pais) s.createQuery("from Pais where idPais= :var").setLong("var", Long.parseLong(request.getParameter("idPais"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+
+
+
+
+
+
+
+            Pais p;
+            boolean guarda = true;
+            if (!fF_Pais.getIdPais().equals("")) {                                        //CAMBIAR CLASES
+                p = (Pais) request.getSession().getAttribute("Singular");
+                guarda = false;
+            } else {
+                p = new Pais();
+            }
+
+
+//            p.setIdPais(Long.parseLong(fF_Pais.getIdPais()));
+
+
+
+            //verifico nombre
+            if (Pattern.matches(".+", fF_Pais.getNombre())) {
+                p.setNombre(fF_Pais.getNombre());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+            } else {
+                s.update(p);
+            }
+            List<Pais> dato = s.createQuery("from Pais ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+    public ActionForward A_eliminar_pais(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Paises",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+//            request.getSession().removeAttribute("Singular");
+//            request.getSession().removeAttribute("Datos");
+            Pais p = (Pais) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
+            request.getSession().removeAttribute("Singular");
+
+
+            //List<Pais> dato = s.createQuery("from Pais ").list();
+//            List<Pais> dato = (List<Pais>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
+
+
+
+
+            s.delete(p);
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
