@@ -29,7 +29,8 @@
         <form-bean name="F_Area2" type="jc2s.sistppg.F_Area2"/>
         <form-bean name="F_Estatus_Pasantia" type="jc2s.sistppg.F_Estatus_Pasantia"/>
         <form-bean name="F_Estatus_Prorroga" type="jc2s.sistppg.F_Estatus_Prorroga"/>
-
+        <form-bean name="F_Periodo_Pasantia_Intermedia" type="jc2s.sistppg.F_Periodo_Pasantia_Intermedia"/>
+        <form-bean name="F_Periodo_Pasantia_Larga" type="jc2s.sistppg.F_Periodo_Pasantia_Larga"/>
     </form-beans>
     
     <global-exceptions>
@@ -320,6 +321,20 @@
         <forward name="A_insertar_estatus_prorroga" path="/A_insertar_estatus_prorroga.do"/>
         <forward name="A_eliminar_estatus_prorroga" path="/A_eliminar_estatus_prorroga.do"/>
 
+
+        <!-- C_Gestionar_Periodo_Pasantia_Intermedias -->
+
+        <forward name="A_Prep_Gestionar_Periodo_Pasantia_Intermedias" path="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do"/>
+        <forward name="V_Gestionar_Periodos_Pasantia_Intermedia" path="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Intermedia.jsp"/>
+        <forward name="A_insertar_periodo_pasantia_intermedia" path="/A_insertar_periodo_pasantia_intermedia.do"/>
+        <forward name="A_eliminar_periodo_pasantia_intermedia" path="/A_eliminar_periodo_pasantia_intermedia.do"/>
+
+        <!-- C_Gestionar_Periodo_Pasantia_Largas -->
+
+        <forward name="A_Prep_Gestionar_Periodo_Pasantia_Largas" path="/A_Prep_Gestionar_Periodo_Pasantia_Largas.do"/>
+        <forward name="V_Gestionar_Periodos_Pasantia_Larga" path="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Larga.jsp"/>
+        <forward name="A_insertar_periodo_pasantia_larga" path="/A_insertar_periodo_pasantia_larga.do"/>
+        <forward name="A_eliminar_periodo_pasantia_larga" path="/A_eliminar_periodo_pasantia_larga.do"/>
 
 
         <forward name="tooltip" path="/tooltip.do"/>
@@ -727,6 +742,30 @@
          <action path="/A_eliminar_estatus_prorroga" parameter="A_eliminar_estatus_prorroga"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
+
+
+           <!-- C_Gestionar_Periodo_Pasantia_Intermedias -->
+        <action path="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias" parameter="A_Prep_Gestionar_Periodo_Pasantia_Intermedias"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_periodo_pasantia_intermedia" parameter="A_insertar_periodo_pasantia_intermedia"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Intermedia.jsp"
+           name="F_Periodo_Pasantia_Intermedia"
+           scope="session"/>
+         <action path="/A_eliminar_periodo_pasantia_intermedia" parameter="A_eliminar_periodo_pasantia_intermedia"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+
+            <!-- C_Gestionar_Periodo_Pasantia_Largas -->
+        <action path="/A_Prep_Gestionar_Periodo_Pasantia_Largas" parameter="A_Prep_Gestionar_Periodo_Pasantia_Largas"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_periodo_pasantia_larga" parameter="A_insertar_periodo_pasantia_larga"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Larga.jsp"
+           name="F_Periodo_Pasantia_Larga"
+           scope="session"/>
+         <action path="/A_eliminar_periodo_pasantia_larga" parameter="A_eliminar_periodo_pasantia_larga"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
         <action path="/tooltip" parameter="tooltip"

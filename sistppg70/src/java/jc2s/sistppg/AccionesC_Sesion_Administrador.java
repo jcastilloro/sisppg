@@ -1281,4 +1281,617 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Intermedia",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+        //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+            }
+            String parameter = request.getParameter("idPeriodoPasantiaIntermedia");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null) {                                                                //AQUI ABAJO
+                PeriodoPasantiaIntermedia singular = (PeriodoPasantiaIntermedia) s.createQuery("from PeriodoPasantiaIntermedia where idPeriodoPasantiaIntermedia= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaIntermedia"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+            List<PeriodoPasantiaIntermedia> dato = s.createQuery("from PeriodoPasantiaIntermedia ").list();                             //CAMBIAR LA TABLA
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    public ActionForward A_insertar_periodo_pasantia_intermedia(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Intermedia",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Periodo_Pasantia_Intermedia fF_Periodo_Pasantia_Intermedia = (F_Periodo_Pasantia_Intermedia) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            // request.getSession().removeAttribute("Singular");
+
+            request.getSession().removeAttribute("Datos");
+            String parameter = request.getParameter("idPeriodoPasantiaIntermedia");               //CAMBIAR CLAVE
+            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+                PeriodoPasantiaIntermedia singular = (PeriodoPasantiaIntermedia) s.createQuery("from PeriodoPasantiaIntermedia where idPeriodoPasantiaIntermedia= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaIntermedia"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+
+
+
+
+
+
+
+            PeriodoPasantiaIntermedia p;
+            boolean guarda = true;
+            if (!fF_Periodo_Pasantia_Intermedia.getIdPeriodoPasantiaIntermedia().equals("")) {                                        //CAMBIAR CLASES
+                p = (PeriodoPasantiaIntermedia) request.getSession().getAttribute("Singular");
+                guarda = false;
+            } else {
+                p = new PeriodoPasantiaIntermedia();
+            }
+
+
+//            p.setIdPeriodoPasantiaIntermedia(Long.parseLong(fF_Periodo_Pasantia_Intermedia.getIdPeriodoPasantiaIntermedia()));
+
+
+
+            //verifico nombre
+            if (Pattern.matches(".+", fF_Periodo_Pasantia_Intermedia.getPeriodoPasantiaIntermedia())) {
+                p.setNombre(fF_Periodo_Pasantia_Intermedia.getPeriodoPasantiaIntermedia());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+            } else {
+                s.update(p);
+            }
+            List<PeriodoPasantiaIntermedia> dato = s.createQuery("from PeriodoPasantiaIntermedia ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+    public ActionForward A_eliminar_periodo_pasantia_intermedia(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Intermedia",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+//            request.getSession().removeAttribute("Singular");
+//            request.getSession().removeAttribute("Datos");
+            PeriodoPasantiaIntermedia p = (PeriodoPasantiaIntermedia) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
+            request.getSession().removeAttribute("Singular");
+
+
+            //List<PeriodoPasantiaIntermedia> dato = s.createQuery("from PeriodoPasantiaIntermedia ").list();
+//            List<PeriodoPasantiaIntermedia> dato = (List<PeriodoPasantiaIntermedia>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
+
+
+
+
+            s.delete(p);
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Larga",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 4)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+        //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+            }
+            String parameter = request.getParameter("idPeriodoPasantiaLarga");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null) {                                                                //AQUI ABAJO
+                PeriodoPasantiaLarga singular = (PeriodoPasantiaLarga) s.createQuery("from PeriodoPasantiaLarga where idPeriodoPasantiaLarga= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaLarga"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+            List<PeriodoPasantiaLarga> dato = s.createQuery("from PeriodoPasantiaLarga ").list();                             //CAMBIAR LA TABLA
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    public ActionForward A_insertar_periodo_pasantia_larga(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Larga",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Periodo_Pasantia_Larga fF_Periodo_Pasantia_Larga = (F_Periodo_Pasantia_Larga) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            // request.getSession().removeAttribute("Singular");
+
+            request.getSession().removeAttribute("Datos");
+            String parameter = request.getParameter("idPeriodoPasantiaLarga");               //CAMBIAR CLAVE
+            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+                PeriodoPasantiaLarga singular = (PeriodoPasantiaLarga) s.createQuery("from PeriodoPasantiaLarga where idPeriodoPasantiaLarga= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaLarga"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
+
+
+
+
+
+
+
+            PeriodoPasantiaLarga p;
+            boolean guarda = true;
+            if (!fF_Periodo_Pasantia_Larga.getIdPeriodoPasantiaLarga().equals("")) {                                        //CAMBIAR CLASES
+                p = (PeriodoPasantiaLarga) request.getSession().getAttribute("Singular");
+                guarda = false;
+            } else {
+                p = new PeriodoPasantiaLarga();
+            }
+
+
+//            p.setIdPeriodoPasantiaLarga(Long.parseLong(fF_Periodo_Pasantia_Larga.getIdPeriodoPasantiaLarga()));
+
+
+
+            //verifico nombre
+            if (Pattern.matches(".+", fF_Periodo_Pasantia_Larga.getPeriodoPasantiaLarga())) {
+                p.setNombre(fF_Periodo_Pasantia_Larga.getPeriodoPasantiaLarga());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+            } else {
+                s.update(p);
+            }
+            List<PeriodoPasantiaLarga> dato = s.createQuery("from PeriodoPasantiaLarga ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+    public ActionForward A_eliminar_periodo_pasantia_larga(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Larga",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//        if (!CohesionActor.checkActor(request, 8)) {
+//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+//        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+//            request.getSession().removeAttribute("Singular");
+//            request.getSession().removeAttribute("Datos");
+            PeriodoPasantiaLarga p = (PeriodoPasantiaLarga) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
+            request.getSession().removeAttribute("Singular");
+
+
+            //List<PeriodoPasantiaLarga> dato = s.createQuery("from PeriodoPasantiaLarga ").list();
+//            List<PeriodoPasantiaLarga> dato = (List<PeriodoPasantiaLarga>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
+
+
+
+
+            s.delete(p);
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

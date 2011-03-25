@@ -44,10 +44,10 @@
                                             <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do">Estatus de Pasantías</html:link>
                                         </th>
                                         <th>
-                                            Periodos Pasantías Intermedias
+                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do">Periodos de Pasantia Intermedia</html:link>
                                         </th>
                                         <th>
-                                            Periodos Pasantías Largas
+                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Largas.do">Periodos de Pasantia Larga</html:link>
                                         </th>
                                     </tr>
                                     <tr><p></p></tr>
