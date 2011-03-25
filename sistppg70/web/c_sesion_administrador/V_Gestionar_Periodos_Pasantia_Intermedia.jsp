@@ -114,7 +114,7 @@
                                         </tr>
                                         </table><hr>
                                         <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                    <table border "0">
+                                    <table border="0">
                                             <tr>
                                                 <td>
                                                     <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="dato" paramProperty="idPeriodoPasantiaIntermedia"

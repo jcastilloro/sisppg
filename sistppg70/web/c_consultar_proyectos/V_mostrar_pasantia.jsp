@@ -1,33 +1,45 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_mostrar_pasantia.title"/></title>
-        <link rel="stylesheet" type="text/css" href="_css/style.css"/>
+        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+        <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_mostrar_pasantia.title"/></div>
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
+
                 </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
+
+            <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            </div>
+            <div id="page">
+
+                <div id="content">
+
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
+
                             ${empty msg ? "" : msg}
                             <logic:empty name="Pasantia">
                                 <h1>¡Usted no tiene ninguna pasantía asociada!</h1>
                             </logic:empty>
                             <logic:notEmpty name="Pasantia">
-                                <h1>${Pasantia.titulo}</h1>
+                                <table width="450">
+                                    <tr><th><h1>${Pasantia.titulo}</h1></th></tr>
+                                </table>
                                 <table width="450">
                                     <tr><th>Resumen:</th><td> ${Pasantia.resumen} </td></tr>
                                     <tr><th>Objetivos Generales:</th><td> ${Pasantia.objetivos_generales} </td></tr>
@@ -97,9 +109,10 @@
                                 <logic:notEmpty name="Fases">
                                     <logic:iterate id="fase" indexId="i" collection="${empty Fases ? _vacio : Fases}">
                                         <br><br>
-                                        <center><h3>Fase ${i+1} </h3>
-                                        <b>Objetivos Específicos:</b> ${fase.objetivos_especificos}
-                                        </center><br>
+                                        <table width="450">
+                                        <tr><th><h3>Fase ${i+1} </h3></th></tr>
+                                        <tr><th>Objetivos Específicos: ${fase.objetivos_especificos}</th></tr>
+                                        </table>
                                         <table width="450">
                                         <tr><th>Actividades</th><th>Tiempo Estimado</th></tr>
                                         <logic:iterate id="act" indexId="j" collection="${empty fase.actividades ? _vacio : fase.actividades}">
@@ -107,19 +120,24 @@
                                         </logic:iterate>
                                         </table>
                                     </logic:iterate>
-                                </logic:notEmpty> 
-                         </div>
+                                </logic:notEmpty>
+
+                          </div>
+                            </div>
+
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
+            <div style="clear: both;">&nbsp;</div>
         </div>
-        <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+
     </body>
 </html:html>

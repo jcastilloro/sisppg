@@ -112,7 +112,7 @@
                                                         <th width="250px">
                                                             Nombre
                                                         </th>
-                                                    </tr><>
+                                                    </tr>
                                                 </table><hr>
                                                 <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
                                                     <table table="0">

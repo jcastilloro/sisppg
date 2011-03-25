@@ -61,14 +61,21 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
-            // VALOR CABLIAO
-            // Que debe ser el id de la carrera de la coordinación q se logueo
-            long idCarrera = 2;
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 
-            List<Carrera> c = s.createQuery("from Carrera").list();
-            request.setAttribute("L_Carreras", c);
-            // TODOS los proyectos, toca filtrarlos por carrera
-            List<EstudianteRealizaProyecto> proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var)").setLong("var", idCarrera).list();
+            List<EstudianteRealizaProyecto> proyectos = new LinkedList<EstudianteRealizaProyecto>();
+
+            if (user.getUsbid().equals("coord-comp")){
+                //VALOR CABLIAO
+                long idCarrera = 2;
+                // TODOS los proyectos, toca filtrarlos por carrera
+                proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var)").setLong("var", idCarrera).list();
+
+            } else {
+                List<Carrera> c = s.createQuery("from Carrera").list();
+                request.setAttribute("L_Carreras", c);
+                proyectos = s.createQuery("from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante)").list();
+            }
 
             request.setAttribute("EstudianteRealizaProyecto", proyectos);
 
@@ -137,7 +144,23 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
-        try {            
+        try {
+            //Mi Codigo
+
+            List<EstudianteRealizaProyecto> proye = s.createQuery("from EstudianteRealizaProyecto").list();
+            List<ProyectoDeGrado> lpg = s.createQuery("from ProyectoDeGrado").list();
+            lpg.clear();
+            for (int i = 0; i < proye.size(); i++) {
+                EstudianteRealizaProyecto proy = proye.get(i);
+                List<ProyectoDeGrado> pg = s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var", proy.getProyecto().getId_proyecto()).list();
+                if (!pg.isEmpty()) {
+                    lpg.add(pg.get(0));
+                }
+            }
+            request.setAttribute("L_PGS", lpg);
+
+
+            //Mi Codigo
             tr.commit();
 
         } catch (Exception ex) {
@@ -177,6 +200,88 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            // Mi codigo
+
+//            request.getSession().removeAttribute("Proyecto");
+//            request.getSession().removeAttribute("Tutor");
+//            request.getSession().removeAttribute("Area");
+//            request.getSession().removeAttribute("JuradoProyecto");
+//            request.getSession().removeAttribute("Etapa1");
+//            request.getSession().removeAttribute("Trimestre1");
+//            request.getSession().removeAttribute("Descripcion1");
+//            request.getSession().removeAttribute("Etapa2");
+//            request.getSession().removeAttribute("Trimestre2");
+//            request.getSession().removeAttribute("Descripcion2");
+//            request.getSession().removeAttribute("Etapa3");
+//            request.getSession().removeAttribute("Trimestre3");
+
+
+            Long key = Long.parseLong(request.getParameter("idProyectoDeGrado"));
+            ProyectoDeGrado pg = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado as p join fetch p.profesor where idProyectoDeGrado= :var").setLong("var", key).uniqueResult();
+            List<AreaProyectoDeGrado> apg = s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).list();
+            List<Etapa> etapas = s.createQuery("from Etapa where proyecto_de_grado= :var").setLong("var", key).list();
+//            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
+
+
+            request.setAttribute("Proyecto", pg);
+            request.setAttribute("Tutor", pg.getProfesor());
+
+            String[] res = new String[apg.size()];
+            for (int i = 0; i < res.length; i++) {
+                res[i] = apg.get(i).getArea().getNombre();
+            }
+
+
+//            String[] res2 = new String[jurados.size()*3];
+//            int j = 0;
+//            Iterator it = jurados.iterator();
+//            while (it.hasNext()) {
+//                Profesor pro = ((JuradoProyecto) it.next()).getProfesor();
+//                res2[j] = pro.getNombre();
+//                j++;
+//                res2[j] = pro.getApellido();
+//                j++;
+//                res2[j] = pro.getEmail();
+//
+//            }
+
+
+            request.setAttribute("Area", res);
+//            request.getSession().setAttribute("JuradoProyecto", jurados);
+
+
+            for (int i = 0; i < etapas.size(); i++) {
+
+                List<PrimeraEtapa> etapa = s.createQuery("from PrimeraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapa.isEmpty()) {
+                    PrimeraEtapa indirecto = etapa.get(0);
+                    request.setAttribute("Etapa1", indirecto.getEtapa());
+                    request.setAttribute("Trimestre1", indirecto.getEtapa().getTrimestre().getNombre());
+                    request.setAttribute("Descripcion1", indirecto.getDescripcion_topicos());
+
+                }
+
+
+                List<SegundaEtapa> etapaa = s.createQuery("from SegundaEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaa.isEmpty()) {
+                    SegundaEtapa indirecto = etapaa.get(0);
+                    request.setAttribute("Etapa2", indirecto.getEtapa());
+                    request.setAttribute("Trimestre2", indirecto.getEtapa().getTrimestre().getNombre());
+                    request.setAttribute("Descripcion2", indirecto.getDescripcion_topicos());
+
+                }
+
+
+                List<TerceraEtapa> etapaaa = s.createQuery("from TerceraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaaa.isEmpty()) {
+                    TerceraEtapa indirecto = etapaaa.get(0);
+                    request.setAttribute("Etapa3", indirecto.getEtapa());
+                    request.setAttribute("Trimestre3", indirecto.getEtapa().getTrimestre().getNombre());
+//                    request.getSession().setAttribute("Descripcion3", indirecto.getDescripcion_topicos());
+
+                }
+            }
+            //Mi codigo
             tr.commit();
 
         } catch (Exception ex) {
@@ -221,14 +326,28 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
-            List<Pasantia> pas = s.createQuery("from Pasantia").list();
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+            
+            List<Pasantia> pas = new LinkedList<Pasantia>();
+
+            if (user.getUsbid().equals("coord-comp")){
+                //VALOR CABLIAO
+                long idCarrera = 2;
+                pas = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", idCarrera).list();
+            } else {
+                List<Carrera> c = s.createQuery("from Carrera").list();
+                request.setAttribute("Carreras", c);
+                pas = s.createQuery("from Pasantia").list();
+            }
+
+            
             List<Pasantia> pas1 = new LinkedList<Pasantia>();  // solucion rancho...
             List<Pasantia> pas2 = new LinkedList<Pasantia>();
             List<Pasantia> pasDef = new LinkedList<Pasantia>();
             boolean tipoON = false;
-            List<Carrera> career = s.createQuery("from Carrera").list();
+
             List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
-            request.setAttribute("Carreras", career);
+
             request.setAttribute("Estatus", estatus);
 
             F_Sinai f_sinai = (F_Sinai) form;
