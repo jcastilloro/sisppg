@@ -67,19 +67,7 @@
                 <ul id="nav">
 
 
-
-
-
-
-
-
                     <li><html:link action="/A_Prep_Registro_Empresa.do"><bean:message key="V_Inicio_Sesion_Empresa.label1"/><%-- Registrar Empresa --%></html:link></li>
-
-
-
-
-
-
 
 
                 </ul>

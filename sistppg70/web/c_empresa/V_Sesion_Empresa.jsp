@@ -6,37 +6,51 @@
 %><html:html>
     <head>
         <title><bean:message key="V_Sesion_Empresa.title"/></title>
-        <link rel="stylesheet" type="text/css" href="_css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+        <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_Sesion_Empresa.title"/></div>
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><html:link action="/A_prep_agregar_tutor_I.do">Agregar Tutor Industrial</html:link></li>
+              <li><html:link action="/A_prep_agregar_tutor_I.do">Agregar Tutor Industrial</html:link></li>
                     <li><html:link action="/A_Prep_gestionar_solicitud_pasantes.do"><bean:message key="V_Sesion_Empresa.label1"/><%-- Solicitud de pasantes --%></html:link></li>
 
-                </ul>
+               </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
+
+            <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            </div>
+            <div id="page">
+
+                <div id="content">
+
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
+
+       
                             ${empty msg ? "" : msg}
-                         </div>
+                          </div>
+                            </div>
+
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
+            <div style="clear: both;">&nbsp;</div>
         </div>
-        <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
         
     </body>

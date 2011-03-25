@@ -1,45 +1,40 @@
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" 
-%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
-%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"
+%><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
+%><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_gestionar_solicitud_pasantes.title"/></title>
-        <link rel="stylesheet" type="text/css" href="_css/style.css"/>
-        <style type="text/css">
-        div#box1843916 {width: 400px; margin: 40px auto; }
-        form#1843916 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
-        form#1843916 p {float: left; margin: 0; padding: 0; display: inline; }
-        form#1843916 label {float: left; margin: 0; padding: 0; display: inline; overflow: hidden; }
-        form#1843916 input {float: left; margin: 0; padding: 0; display: inline; }
-          form#1843916 p#1843918_C {clear: both; width: 400px; }
-          form#1843916 p#1843918_C label {clear: both; width: 400px; }
-          form#1843916 p#1843918_C input {clear: both; width: 396px; }
-          form#1843916 p#1843921_C {clear: both; width: 400px; }
-          form#1843916 p#1843921_C label {clear: both; width: 400px; }
-          form#1843916 p#1843921_C input {clear: both; width: 396px; }
-          form#1843916 p#1843924_C {clear: both; width: 400px; }
-          form#1843916 p#1843924_C label {clear: both; width: 400px; }
-          form#1843916 p#1843924_C input {clear: both; width: 396px; }
-
-        </style>
-
+        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+        <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_gestionar_solicitud_pasantes.title"/></div>
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                </ul>
+              <li><html:link action="/A_prep_agregar_tutor_I.do">Agregar Tutor Industrial</html:link></li>
+                    <li><html:link action="/A_Prep_gestionar_solicitud_pasantes.do"><bean:message key="V_Sesion_Empresa.label1"/><%-- Solicitud de pasantes --%></html:link></li>
+
+               </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
+
+            <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            </div>
+            <div id="page">
+
+                <div id="content">
+
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
+
+
                             ${empty msg ? "" : msg}
                 <div class="box1843916"><html:form
                   action="/A_solicitar_pasante.do" method="post">
@@ -50,18 +45,22 @@
                   <html:submit styleClass="button"><bean:message key="V_gestionar_solicitud_pasantes.label0"/><%-- A_solicitar_pasante --%></html:submit>
                 </html:form></div>
 
-                         </div>
+                          </div>
+                            </div>
+
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
+            <div style="clear: both;">&nbsp;</div>
         </div>
-        <div id="end_body"></div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
-        
+
     </body>
 </html:html>
