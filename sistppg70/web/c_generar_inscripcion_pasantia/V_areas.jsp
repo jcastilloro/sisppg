@@ -37,10 +37,55 @@
                     <div id="left">
                         <div class="content">
                             ${empty msg ? "" : msg}
+                            <br><br>
+
+                             <div class="pgInfo">
+                                <table id="pgInfo">
+                                    <tr>
+                                        <td id="titulo">Titulo:</td>
+                                        <td>${pasantia.titulo}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="titulo">Tutor Academico:</td>
+                                        <td>${pasantia.tutor_academico.nombre}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="titulo">Tutor Industrial:</td>
+                                        <td>${pasantia.tutor_industrial.nombre}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="titulo">Objetivos:</td>
+                                        <td>${pasantia.objetivos_generales}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="titulo">Resumen:</td>
+                                        <td>${pasantia.resumen}</td>
+                                    </tr><%--
+                                    <tr>
+                                        <td id="titulo">Areas:</td>
+                                        <logic:notEmpty name="L_Areas_Pas">
+                                            <td></td>
+                                            </tr>
+                                            <logic:iterate id="apas" name="L_Areas_Pas">
+                                            <tr><td></td><td>${apas.nombre}</td></tr>
+                                            </logic:iterate>
+                                        </logic:notEmpty>
+                                        <logic:empty name="L_Areas_Pas">
+                                            <td>No ha seleccionado areas</td>
+                                        </tr>
+                                        </logic:empty>
+--%>
+                                </table>
+                            </div>
+
                 <div class="box1840605"><html:form
                   action="/A_agregar_area.do" method="post">
-                  <p id="1840607_C"><label for="1840607"><bean:message key="F_Area.label0"/><%-- Area: --%></label><html:text styleId="1840607" property="area" size="30"/></p>
-
+                  <p id="1840607_C"><label for="1840607"><bean:message key="F_Area.label0"/><%-- Area: --%></label>
+                      <html:select styleId="1840607" property="area">
+                            <logic:iterate id="area" collection="${empty L_Areas ? _vacio : L_Areas}">
+                                <option value="${area.idArea}">${area.nombre}</option>
+                            </logic:iterate>
+                          </html:select></p>
                   <html:submit styleClass="button"><bean:message key="V_areas.label0"/><%-- Agregar Area --%></html:submit>
                 </html:form></div>
 
