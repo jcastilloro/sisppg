@@ -31,6 +31,8 @@
         <form-bean name="F_Estatus_Prorroga" type="jc2s.sistppg.F_Estatus_Prorroga"/>
         <form-bean name="F_Periodo_Pasantia_Intermedia" type="jc2s.sistppg.F_Periodo_Pasantia_Intermedia"/>
         <form-bean name="F_Periodo_Pasantia_Larga" type="jc2s.sistppg.F_Periodo_Pasantia_Larga"/>
+        <form-bean name="F_Trimestre" type="jc2s.sistppg.F_Trimestre"/>
+        
     </form-beans>
     
     <global-exceptions>
@@ -335,6 +337,14 @@
         <forward name="V_Gestionar_Periodos_Pasantia_Larga" path="/c_sesion_administrador/V_Gestionar_Periodos_Pasantia_Larga.jsp"/>
         <forward name="A_insertar_periodo_pasantia_larga" path="/A_insertar_periodo_pasantia_larga.do"/>
         <forward name="A_eliminar_periodo_pasantia_larga" path="/A_eliminar_periodo_pasantia_larga.do"/>
+
+
+         <!-- C_Gestionar_Trimestres -->
+
+        <forward name="A_Prep_Gestionar_Trimestres" path="/A_Prep_Gestionar_Trimestres.do"/>
+        <forward name="V_Gestionar_Trimestres" path="/c_sesion_administrador/V_Gestionar_Trimestres.jsp"/>
+        <forward name="A_insertar_trimestre" path="/A_insertar_trimestre.do"/>
+        <forward name="A_eliminar_trimestre" path="/A_eliminar_trimestre.do"/>
 
 
         <forward name="tooltip" path="/tooltip.do"/>
@@ -766,6 +776,20 @@
            scope="session"/>
          <action path="/A_eliminar_periodo_pasantia_larga" parameter="A_eliminar_periodo_pasantia_larga"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+
+
+           <!-- C_Gestionar_Trimestres -->
+        <action path="/A_Prep_Gestionar_Trimestres" parameter="A_Prep_Gestionar_Trimestres"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_trimestre" parameter="A_insertar_trimestre"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Trimestres.jsp"
+           name="F_Trimestre"
+           scope="session"/>
+         <action path="/A_eliminar_trimestre" parameter="A_eliminar_trimestre"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
 
 
         <action path="/tooltip" parameter="tooltip"

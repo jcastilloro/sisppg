@@ -53,7 +53,7 @@
                                     <tr><p></p></tr>
                                     <tr>
                                         <th>
-                                            Trimestre
+                                            <html:link action="/A_Prep_Gestionar_Trimestres.do">Trimestres</html:link>
                                         </th>
                                         <th>
                                             Ciudad
