@@ -159,6 +159,38 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
                 }
 
+
+
+
+
+                 //verifico nacionalidad
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNacionalidad())) {
+                    e.setNacionalidad(fperfil.getNacionalidad());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Nacionalidad Válido");
+                }
+
+                //verifico indice
+                if (Pattern.matches("((0*[1-4](\\.[0-9]+)?)|5(\\.0*)?)", fperfil.getIndice())) {
+                    e.setIndice(Double.parseDouble(fperfil.getIndice()));
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Indice Válido");
+                }
+
+                //verifico direccion
+                if (Pattern.matches(".+", fperfil.getDireccion())) {
+                    e.setDireccion(fperfil.getDireccion());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válido");
+                }
+
+                e.setSexo(fperfil.getSexo());
+
+
+
                 //verifico fecha
                 if (Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", fperfil.getFecha_nacimiento())) {
                     SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
@@ -237,6 +269,32 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                 }
 
 
+
+               //verifico nacionalidad
+                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNacionalidad())) {
+                    e.setNacionalidad(fperfil.getNacionalidad());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Nacionalidad Válido");
+                }
+
+                //verifico indice
+                if (Pattern.matches("((0*[1-4](\\.[0-9]+)?)|5(\\.0*)?)", fperfil.getIndice())) {
+                    e.setIndice(Double.parseDouble(fperfil.getIndice()));
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte un Indice Válido");
+                }
+
+                //verifico direccion
+                if (Pattern.matches(".+", fperfil.getDireccion())) {
+                    e.setDireccion(fperfil.getDireccion());
+                } else {
+                    salida = SALIDA_0;
+                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válido");
+                }
+
+                e.setSexo(fperfil.getSexo());
 
 
                 if (salida != SALIDA_0) {

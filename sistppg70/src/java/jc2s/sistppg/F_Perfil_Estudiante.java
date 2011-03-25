@@ -23,7 +23,7 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         sexo="";
         nacionalidad="";
         direccion="";
-        indice=0.0;
+        indice="";
 
     }
     
@@ -39,7 +39,7 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         sexo="";
         nacionalidad="";
         direccion="";
-        indice=0.0;
+        indice="";
 
 
     }
@@ -298,13 +298,13 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         /**
      * Holds value of property nacionalidad.
      */
-    private Double indice;
+    private String indice;
 
     /**
      * Getter for property nacionalidad.
      * @return Value of property nacionalidad.
      */
-    public Double getIndice() {
+    public String getIndice() {
         return this.indice;
     }
 
@@ -312,7 +312,7 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
      * Setter for property nacionalidad.
      * @param nombre New value of property nacionalidad.
      */
-    public void setIndice(Double indice) {
+    public void setIndice(String indice) {
         this.indice = indice;
     }
 
