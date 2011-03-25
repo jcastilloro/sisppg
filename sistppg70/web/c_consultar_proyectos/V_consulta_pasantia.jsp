@@ -50,7 +50,7 @@
                                     </html:select>
                                         </td>
                                     </tr>
-
+<%--
                                     <tr><td>Año: </td>
                                         <td>
                                     <html:select property="ano">
@@ -64,7 +64,7 @@
                                         <html:option value="2014"> 2014</html:option>
                                     </html:select>
                                         </td></tr>
-
+--%>
                                     <tr><td>Estatus: </td>
                                         <td>
                                     <html:select property="status">

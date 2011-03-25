@@ -222,6 +222,10 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             //micodigo
 
             List<Pasantia> pas = s.createQuery("from Pasantia").list();
+            List<Pasantia> pas1 = new LinkedList<Pasantia>();  // solucion rancho...
+            List<Pasantia> pas2 = new LinkedList<Pasantia>();
+            List<Pasantia> pasDef = new LinkedList<Pasantia>();
+            boolean tipoON = false;
             List<Carrera> career = s.createQuery("from Carrera").list();
             List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
             request.setAttribute("Carreras", career);
@@ -230,8 +234,9 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             F_Sinai f_sinai = (F_Sinai) form;
 
             if(f_sinai.getIdCarrera() != -1){
-                pas = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", f_sinai.getIdCarrera()).list();
+               pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", f_sinai.getIdCarrera()).list();
             }
+
             
             String tipo = f_sinai.getTipo();
             String query = new String();
@@ -239,17 +244,41 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             if (tipo.equals("larga")) {
                 query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaLarga)";
                 pas = s.createQuery(query).list();
+                tipoON = true;
             } else if (tipo.equals("corta")) {
                 query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaCorta)";
                 pas = s.createQuery(query).list();
+                tipoON = true;
             } else if (tipo.equals("intermedia")) {
                 query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaIntermedia)";
                 pas = s.createQuery(query).list();
+                tipoON = true;
             }
 
             if (f_sinai.getStatus() != -1){
-                pas = s.createQuery("from Pasantia where estatus IN (select idEstatusPasantia from EstatusPasantia where idEstatusPasantia= :var)").setLong("var", f_sinai.getStatus()).list();
+               pas2 = s.createQuery("from Pasantia where estatus IN (select idEstatusPasantia from EstatusPasantia where idEstatusPasantia= :var)").setLong("var", f_sinai.getStatus()).list();
             }
+
+            // El rancho en accion
+            if (!pas1.isEmpty() && tipoON && !pas2.isEmpty()){
+                pasDef = interseccion(pas2,pas1);
+                pasDef = interseccion(pasDef,pas);
+            } else if (!pas1.isEmpty() && tipoON){
+                pasDef = interseccion(pas1,pas);
+
+            } else if (!pas2.isEmpty() && tipoON){
+                pasDef = interseccion(pas2,pas);
+
+            } else if (!pas2.isEmpty() && !pas1.isEmpty()){
+                pasDef = interseccion(pas2,pas1);
+
+            } else if (!pas2.isEmpty()){
+                pasDef = pas2;
+            } else if (!pas1.isEmpty()){
+                pasDef = pas1;
+            } else
+                pasDef = pas;
+
 
             /*  QUE WEBO TAN PELAO NO TENER UN PUTO ATRIBUTO AÑO!!!!
             if (f_sinai.getAno() != -1){
@@ -258,7 +287,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 */
             
 
-            request.setAttribute("Pasantias", pas);
+            request.setAttribute("Pasantias", pasDef);
             
             //micodigo
             tr.commit();
@@ -368,6 +397,15 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
        return dateFormat.format(date);
    }
 
-
+   // funcion intersección de listas de pasantias
+   private List<Pasantia> interseccion(List<Pasantia> a, List<Pasantia> b){
+       
+       List<Pasantia> pasDef = new LinkedList<Pasantia>();
+       for (int i = 0; a.size() > i; i++) {
+           if (b.indexOf(a.get(i)) != -1)
+               pasDef.add(a.get(i));
+       }
+       return pasDef;
+   }
 
 }
