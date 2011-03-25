@@ -326,31 +326,30 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
-            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-            
-            List<Pasantia> pas = new LinkedList<Pasantia>();
-
-            if (user.getUsbid().equals("coord-comp")){
-                //VALOR CABLIAO
-                long idCarrera = 2;
-                pas = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", idCarrera).list();
-            } else {
-                List<Carrera> c = s.createQuery("from Carrera").list();
-                request.setAttribute("Carreras", c);
-                pas = s.createQuery("from Pasantia").list();
-            }
-
-            
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");            
+            List<Pasantia> pas = s.createQuery("from Pasantia").list();            
             List<Pasantia> pas1 = new LinkedList<Pasantia>();  // solucion rancho...
             List<Pasantia> pas2 = new LinkedList<Pasantia>();
             List<Pasantia> pasDef = new LinkedList<Pasantia>();
             boolean tipoON = false;
 
-            List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
+            if (user.getUsbid().equals("coord-comp")){
+                //VALOR CABLIAO
+                long idCarrera = 2;
+                // TODOS los proyectos, toca filtrarlos por carrera
+                pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", idCarrera).list();
 
+            } else {
+                List<Carrera> career = s.createQuery("from Carrera").list();
+                request.setAttribute("Carreras", career);
+            }
+            
+
+            List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
             request.setAttribute("Estatus", estatus);
 
             F_Sinai f_sinai = (F_Sinai) form;
+
 
             if(f_sinai.getIdCarrera() != -1){
                pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", f_sinai.getIdCarrera()).list();

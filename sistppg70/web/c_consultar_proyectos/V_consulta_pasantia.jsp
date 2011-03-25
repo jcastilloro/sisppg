@@ -40,13 +40,16 @@
                                     <tr><td>Carrera: </td>
                                         <td>
                                             <logic:empty name="Carreras">
-                                                Ingeniería de Computación
+                                                <html:select property="idCarrera">
+                                                    <%-- Valor cabliao --%>
+                                                    <html:option value="2"> Ingeniería de Computación</html:option>
+                                                </html:select>
                                             </logic:empty>
                                             <logic:notEmpty name="Carreras">
                                     <html:select property="idCarrera">
                                         <html:option value="-1"> Todas </html:option>
                                         <logic:iterate id="car" collection="${empty Carreras ? _vacio : Carreras}">
-                                            <html:option value="${car.idCarrera}"> ${car.nombre}</html:option>
+                                        <html:option value="${car.idCarrera}"> ${car.nombre}</html:option>
                                         </logic:iterate>
                                     </html:select>
                                             </logic:notEmpty>
