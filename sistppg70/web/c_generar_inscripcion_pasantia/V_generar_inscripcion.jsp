@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
+        <script src="_js/insc-pasant.js" type="text/javascript"></script>
         <script src="_js/jquery.validationEngine.js" type="text/javascript"></script>
         <script src="_js/jquery.validationEngine-es.js" type="text/javascript"></script>
   
@@ -75,9 +76,36 @@
                   <p id="1840465_C"><label for="1840465"><bean:message key="F_Inscripcion_Pasantia.label0"/><%-- Titulo: --%></label><html:text styleId="1840465" property="titulo_pasantia" size="30" styleClass="validate[required]"/></p>
                   <p id="1843570_C"><label for="1843570"><bean:message key="F_Inscripcion_Pasantia.label1"/><%-- Tipo de pasantia: --%></label>
                       <html:select property="tipo" styleId="1843570">
-                          <html:option value="1">Corta</html:option>
-                          <html:option value="2">Corta</html:option>
-                          <html:option value="3">Corta</html:option>
+                          <html:option value="0">Tipo</html:option>
+                          <html:option styleId="c" value="1">Corta</html:option>
+                          <html:option styleId="i" value="2">Intermedia</html:option>
+                          <html:option styleId="l" value="3">Larga</html:option>
+                      </html:select>
+                  </p>
+                  <p id="18435702_C"><label for="18435702">Periodo pasantia:</label>
+                      <html:select property="periodo" styleId="18435702">
+                          <html:option value="0">Periodos</html:option>
+                          <%-- periodos pasantia larga --%>
+                          <logic:empty name="L_PPL">
+                              <html:option styleClass="periodo ppl" value="0">Fail.</html:option>
+                          </logic:empty>
+                          <logic:notEmpty name="L_PPL">
+                              <logic:iterate id="ppl" name="L_PPL">
+                                  <html:option styleClass="periodo ppl" value="${ppl.idPeriodoPasantiaLarga}">${ppl.nombre}</html:option>
+                              </logic:iterate>
+                          </logic:notEmpty>
+
+                          <%-- periodos pasantia intermedia --%>
+                          <logic:empty name="L_PPI">
+                              <html:option styleClass="periodo ppi" value="0">Fail.</html:option>
+                          </logic:empty>
+                          <logic:notEmpty name="L_PPI">
+                              <logic:iterate id="ppi" name="L_PPI">
+                                  <html:option styleClass="periodo ppi" value="${ppi.idPeriodoPasantiaIntermedia}">${ppi.nombre}</html:option>
+                              </logic:iterate>
+                          </logic:notEmpty>
+                          <%-- periodos pasantia corta --%>
+                          <html:option styleClass="periodo ppc" value="0">Agosto-Setptiembre</html:option>
                       </html:select>
                   </p>
                   <p id="1843573_C"><label for="1843573"><bean:message key="F_Inscripcion_Pasantia.label2"/><%-- Tutor Academico: --%></label>

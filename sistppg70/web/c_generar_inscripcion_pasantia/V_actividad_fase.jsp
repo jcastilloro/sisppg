@@ -28,11 +28,7 @@
 
     </head>
     <body>
-<script type="text/javascript">
-jQuery(function($) {
-  $( "#1840509" ).datepicker();
-
-});</script>        <div id="header">
+        <div id="header">
             <div id="title"><bean:message key="V_actividad_fase.title"/></div>
             <div id="menu">
                 <ul id="nav">

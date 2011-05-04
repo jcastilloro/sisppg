@@ -59,13 +59,22 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             List<Profesor> lp = (List<Profesor>) s.createQuery("from Profesor").list();
             List<TutorIndustrial> lti = (List<TutorIndustrial>) s.createQuery("from TutorIndustrial").list();
 
+            List<PeriodoPasantiaLarga> ppl = (List<PeriodoPasantiaLarga>) s.createQuery("from PeriodoPasantiaLarga").list();
+            List<PeriodoPasantiaIntermedia> ppi = (List<PeriodoPasantiaIntermedia>) s.createQuery("from PeriodoPasantiaIntermedia").list();
+
+            Estudiante e = (Estudiante) request.getSession().getAttribute("estudiante");
+            EstudianteRealizaProyecto erp = new EstudianteRealizaProyecto();
+
             Proyecto p = new Proyecto();
             p.setCreated_at(new Date());
+
             s.save(p);
 
             //paso los parametros por la sesion
             request.setAttribute("L_TA", lp);
             request.setAttribute("L_TI", lti);
+            request.setAttribute("L_PPL",ppl);
+            request.setAttribute("L_PPI",ppi);
             request.getSession().setAttribute("proyecto", p);
 
             tr.commit();
@@ -124,6 +133,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             Profesor prof = (Profesor) s.createQuery("from Profesor where idProfesor = :profId").setLong("profId", Long.parseLong(fpasantia.getTutor_academico())).uniqueResult();
             TutorIndustrial ti = (TutorIndustrial) s.createQuery("from TutorIndustrial where idTutorIndustrial = :tiId").setLong("tiId", Long.parseLong(fpasantia.getTutor_industrial())).uniqueResult();
 
+
             pas.setProyecto(pro);
             pas.setEstatus(est);
             pas.setObjetivos_generales(fpasantia.getObjetivos());
@@ -134,6 +144,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
             s.save(pas);
 
+
             String tipo = fpasantia.getTipo();
             if(tipo.equals("1")){
                 PasantiaCorta pc = new PasantiaCorta();
@@ -143,13 +154,18 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             }if(tipo.equals("2")){
                 PasantiaIntermedia pi = new PasantiaIntermedia();
                 pi.setPasantia(pas);
+                PeriodoPasantiaIntermedia ppi = (PeriodoPasantiaIntermedia) s.createQuery("from PeriodoPasantiaIntermedia where idPeriodoPasantiaIntermedia = :pId").setLong("pId", Long.parseLong(fpasantia.getPeriodo())).uniqueResult();
+                pi.setPeriodo(ppi);
                 s.save(pi);
                 request.getSession().setAttribute("pi", pi);
             }if(tipo.equals("3")){
                 PasantiaLarga pl = new PasantiaLarga();
                 pl.setPasantia(pas);
+                PeriodoPasantiaLarga ppl = (PeriodoPasantiaLarga) s.createQuery("from PeriodoPasantiaLarga where idPeriodoPasantiaLarga = :pId").setLong("pId", Long.parseLong(fpasantia.getPeriodo())).uniqueResult();
+                pl.setPeriodo(ppl);
                 s.save(pl);
                 request.getSession().setAttribute("pl", pl);
+
             }
 
             request.getSession().setAttribute("pasantia", pas);
@@ -158,6 +174,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             List<Area> L_Areas = s.createQuery("from Area").list();
             request.getSession().setAttribute("L_Areas", L_Areas);
 
+            fpasantia.reset(mapping, request);
             tr.commit();
 
         } catch (Exception ex) {
@@ -303,7 +320,18 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             tr.commit();
-
+            //aqui comienza
+            Pasantia pas = (Pasantia) request.getSession().getAttribute("pasantia");
+            List<Fase> lf = s.createQuery("from Fase where pasantia = :pas").setLong("pas", pas.getId()).list();
+            if(!lf.isEmpty())
+                salida = SALIDA_1;
+                Proyecto pro = (Proyecto) request.getSession().getAttribute("proyecto");
+                Estudiante e = (Estudiante) request.getSession().getAttribute("estudiante");
+                EstudianteRealizaProyecto erp = new EstudianteRealizaProyecto();
+                erp.setEstudiante(e);
+                erp.setProyecto(pro);
+                s.save(erp);
+            //aqui termina
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
@@ -315,8 +343,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             getResources(request).getMessage("A_finalizar_inscripcion.msg0"));
         }
         if (salida==1) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_finalizar_inscripcion.msg1"));
+          request.setAttribute("msg","Inscripcion finaliza correctamente");
         }
 
         return mapping.findForward(SALIDAS[salida]);
@@ -352,12 +379,17 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             F_Fase_Pasantia ffase = (F_Fase_Pasantia)form;
-            Fase f = new Fase();
-            f.setObjetivos_especificos(null);
-            Pasantia p = (Pasantia) request.getSession().getAttribute("pasantia");
-            f.setPasantia(p);
-
-            s.save(f);
+            if(!ffase.getObjetivos_especificos().equals("")){
+                Fase f = new Fase();
+                f.setObjetivos_especificos(ffase.getObjetivos_especificos());
+                Pasantia p = (Pasantia) request.getSession().getAttribute("pasantia");
+                f.setPasantia(p);
+                s.save(f);
+                request.getSession().setAttribute("fase", f);
+            }else{
+                salida = SALIDA_1;
+            }
+            ffase.reset(mapping, request);
             tr.commit();
 
         } catch (Exception ex) {
@@ -368,11 +400,11 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         }
         if (salida==0) {
           request.setAttribute("msg",
-            getResources(request).getMessage("A_agregar_fase.msg0"));
+            getResources(request).getMessage("A_agregar_fase.msg1"));
         }
         if (salida==1) {
           request.setAttribute("msg",
-            getResources(request).getMessage("A_agregar_fase.msg1"));
+            getResources(request).getMessage("A_agregar_fase.msg0"));
         }
 
         return mapping.findForward(SALIDAS[salida]);
@@ -407,6 +439,13 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //aqui comienza el codigo
+            Fase f = (Fase) request.getSession().getAttribute("fase");
+            s.refresh(f);
+            if(!f.getActividades().isEmpty()){
+                salida = SALIDA_1;
+            }
+            //aqui termina el codigo
             tr.commit();
 
         } catch (Exception ex) {
@@ -416,12 +455,10 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             try { s.close(); } catch (Exception ex2) {}
         }
         if (salida==0) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_guardar_fase.msg0"));
+          request.setAttribute("msg","salida 0 esta vacia la lista de actividades");
         }
         if (salida==1) {
-          request.setAttribute("msg",
-            getResources(request).getMessage("A_guardar_fase.msg1"));
+          request.setAttribute("msg","salida 1 no esta vacia la lista de actividades");
         }
 
         return mapping.findForward(SALIDAS[salida]);
@@ -456,22 +493,30 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Actividad_Fase fF_Actividad_Fase = (F_Actividad_Fase)form;
+            F_Actividad_Fase factividad = (F_Actividad_Fase)form;
+            if(!factividad.getDescripcion().equals("") && !factividad.getTiempo_estimado().equals("")){
+                ActividadFase af = new ActividadFase();
+                af.setDescripcion(factividad.getDescripcion());
+                af.setTiempo_estimado(factividad.getTiempo_estimado());
+                af.setFase((Fase)request.getSession().getAttribute("fase"));
+                s.save(af);
+            }else{salida = SALIDA_1;}
+            factividad.reset(mapping, request);
             tr.commit();
 
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
         } finally {
-            try { s.close(); } catch (Exception ex2) {}
+            try {s.close(); } catch (Exception ex2) {}
         }
         if (salida==0) {
           request.setAttribute("msg",
-            getResources(request).getMessage("A_agregar_actividad.msg0"));
+            getResources(request).getMessage("A_agregar_actividad.msg1"));
         }
         if (salida==1) {
           request.setAttribute("msg",
-            getResources(request).getMessage("A_agregar_actividad.msg1"));
+            getResources(request).getMessage("A_agregar_actividad.msg0"));
         }
 
         return mapping.findForward(SALIDAS[salida]);

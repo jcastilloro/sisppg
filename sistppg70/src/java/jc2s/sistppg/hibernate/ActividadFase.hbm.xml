@@ -9,7 +9,7 @@
     <!-- 1 -->
     <property column="descripcion" name="descripcion" not-null="true" type="text"/>
     <!-- 2 -->
-    <property column="tiempo_estimado" name="tiempo_estimado" not-null="true" type="time"/>
+    <property column="tiempo_estimado" name="tiempo_estimado" not-null="true" type="text"/>
     <!-- 3 -->
     <many-to-one column="fase" name="fase" not-null="true"/>
   </class>

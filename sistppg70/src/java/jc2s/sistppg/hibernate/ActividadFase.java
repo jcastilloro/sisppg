@@ -65,13 +65,13 @@ public class ActividadFase implements java.io.Serializable, ve.usb.cohesion.runt
     /**
      * Holds value of property tiempo_estimado.
      */
-    private java.util.Date tiempo_estimado;
+    private String tiempo_estimado;
 
     /**
      * Getter for property tiempo_estimado.
      * @return Value of property tiempo_estimado.
      */
-    public java.util.Date getTiempo_estimado() {
+    public String getTiempo_estimado() {
         return this.tiempo_estimado;
     }
 
@@ -79,7 +79,7 @@ public class ActividadFase implements java.io.Serializable, ve.usb.cohesion.runt
      * Setter for property tiempo_estimado.
      * @param tiempo_estimado New value of property tiempo_estimado.
      */
-    public void setTiempo_estimado(java.util.Date tiempo_estimado) {
+    public void setTiempo_estimado(String tiempo_estimado) {
         this.tiempo_estimado = tiempo_estimado;
     }
 

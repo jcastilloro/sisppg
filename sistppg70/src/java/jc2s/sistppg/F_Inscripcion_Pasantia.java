@@ -14,6 +14,7 @@ public class F_Inscripcion_Pasantia extends org.apache.struts.action.ActionForm 
         super();
         titulo_pasantia = "";
         tipo = "";
+        periodo = "";
         tutor_academico = "";
         tutor_industrial = "";
         objetivos = "";
@@ -24,6 +25,7 @@ public class F_Inscripcion_Pasantia extends org.apache.struts.action.ActionForm 
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         titulo_pasantia = "";
         tipo = "";
+        periodo = "";
         tutor_academico = "";
         tutor_industrial = "";
         objetivos = "";
@@ -90,6 +92,28 @@ public class F_Inscripcion_Pasantia extends org.apache.struts.action.ActionForm 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    /**
+     * Holds value of property periodo.
+     */
+    private String periodo;
+
+    /**
+     * Getter for property periodo.
+     * @return Value of property periodo.
+     */
+    public String getPeriodo() {
+        return this.periodo;
+    }
+
+    /**
+     * Setter for property periodo.
+     * @param tipo New value of property tipo.
+     */
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
 
     /**
      * Holds value of property tutor_academico.
