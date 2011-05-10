@@ -6,16 +6,11 @@
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
-
-
         <html:base/>
 
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,19 +60,12 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
-
                 <div id="content">
 
                     <div id="body">
@@ -149,7 +137,6 @@
                                             </table>
                                         </center>
 
-
                                     </div>
                                 </div>
                             </div>
@@ -167,8 +154,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
-
+        
     </body>
 </html:html>

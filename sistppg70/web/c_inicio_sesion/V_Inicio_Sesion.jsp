@@ -9,13 +9,9 @@
 
 
         <html:base/>
-
         <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -66,42 +62,25 @@
             <div id="menu">
                 <ul id="nav">
 
-
-
-
                     <li><html:link action="/A_Prep_Inicio_Sesion_Empresa.do"><bean:message key="V_Inicio_Sesion.label1"/><%-- Empresas --%></html:link></li>
                     <li><html:link action="/A_prep_inicio_sesion_t_industrial.do"><bean:message key="V_Inicio_Sesion.label2"/><%-- Tutores Industriales --%></html:link></li>
                     <li><html:link action="/A_Prep_Inicio_Sesion_Adm.do"><bean:message key="V_Inicio_Sesion.label3"/><%-- Administrador --%></html:link></li>
 
-
-
-
-
                 </ul>
             </div>
 
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
-
-
                 <div id="content">
-
                     <div id="body">
-
                         <div id="split">
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-
-
-
 
                                         <html:form
                                             action="/A_Inicio_Sesion.do" method="post">
@@ -118,10 +97,6 @@
                                                 </tr>
                                             </table>
                                         </html:form>
-
-
-
-
 
                                     </div>
                                 </div>

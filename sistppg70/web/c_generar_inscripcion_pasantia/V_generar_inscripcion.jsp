@@ -6,7 +6,7 @@
 %><html:html>
     <head>
         <title><bean:message key="V_generar_inscripcion.title"/></title>
-   <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <link rel="stylesheet" href="_css/validationEngine.jquery.css" type="text/css"/>
         <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
@@ -52,10 +52,8 @@
                 </ul>
             </div>
 
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+               
             </div>
             <div id="page">
 
@@ -105,7 +103,7 @@
                               </logic:iterate>
                           </logic:notEmpty>
                           <%-- periodos pasantia corta --%>
-                          <html:option styleClass="periodo ppc" value="0">Agosto-Setptiembre</html:option>
+                          <html:option styleClass="periodo ppc" value="0">Julio-Septiembre</html:option>
                       </html:select>
                   </p>
                   <p id="1843573_C"><label for="1843573"><bean:message key="F_Inscripcion_Pasantia.label2"/><%-- Tutor Academico: --%></label>

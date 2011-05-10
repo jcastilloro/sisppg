@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,24 +60,16 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_gestionar_preinscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label1"/><%-- Gestionar Preinscripcion --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_generar_inscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label2"/><%-- Generar Inscripcion --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_solicitar_prorroga_inscripcion.do"><bean:message key="V_Gestion_Pasantias_Est.label3"/><%-- Solicitud Prorrogra Inscripcion --%></html:link></cohesion:actor></li>
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+                
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -94,7 +81,6 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-
 
 
                                         <logic:empty name="Pasantias">
@@ -111,7 +97,6 @@
                                                 </logic:iterate>
                                             </table>
                                         </logic:notEmpty>
-
 
 
                                     </div>

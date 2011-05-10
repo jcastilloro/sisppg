@@ -9,13 +9,9 @@
 
 
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,22 +61,15 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
 
 
-            <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            <div id="header">             
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -93,7 +82,6 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-
                                         <html:form styleId="perfilEForm"
                                                    action="/A_guardar_perfil.do" method="post">
                                             <table border="0">
@@ -104,7 +92,7 @@
                                                 <tr><td><p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label></td><td><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840459_C"><label for="18404591">Direccion:</label></td><td><html:textarea styleId="18404591" property="direccion" cols="30" rows="5" value="${Datos.direccion}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840459_C"><label for="18404592">Sexo: </label></td><td>
-                                                        <html:select styleId="18404592" property="sexo" value="${Datos.sexo}">
+                                                <html:select styleId="18404592" property="sexo" value="${Datos.sexo}">
                                                     <option value="masculino" >Masculino</option>
                                                     <option value="femenino">Femenino</option>
                                                 </html:select></td></tr>

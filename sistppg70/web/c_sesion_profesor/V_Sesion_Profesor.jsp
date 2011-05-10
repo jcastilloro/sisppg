@@ -6,16 +6,10 @@
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
-
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,28 +59,17 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_modif_perfil_profesor.do">Modificar Perfil</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_pasantia_prof.do">Gestionar Pasantias</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_PG_prof.do">Gestionar PG</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do">Consultar Proyectos</html:link></cohesion:actor></li>
-                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
-
                 <div id="content">
 
                     <div id="body">
@@ -97,7 +80,6 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-
 
                                     </div>
                                 </div>
@@ -116,8 +98,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>
