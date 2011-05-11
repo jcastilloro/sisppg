@@ -70,6 +70,11 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
             s.save(p);
 
+            //erp.setEstudiante(e);
+            //erp.setProyecto(p);
+
+            //s.save(erp);
+
             //paso los parametros por la sesion
             request.setAttribute("L_TA", lp);
             request.setAttribute("L_TI", lti);
@@ -319,12 +324,12 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            tr.commit();
             //aqui comienza
             Pasantia pas = (Pasantia) request.getSession().getAttribute("pasantia");
             List<Fase> lf = s.createQuery("from Fase where pasantia = :pas").setLong("pas", pas.getId()).list();
             if(!lf.isEmpty())
                 salida = SALIDA_1;
+            
                 Proyecto pro = (Proyecto) request.getSession().getAttribute("proyecto");
                 Estudiante e = (Estudiante) request.getSession().getAttribute("estudiante");
                 EstudianteRealizaProyecto erp = new EstudianteRealizaProyecto();
@@ -332,6 +337,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
                 erp.setProyecto(pro);
                 s.save(erp);
             //aqui termina
+                tr.commit();
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
@@ -343,7 +349,9 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             getResources(request).getMessage("A_finalizar_inscripcion.msg0"));
         }
         if (salida==1) {
-          request.setAttribute("msg","Inscripcion finaliza correctamente");
+          Proyecto pro = (Proyecto) request.getSession().getAttribute("proyecto");
+          Estudiante e = (Estudiante) request.getSession().getAttribute("estudiante");
+          request.setAttribute("msg","Inscripcion finaliza correctamente. E<"+e.getId()+"-"+e.getNombre()+">"+"P<"+pro.getId()+"-"+pro.getCreated_at()+">");
         }
 
         return mapping.findForward(SALIDAS[salida]);
