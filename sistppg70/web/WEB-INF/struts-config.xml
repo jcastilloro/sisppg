@@ -423,6 +423,13 @@
         <action path="/A_Prep_Gestion_Pasantias_Estudiante" parameter="A_Prep_Gestion_Pasantias_Estudiante"
            type="jc2s.sistppg.AccionesC_Gestionar_Pasantias_Estudiante"/>
 
+        <!-- GenerarCartaPostulacion -->
+        <action path="/A_GenerarCartaPostulacion" parameter="A_GenerarCartaPostulacion"
+                type="jc2s.sistppg.AccionesGenerarCartaPostulacion"/>
+
+        <!-- GenerarSolicitudPasantia -->
+        <action path="/A_GenerarSolicitudPasantia" parameter="A_GenerarSolicitudPasantia"
+                type="jc2s.sistppg.AccionesGenerarSolicitudPasantia"/>
 
         <!-- C_Gestionar_PG_Estudiante -->
         <action path="/A_Prep_Gestion_PG_Est" parameter="A_Prep_Gestion_PG_Est"

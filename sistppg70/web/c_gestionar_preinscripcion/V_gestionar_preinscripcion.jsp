@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,29 +60,16 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
                     <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_corta.do"><bean:message key="V_gestionar_preinscripcion.label0"/><%-- Pasantia Corta --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_intermedia.do"><bean:message key="V_gestionar_preinscripcion.label1"/><%-- Pasantia Intermedia --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_larga.do"><bean:message key="V_gestionar_preinscripcion.label2"/><%-- Pasantia Larga --%></html:link></cohesion:actor></li>
-
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -107,7 +89,9 @@
                                         <logic:notEmpty name="L_preins">
                                             <ul id="preinscripciones">
                                                 <logic:iterate id="p" name="L_preins">
-                                                    <li id="${p.por_graduar ? "preinsNo" : "preinsSi"}"><p>Preinscripcion de pasantia ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""}  <small>${p.created_at}</small> <html:link href="#">carta postulacion</html:link></p></li>
+                                                    <li id="${p.por_graduar ? "preinsNo" : "preinsSi"}"><p>Preinscripcion de pasantia ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""}  <small>${p.created_at}</small> 
+                                                            <html:link action="/A_GenerarCartaPostulacion.do">Carta Postulación</html:link>
+                                                        <html:link action="/A_GenerarSolicitudPasantia.do">Solicitud de Pasantía</html:link></p></li>
                                                 </logic:iterate>
                                             </ul>
                                         </logic:notEmpty>
@@ -130,7 +114,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
 
 
     </body>
