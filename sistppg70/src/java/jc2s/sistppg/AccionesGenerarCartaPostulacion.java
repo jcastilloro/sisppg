@@ -23,11 +23,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 
-
 import java.util.Calendar;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
+import jc2s.sistppg.hibernate.Estudiante;
+import jc2s.sistppg.hibernate.Preinscripcion;
+import jc2s.sistppg.hibernate.Usuario;
 
 /**
  *
@@ -64,8 +64,80 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
 
             /*mi codigo*/
 
-                String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
+            String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
+            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+            Estudiante estudiante = (Estudiante) s.createQuery("from Estudiante where usbid = :login").setString("login", u.getUsbid()).uniqueResult();
 
+            // Un estudiante SOLO puede tener UNA PreInscripcion
+            Preinscripcion preinscripcion = (Preinscripcion) s.createQuery("from Preinscripcion where estudiante = :idEst order by created_at desc").setLong("idEst", estudiante.getIdEstudiante()).uniqueResult();
+
+            if (preinscripcion != null) {
+
+
+                String carnet = (String)(estudiante.getUsbid());
+                String nombre = (String)(estudiante.getNombre());
+                String apellido = (String)(estudiante.getApellido());
+                String carrera = (String) (estudiante.getCarrera().getNombre());
+                String genero = (String) estudiante.getSexo();
+                int tipo =  preinscripcion.getTipo();
+
+                Calendar cal = Calendar.getInstance();
+                int month = cal.get(Calendar.MONTH) + 1;
+                int year = cal.get(Calendar.YEAR);
+
+                String tipoPasantia = new String();
+                String ep = new String();
+                String creditos = new String();
+                String duracion = new String();
+                String periodo = new String();
+                String adj = "al";
+
+                if (genero.equals("femenino"))
+                    adj = "a la";                
+
+                if (tipo == 1){
+                    tipoPasantia = "corta";
+                    ep = "1420";
+                    creditos = "3";
+                    duracion = "06";
+                    periodo = "Julio-Septiembre";
+                } else if (tipo == 2){
+                    tipoPasantia = "intermedia";
+                    ep = "2420";
+                    creditos = "6";
+                    duracion = "12";
+
+                    // Se asume que la carta es para el periodo
+                    // inmediatamente posterior al actual!
+                    if (month > 0 && month < 4) {
+                        periodo = "Abril-Julio";
+                    } else if (month >= 4 && month < 7) {
+                        periodo = "Septiembre-Diciembre";
+                    } else if (month >= 7 && month < 10) {
+                        periodo = "Octubre-Febrero";
+                    } else if (month >= 10 && month < 12) {
+                        periodo = "Enero-Marzo";
+                    }
+                } else {
+                    tipoPasantia = "larga";
+                    ep = "3420";
+                    creditos = "9";
+                    duracion = "20";
+
+                    // Se asume que la carta es para el periodo
+                    // inmediatamente posterior al actual!
+                    if (month > 0 && month < 4) {
+                        periodo = "Abril-Septiembre";
+                    } else if (month >= 4 && month < 7) {
+                        periodo = "Julio-Diciembre";
+                    } else if (month >= 7 && month < 10) {
+                        periodo = "Octubre-Febrero";
+                    } else if (month >= 10 && month < 12) {
+                        periodo = "Enero-Mayo";
+                    }
+                }
+
+            
                 /* PDF */
                 try {
                     Document pdf = new Document(PageSize.LETTER);
@@ -106,10 +178,13 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     pdf.add(blank);
                     pdf.add(blank);
 
-                    Paragraph uno = new Paragraph("Después de saludarle, me dirijo a Usted para presentarle a la Br. ???,  "
-                            + "estudiante de la carrera  de ???, Carnet ???, a fin de que se le permita una entrevista para optar a la"
-                            + " realización de su pasantía ??? en la empresa,  correspondiente a la asignatura EP ???,  durante el período ???"
-                            + "  del año ???, con una duración de (???) semanas que equivalen a (???) créditos académicos.", font);
+                    Paragraph uno = new Paragraph("Después de saludarle, me dirijo a Usted para presentarle "
+                            + adj +" Br. "+ nombre +" "+ apellido +", estudiante de la carrera  de "
+                            + carrera +", Carnet "+ carnet + ", a fin de que se le permita una entrevista para"
+                            + " optar a la realización de su pasantía "+ tipoPasantia +" en la empresa,  "
+                            + "correspondiente a la asignatura EP-"+ ep + ",  durante el período "+ periodo
+                            + "  del año "+ year +", con una duración de ("+ duracion +") semanas que equivalen a ("
+                            + creditos + ") créditos académicos.", font);
                     pdf.add(uno);
                     pdf.add(blank);
 
@@ -142,10 +217,12 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     /* PDF */
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    salida = 1;
                 }
 
-
+            }else{
+                salida = 1;
+            }
 
             /* Aqui termina mi codigo */
             tr.commit();
