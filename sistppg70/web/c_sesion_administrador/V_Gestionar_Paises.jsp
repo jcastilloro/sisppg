@@ -94,8 +94,6 @@
                                     <div class="box1465928" align="center">
 
 
-                                        <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
-
 
 
 
@@ -106,33 +104,40 @@
                                                     Paises
                                                 </h2><hr>
 
-                                                <table border="0">
-
-                                                    <tr>
-                                                        <th width="250px">
-                                                            Nombre
-                                                        </th>
-                                                    </tr>
-                                                </table><hr>
-                                                <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                                    <table table="0">
+                                                <table width="400px">
+                                                    <thead>
                                                         <tr>
-                                                            <td>
-                                                                <html:link action="/A_Prep_Gestionar_Paises.do" paramName="dato" paramProperty="idPais"
-                                                                           paramId="idPais">${dato.nombre}</html:link>
-                                                            </td>
+                                                            <th>
+                                                                <center>
+                                                                    Nombre
+                                                                </center>
+                                                            </th>
                                                         </tr>
-                                                    </table><hr>
-                                                </logic:iterate>
+                                                    </thead>
+                                                    <tbody>
+                                                        <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
+                                                            <tr>
+                                                                <td>
+                                                                    <center>
+                                                                        <html:link action="/A_Prep_Gestionar_Paises.do" paramName="dato" paramProperty="idPais"
+                                                                                   paramId="idPais">${dato.nombre}</html:link>
+                                                                    </center>
+                                                                </td>
+                                                            </tr>
+
+                                                        </logic:iterate>
+                                                    </tbody>
+                                                </table>
                                             </center>
                                         </logic:notEmpty>
 
                                         <p><p><p>
 
                                             <logic:notEmpty name="Singular">
-                                                <html:form
-                                                    action="/A_insertar_pais.do" method="post">
+                                            <hr>
+                                            <html:form
+                                                action="/A_insertar_pais.do" method="post">
                                                 <table border="0">
                                                     <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
                                                     <html:hidden property="idPais" value="${Singular.idPais}"/>
@@ -165,7 +170,7 @@
                                         </logic:empty>
 
                                         <logic:notEmpty name="Agregar">
-
+                                            <hr>
                                             <html:form
                                                 action="/A_insertar_pais.do" method="post">
                                                 <table border="0">

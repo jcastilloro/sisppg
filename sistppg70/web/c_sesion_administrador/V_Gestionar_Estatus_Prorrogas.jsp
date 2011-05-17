@@ -92,9 +92,6 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-                                        <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
-
-
 
 
                                         <logic:notEmpty name="Datos">
@@ -103,34 +100,42 @@
                                                 <h2>
                                                     Estatus_Prorrogas
                                                 </h2>
+                                                <div class="administrador">
+                                                    <table width="400px">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="250px">
+                                                                    <center>
+                                                                        Estatus
+                                                                    </center>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                <table border="0">
+                                                                <tr>
+                                                                    <td>
+                                                                        <center>
+                                                                            <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do" paramName="dato" paramProperty="idEstatusProrroga"
+                                                                                       paramId="idEstatus_Prorroga">${dato.estatus}</html:link>
+                                                                        </center>
+                                                                    </td>
+                                                                </tr>
 
-                                                    <tr>
-                                                        <th width="250px">
-                                                            Estatus
-                                                        </th>
-                                                    </tr>
-                                                </table><hr>
-                                                <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                                    <table width="500">
-                                                    <tr>
-                                                        <td>
-                                                            <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do" paramName="dato" paramProperty="idEstatusProrroga"
-                                                                       paramId="idEstatus_Prorroga">${dato.estatus}</html:link>
-                                                        </td>
-                                                    </tr>
-                                                    </table><hr>
-                                                </logic:iterate>
-
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </center>
                                         </logic:notEmpty>
 
                                         <p><p><p>
 
                                             <logic:notEmpty name="Singular">
-                                                <html:form
-                                                    action="/A_insertar_estatus_prorroga.do" method="post">
+                                            <hr>
+                                            <html:form
+                                                action="/A_insertar_estatus_prorroga.do" method="post">
                                                 <table border="0">
                                                     <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}"/></td></tr></p>
                                                     <html:hidden property="idEstatusProrroga" value="${Singular.idEstatusProrroga}"/>
@@ -163,7 +168,7 @@
                                         </logic:empty>
 
                                         <logic:notEmpty name="Agregar">
-
+                                            <hr>
                                             <html:form
                                                 action="/A_insertar_estatus_prorroga.do" method="post">
                                                 <table border="0">

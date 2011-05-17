@@ -93,101 +93,103 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-
-                    <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
-
+  
 
 
 
-                            <logic:notEmpty name="Datos">
-                                <center>
+                                        <logic:notEmpty name="Datos">
+                                            <center>
 
-                                    <h2>
-                                        Carreras
-                                    </h2>
+                                                <h2>
+                                                    Carreras
+                                                </h2>
+                                                <div class="administrador">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="250px">
+                                                                    Nombre
+                                                                </th>
+                                                                <th width="250px">
+                                                                    Email
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                    <table border="0">
+                                                                <tr>
+                                                                    <td width="250px">
+                                                                        <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
+                                                                                   paramId="idCarrera">${dato.nombre}</html:link>
+                                                                    </td width="250px">
+                                                                    <td>
+                                                                        <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
+                                                                                   paramId="idCarrera">${dato.email}</html:link>
+                                                                    </td>
+                                                                </tr>
 
-                                        <tr>
-                                            <th width="250px">
-                                                Nombre
-                                            </th>
-                                            <th width="250px">
-                                                Email
-                                            </th>
-                                        </tr>
-                                        </table><hr>
-                                        <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                            <table>
-                                            <tr>
-                                                <td width="250px">
-                                                    <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                               paramId="idCarrera">${dato.nombre}</html:link>
-                                                </td width="250px">
-                                                <td>
-                                                    <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                               paramId="idCarrera">${dato.email}</html:link>
-                                                </td>
-                                            </tr>
-                                            </table><hr>
-                                        </logic:iterate>
-                                    
-                                </center>
-                            </logic:notEmpty>
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </center>
+                                        </logic:notEmpty>
 
-                            <p><p><p>
+                                        <p><p><p>
 
-                                <logic:notEmpty name="Singular">
-                                    <html:form
-                                        action="/A_insertar_carrera.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                        <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="${Singular.email}"/></td></tr>
-                                        <html:hidden property="idCarrera" value="${Singular.idCarrera}"/>
-
-
-                                        <tr><td><html:link action="/A_eliminar_carrera.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
+                                            <logic:notEmpty name="Singular">
+                                                <hr>
+                                                <html:form
+                                                    action="/A_insertar_carrera.do" method="post">
+                                                <table border="0">
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
+                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="${Singular.email}"/></td></tr>
+                                                    <html:hidden property="idCarrera" value="${Singular.idCarrera}"/>
 
 
-
-
+                                                    <tr><td><html:link action="/A_eliminar_carrera.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                        </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
 
 
 
 
 
-                                </logic:notEmpty>
 
 
-                                <logic:empty name="Agregar">
-                                <bean:define id="Agregare" value="Agregare"/>
-                                <table><th>
-                                <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="Agregare"
+
+
+                                            </logic:notEmpty>
+
+
+                                            <logic:empty name="Agregar">
+                                                <bean:define id="Agregare" value="Agregare"/>
+                                            <table><th>
+                                                    <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="Agregare"
                                                                paramId="Agregar">Agregar Carrera</html:link>
-                                    </th></table>
+                                                </th></table>
 
-                                </logic:empty>
+                                        </logic:empty>
 
-                                <logic:notEmpty name="Agregar">
+                                        <logic:notEmpty name="Agregar">
+                                        <hr>
+                                            <html:form
+                                                action="/A_insertar_carrera.do" method="post">
+                                                <table border="0">
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
+                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value=""/></td></tr>
+                                                    <html:hidden property="idCarrera" value=""/>
 
-                                    <html:form
-                                        action="/A_insertar_carrera.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
-                                        <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value=""/></td></tr>
-                                        <html:hidden property="idCarrera" value=""/>
 
-
-                                        <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
-                                </logic:notEmpty>
+                                                    <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
+                                                        </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
+                                            </logic:notEmpty>
 
 
 

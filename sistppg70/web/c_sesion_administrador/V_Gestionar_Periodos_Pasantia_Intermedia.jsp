@@ -92,92 +92,99 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-                            ${empty msg ? "" : msg}
-                            <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
+                                        ${empty msg ? "" : msg}
+
+
+
+                                        <logic:notEmpty name="Datos">
+                                            <center>
+
+                                                <h2>
+                                                    Periodos de Pasantias Intermedias
+                                                </h2>
+                                                <div class="administrador">
+
+                                                    <table width="400x">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <center>
+                                                                        Nombre
+                                                                    </center>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
+
+                                                                <tr>
+                                                                    <td>
+                                                                        <center>
+                                                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="dato" paramProperty="idPeriodoPasantiaIntermedia"
+                                                                                       paramId="idPeriodoPasantiaIntermedia">${dato.nombre}</html:link>
+                                                                        </center
+                                                                    </td>
+                                                                </tr>
+                                                            <hr>
+                                                        </logic:iterate>
+                                                    </table>
+                                                    </tbody>
+                                                </div>
+                                            </center>
+                                        </logic:notEmpty>
+
+                                        <p><p><p>
+
+                                            <logic:notEmpty name="Singular">
+                                            <hr>
+                                            <html:form
+                                                action="/A_insertar_periodo_pasantia_intermedia.do" method="post">
+
+                                                <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="periodoPasantiaIntermedia" size="30" value="${Singular.nombre}"/></td></tr></p>
+                                                <html:hidden property="idPeriodoPasantiaIntermedia" value="${Singular.idPeriodoPasantiaIntermedia}"/>
+
+
+                                                <tr><td><html:link action="/A_eliminar_periodo_pasantia_intermedia.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                    </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
 
 
 
 
-                            <logic:notEmpty name="Datos">
-                                <center>
-
-                                    <h2>
-                                        Periodos de Pasantias Intermedias
-                                    </h2><hr>
-
-                                    <table border="0">
-
-                                        <tr>
-                                            <th width="250px">
-                                                Nombre
-                                            </th>
-                                        </tr>
-                                        </table><hr>
-                                        <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                    <table border="0">
-                                            <tr>
-                                                <td>
-                                                    <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="dato" paramProperty="idPeriodoPasantiaIntermedia"
-                                                               paramId="idPeriodoPasantiaIntermedia">${dato.nombre}</html:link>
-                                                </td>
-                                            </tr>
-                                            </table><hr>
-                                        </logic:iterate>
-                                    
-                                </center>
-                            </logic:notEmpty>
-
-                            <p><p><p>
-
-                                <logic:notEmpty name="Singular">
-                                    <html:form
-                                        action="/A_insertar_periodo_pasantia_intermedia.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="periodoPasantiaIntermedia" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                        <html:hidden property="idPeriodoPasantiaIntermedia" value="${Singular.idPeriodoPasantiaIntermedia}"/>
-
-
-                                        <tr><td><html:link action="/A_eliminar_periodo_pasantia_intermedia.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
 
 
 
 
 
+                                            </logic:notEmpty>
 
 
-
-
-                                </logic:notEmpty>
-
-
-                                <logic:empty name="Agregar">
-                                <bean:define id="Agregare" value="Agregare"/>
-                                <table><th>
-                                <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="Agregare"
+                                            <logic:empty name="Agregar">
+                                                <bean:define id="Agregare" value="Agregare"/>
+                                            <table><th>
+                                                    <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="Agregare"
                                                                paramId="Agregar">Agregar PeriodoPasantiaIntermedia</html:link>
-                                    </th></table>
+                                                </th></table>
 
-                                </logic:empty>
+                                        </logic:empty>
 
-                                <logic:notEmpty name="Agregar">
+                                        <logic:notEmpty name="Agregar">
+                                            <hr>
+                                            <html:form
+                                                action="/A_insertar_periodo_pasantia_intermedia.do" method="post">
+                                                <table border="0">
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="periodoPasantiaIntermedia" size="30" value=""/></td></tr></p>
+                                                    <html:hidden property="idPeriodoPasantiaIntermedia" value=""/>
 
-                                    <html:form
-                                        action="/A_insertar_periodo_pasantia_intermedia.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="periodoPasantiaIntermedia" size="30" value=""/></td></tr></p>
-                                        <html:hidden property="idPeriodoPasantiaIntermedia" value=""/>
 
-
-                                        <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
-                                </logic:notEmpty>
+                                                    <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
+                                                        </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
+                                            </logic:notEmpty>
 
 
                                     </div>

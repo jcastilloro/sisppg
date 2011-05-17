@@ -10,6 +10,7 @@ public class CohesionActor {
     public static final int ACTOR_estudiante = 4;
     public static final int ACTOR_profesor = 8;
     public static final int ACTOR_tutor_industrial = 16;
+    public static final int ACTOR_administrador = 32;
 
 
     public static final String SALIDA_ACTOR = "A_Prep_Inicio_Sesion";

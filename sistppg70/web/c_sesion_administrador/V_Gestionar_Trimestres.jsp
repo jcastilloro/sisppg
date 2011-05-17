@@ -68,9 +68,6 @@
 
 
 
-                    <center><h1><bean:message key="V_Sesion_Administrador.title"/></h1></center>
-
-
 
 
                 </ul>
@@ -100,99 +97,107 @@
 
 
 
-                            <logic:notEmpty name="Datos">
-                                <center>
+                                        <logic:notEmpty name="Datos">
+                                            <center>
 
-                                    <h2>
-                                        Trimestres
-                                    </h2>
+                                                <h2>
+                                                    Trimestres
+                                                </h2>
+                                                <div class="administrador">
+                                                    <table width="400px">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <center>
+                                                                        Nombre
+                                                                    </center>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                    <table border="0">
+                                                                <tr>
+                                                                    <td>
+                                                                        <center>
+                                                                            <html:link action="/A_Prep_Gestionar_Trimestres.do" paramName="dato" paramProperty="idTrimestre"
+                                                                                       paramId="idTrimestre">${dato.nombre}</html:link>
+                                                                        </center>
+                                                                    </td>
+                                                                </tr>
 
-                                        <tr>
-                                            <th width="250px">
-                                                Nombre
-                                            </th>
-                                        </tr>
-                                        </table><hr>
-                                        <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                            <table borde="0">
-                                            <tr>
-                                                <td>
-                                                    <html:link action="/A_Prep_Gestionar_Trimestres.do" paramName="dato" paramProperty="idTrimestre"
-                                                               paramId="idTrimestre">${dato.nombre}</html:link>
-                                                </td>
-                                            </tr>
-                                            </table><hr>
-                                        </logic:iterate>
-                                    
-                                </center>
-                            </logic:notEmpty>
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </center>
+                                        </logic:notEmpty>
 
-                            <p><p><p>
+                                        <p><p><p>
 
-                                <logic:notEmpty name="Singular">
-                                    <html:form
-                                        action="/A_insertar_trimestre.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                        <html:hidden property="idTrimestre" value="${Singular.idTrimestre}"/>
-
-
-                                        <tr><td><html:link action="/A_eliminar_trimestre.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
-
-
-
+                                            <logic:notEmpty name="Singular">
+                                                <hr>
+                                                <html:form
+                                                    action="/A_insertar_trimestre.do" method="post">
+                                                <table border="0">
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
+                                                    <html:hidden property="idTrimestre" value="${Singular.idTrimestre}"/>
 
 
+                                                    <tr><td><html:link action="/A_eliminar_trimestre.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                        </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
 
 
 
 
-                                </logic:notEmpty>
 
 
-                                <logic:empty name="Agregar">
-                                <bean:define id="Agregare" value="Agregare"/>
-                                <table><th>
-                                <html:link action="/A_Prep_Gestionar_Trimestres.do" paramName="Agregare"
+
+
+
+                                            </logic:notEmpty>
+
+
+                                            <logic:empty name="Agregar">
+                                                <bean:define id="Agregare" value="Agregare"/>
+                                            <table><th>
+                                                    <html:link action="/A_Prep_Gestionar_Trimestres.do" paramName="Agregare"
                                                                paramId="Agregar">Agregar Trimestre</html:link>
-                                    </th></table>
+                                                </th></table>
 
-                                </logic:empty>
+                                        </logic:empty>
 
-                                <logic:notEmpty name="Agregar">
+                                        <logic:notEmpty name="Agregar">
+                                        <hr>
+                                            <html:form
+                                                action="/A_insertar_trimestre.do" method="post">
+                                                <table border="0">
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
+                                                    <html:hidden property="idTrimestre" value=""/>
 
-                                    <html:form
-                                        action="/A_insertar_trimestre.do" method="post">
-                                    <table border="0">
-                                        <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
-                                        <html:hidden property="idTrimestre" value=""/>
 
+                                                    <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
+                                                        </td></tr>
+                                                </table>
+                                                <p><bean:message key="V_Obligatorios.msg0"/>
+                                                </html:form>
+                                            </logic:notEmpty>
 
-                                        <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
-                                            </td></tr>
-                                    </table>
-                                    <p><bean:message key="V_Obligatorios.msg0"/>
-                                    </html:form>
-                                </logic:notEmpty>
-
+                                    </div>
+                                </div>
+                                <div id="right"></div>
+                                <div class="clearer"></div>
+                                <div class="bottom"></div>
+                            </div>
+                            <div class="clearer"></div>
                         </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
-                    <div class="clearer"></div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="clearer"></div>
-            </div>
-            <div class="clearer"></div>
-        </div>
-        <div id="end_body"></div>
-        <div id="footer"> <bean:message key="bottom.label"/> </div>
+                    <div id="end_body"></div>
+                    <div id="footer"> <bean:message key="bottom.label"/> </div>
 
-    </body>
-</html:html>
+                    </body>
+                </html:html>

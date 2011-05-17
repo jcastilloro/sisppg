@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title><bean:message key="V_Administrador.title"/></title>
         <html:base/>
 
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -77,64 +77,78 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-                                        <center><h1>Selecciona una Categoría</h1></center>
+                                        <center><h2>Selecciona una Categoría</h2></center>
                                         <p><hr>
                                         <center>
-                                            <table borde="0"">
-                                                <tr>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Carreras.do">Carreras</html:link>
-                                                    </th>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Areas.do">Areas</html:link>
-                                                    </th>
-                                                    <th width="250">
-                                                        Departamentos
-                                                    </th>
-                                                </tr>
-                                            </table>
-                                                    <hr>
-                                            <table borde="0" width="700">
-                                                <tr><p></p></tr>
-                                                <tr>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do">Estatus de Pasantías</html:link>
-                                                    </th>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do">Periodos de Pasantia Intermedia</html:link>
-                                                    </th">
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Largas.do">Periodos de Pasantia Larga</html:link>
-                                                    </th>
-                                                </tr>
-                                            </table>
-                                                    <hr>
-                                            <table borde="0" width="700">
-                                                <tr><p></p></tr>
-                                                <tr>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Trimestres.do">Trimestres</html:link>
-                                                    </th>
-                                                    <th width="250">
-                                                        Ciudad
-                                                    </th>
-                                                    <th width="250">
-                                                        <html:link action="/A_Prep_Gestionar_Paises.do">Paises</html:link>
-                                                    </th>
-                                                </tr width="250">
-                                                <tr><p></p></tr>
-                                                <tr>
-                                                    <th>
-                                                       <hr> <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do">Estatus de Prorrogas</html:link>
-                                                    </th>
-                                                    <th>
+                                            <div class="administrador">
+                                                <table width="700">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="250">
+                                                                <html:link action="/A_Prep_Gestionar_Carreras.do"><h2><center>Carreras</center></h2></html:link>
+                                                            </th>
+                                                            <th width="250">
+                                                                <html:link action="/A_Prep_Gestionar_Areas.do"><h2><center>Areas</center></h2></html:link>
+                                                            </th>
+                                                            <th width="250">
+                                                                <html:link action="/A_Prep_Gestionar_Departamentos.do"><h2><center>Departamentos</center></h2></html:link>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                                <hr>
+                                                <table width="700">
+                                                    <thead>
+                                                        <tr><p></p></tr>
+                                                    <tr>
+                                                        <th width="250">
+                                                            <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do"><h3><center>Estatus de Pasantías</center></h3></html:link>
+                                                        </th>
+                                                        <th width="250">
+                                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do"><h3><center>Periodos de Pasantia Intermedia</center></h3></html:link>
+                                                        </th">
+                                                        <th width="250">
+                                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Largas.do"><h3><center>Periodos de Pasantia Larga</center></h3></html:link>
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                </table>
+                                                <hr>
+                                                <table width="700">
+                                                    <thead>
+                                                        <tr><p></p></tr>
+                                                    <tr>
+                                                        <th width="250">
+                                                            <html:link action="/A_Prep_Gestionar_Trimestres.do"><h2><center>Trimestres</center></h2></html:link>
+                                                        </th>
+                                                        <th width="250">
+                                                            <h2><center>Ciudad
+                                                        </th>
+                                                        <th width="250">
+                                                            <html:link action="/A_Prep_Gestionar_Paises.do"><h2><center>Paises</center></h2></html:link>
+                                                        </th>
+                                                    </tr width="250">
+                                                    </thead>
+                                                </table>
+                                                <hr>
+                                                <table>
+                                                    <thead>
+                                                        <tr><p></p></tr>
+                                                    <tr>
+                                                        <th width="670">
+                                                            <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do"><h2><center>Estatus de Prorrogas</center></h2></html:link>
+                                                        </th>
+                                                        <th>
 
-                                                    </th>
-                                                    <th>
+                                                        </th>
+                                                        <th>
 
-                                                    </th>
-                                                </tr>
-                                            </table>
+                                                        </th>
+                                                    </tr>
+
+                                                    </thead>
+                                                </table>
+                                            </div>
                                         </center>
 
                                     </div>
@@ -154,6 +168,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-        
+
     </body>
 </html:html>

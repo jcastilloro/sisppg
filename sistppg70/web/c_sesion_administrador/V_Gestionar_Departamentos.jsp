@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Geationar Departamentos</title>
 
 
         <html:base/>
@@ -94,40 +94,42 @@
                                     <div class="box1465928" align="center">
 
 
+                                      
+
 
                                         <logic:notEmpty name="Datos">
-                                            <div class="administrador">
-                                                <center>
+                                            <center>
 
-                                                    <h2>
-                                                        Estatus_Pasantias
-                                                    </h2>
-
-                                                    <table width="400px">
+                                                <h2>
+                                                    Departamentos
+                                                </h2>
+                                                <div class="administrador">
+                                                    <table>
                                                         <thead>
                                                             <tr>
-                                                                <th width="250px">
+                                                                <th>
                                                                     <center>
-                                                                        Estatus
+                                                                        Nombre
+                                                                    </center>
+                                                                </th>
+                                                                <th>
+                                                                    <center>
+                                                                        Área
                                                                     </center>
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-                                                                <tr>
-                                                                    <td>
-                                                                        <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do" paramName="dato" paramProperty="idEstatusPasantia"
-                                                                                       paramId="idEstatus_Pasantia">${dato.estatus}</html:link>
-                                                                        </center>
-                                                                    </td>
-                                                                </tr>
+
+                                                                <bean:write name="dato" filter="false"/>
+
+
                                                             </logic:iterate>
                                                         </tbody>
                                                     </table>
-                                                </center>
-                                            </div>
+                                                </div>
+                                            </center>
                                         </logic:notEmpty>
 
                                         <p><p><p>
@@ -135,13 +137,20 @@
                                             <logic:notEmpty name="Singular">
                                                 <hr>
                                                 <html:form
-                                                    action="/A_insertar_estatus_pasantia.do" method="post">
+                                                    action="/A_insertar_departamento.do" method="post">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}"/></td></tr></p>
-                                                    <html:hidden property="idEstatusPasantia" value="${Singular.idEstatusPasantia}"/>
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="departamento" size="30" value="${Singular.nombre}"/></td></tr></p>
+                                                    <tr><td><p>Área</td><td>
+                                                            <html:select styleId="1843493" property="area" value="${AreaD.nombre}">
+                                                                <logic:iterate id="arrea" collection="${empty L_Areas ? _vacio : L_Areas}">
+                                                            <option value="${arrea.idArea}">${arrea.nombre}</option>
+                                                        </logic:iterate>
+                                                    </html:select>
+                                                    </td></tr>
 
+                                                    <html:hidden property="idDepartamento" value="${Singular.idDepartamento}"/>
 
-                                                    <tr><td><html:link action="/A_eliminar_estatus_pasantia.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                    <tr><td><html:link action="/A_eliminar_departamento.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
                                                         </td></tr>
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
@@ -161,8 +170,8 @@
                                             <logic:empty name="Agregar">
                                                 <bean:define id="Agregare" value="Agregare"/>
                                             <table><th>
-                                                    <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do" paramName="Agregare"
-                                                               paramId="Agregar">Agregar Estatus_Pasantia</html:link>
+                                                    <html:link action="/A_Prep_Gestionar_Departamentos.do" paramName="Agregare"
+                                                               paramId="Agregar">Agregar Departamento</html:link>
                                                 </th></table>
 
                                         </logic:empty>
@@ -170,10 +179,17 @@
                                         <logic:notEmpty name="Agregar">
                                         <hr>
                                             <html:form
-                                                action="/A_insertar_estatus_pasantia.do" method="post">
+                                                action="/A_insertar_departamento.do" method="post">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value=""/></td></tr></p>
-                                                    <html:hidden property="idEstatusPasantia" value=""/>
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="departamento" size="30" value=""/></td></tr></p>
+                                                    <tr><td><p>Área</td><td>
+                                                            <html:select styleId="1843493" property="area" value="">
+                                                                <logic:iterate id="arrea" collection="${empty L_Areas ? _vacio : L_Areas}">
+                                                            <option value="${arrea.idArea}">${arrea.nombre}</option>
+                                                        </logic:iterate>
+                                                    </html:select>
+                                                    </td></tr>
+                                                <html:hidden property="idDepartamento" value=""/>
 
 
                                                     <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>

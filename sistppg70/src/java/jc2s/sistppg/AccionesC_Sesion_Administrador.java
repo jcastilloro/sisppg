@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             }
         }
         if (salida == 0) {
-            new CohesionActor(CohesionActor.ACTOR_estudiante).setMe(request);
+            new CohesionActor(CohesionActor.ACTOR_administrador).setMe(request);
         }
         if (salida == 0) {
             request.setAttribute("msg",
@@ -77,31 +78,8 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
     public ActionForward A_Prep_Inicio_Sesion_Adm(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -129,7 +107,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             }
         }
         if (salida == 0) {
-            new CohesionActor(CohesionActor.ACTOR_estudiante).setMe(request);
+            new CohesionActor(CohesionActor.ACTOR_administrador).setMe(request);
         }
         if (salida == 0) {
             request.setAttribute("msg",
@@ -139,30 +117,8 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
     public ActionForward A_Prep_Gestionar_Carreras(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -173,7 +129,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -181,7 +137,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -218,28 +174,8 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_carrera(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -249,9 +185,9 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -339,23 +275,18 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_carrera(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Carreras",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Carreras",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -365,21 +296,20 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             Carrera p = (Carrera) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
             request.getSession().removeAttribute("Singular");
 
-            
-            //List<Carrera> dato = s.createQuery("from Carrera ").list();
-//            List<Carrera> dato = (List<Carrera>) request.getSession().getAttribute("Datos");
-//            dato.remove(p);
-//
-//            if (!dato.isEmpty()) {
-//                request.getSession().setAttribute("Datos", dato);
-//            } else {
-//                request.getSession().removeAttribute("Datos");
-//                request.setAttribute("msg",
-//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
-//            }
 
 
 
+
+
+            List<Estudiante> guarda = s.createQuery("from Estudiante where carrera= :var").setLong("var", p.getIdCarrera()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar la carrera si aún hay estudiantes asociados a la misma");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
 
             s.delete(p);
 
@@ -399,63 +329,14 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -465,7 +346,7 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -473,7 +354,7 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -510,28 +391,8 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_area(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -541,9 +402,9 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -590,7 +451,7 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
                 request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
                 return mapping.findForward(SALIDAS[salida]);
             }
-           
+
             request.setAttribute("msg", "Modificación Exitosa");
             request.getSession().removeAttribute("Singular");
             if (guarda) {
@@ -625,23 +486,18 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_area(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Areas",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Areas",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -666,6 +522,36 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
 
 
 
+            List<AreaProfesor> guarda = s.createQuery("from AreaProfesor where area= :var").setLong("var", p.getIdArea()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el área si aún hay profesores asociados a la misma");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+            List<AreaProyectoDeGrado> guarda2 = s.createQuery("from AreaProyectoDeGrado where area= :var").setLong("var", p.getIdArea()).list();
+            if (!guarda2.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el área si aún hay proyectos de grado asociados a la misma");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+            List<DepartamentoArea> guarda3 = s.createQuery("from DepartamentoArea where area= :var").setLong("var", p.getIdArea()).list();
+            if (!guarda3.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el área si aún hay departamentos asociados a la misma");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+
+
 
             s.delete(p);
 
@@ -685,6 +571,117 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
         return mapping.findForward(SALIDAS[salida]);
     }
 
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    public ActionForward A_Prep_Gestionar_Departamentos(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Departamentos",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("AreaD");
+            request.getSession().removeAttribute("L_Areas");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+                List<Area> L_Areas = s.createQuery("from Area").list();
+                request.getSession().setAttribute("L_Areas", L_Areas);
+            }
+            String parameter = request.getParameter("idDepartamento");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
+                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(parameter)).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+                Area AreaD = (Area) ((DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult()).getArea();
+                request.getSession().setAttribute("AreaD", AreaD);
+                List<Area> L_Areas = s.createQuery("from Area").list();
+                request.getSession().setAttribute("L_Areas", L_Areas);
+            }
+            List<Departamento> predato = s.createQuery("from Departamento ").list();                             //CAMBIAR LA TABLA
+            Iterator it = predato.iterator();
+            Departamento iterado;
+
+
+            List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+            while (it.hasNext()) {
+                iterado = (Departamento) it.next();
+                DepartamentoArea dato = (DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", iterado.getIdDepartamento()).uniqueResult();
+                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Departamentos.do?idDepartamento=" + iterado.getIdDepartamento() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Departamentos.do?idDepartamento=" + iterado.getIdDepartamento() + "\">" + dato.getArea().getNombre() + "</a>" + "</center></td></tr>");
+            }
+
+            if (!Devolucion.isEmpty()) {
+                request.getSession().setAttribute("Datos", Devolucion);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+    public ActionForward A_insertar_departamento(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"A_Prep_Gestionar_Departamentos",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Departamento fF_Departamento = (F_Departamento) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            request.getSession().removeAttribute("Datos");
+//            String parameter = request.getParameter("idDepartamento");               //CAMBIAR CLAVE
+//            String parameter2 = request.getParameter("idArea");
+//            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+//                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult();
+//                request.getSession().setAttribute("Singular", singular);
+//            }
 
 
 
@@ -692,64 +689,146 @@ public ActionForward A_Prep_Gestionar_Areas(ActionMapping mapping, ActionForm fo
 
 
 
+            Departamento p;
+            DepartamentoArea da;
+            boolean guarda = true;
+            if (!fF_Departamento.getIdDepartamento().equals("")) {                                        //CAMBIAR CLASES
+                p = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(fF_Departamento.getIdDepartamento())).uniqueResult();
+                guarda = false;
+                List<DepartamentoArea> das = s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", Long.parseLong(fF_Departamento.getIdDepartamento())).list();
+                da = das.get(0);
+            } else {
+                p = new Departamento();
+                da = new DepartamentoArea();
+                System.out.println("GEAT AREA DA------------------------------------------------" + fF_Departamento.getArea());
+                da.setDepartamento(p);
+            }
+            da.setArea((Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(fF_Departamento.getArea())).uniqueResult());
+
+
+
+
+//            p.setIdDepartamento(Long.parseLong(fF_Departamento.getIdDepartamento()));
+
+
+
+            //verifico nombre
+            if (Pattern.matches(".+", fF_Departamento.getDepartamento())) {
+                p.setNombre(fF_Departamento.getDepartamento());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+                s.save(da);
+            } else {
+                s.update(p);
+                s.update(da);
+            }
+            request.getSession().setAttribute("idDepartamento", fF_Departamento.getDepartamento());
+            List<Departamento> dato = s.createQuery("from Departamento ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.getSession().removeAttribute("Agregar");
+        request.getSession().removeAttribute("Agregare");
+
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+    public ActionForward A_eliminar_departamento(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"A_Prep_Gestionar_Departamentos",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+            request.getSession().removeAttribute("Datos");
+            Departamento p = (Departamento) request.getSession().getAttribute("Singular");
+            request.getSession().removeAttribute("Singular");
+            DepartamentoArea ad = (DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", p.getIdDepartamento()).uniqueResult();
+//               request.getSession().removeAttribute("Singular");
+
+
+            //List<Departamento> dato = s.createQuery("from Departamento ").list();
+//            List<Departamento> dato = (List<Departamento>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
 
 
 
 
 
 
+           
+            s.delete(ad);
+            s.delete(ad.getDepartamento());
 
 
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
 
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -759,7 +838,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -767,7 +846,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -804,40 +883,20 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_estatus_pasantia(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Estatus_Pasantias",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Estatus_Pasantias",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -881,7 +940,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
             if (Pattern.matches(".+", fF_EstatusPasantia.getEstatus())) {
                 p.setEstatus(fF_EstatusPasantia.getEstatus());
             } else {
-                request.setAttribute("msg", "Por Favor Inserte un estatus Válido"+"LOOOOOOCOOOOOOOOO"+fF_EstatusPasantia.getEstatus());
+                request.setAttribute("msg", "Por Favor Inserte un estatus Válido" + "LOOOOOOCOOOOOOOOO" + fF_EstatusPasantia.getEstatus());
                 return mapping.findForward(SALIDAS[salida]);
             }
 
@@ -919,23 +978,18 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_estatus_pasantia(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Estatus_Pasantias",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Estatus_Pasantias",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -959,6 +1013,16 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
 //            }
 
 
+            List<Pasantia> guarda = s.createQuery("from Pasantia where estatus= :var").setLong("var", p.getIdEstatusPasantia()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el estatus si aún hay pasantías asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
 
 
             s.delete(p);
@@ -979,66 +1043,14 @@ public ActionForward A_Prep_Gestionar_Estatus_Pasantias(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -1048,7 +1060,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -1056,7 +1068,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -1093,40 +1105,20 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_estatus_prorroga(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Estatus_Prorrogas",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Estatus_Prorrogas",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1170,7 +1162,7 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
             if (Pattern.matches(".+", fF_EstatusProrroga.getEstatus())) {
                 p.setEstatus(fF_EstatusProrroga.getEstatus());
             } else {
-                request.setAttribute("msg", "Por Favor Inserte un estatus Válido"+"LOOOOOOCOOOOOOOOO"+fF_EstatusProrroga.getEstatus());
+                request.setAttribute("msg", "Por Favor Inserte un estatus Válido" + "LOOOOOOCOOOOOOOOO" + fF_EstatusProrroga.getEstatus());
                 return mapping.findForward(SALIDAS[salida]);
             }
 
@@ -1208,23 +1200,18 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_estatus_prorroga(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Estatus_Prorrogas",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Estatus_Prorrogas",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1248,6 +1235,17 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
 //            }
 
 
+             List<Prorroga> guarda = s.createQuery("from Prorroga where estatus= :var").setLong("var", p.getIdEstatusProrroga()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el estatus si aún hay prorrogas asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+
 
 
             s.delete(p);
@@ -1268,70 +1266,14 @@ public ActionForward A_Prep_Gestionar_Estatus_Prorrogas(ActionMapping mapping, A
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -1341,7 +1283,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -1349,7 +1291,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -1358,7 +1300,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
                 request.getSession().setAttribute("Agregar", parametro);
             }
             String parameter = request.getParameter("idPeriodoPasantiaIntermedia");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null) {                                                                //AQUI ABAJO
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
                 PeriodoPasantiaIntermedia singular = (PeriodoPasantiaIntermedia) s.createQuery("from PeriodoPasantiaIntermedia where idPeriodoPasantiaIntermedia= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaIntermedia"))).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
             }
@@ -1386,40 +1328,20 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_periodo_pasantia_intermedia(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Intermedia",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Periodo_Pasantia_Intermedias",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1501,23 +1423,18 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_periodo_pasantia_intermedia(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Intermedia",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Periodo_Pasantia_Intermedias",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1541,6 +1458,16 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
 //            }
 
 
+             List<PasantiaIntermedia> guarda = s.createQuery("from PasantiaIntermedia where periodo= :var").setLong("var", p.getIdPeriodoPasantiaIntermedia()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el periodo si aún hay pasantías asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
 
 
             s.delete(p);
@@ -1561,88 +1488,14 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Intermedias(ActionMapping
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -1652,7 +1505,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -1660,7 +1513,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -1669,7 +1522,7 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
                 request.getSession().setAttribute("Agregar", parametro);
             }
             String parameter = request.getParameter("idPeriodoPasantiaLarga");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null) {                                                                //AQUI ABAJO
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
                 PeriodoPasantiaLarga singular = (PeriodoPasantiaLarga) s.createQuery("from PeriodoPasantiaLarga where idPeriodoPasantiaLarga= :var").setLong("var", Long.parseLong(request.getParameter("idPeriodoPasantiaLarga"))).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
             }
@@ -1697,40 +1550,20 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_periodo_pasantia_larga(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Larga",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Periodo_Pasantia_Largas",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1812,23 +1645,18 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_periodo_pasantia_larga(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Periodos_Pasantia_Larga",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Periodo_Pasantia_Largas",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -1852,7 +1680,15 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
 //            }
 
 
-
+             List<PasantiaLarga> guarda = s.createQuery("from PasantiaLarga where periodo= :var").setLong("var", p.getIdPeriodoPasantiaLarga()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el periodo si aún hay pasantías asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
 
             s.delete(p);
 
@@ -1872,64 +1708,14 @@ public ActionForward A_Prep_Gestionar_Periodo_Pasantia_Largas(ActionMapping mapp
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -1939,7 +1725,7 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -1947,7 +1733,7 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -1956,7 +1742,7 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
                 request.getSession().setAttribute("Agregar", parametro);
             }
             String parameter = request.getParameter("idTrimestre");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null) {                                                                //AQUI ABAJO
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
                 Trimestre singular = (Trimestre) s.createQuery("from Trimestre where idTrimestre= :var").setLong("var", Long.parseLong(request.getParameter("idTrimestre"))).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
             }
@@ -1984,40 +1770,20 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_trimestre(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Trimestres",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Trimestres",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -2099,23 +1865,18 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_trimestre(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Trimestres",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Trimestres",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -2139,6 +1900,15 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
 //            }
 
 
+                List<Etapa> guarda = s.createQuery("from Etapa where trimestre= :var").setLong("var", p.getIdTrimestre()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el trimestre si aún hay etapas asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
 
 
             s.delete(p);
@@ -2159,75 +1929,14 @@ public ActionForward A_Prep_Gestionar_Trimestres(ActionMapping mapping, ActionFo
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
     //-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm form,
+    public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -2237,7 +1946,7 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
 
         int salida = SALIDA_0;
 //Checking for actors estudiante
-        if (!CohesionActor.checkActor(request, 4)) {
+        if (!CohesionActor.checkActor(request, 32)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
@@ -2245,7 +1954,7 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
         try {
 
 
-        //MI VAINA
+            //MI VAINA
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
@@ -2254,7 +1963,7 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
                 request.getSession().setAttribute("Agregar", parametro);
             }
             String parameter = request.getParameter("idPais");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null) {                                                                //AQUI ABAJO
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
                 Pais singular = (Pais) s.createQuery("from Pais where idPais= :var").setLong("var", Long.parseLong(request.getParameter("idPais"))).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
             }
@@ -2282,40 +1991,20 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
     public ActionForward A_insertar_pais(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Paises",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Paises",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -2397,23 +2086,18 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
     public ActionForward A_eliminar_pais(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Paises",};                                 //CAMBIAR PAGINA
+        final String[] SALIDAS = {"A_Prep_Gestionar_Paises",};                                 //CAMBIAR PAGINA
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//        if (!CohesionActor.checkActor(request, 8)) {
-//            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-//        }
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
@@ -2437,6 +2121,15 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
 //            }
 
 
+                List<Ciudad> guarda = s.createQuery("from Ciudad where pais= :var").setLong("var", p.getIdPais()).list();
+            if (!guarda.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el país si aún hay ciudades asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
 
 
             s.delete(p);
@@ -2456,21 +2149,4 @@ public ActionForward A_Prep_Gestionar_Paises(ActionMapping mapping, ActionForm f
         request.setAttribute("msg", "Se elimino con éxito el registro");
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

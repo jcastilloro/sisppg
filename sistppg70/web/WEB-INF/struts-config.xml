@@ -34,6 +34,7 @@
         <form-bean name="F_Periodo_Pasantia_Larga" type="jc2s.sistppg.F_Periodo_Pasantia_Larga"/>
         <form-bean name="F_Trimestre" type="jc2s.sistppg.F_Trimestre"/>
         <form-bean name="F_Pais" type="jc2s.sistppg.F_Pais"/>
+        <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
         
     </form-beans>
     
@@ -356,6 +357,13 @@
         <forward name="A_insertar_pais" path="/A_insertar_pais.do"/>
         <forward name="A_eliminar_pais" path="/A_eliminar_pais.do"/>
 
+
+        <!-- C_Gestionar_Departamentos -->
+
+        <forward name="A_Prep_Gestionar_Departamentos" path="/A_Prep_Gestionar_Departamentos.do"/>
+        <forward name="V_Gestionar_Departamentos" path="/c_sesion_administrador/V_Gestionar_Departamentos.jsp"/>
+        <forward name="A_insertar_departamento" path="/A_insertar_departamento.do"/>
+        <forward name="A_eliminar_departamento" path="/A_eliminar_departamento.do"/>
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
@@ -825,6 +833,16 @@
         <action path="/A_eliminar_pais" parameter="A_eliminar_pais"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
+           <!-- C_Gestionar_Departamentos -->
+        <action path="/A_Prep_Gestionar_Departamentos" parameter="A_Prep_Gestionar_Departamentos"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_departamento" parameter="A_insertar_departamento"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Departamentos.jsp"
+           name="F_Departamento"
+           scope="session"/>
+        <action path="/A_eliminar_departamento" parameter="A_eliminar_departamento"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
 
         <action path="/tooltip" parameter="tooltip"
