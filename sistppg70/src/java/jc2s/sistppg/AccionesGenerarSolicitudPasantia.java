@@ -1,13 +1,18 @@
 package jc2s.sistppg;
 
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +27,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 
-
 import java.util.Calendar;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import jc2s.sistppg.hibernate.Estudiante;
+import jc2s.sistppg.hibernate.Preinscripcion;
+import jc2s.sistppg.hibernate.Usuario;
 
 public class AccionesGenerarSolicitudPasantia extends CohesionAction {
 
@@ -58,41 +65,76 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
         try {
 
             /*mi codigo*/
-/*            PreInsPasantias consulta = (PreInsPasantias)s.createQuery("from PreInsPasantias where estudiante = :login").setString("login", (String)request.getSession().getAttribute("login")).uniqueResult();
-            Estudiante estudiante =(Estudiante)s.createQuery("from Estudiante where carnete = :login").setString("login", (String)request.getSession().getAttribute("login")).uniqueResult();
-            EstCursaCarrera estcursacarrera = (EstCursaCarrera)s.createQuery("from EstCursaCarrera where codigoEstudiante = :login").setString("login", (String)request.getSession().getAttribute("login")).uniqueResult();
-            String codigoCarrera = estcursacarrera.getCodigoCarrera();
 
-            java.util.List<Carrera> list;
-            list = (java.util.List<Carrera>)s.createQuery("from Carrera where codigoCarrera = '"+codigoCarrera+"'").list();
-            Carrera carrera = list.get(0);
+            String path = getServlet().getServletContext().getRealPath("/") + "../../img/";
+            Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+            Estudiante estudiante = (Estudiante) s.createQuery("from Estudiante where usbid = :login").setString("login", u.getUsbid()).uniqueResult();
 
-            if (consulta!=null){
+            // Un estudiante SOLO puede tener UNA PreInscripcion
+            Preinscripcion preinscripcion = (Preinscripcion) s.createQuery("from Preinscripcion where estudiante = :idEst order by created_at desc").setLong("idEst", estudiante.getIdEstudiante()).uniqueResult();
 
-                int ep = (int)(consulta.getEp());
-                String periodopasantia = (String)(consulta.getPeriodoPasantia());
-                int ano = (int)(consulta.getAno());
-                String ncarrera = carrera.getNombreCarrera();
-                String carnet = (String)(estudiante.getCarnetE());
-                Double indice = estudiante.getIndiceE();
-                String nombre = estudiante.getNombreE();
-                String apellido = estudiante.getApellidoE();
-                String cedula = estudiante.getCedulaE();
-                String sexo = estudiante.getSexoE();
-                Date fn = estudiante.getFechaNacimientoE();
-                String nacionalidad = estudiante.getNacionalidadE();
-                String edocivil = (String)consulta.getEstado_civil();
-                String tlfhab = (String)consulta.getTelef_hab();
-                String tlfotro = (String)consulta.getOtro_telef();
-                String correo = (String)consulta.getCorreo();
-                String direccion = (String)consulta.getDireccion();
-                String estado = (String)consulta.getEstado();
-                String region = (String)consulta.getRegion();
-                String ciudad = (String)consulta.getCiudad();
-                boolean graduando = (Boolean)consulta.getGraduando();
-                boolean tramite = (Boolean)consulta.getTramiteCCTDS();
-*/
-                String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
+            if (preinscripcion != null) {
+
+
+                String carnet = (String) estudiante.getUsbid();
+                String nombre = (String) estudiante.getNombre();
+                String apellido = (String) estudiante.getApellido();
+                String carrera = (String) estudiante.getCarrera().getNombre();
+                String nacionalidad = (String) estudiante.getNacionalidad();
+                String genero = (String) estudiante.getSexo();
+                String direccion = (String) estudiante.getDireccion();
+                String correo = (String) estudiante.getEmail();
+                String tlf = (String) estudiante.getTelefono();
+                String edocivil = (String) estudiante.getEdocivil();
+                Date fn = (Date) estudiante.getFecha_nacimiento();
+                double indice = estudiante.getIndice();
+                int tipo =  preinscripcion.getTipo();
+                int cedula = estudiante.getCedula();
+
+                Calendar cal = Calendar.getInstance();
+                int month = cal.get(Calendar.MONTH) + 1;
+                int year = cal.get(Calendar.YEAR);
+
+                String tipoPasantia = new String();
+                String ep = new String();
+                String periodo = new String();
+
+
+                if (tipo == 1){
+                    tipoPasantia = "corta";
+                    ep = "1420";
+                    periodo = "Julio-Septiembre";
+                } else if (tipo == 2){
+                    tipoPasantia = "intermedia";
+                    ep = "2420";
+
+                    // Se asume que la carta es para el periodo
+                    // inmediatamente posterior al actual!
+                    if (month > 0 && month < 4) {
+                        periodo = "Abril-Julio";
+                    } else if (month >= 4 && month < 7) {
+                        periodo = "Septiembre-Diciembre";
+                    } else if (month >= 7 && month < 10) {
+                        periodo = "Octubre-Febrero";
+                    } else if (month >= 10 && month < 12) {
+                        periodo = "Enero-Marzo";
+                    }
+                } else {
+                    tipoPasantia = "larga";
+                    ep = "3420";
+
+                    // Se asume que la carta es para el periodo
+                    // inmediatamente posterior al actual!
+                    if (month > 0 && month < 4) {
+                        periodo = "Abril-Septiembre";
+                    } else if (month >= 4 && month < 7) {
+                        periodo = "Julio-Diciembre";
+                    } else if (month >= 7 && month < 10) {
+                        periodo = "Octubre-Febrero";
+                    } else if (month >= 10 && month < 12) {
+                        periodo = "Enero-Mayo";
+                    }
+                }
 
                 /* PDF */
                 try {
@@ -125,8 +167,7 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     pdf.add(foto);
 
                     Font font = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, 12);
-                    Font bold = FontFactory.getFont("Times New Roman", BaseFont.IDENTITY_H, 12);
-                    bold.setStyle(Font.BOLD);
+                    font.setStyle(Font.BOLD);
 
                     Paragraph blank = new Paragraph("\n");
                     pdf.add(blank);
@@ -134,20 +175,14 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     Paragraph titulo = new Paragraph("SOLICITUD DE PASANTIA", font);
                     titulo.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(titulo);
-                    pdf.add(blank);
 
-                    Paragraph uno = new Paragraph("EP", font);
-                    pdf.add(uno);
-                    pdf.add(blank);                            
-
-/*
                     Chunk space = new Chunk(' ');
                     Chunk epBold = new Chunk("\nEP: ", font);
                     Chunk epAns = new Chunk(" "+ep+" ");
                     Chunk periodBold = new Chunk("PERÍODO: ", font);
-                    Chunk periodAns = new Chunk(" "+periodopasantia+" ");
+                    Chunk periodAns = new Chunk(" "+periodo+" ");
                     Chunk anoBold = new Chunk("AÑO: ", font);
-                    Chunk anoAns = new Chunk(" "+ano+" ");
+                    Chunk anoAns = new Chunk(" "+year+" ");
                     pdf.add(epBold);
                     pdf.add(epAns);
                     for( int i=0; i<5; i++)
@@ -167,7 +202,7 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     cell.setMinimumHeight(30f);
                     datosP.addCell(cell);
 
-                    cell = new PdfPCell(new Paragraph("CARRERA: "+ ncarrera +" - "+ codigoCarrera));
+                    cell = new PdfPCell(new Paragraph("CARRERA: "+ carrera ));
                     cell.setMinimumHeight(30f);
                     datosP.addCell(cell);
 
@@ -178,28 +213,26 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     datosP.setWidthPercentage(75);
                     datosP.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(datosP);
-
-                    Paragraph blank = new Paragraph("\n");
                     pdf.add(blank);
                     pdf.add(blank);
 
                     String bloque;
-                    if (graduando) {
-                        bloque = "A (Me graduo con la pasantía)";
-                    } else {
+//                    if (graduando) {
+                        bloque = "BLOQUE A (Me graduo con la pasantía)";
+/*                    } else {
                         bloque = "BLOQUE B (No me graduo con la pasantía)";
                     }
-
+*/
                     float[] widths = { 5f, 4f, 5f };
                     PdfPTable t = new PdfPTable(widths);
                     t.addCell("APELLIDOS: "+apellido);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
-                    t.addCell("EDAD: "+calcularEdad(fn));     t.addCell("SEXO: "+sexo);    t.addCell("NACIONALIDAD: "+nacionalidad);
-                    t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlfhab); t.addCell("OTROS TELEFONOS: "+tlfotro);
+                    t.addCell("EDAD: "+calcularEdad(fn));     t.addCell("SEXO: "+genero);    t.addCell("NACIONALIDAD: "+nacionalidad);
+                    t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlf); t.addCell("OTROS TELEFONOS: ");
                     t.addCell(bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
                     pdf.add(blank);
-
+/*
                     Paragraph deseo;
                     if (tramite) {
                         deseo = new Paragraph("Deseo que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el "
@@ -210,11 +243,11 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     }
 
                     pdf.add(deseo);
-
+*/
                     Paragraph firma = new Paragraph("\n\n\n\n_________________\nFIRMA ");
                     firma.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(firma);
-*/
+
                     pdf.close();
                     /* PDF */
 
@@ -222,8 +255,10 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     e.printStackTrace();
                 }
 
-     //       }
-//            else {salida = 1;}
+            }
+            else {
+                salida = 1;
+            }
 
             /* Aqui termina mi codigo */
             tr.commit();
@@ -270,4 +305,3 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
     }
 
 }
-

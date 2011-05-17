@@ -90,6 +90,7 @@
                                                 <tr><td><p id="1840405_C"><label for="1840405"><bean:message key="F_Perfil_Estudiante.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840405" property="cedula" size="30" value="${Datos.cedula}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840408_C"><label for="1840408"><bean:message key="F_Perfil_Estudiante.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840408" property="email" size="30" value="${Datos.email}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840459_C"><label for="1840459"><bean:message key="F_Perfil_Estudiante.label4"/><%-- Telefono: --%></label></td><td><html:text styleId="1840459" property="telefono" size="30" value="${Datos.telefono}" styleClass="validate[required]"/></td></tr>
+                                                <tr><td><p id="1840459_C"><label for="1840459">Otro teléfono</label></td><td><html:text styleId="1840459" property="otrotelefono" size="30" value="${Datos.otrotelefono}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840459_C"><label for="18404591">Direccion:</label></td><td><html:textarea styleId="18404591" property="direccion" cols="30" rows="5" value="${Datos.direccion}" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1840459_C"><label for="18404592">Sexo: </label></td><td>
                                                 <html:select styleId="18404592" property="sexo" value="${Datos.sexo}">
@@ -106,7 +107,7 @@
                                                 </html:select></td></tr></td></tr>
                                                 <tr><td><p id="1843588_C"><label for="1843588"><bean:message key="F_Perfil_Estudiante.label6" /><%-- Fecha Nacimiento: --%></label></td><td><html:text styleId="1843588" property="fecha_nacimiento" size="30" styleClass="validate[required]"/></td></tr>
                                                 <tr><td><p id="1843591_C"><label for="1843591"><bean:message key="F_Perfil_Estudiante.label7"/><%-- Estado Civil --%></label></td><td>
-                                                        <html:select styleId="1843591" property="estadoCivil">
+                                                <html:select styleId="1843591" property="estadoCivil" value="${Datos.edocivil}">
                                                     <option value="Soltero"> Soltero </option>
                                                     <option value="Casado"> Casado </option>
                                                     <option value="Divorciado"> Divorciado </option>

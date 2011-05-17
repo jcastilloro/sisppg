@@ -217,11 +217,11 @@ public class AccionesGenerarCartaPostulacion  extends CohesionAction {
                     /* PDF */
 
                 } catch (Exception e) {
-                    salida = 1;
+                    salida = SALIDA_1;
                 }
 
             }else{
-                salida = 1;
+                salida = SALIDA_1;
             }
 
             /* Aqui termina mi codigo */

@@ -21,14 +21,18 @@
     <!-- 7 -->
     <property column="telefono" name="telefono" not-null="true" type="string"/>
     <!-- 8 -->
-    <property column="fecha_nacimiento" name="fecha_nacimiento" not-null="true" type="date"/>
+    <property column="otrotelefono" name="otrotelefono" not-null="true" type="string"/>
     <!-- 9 -->
-    <property column="sexo" name="sexo" not-null="true" type="string"/>
+    <property column="fecha_nacimiento" name="fecha_nacimiento" not-null="true" type="date"/>
     <!-- 10 -->
-    <property column="nacionalidad" name="nacionalidad" not-null="true" type="string"/>
+    <property column="sexo" name="sexo" not-null="true" type="string"/>
     <!-- 11 -->
-    <property column="direccion" name="direccion" not-null="true" type="text"/>
+    <property column="nacionalidad" name="nacionalidad" not-null="true" type="string"/>
     <!-- 12 -->
+    <property column="direccion" name="direccion" not-null="true" type="text"/>
+    <!-- 13 -->
     <property column="indice" name="indice" not-null="true" type="double"/>
+    <!-- 14 -->
+    <property column="edocivil" name="edocivil" not-null="true" type="string"/>
   </class>
 </hibernate-mapping>

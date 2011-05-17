@@ -188,6 +188,27 @@ public class Estudiante implements java.io.Serializable, ve.usb.cohesion.runtime
     }
 
     /**
+     * Holds value of property otrotelefono.
+     */
+    private String otrotelefono = "";
+
+    /**
+     * Getter for property otrotelefono.
+     * @return Value of property otrotelefono.
+     */
+    public String getOtrotelefono() {
+        return this.otrotelefono;
+    }
+
+    /**
+     * Setter for property otrotelefono.
+     * @param otrotelefono New value of property otrotelefono.
+     */
+    public void setOtrotelefono(String otrotelefono) {
+        this.otrotelefono = otrotelefono;
+    }
+
+    /**
      * Holds value of property fecha_nacimiento.
      */
     private java.util.Date fecha_nacimiento;
@@ -274,6 +295,27 @@ public class Estudiante implements java.io.Serializable, ve.usb.cohesion.runtime
     }
 
     /**
+     * Holds value of property edocivil.
+     */
+    private String edocivil = "";
+
+    /**
+     * Getter for property edocivil.
+     * @return Value of property edocivil.
+     */
+    public String getEdocivil() {
+        return this.edocivil;
+    }
+
+    /**
+     * Setter for property edocivil.
+     * @param edocivil New value of property edocivil.
+     */
+    public void setEdocivil(String edocivil) {
+        this.edocivil = edocivil;
+    }
+
+    /**
      * Holds value of property indice.
      */
     private double indice;
@@ -308,10 +350,12 @@ public class Estudiante implements java.io.Serializable, ve.usb.cohesion.runtime
       "\" cedula =\"" + cedula +
       "\" email =\"" + email +
       "\" telefono =\"" + telefono +
+      "\" otrotelefono =\"" + otrotelefono +
       "\" fecha_nacimiento =\"" + fecha_nacimiento +
       "\" sexo =\"" + sexo +
       "\" nacionalidad =\"" + nacionalidad +
       "\" direccion =\"" + direccion +
+      "\" edocivil =\"" + edocivil +
       "\" indice =\"" + indice +
 
         "'/>";

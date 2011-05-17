@@ -159,6 +159,8 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
                 }
 
+                e.setOtrotelefono(fperfil.getOtroTelefono());
+
 
 
 
@@ -295,6 +297,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                 }
 
                 e.setSexo(fperfil.getSexo());
+                e.setEdocivil(fperfil.getEstadoCivil());
 
 
                 if (salida != SALIDA_0) {

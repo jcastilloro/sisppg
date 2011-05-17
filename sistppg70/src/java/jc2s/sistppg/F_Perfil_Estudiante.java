@@ -17,9 +17,10 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         cedula = "";
         email = "";
         telefono = "";
+        otrotelefono = "";
         carrera = "";
         fecha_nacimiento = "";
-        estadoCivil = "";
+        edocivil = "";
         sexo="";
         nacionalidad="";
         direccion="";
@@ -33,9 +34,10 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
         cedula = "";
         email = "";
         telefono = "";
+        otrotelefono = "";
         carrera = "";
         fecha_nacimiento = "";
-        estadoCivil = "";
+        edocivil = "";
         sexo="";
         nacionalidad="";
         direccion="";
@@ -168,6 +170,27 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
     }
 
     /**
+     * Holds value of property otroTelefono.
+     */
+    private String otrotelefono;
+
+    /**
+     * Getter for property otroTelefono.
+     * @return Value of property otroTelefono.
+     */
+    public String getOtroTelefono() {
+        return this.otrotelefono;
+    }
+
+    /**
+     * Setter for property otroTelefono.
+     * @param otroTelefono New value of property otroTelefono.
+     */
+    public void setOtroTelefono(String otrotelefono) {
+        this.otrotelefono = otrotelefono;
+    }
+
+    /**
      * Holds value of property carrera.
      */
     private String carrera;
@@ -212,25 +235,25 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
     /**
      * Holds value of property estadoCivil.
      */
-    private String estadoCivil;
+    private String edocivil;
 
     /**
      * Getter for property estadoCivil.
      * @return Value of property estadoCivil.
      */
     public String getEstadoCivil() {
-        return this.estadoCivil;
+        return this.edocivil;
     }
 
     /**
      * Setter for property estadoCivil.
      * @param estadoCivil New value of property estadoCivil.
      */
-    public void setEstadoCivil(String estadoCivil) {
-        this.estadoCivil = estadoCivil;
+    public void setEstadoCivil(String edocivil) {
+        this.edocivil = edocivil;
     }
 
-        /**
+    /**
      * Holds value of property sexo.
      */
     private String sexo;
@@ -296,21 +319,21 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
 
 
         /**
-     * Holds value of property nacionalidad.
+     * Holds value of property indice.
      */
     private String indice;
 
     /**
-     * Getter for property nacionalidad.
-     * @return Value of property nacionalidad.
+     * Getter for property indice.
+     * @return Value of property indice.
      */
     public String getIndice() {
         return this.indice;
     }
 
     /**
-     * Setter for property nacionalidad.
-     * @param nombre New value of property nacionalidad.
+     * Setter for property indice.
+     * @param nombre New value of property indice.
      */
     public void setIndice(String indice) {
         this.indice = indice;
