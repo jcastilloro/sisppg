@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Sesión Estudiante</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -79,12 +79,12 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center>${empty msg ? "" : msg}</center>
+                                    
                                     <div class="box1465928" align="center">
 
 
                                         <logic:empty name="Pasantias">
-                                            <h1>¡Usted no tiene ninguna pasantía asociada!</h1>
+                                            <center>${empty msg ? "<h1>¡Usted no tiene ninguna pasantía asociada!</h1>" : msg}</center>
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantias">
                                             <h1>Usted tiene las siguientes pasantías asociadas: </h1><br>

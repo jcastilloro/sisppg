@@ -35,6 +35,7 @@
         <form-bean name="F_Trimestre" type="jc2s.sistppg.F_Trimestre"/>
         <form-bean name="F_Pais" type="jc2s.sistppg.F_Pais"/>
         <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
+        <form-bean name="F_Preinscripcion" type="jc2s.sistppg.F_Preinscripcion"/>
         
     </form-beans>
     
@@ -131,10 +132,10 @@
 
         <forward name="A_prep_gestionar_preinscripcion" path="/A_prep_gestionar_preinscripcion.do"/>
         <forward name="V_gestionar_preinscripcion" path="/c_gestionar_preinscripcion/V_gestionar_preinscripcion.jsp"/>
-        <forward name="A_generar_preinscripcion_corta" path="/A_generar_preinscripcion_corta.do"/>
-        <forward name="A_generar_preinscripcion_intermedia" path="/A_generar_preinscripcion_intermedia.do"/>
+        <forward name="A_Preinscripcion" path="/A_Preinscripcion.do"/>
+     <!--   <forward name="A_generar_preinscripcion_intermedia" path="/A_generar_preinscripcion_intermedia.do"/>
         <forward name="A_generar_preinscripcion_larga" path="/A_generar_preinscripcion_larga.do"/>
-
+-->
         <!-- C_Sesion_Profesor -->
 
         <forward name="A_Prep_Inicio_Sesion_Prof" path="/A_Prep_Inicio_Sesion_Prof.do"/>
@@ -421,6 +422,12 @@
            name="F_Tutor_Industrial"
            scope="session"/>
 
+        <!-- Preinscripcion -->
+        <action path="/A_Preinscripcion" parameter="A_Preinscripcion"
+           type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"
+           input="/c_gestionar_preinscripcion/V_gestionar_preinscripcion.jsp"
+           name="F_Preinscripcion"
+           scope="session"/>
 
         <!-- C_Gestionar_proyectos_Estudiante -->
         <action path="/A_Prep_Gestion_Proy_Est" parameter="A_Prep_Gestion_Proy_Est"

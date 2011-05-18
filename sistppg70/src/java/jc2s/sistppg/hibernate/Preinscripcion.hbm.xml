@@ -6,17 +6,19 @@
     <id column="idPreinscripcion" name="idPreinscripcion">
       <generator class="native"/>
     </id>
-    <!-- 1 -->
-    <property column="carta_postulacion" name="carta_postulacion" type="string"/>
-    <!-- 2 -->
+    <!-- 1 -->   
     <property column="tipo" name="tipo" not-null="true" type="integer"/>
+    <!-- 2 -->
+    <property column="regiones" name="regiones" type="string"/>
     <!-- 3 -->
-    <property column="curriculum" name="curriculum" type="string"/>
-    <!-- 4 -->
     <property column="por_graduar" name="por_graduar" type="boolean"/>
+    <!-- 4 -->
+    <property column="estatus" name="estatus" type="boolean"/>
     <!-- 5 -->
-   <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
+    <property column="tramitecctds" name="tramitecctds" type="boolean"/>
     <!-- 6 -->
+    <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
+    <!-- 7 -->
     <property column="created_at" name="created_at" not-null="true" type="timestamp"/>
   </class>
 </hibernate-mapping>

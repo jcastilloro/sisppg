@@ -6,7 +6,7 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
 
     /** Creates a new instance of Preinscripcion */
     public Preinscripcion() {}
-    
+
     /**
      * Holds value of property id.
      */
@@ -42,27 +42,6 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
     }
 
     /**
-     * Holds value of property carta_postulacion.
-     */
-    private String carta_postulacion = "";
-
-    /**
-     * Getter for property carta_postulacion.
-     * @return Value of property carta_postulacion.
-     */
-    public String getCarta_postulacion() {
-        return this.carta_postulacion;
-    }
-
-    /**
-     * Setter for property carta_postulacion.
-     * @param carta_postulacion New value of property carta_postulacion.
-     */
-    public void setCarta_postulacion(String carta_postulacion) {
-        this.carta_postulacion = carta_postulacion;
-    }
-
-    /**
      * Holds value of property tipo.
      */
     private int tipo;
@@ -84,24 +63,24 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
     }
 
     /**
-     * Holds value of property curriculum.
+     * Holds value of property regiones.
      */
-    private String curriculum = "";
+    private String regiones = "";
 
     /**
-     * Getter for property curriculum.
-     * @return Value of property curriculum.
+     * Getter for property regiones.
+     * @return Value of property regiones.
      */
-    public String getCurriculum() {
-        return this.curriculum;
+    public String getRegiones() {
+        return this.regiones;
     }
 
     /**
-     * Setter for property curriculum.
-     * @param curriculum New value of property curriculum.
+     * Setter for property regiones.
+     * @param regiones New value of property regiones.
      */
-    public void setCurriculum(String curriculum) {
-        this.curriculum = curriculum;
+    public void setRegiones(String regiones) {
+        this.regiones = regiones;
     }
 
     /**
@@ -123,6 +102,49 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
      */
     public void setPor_graduar(boolean por_graduar) {
         this.por_graduar = por_graduar;
+    }
+
+    /**
+     * Holds value of property estatus.
+     */
+    private boolean estatus;
+
+    /**
+     * Getter for property estatus.
+     * @return Value of property estatus.
+     */
+    public boolean getEstatus() {
+        return this.estatus;
+    }
+
+    /**
+     * Setter for property estatus.
+     * @param estatus New value of property estatus.
+     */
+    public void setEstatus(boolean estatus) {
+        this.estatus = estatus;
+    }
+
+
+    /**
+     * Holds value of property tramitecctds.
+     */
+    private boolean tramitecctds;
+
+    /**
+     * Getter for property tramitecctds.
+     * @return Value of property tramitecctds.
+     */
+    public boolean getTramitecctds() {
+        return this.tramitecctds;
+    }
+
+    /**
+     * Setter for property tramitecctds.
+     * @param tramitecctds New value of property tramitecctds.
+     */
+    public void setTramitecctds(boolean tramitecctds) {
+        this.tramitecctds = tramitecctds;
     }
 
     /**
@@ -173,10 +195,11 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
     public String toString() {
         return "<Preinscripcion id='C" + this.id +
       //idPreinscripcion
-      "\" carta_postulacion =\"" + carta_postulacion +
       "\" tipo =\"" + tipo +
-      "\" curriculum =\"" + curriculum +
+      "\" regiones =\"" + regiones +
       "\" por_graduar =\"" + por_graduar +
+      "\" estatus =\"" + estatus +
+      "\" tramitecctds =\"" + tramitecctds +
         ((estudiante==null) ? "" : "\" estudiante =\"C" + estudiante.getId()) +
 
       "\" created_at =\"" + created_at +

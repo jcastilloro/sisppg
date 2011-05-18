@@ -60,11 +60,11 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             List<Preinscripcion> preinscripciones;
             if(orderby!=null){
                 if(orderby.equals("1")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by tipo asc").list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by tipo desc").list();
                 }else if(orderby.equals("2")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by estudiante asc").list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by estudiante desc").list();
                 }else if(orderby.equals("3")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by por_graduar asc").list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by estatus desc").list();
                 }else if(orderby.equals("4")){
                     preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion order by created_at desc").list();
                 }else{
@@ -94,7 +94,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_prep_consultar_no_aprobados(ActionMapping mapping, ActionForm  form,
@@ -117,18 +117,18 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             List<Preinscripcion> preinscripciones;
             if(orderby!=null){
                 if(orderby.equals("1")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by tipo asc").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool order by tipo asc").setBoolean("bool", false).list();
                 }else if(orderby.equals("2")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by estudiante asc").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool order by estudiante asc").setBoolean("bool", false).list();
                 }else if(orderby.equals("3")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by tipo asc").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool order by tipo asc").setBoolean("bool", false).list();
                 }else if(orderby.equals("4")){
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by created_at desc").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool order by created_at desc").setBoolean("bool", false).list();
                 }else{
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool order by created_at desc").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool order by created_at desc").setBoolean("bool", false).list();
                 }
             }else{
-                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool").setBoolean("bool", false).list();
+                    preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool").setBoolean("bool", false).list();
                 }
             request.setAttribute("L_preinscripciones", preinscripciones);
             tr.commit();
@@ -170,7 +170,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            List<Preinscripcion> preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where por_graduar = :bool").setBoolean("bool", true).list();
+            List<Preinscripcion> preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estatus = :bool").setBoolean("bool", true).list();
             Iterator i = preinscripciones.iterator();
             while(i.hasNext()){
                 Preinscripcion p = (Preinscripcion) i.next();
@@ -251,7 +251,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_cambiar_estatus(ActionMapping mapping, ActionForm  form,
@@ -273,7 +273,7 @@ public class AccionesC_Gestionar_Preinscripciones_cctds extends CohesionAction {
             String parametro = (String) request.getParameter("preId");
             long preId = Long.parseLong(parametro);
             Preinscripcion p = (Preinscripcion) s.createQuery("from Preinscripcion where idPreinscripcion = :id").setLong("id", preId).uniqueResult();
-            p.setPor_graduar(true);
+            p.setEstatus(true);
             s.update(p);
 
             tr.commit();

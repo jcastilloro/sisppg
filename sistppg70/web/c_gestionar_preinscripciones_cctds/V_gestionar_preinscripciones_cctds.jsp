@@ -5,7 +5,7 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <title><bean:message key="V_sesion_cctds.title"/></title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
@@ -16,14 +16,11 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="1"><html:link action="/A_procesar_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label0"/><%-- Procesar Aprobados --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do">Consultar PENDIENTES</html:link></cohesion:actor></li>
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
@@ -55,15 +52,13 @@
                                                 <td>${ p.tipo==1 ? "Corta" : ""}${ p.tipo==2 ? "Intermedia" : ""}${ p.tipo==3 ? "Larga" : ""}</td>
                                                 <td>${p.estudiante.usbid}</td>
                                                 <td>${p.created_at}</td>
-                                                <td id="pre${p.por_graduar ? "Proc" : "Pend"}">${p.por_graduar ? "Procesado" : "Pendiente"}</td>
+                                                <td id="pre${p.estatus ? "Proc" : "Pend"}">${p.estatus ? "Procesado" : "Pendiente"}</td>
 
                                             </tr>
                                         </logic:iterate>
                                     </logic:notEmpty>
                                 </table>
                             </div>
-
-
 
                           </div>
                             </div>

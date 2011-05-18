@@ -60,9 +60,7 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_corta.do"><bean:message key="V_gestionar_preinscripcion.label0"/><%-- Pasantia Corta --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_intermedia.do"><bean:message key="V_gestionar_preinscripcion.label1"/><%-- Pasantia Intermedia --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="4"><html:link action="/A_generar_preinscripcion_larga.do"><bean:message key="V_gestionar_preinscripcion.label2"/><%-- Pasantia Larga --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="4"><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do">Regresar</html:link></cohesion:actor></li>
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
@@ -72,7 +70,6 @@
             <div id="page">
 
                 <div id="content">
-
                     <div id="body">
 
                         <div id="split">
@@ -84,14 +81,38 @@
 
 
                                         <logic:empty name="L_preins">
-                                            <h1>Usted no tiene preinscripciones registradas</h1>
+                                            <h2>Preinscripción de pasantía</h2>
+
+                                            <html:form action="/A_Preinscripcion.do" method="post">
+                                                
+                                                <br><h3>Tipo de Pasantía</h3>
+                                                <html:radio property="tipo" value="1">Corta EP-1420</html:radio>                                                
+                                                <html:radio property="tipo" value="2">Intermedia EP-2420</html:radio>                                                
+                                                <html:radio property="tipo" value="3">Larga EP-3420</html:radio>
+                                                    
+                                                <br><br><h3>Bloque</h3>
+                                                <html:radio property="bloque" value="true">A (Te gradúas con la pasantía)</html:radio>
+                                                <html:radio property="bloque" value="false">B (No te gradúas con la pasantía)</html:radio>
+                                                    
+                                                <br><br><h3>¿Desea que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el Proceso de Búsqueda de Pasantía en la Empresa?</h3>
+                                                <html:radio property="buscar" value="true">Sí</html:radio>
+                                                <html:radio property="buscar" value="false">No</html:radio>
+                                                    
+                                                <br><br><h3>¿A cuales regiones del País estaría Ud. dispuesto a ir?</h3>
+                                                <html:text property="donde" size="50"/>
+                                                <br><br>
+                                                <html:submit styleClass="button">Preinscribete!</html:submit>                                                        
+                                                
+                                            </html:form>
+
                                         </logic:empty>
                                         <logic:notEmpty name="L_preins">
                                             <ul id="preinscripciones">
                                                 <logic:iterate id="p" name="L_preins">
-                                                    <li id="${p.por_graduar ? "preinsNo" : "preinsSi"}"><p>Preinscripcion de pasantia ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""}  <small>${p.created_at}</small> 
-                                                            <html:link action="/A_GenerarCartaPostulacion.do">Carta Postulación</html:link>
-                                                        <html:link action="/A_GenerarSolicitudPasantia.do">Solicitud de Pasantía</html:link></p></li>
+                                                    <h1>Usted se preinscribió para realizar pasantía ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""} </h1>
+                                                    Creada el: ${p.created_at}
+                                                    <h3><html:link action="/A_GenerarCartaPostulacion.do">Generar Carta Postulación<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                                    <h3><html:link action="/A_GenerarSolicitudPasantia.do">Generar Solicitud de Pasantía<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                                 </logic:iterate>
                                             </ul>
                                         </logic:notEmpty>
@@ -114,7 +135,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
 
     </body>
 </html:html>

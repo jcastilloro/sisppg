@@ -5,7 +5,7 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <title><bean:message key="V_sesion_cctds.title"/></title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
@@ -14,12 +14,12 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+
             </div>
             <div id="page">
 
@@ -53,7 +53,7 @@
                                                 <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${ p.tipo==1 ? "Corta" : ""}${ p.tipo==2 ? "Intermedia" : ""}${ p.tipo==3 ? "Larga" : ""}</html:link></td>
                                                 <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.estudiante.usbid}</html:link></td>
                                                 <td><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.created_at}</html:link></td>
-                                                    <td id="pre${p.por_graduar ? "Proc" : "Pend"}"><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.por_graduar ? "Procesado" : "Pendiente"}</html:link></td>
+                                                    <td id="pre${p.estatus ? "Proc" : "Pend"}"><html:link action="/A_mostrar_preinscripcion.do?preId=${p.idPreinscripcion}">${p.estatus ? "Procesado" : "Pendiente"}</html:link></td>
 
                                             </tr>
                                         </logic:iterate>

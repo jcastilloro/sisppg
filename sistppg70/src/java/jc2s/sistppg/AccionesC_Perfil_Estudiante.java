@@ -159,13 +159,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
                 }
 
-                e.setOtrotelefono(fperfil.getOtroTelefono());
-
-
-
-
-
-                 //verifico nacionalidad
+                //verifico nacionalidad
                 if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNacionalidad())) {
                     e.setNacionalidad(fperfil.getNacionalidad());
                 } else {
@@ -190,7 +184,8 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                 }
 
                 e.setSexo(fperfil.getSexo());
-
+                e.setOtrotelefono(fperfil.getOtroTelefono());
+                e.setEdocivil(fperfil.getEstadoCivil());
 
 
                 //verifico fecha
@@ -293,10 +288,11 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                     e.setDireccion(fperfil.getDireccion());
                 } else {
                     salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válido");
+                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válida");
                 }
 
                 e.setSexo(fperfil.getSexo());
+                e.setOtrotelefono(fperfil.getOtroTelefono());
                 e.setEdocivil(fperfil.getEstadoCivil());
 
 
@@ -353,7 +349,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions.
-     * These exceptios will normally be treated with
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_prep_modif_perfil_estudiante(ActionMapping mapping, ActionForm form,

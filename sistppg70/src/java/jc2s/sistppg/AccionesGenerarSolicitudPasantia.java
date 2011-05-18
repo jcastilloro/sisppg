@@ -69,10 +69,23 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
             String path = getServlet().getServletContext().getRealPath("/") + "../../img/";
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
             Estudiante estudiante = (Estudiante) s.createQuery("from Estudiante where usbid = :login").setString("login", u.getUsbid()).uniqueResult();
+            Preinscripcion preinscripcion = new Preinscripcion();
 
-            // Un estudiante SOLO puede tener UNA PreInscripcion
-            Preinscripcion preinscripcion = (Preinscripcion) s.createQuery("from Preinscripcion where estudiante = :idEst order by created_at desc").setLong("idEst", estudiante.getIdEstudiante()).uniqueResult();
+            // Consulta de la CCTDS
+            if (estudiante == null){
+                String parametro = (String) request.getParameter("preId");
+                long preId = Long.parseLong(parametro);
+                preinscripcion = (Preinscripcion) s.createQuery("from Preinscripcion where idPreinscripcion = :id").setLong("id", preId).uniqueResult();
+                estudiante = preinscripcion.getEstudiante();
 
+            // Consulta del propio estudiante
+            } else {
+                // Un estudiante SOLO puede tener UNA PreInscripcion
+                preinscripcion = (Preinscripcion) s.createQuery("from Preinscripcion where estudiante = :idEst order by created_at desc").setLong("idEst", estudiante.getIdEstudiante()).uniqueResult();
+            }
+
+
+            
             if (preinscripcion != null) {
 
 
@@ -90,22 +103,22 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                 double indice = estudiante.getIndice();
                 int tipo =  preinscripcion.getTipo();
                 int cedula = estudiante.getCedula();
+                boolean graduando = preinscripcion.getPor_graduar();
+                boolean tramite = preinscripcion.getTramitecctds();
+                String region = preinscripcion.getRegiones();
 
                 Calendar cal = Calendar.getInstance();
                 int month = cal.get(Calendar.MONTH) + 1;
                 int year = cal.get(Calendar.YEAR);
 
-                String tipoPasantia = new String();
                 String ep = new String();
                 String periodo = new String();
 
 
                 if (tipo == 1){
-                    tipoPasantia = "corta";
                     ep = "1420";
                     periodo = "Julio-Septiembre";
                 } else if (tipo == 2){
-                    tipoPasantia = "intermedia";
                     ep = "2420";
 
                     // Se asume que la carta es para el periodo
@@ -120,7 +133,6 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                         periodo = "Enero-Marzo";
                     }
                 } else {
-                    tipoPasantia = "larga";
                     ep = "3420";
 
                     // Se asume que la carta es para el periodo
@@ -217,12 +229,12 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     pdf.add(blank);
 
                     String bloque;
-//                    if (graduando) {
+                    if (graduando) {
                         bloque = "BLOQUE A (Me graduo con la pasantía)";
-/*                    } else {
+                    } else {
                         bloque = "BLOQUE B (No me graduo con la pasantía)";
                     }
-*/
+
                     float[] widths = { 5f, 4f, 5f };
                     PdfPTable t = new PdfPTable(widths);
                     t.addCell("APELLIDOS: "+apellido);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
@@ -232,18 +244,18 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
                     pdf.add(blank);
-/*
+
                     Paragraph deseo;
                     if (tramite) {
                         deseo = new Paragraph("Deseo que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el "
                                 + "Proceso de Búsqueda de Pasantía en la Empresa\nEstoy dispuesto(a) a ir a la región: "
-                                + region + "\nTengo preferencia por el Estado: "+ estado + " y la Ciudad: " + ciudad);
+                                + region);
                     } else {
                         deseo = new Paragraph("No Deseo que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el Proceso de Búsqueda de Pasantía en la Empresa\n\n");
                     }
 
                     pdf.add(deseo);
-*/
+
                     Paragraph firma = new Paragraph("\n\n\n\n_________________\nFIRMA ");
                     firma.setAlignment(Paragraph.ALIGN_CENTER);
                     pdf.add(firma);

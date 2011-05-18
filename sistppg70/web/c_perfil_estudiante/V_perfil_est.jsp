@@ -6,8 +6,6 @@
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
-
-
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
