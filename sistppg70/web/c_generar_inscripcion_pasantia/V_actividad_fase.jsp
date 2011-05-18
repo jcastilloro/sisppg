@@ -6,7 +6,7 @@
 %><html:html>
     <head>
         <title><bean:message key="V_actividad_fase.title"/></title>
-        <link rel="stylesheet" type="text/css" href="_css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
         <script type="text/javascript" src="_js/jquery-1.4.4.min.js"></script>
         <link type="text/css" href="_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="_js/jquery-ui-1.8.10.custom.min.js"></script>
@@ -28,21 +28,26 @@
 
     </head>
     <body>
-        <div id="header">
-            <div id="title"><bean:message key="V_actividad_fase.title"/></div>
+
+                
+           <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="4"><html:link action="/A_guardar_fase.do"><bean:message key="V_actividad_fase.label1"/><%-- Guardar Fase --%></html:link></cohesion:actor></li>
-
                 </ul>
             </div>
-        </div>
-        <div id="body_wrapper">
-            <div id="body">
-                <div id="split">
-                    <div class="top"></div>
-                    <div id="left">
-                        <div class="content">
+            <div id="header">
+
+            </div>
+            <div id="page">
+
+                <div id="content">
+                    <div id="body">
+
+                        <div id="split">
+                            <div class="top"> </div>
+                            <div id="left">
+                                <div class="content">
                             ${empty msg ? "" : msg}
                 <div class="box1840480"><html:form
                   action="/A_agregar_actividad.do" method="post">
@@ -52,17 +57,21 @@
                   <html:submit styleClass="button"><bean:message key="V_actividad_fase.label0"/><%-- Agregar Actividad --%></html:submit>
                 </html:form></div>
 
-                         </div>
+                        </div>
+                                </div>
+                            </div>
+
+                            <div class="clearer"></div>
+                            <div class="bottom"></div>
+                        </div>
+                        <div class="clearer"></div>
                     </div>
-                    <div id="right"></div>
                     <div class="clearer"></div>
-                    <div class="bottom"></div>
                 </div>
-                <div class="clearer"></div>
+
+                <div id="end_body"></div>
             </div>
-            <div class="clearer"></div>
-        </div>
-        <div id="end_body"></div>
+            <div style="clear: both;">&nbsp;</div>
         <div id="footer"> <bean:message key="bottom.label"/> </div>
         
     </body>

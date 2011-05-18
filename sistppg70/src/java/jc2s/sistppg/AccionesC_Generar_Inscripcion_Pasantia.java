@@ -4,18 +4,13 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
@@ -23,20 +18,20 @@ import jc2s.sistppg.hibernate.*;
 
 
 /**
- * 
+ *
  */
 public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
-    
+
 /**
      * Called by Struts for the execution of action A_prep_generar_inscripcion.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_prep_generar_inscripcion(ActionMapping mapping, ActionForm  form,
@@ -104,14 +99,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_generar_inscripcion.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_generar_inscripcion(ActionMapping mapping, ActionForm  form,
@@ -202,14 +197,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_agregar_area.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_agregar_area(ActionMapping mapping, ActionForm  form,
@@ -253,14 +248,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_guardar_areas.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_guardar_areas(ActionMapping mapping, ActionForm  form,
@@ -297,14 +292,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_finalizar_inscripcion.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_finalizar_inscripcion(ActionMapping mapping, ActionForm  form,
@@ -329,7 +324,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             List<Fase> lf = s.createQuery("from Fase where pasantia = :pas").setLong("pas", pas.getId()).list();
             if(!lf.isEmpty())
                 salida = SALIDA_1;
-            
+
                 Proyecto pro = (Proyecto) request.getSession().getAttribute("proyecto");
                 Estudiante e = (Estudiante) request.getSession().getAttribute("estudiante");
                 EstudianteRealizaProyecto erp = new EstudianteRealizaProyecto();
@@ -359,14 +354,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_agregar_fase.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_agregar_fase(ActionMapping mapping, ActionForm  form,
@@ -420,14 +415,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_guardar_fase.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptios will normally be treated with
      * the default exception action.
      */
     public ActionForward A_guardar_fase(ActionMapping mapping, ActionForm  form,
@@ -463,10 +458,10 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             try { s.close(); } catch (Exception ex2) {}
         }
         if (salida==0) {
-          request.setAttribute("msg","salida 0 esta vacia la lista de actividades");
+          request.setAttribute("msg","Error agregando actividades para esta fase, intente de nuevo.");
         }
         if (salida==1) {
-          request.setAttribute("msg","salida 1 no esta vacia la lista de actividades");
+          request.setAttribute("msg","Actividades de la fase agregadas con éxito");
         }
 
         return mapping.findForward(SALIDAS[salida]);
@@ -474,14 +469,14 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_agregar_actividad.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * @throws java.lang.Exception For untreated exceptions.
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_agregar_actividad(ActionMapping mapping, ActionForm  form,

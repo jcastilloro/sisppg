@@ -133,9 +133,7 @@
         <forward name="A_prep_gestionar_preinscripcion" path="/A_prep_gestionar_preinscripcion.do"/>
         <forward name="V_gestionar_preinscripcion" path="/c_gestionar_preinscripcion/V_gestionar_preinscripcion.jsp"/>
         <forward name="A_Preinscripcion" path="/A_Preinscripcion.do"/>
-     <!--   <forward name="A_generar_preinscripcion_intermedia" path="/A_generar_preinscripcion_intermedia.do"/>
-        <forward name="A_generar_preinscripcion_larga" path="/A_generar_preinscripcion_larga.do"/>
--->
+
         <!-- C_Sesion_Profesor -->
 
         <forward name="A_Prep_Inicio_Sesion_Prof" path="/A_Prep_Inicio_Sesion_Prof.do"/>
