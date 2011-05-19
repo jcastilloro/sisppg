@@ -116,18 +116,18 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
+                                                           <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Periodo_Pasantia_Largas.do?idPeriodoPasantiaLarga=${dato.idPeriodoPasantiaLarga}'" onmouseover="this.style.cursor='pointer'">
+
                                                                     <td>
                                                                         <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Largas.do" paramName="dato" paramProperty="idPeriodoPasantiaLarga"
-                                                                                       paramId="idPeriodoPasantiaLarga">${dato.nombre}</html:link>
-                                                                        </center>
+                                                                            ${dato.nombre}
+                                                                        </center
                                                                     </td>
                                                                 </tr>
 
-                                                            </logic:iterate>
+                                                        </logic:iterate>
                                                         </tbody>
                                                     </table>
 

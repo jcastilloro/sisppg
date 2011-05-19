@@ -119,11 +119,10 @@
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Paises.do?idPais=${dato.idPais}'" onmouseover="this.style.cursor='pointer'">
                                                                     <td>
                                                                         <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Paises.do" paramName="dato" paramProperty="idPais"
-                                                                                       paramId="idPais">${dato.nombre}</html:link>
+                                                                            ${dato.nombre}
                                                                         </center>
                                                                     </td>
                                                                 </tr>

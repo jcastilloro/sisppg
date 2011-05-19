@@ -384,7 +384,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             while (it.hasNext()) {
                 iterado = (Area) it.next();
                 DepartamentoArea dato = (DepartamentoArea) s.createQuery("from DepartamentoArea where area= :var").setLong("var", iterado.getIdArea()).uniqueResult();
-                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "\">" + dato.getDepartamento().getNombre() + "</a>" + "</center></td></tr>");
+                Devolucion.add("<tr onclick=\"location.href='/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "'\" onmouseover=\"this.style.cursor='pointer'\">               <td width=\"250px\"><center>" +  iterado.getNombre() + "</center></td><td width=\"250px\"><center>" + dato.getDepartamento().getNombre() + "</center></td></tr>");
             }
 
             if (!Devolucion.isEmpty()) {
@@ -2213,7 +2213,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
             while (it.hasNext()) {
                 iterado = (Ciudad) it.next();
-                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Ciudades.do?idCiudad=" + iterado.getIdCiudad() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Ciudades.do?idCiudad=" + iterado.getIdCiudad() + "\">" + iterado.getPais().getNombre() + "</a>" + "</center></td></tr>");
+                Devolucion.add("<tr onclick=\"location.href='/sistppg70/A_Prep_Gestionar_Ciudades.do?idCiudad=" + iterado.getIdCiudad() + "'\" onmouseover=\"this.style.cursor='pointer'\">               <td width=\"250px\"><center>" + iterado.getNombre() + "</center></td><td width=\"250px\"><center>" + iterado.getPais().getNombre() + "</center></td></tr>");
             }
 
             if (!Devolucion.isEmpty()) {

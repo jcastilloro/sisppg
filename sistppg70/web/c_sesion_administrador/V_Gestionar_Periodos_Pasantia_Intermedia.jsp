@@ -119,15 +119,15 @@
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do?idPeriodoPasantiaIntermedia=${dato.idPeriodoPasantiaIntermedia}'" onmouseover="this.style.cursor='pointer'">
+
                                                                     <td>
                                                                         <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do" paramName="dato" paramProperty="idPeriodoPasantiaIntermedia"
-                                                                                       paramId="idPeriodoPasantiaIntermedia">${dato.nombre}</html:link>
+                                                                            ${dato.nombre}
                                                                         </center
                                                                     </td>
                                                                 </tr>
-                                                            <hr>
+                                                        
                                                         </logic:iterate>
                                                     </table>
                                                     </tbody>

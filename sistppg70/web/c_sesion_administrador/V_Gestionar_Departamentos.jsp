@@ -115,11 +115,10 @@
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Departamentos.do?idDepartamento=${dato.idDepartamento}'" onmouseover="this.style.cursor='pointer'">
                                                                     <td>
                                                                         <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Departamentos.do" paramName="dato" paramProperty="idDepartamento"
-                                                                                       paramId="idDepartamento">${dato.nombre}</html:link>
+                                                                            ${dato.nombre}
                                                                         </center>
                                                                     </td>
                                                                 </tr>

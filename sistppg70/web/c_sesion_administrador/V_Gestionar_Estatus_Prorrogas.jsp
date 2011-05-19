@@ -116,11 +116,11 @@
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Estatus_Prorrogas.do?idEstatus_Prorroga=${dato.idEstatusProrroga}'" onmouseover="this.style.cursor='pointer'">
+
                                                                     <td>
                                                                         <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Estatus_Prorrogas.do" paramName="dato" paramProperty="idEstatusProrroga"
-                                                                                       paramId="idEstatus_Prorroga">${dato.estatus}</html:link>
+                                                                            ${dato.estatus}
                                                                         </center>
                                                                     </td>
                                                                 </tr>

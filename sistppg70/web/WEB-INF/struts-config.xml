@@ -37,7 +37,8 @@
         <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
         <form-bean name="F_Preinscripcion" type="jc2s.sistppg.F_Preinscripcion"/>
         <form-bean name="F_Ciudad" type="jc2s.sistppg.F_Ciudad"/>
-        
+        <form-bean name="F_Jurado" type="jc2s.sistppg.F_Jurado"/>
+
     </form-beans>
     
     <global-exceptions>
@@ -642,8 +643,13 @@
         <!-- C_Gestionar_Jurados -->
         <action path="/A_Prep_Gestionar_Jurados" parameter="A_Prep_Gestionar_Jurados"
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
+        
         <action path="/A_consultar_jurado" parameter="A_consultar_jurado"
-           type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
+           type="jc2s.sistppg.AccionesC_Gestionar_Jurados"
+           input="/C_Gestionar_Jurados/V_consultar_jurados.jsp"
+           name="F_Jurado"
+           scope="session"/>
+
         <action path="/A_mostrar_jurado" parameter="A_mostrar_jurado"
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
 

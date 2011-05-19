@@ -120,14 +120,12 @@
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
+                                                                <tr onclick="location.href='/sistppg70/A_Prep_Gestionar_Carreras.do?idCarrera=${dato.idCarrera}'" onmouseover="this.style.cursor='pointer'">
                                                                     <td width="250px">
-                                                                        <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                                                   paramId="idCarrera">${dato.nombre}</html:link>
+                                                                        ${dato.nombre}
                                                                     </td width="250px">
                                                                     <td>
-                                                                        <html:link action="/A_Prep_Gestionar_Carreras.do" paramName="dato" paramProperty="idCarrera"
-                                                                                   paramId="idCarrera">${dato.email}</html:link>
+                                                                        ${dato.email}
                                                                     </td>
                                                                 </tr>
 
