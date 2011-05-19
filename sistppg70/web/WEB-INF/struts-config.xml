@@ -36,6 +36,7 @@
         <form-bean name="F_Pais" type="jc2s.sistppg.F_Pais"/>
         <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
         <form-bean name="F_Preinscripcion" type="jc2s.sistppg.F_Preinscripcion"/>
+        <form-bean name="F_Ciudad" type="jc2s.sistppg.F_Ciudad"/>
         
     </form-beans>
     
@@ -363,6 +364,14 @@
         <forward name="V_Gestionar_Departamentos" path="/c_sesion_administrador/V_Gestionar_Departamentos.jsp"/>
         <forward name="A_insertar_departamento" path="/A_insertar_departamento.do"/>
         <forward name="A_eliminar_departamento" path="/A_eliminar_departamento.do"/>
+
+
+        <!-- C_Gestionar_Ciudades -->
+
+        <forward name="A_Prep_Gestionar_Ciudades" path="/A_Prep_Gestionar_Ciudades.do"/>
+        <forward name="V_Gestionar_Ciudades" path="/c_sesion_administrador/V_Gestionar_Ciudades.jsp"/>
+        <forward name="A_insertar_ciudad" path="/A_insertar_ciudad.do"/>
+        <forward name="A_eliminar_ciudad" path="/A_eliminar_ciudad.do"/>
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
@@ -759,7 +768,7 @@
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
 
          <!-- Consultas Sinai -->
-         <action path="/A_consultar_pasantias" parameter="A_consultar_pasantias"
+        <action path="/A_consultar_pasantias" parameter="A_consultar_pasantias"
            type="jc2s.sistppg.AccionesC_Consultar_Proyectos"
            input="/c_consultar_proyectos/V_consulta_pasantia.jsp"
            name="F_Sinai"
@@ -848,6 +857,18 @@
            scope="session"/>
         <action path="/A_eliminar_departamento" parameter="A_eliminar_departamento"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
+           <!-- C_Gestionar_Ciudades -->
+        <action path="/A_Prep_Gestionar_Ciudades" parameter="A_Prep_Gestionar_Ciudades"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+        <action path="/A_insertar_ciudad" parameter="A_insertar_ciudad"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"
+           input="/c_sesion_administrador/V_Gestionar_Ciudades.jsp"
+           name="F_Ciudad"
+           scope="session"/>
+        <action path="/A_eliminar_ciudad" parameter="A_eliminar_ciudad"
+           type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
+
 
 
         <action path="/tooltip" parameter="tooltip"

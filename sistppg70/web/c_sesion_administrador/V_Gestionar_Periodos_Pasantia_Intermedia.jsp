@@ -16,6 +16,8 @@
 
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
+        <script type="text/javascript" src="../sorttable.js"></script>
+
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -100,11 +102,11 @@
                                             <center>
 
                                                 <h2>
-                                                    Periodos de Pasantias Intermedias
-                                                </h2>
+                                                    Periodos de Pasantías Intermedias
+                                                </h2><hr>
                                                 <div class="administrador">
 
-                                                    <table width="400x">
+                                                    <table class="sortable" width="400x">
                                                         <thead>
                                                             <tr>
                                                                 <th>

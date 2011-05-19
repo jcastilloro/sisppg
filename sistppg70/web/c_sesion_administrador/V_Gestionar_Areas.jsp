@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Gestionar Areas</title>
 
 
         <html:base/>
@@ -15,6 +15,8 @@
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
 
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+
+        <script type="text/javascript" src="../sorttable.js"></script>
 
         <style type="text/css">
 
@@ -68,6 +70,8 @@
 
 
 
+
+
                 </ul>
             </div>
 
@@ -92,15 +96,17 @@
                                     <div class="box1465928" align="center">
 
 
+
+
+
                                         <logic:notEmpty name="Datos">
                                             <center>
 
                                                 <h2>
                                                     Areas
-                                                </h2>
+                                                </h2><hr>
                                                 <div class="administrador">
-
-                                                    <table width="400px">
+                                                    <table class="sortable">
                                                         <thead>
                                                             <tr>
                                                                 <th>
@@ -108,19 +114,18 @@
                                                                         Nombre
                                                                     </center>
                                                                 </th>
+                                                                <th>
+                                                                    <center>
+                                                                        Departamento
+                                                                    </center>
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                                <tr>
-                                                                    <td>
-                                                                        <center>
-                                                                            <html:link action="/A_Prep_Gestionar_Areas.do" paramName="dato" paramProperty="idArea"
-                                                                                       paramId="idArea">${dato.nombre}</html:link>
-                                                                        </center>
-                                                                    </td>
-                                                                </tr>
+                                                                <bean:write name="dato" filter="false"/>
+
 
                                                             </logic:iterate>
                                                         </tbody>
@@ -137,8 +142,15 @@
                                                     action="/A_insertar_area.do" method="post">
                                                 <table border="0">
                                                     <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="area" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                                    <html:hidden property="idArea" value="${Singular.idArea}"/>
+                                                    <tr><td><p>Departamento</td><td>
+                                                            <html:select styleId="1843493" property="departamento" value="${AreaD.idDepartamento}">
+                                                                <logic:iterate id="arrea" collection="${empty L_Areas ? _vacio : L_Areas}">
+                                                            <option value="${arrea.idDepartamento}">${arrea.nombre}</option>
+                                                        </logic:iterate>
+                                                    </html:select>
+                                                    </td></tr>
 
+                                                    <html:hidden property="idArea" value="${Singular.idArea}"/>
 
                                                     <tr><td><html:link action="/A_eliminar_area.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
                                                         </td></tr>
@@ -172,7 +184,14 @@
                                                 action="/A_insertar_area.do" method="post">
                                                 <table border="0">
                                                     <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="area" size="30" value=""/></td></tr></p>
-                                                    <html:hidden property="idArea" value=""/>
+                                                    <tr><td><p>Departamento</td><td>
+                                                            <html:select styleId="1843493" property="departamento" value="">
+                                                                <logic:iterate id="arrea" collection="${empty L_Areas ? _vacio : L_Areas}">
+                                                            <option value="${arrea.idDepartamento}">${arrea.nombre}</option>
+                                                        </logic:iterate>
+                                                    </html:select>
+                                                    </td></tr>
+                                                <html:hidden property="idArea" value=""/>
 
 
                                                     <tr><td></td><td><html:submit styleClass="button">Insertar<%-- Crear --%></html:submit><p>
@@ -181,6 +200,7 @@
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
                                             </logic:notEmpty>
+
 
 
                                     </div>

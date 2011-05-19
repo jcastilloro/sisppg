@@ -16,6 +16,8 @@
 
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
+        <script type="text/javascript" src="../sorttable.js"></script>
+
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -103,32 +105,33 @@
                                                 <h2>
                                                     Paises
                                                 </h2><hr>
-
-                                                <table width="400px">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>
-                                                                <center>
-                                                                    Nombre
-                                                                </center>
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
-
+                                                <div class="administrador">
+                                                    <table class="sortable" width="400px">
+                                                        <thead>
                                                             <tr>
-                                                                <td>
+                                                                <th>
                                                                     <center>
-                                                                        <html:link action="/A_Prep_Gestionar_Paises.do" paramName="dato" paramProperty="idPais"
-                                                                                   paramId="idPais">${dato.nombre}</html:link>
+                                                                        Nombre
                                                                     </center>
-                                                                </td>
+                                                                </th>
                                                             </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                        </logic:iterate>
-                                                    </tbody>
-                                                </table>
+                                                                <tr>
+                                                                    <td>
+                                                                        <center>
+                                                                            <html:link action="/A_Prep_Gestionar_Paises.do" paramName="dato" paramProperty="idPais"
+                                                                                       paramId="idPais">${dato.nombre}</html:link>
+                                                                        </center>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </center>
                                         </logic:notEmpty>
 

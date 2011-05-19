@@ -14,6 +14,7 @@ public class F_Area2 extends org.apache.struts.action.ActionForm {
         super();
         area = "";
         idArea = "";
+        departamento = "";
 
     }
 
@@ -70,6 +71,16 @@ public class F_Area2 extends org.apache.struts.action.ActionForm {
 
     public void setIdArea(String idArea) {
         this.idArea = idArea;
+    }
+
+    private String departamento;
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 
 

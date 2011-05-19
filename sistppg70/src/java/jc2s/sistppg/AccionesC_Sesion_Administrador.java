@@ -356,21 +356,39 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
             //MI VAINA
             request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("AreaD");
+            request.getSession().removeAttribute("L_Areas");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
             String parametro = request.getParameter("Agregar");
             if (parametro != null) {
                 request.getSession().setAttribute("Agregar", parametro);
+                List<Departamento> L_Areas = s.createQuery("from Departamento").list();
+                request.getSession().setAttribute("L_Areas", L_Areas);
             }
             String parameter = request.getParameter("idArea");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null) {                                                                //AQUI ABAJO
-                Area singular = (Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(request.getParameter("idArea"))).uniqueResult();
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
+                Area singular = (Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(parameter)).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
+                Departamento AreaD = (Departamento) ((DepartamentoArea) s.createQuery("from DepartamentoArea where area= :var").setLong("var", Long.parseLong(request.getParameter("idArea"))).uniqueResult()).getDepartamento();
+                request.getSession().setAttribute("AreaD", AreaD);
+                List<Departamento> L_Areas = s.createQuery("from Departamento").list();
+                request.getSession().setAttribute("L_Areas", L_Areas);
             }
-            List<Area> dato = s.createQuery("from Area ").list();                             //CAMBIAR LA TABLA
+            List<Area> predato = s.createQuery("from Area ").list();                             //CAMBIAR LA TABLA
+            Iterator it = predato.iterator();
+            Area iterado;
 
-            if (!dato.isEmpty()) {
-                request.getSession().setAttribute("Datos", dato);
+
+            List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+            while (it.hasNext()) {
+                iterado = (Area) it.next();
+                DepartamentoArea dato = (DepartamentoArea) s.createQuery("from DepartamentoArea where area= :var").setLong("var", iterado.getIdArea()).uniqueResult();
+                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "\">" + dato.getDepartamento().getNombre() + "</a>" + "</center></td></tr>");
+            }
+
+            if (!Devolucion.isEmpty()) {
+                request.getSession().setAttribute("Datos", Devolucion);
             } else {
                 request.setAttribute("msg",
                         getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
@@ -398,7 +416,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Gestionar_Areas",};
+        final String[] SALIDAS = {"A_Prep_Gestionar_Areas",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -415,14 +433,13 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
             request.getSession().removeAttribute("Agregar");
-            // request.getSession().removeAttribute("Singular");
-
             request.getSession().removeAttribute("Datos");
-            String parameter = request.getParameter("idArea");               //CAMBIAR CLAVE
-            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
-                Area singular = (Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(request.getParameter("idArea"))).uniqueResult();
-                request.getSession().setAttribute("Singular", singular);
-            }
+//            String parameter = request.getParameter("idArea");               //CAMBIAR CLAVE
+//            String parameter2 = request.getParameter("idArea");
+//            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+//                Area singular = (Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(request.getParameter("idArea"))).uniqueResult();
+//                request.getSession().setAttribute("Singular", singular);
+//            }
 
 
 
@@ -431,13 +448,21 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
             Area p;
+            DepartamentoArea da;
             boolean guarda = true;
             if (!fF_Area2.getIdArea().equals("")) {                                        //CAMBIAR CLASES
-                p = (Area) request.getSession().getAttribute("Singular");
+                p = (Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(fF_Area2.getIdArea())).uniqueResult();
                 guarda = false;
+                List<DepartamentoArea> das = s.createQuery("from DepartamentoArea where area= :var").setLong("var", Long.parseLong(fF_Area2.getIdArea())).list();
+                da = das.get(0);
             } else {
                 p = new Area();
+                da = new DepartamentoArea();
+                da.setArea(p);
             }
+            da.setDepartamento((Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(fF_Area2.getDepartamento())).uniqueResult());
+
+
 
 
 //            p.setIdArea(Long.parseLong(fF_Area2.getIdArea()));
@@ -456,9 +481,12 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             request.getSession().removeAttribute("Singular");
             if (guarda) {
                 s.save(p);
+                s.save(da);
             } else {
                 s.update(p);
+                s.update(da);
             }
+            request.getSession().setAttribute("idArea", fF_Area2.getArea());
             List<Area> dato = s.createQuery("from Area ").list();
 
             if (!dato.isEmpty()) {
@@ -482,6 +510,9 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
         request.getSession().removeAttribute("Singular");
+        request.getSession().removeAttribute("Agregar");
+        request.getSession().removeAttribute("Agregare");
+
         request.setAttribute("msg", "Modificación Exitosa");
         return mapping.findForward(SALIDAS[salida]);
     }
@@ -502,10 +533,11 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             request.getSession().removeAttribute("Agregar");
-//            request.getSession().removeAttribute("Singular");
-//            request.getSession().removeAttribute("Datos");
-            Area p = (Area) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
+            request.getSession().removeAttribute("Datos");
+            Area p = (Area) request.getSession().getAttribute("Singular");
             request.getSession().removeAttribute("Singular");
+            DepartamentoArea ad = (DepartamentoArea) s.createQuery("from DepartamentoArea where area= :var").setLong("var", p.getIdArea()).uniqueResult();
+//               request.getSession().removeAttribute("Singular");
 
 
             //List<Area> dato = s.createQuery("from Area ").list();
@@ -519,7 +551,6 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //                request.setAttribute("msg",
 //                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
 //            }
-
 
 
             List<AreaProfesor> guarda = s.createQuery("from AreaProfesor where area= :var").setLong("var", p.getIdArea()).list();
@@ -540,20 +571,14 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
                 }
                 return mapping.findForward(SALIDAS[salida]);
             }
-            List<DepartamentoArea> guarda3 = s.createQuery("from DepartamentoArea where area= :var").setLong("var", p.getIdArea()).list();
-            if (!guarda3.isEmpty()) {
-                request.setAttribute("msg", "Disculpe no puede eliminar el área si aún hay departamentos asociados a la misma");
-                try {
-                    s.close();
-                } catch (Exception ex2) {
-                }
-                return mapping.findForward(SALIDAS[salida]);
-            }
 
 
 
 
-            s.delete(p);
+
+            s.delete(ad);
+            s.delete(ad.getArea());
+
 
             tr.commit();
         } catch (Exception ex) {
@@ -598,39 +623,21 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
             //MI VAINA
             request.getSession().removeAttribute("Singular");
-            request.getSession().removeAttribute("AreaD");
-            request.getSession().removeAttribute("L_Areas");
             request.getSession().removeAttribute("Datos");
             request.getSession().removeAttribute("Agregar");
             String parametro = request.getParameter("Agregar");
             if (parametro != null) {
                 request.getSession().setAttribute("Agregar", parametro);
-                List<Area> L_Areas = s.createQuery("from Area").list();
-                request.getSession().setAttribute("L_Areas", L_Areas);
             }
             String parameter = request.getParameter("idDepartamento");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
-            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
-                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(parameter)).uniqueResult();
+            if (parameter != null) {                                                                //AQUI ABAJO
+                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult();
                 request.getSession().setAttribute("Singular", singular);
-                Area AreaD = (Area) ((DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult()).getArea();
-                request.getSession().setAttribute("AreaD", AreaD);
-                List<Area> L_Areas = s.createQuery("from Area").list();
-                request.getSession().setAttribute("L_Areas", L_Areas);
             }
-            List<Departamento> predato = s.createQuery("from Departamento ").list();                             //CAMBIAR LA TABLA
-            Iterator it = predato.iterator();
-            Departamento iterado;
+            List<Departamento> dato = s.createQuery("from Departamento ").list();                             //CAMBIAR LA TABLA
 
-
-            List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
-            while (it.hasNext()) {
-                iterado = (Departamento) it.next();
-                DepartamentoArea dato = (DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", iterado.getIdDepartamento()).uniqueResult();
-                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Departamentos.do?idDepartamento=" + iterado.getIdDepartamento() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Departamentos.do?idDepartamento=" + iterado.getIdDepartamento() + "\">" + dato.getArea().getNombre() + "</a>" + "</center></td></tr>");
-            }
-
-            if (!Devolucion.isEmpty()) {
-                request.getSession().setAttribute("Datos", Devolucion);
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
             } else {
                 request.setAttribute("msg",
                         getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
@@ -658,7 +665,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"A_Prep_Gestionar_Departamentos",};
+        final String[] SALIDAS = {"V_Gestionar_Departamentos",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -671,17 +678,18 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
             //MI VAINA
-            F_Departamento fF_Departamento = (F_Departamento) form;                            //CAMBIAR CLASE
+            F_Departamento fF_Departamento2 = (F_Departamento) form;                            //CAMBIAR CLASE
 
 
             request.getSession().removeAttribute("Agregar");
+            // request.getSession().removeAttribute("Singular");
+
             request.getSession().removeAttribute("Datos");
-//            String parameter = request.getParameter("idDepartamento");               //CAMBIAR CLAVE
-//            String parameter2 = request.getParameter("idArea");
-//            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
-//                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult();
-//                request.getSession().setAttribute("Singular", singular);
-//            }
+            String parameter = request.getParameter("idDepartamento");               //CAMBIAR CLAVE
+            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+                Departamento singular = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(request.getParameter("idDepartamento"))).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+            }
 
 
 
@@ -690,31 +698,22 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
             Departamento p;
-            DepartamentoArea da;
             boolean guarda = true;
-            if (!fF_Departamento.getIdDepartamento().equals("")) {                                        //CAMBIAR CLASES
-                p = (Departamento) s.createQuery("from Departamento where idDepartamento= :var").setLong("var", Long.parseLong(fF_Departamento.getIdDepartamento())).uniqueResult();
+            if (!fF_Departamento2.getIdDepartamento().equals("")) {                                        //CAMBIAR CLASES
+                p = (Departamento) request.getSession().getAttribute("Singular");
                 guarda = false;
-                List<DepartamentoArea> das = s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", Long.parseLong(fF_Departamento.getIdDepartamento())).list();
-                da = das.get(0);
             } else {
                 p = new Departamento();
-                da = new DepartamentoArea();
-                System.out.println("GEAT AREA DA------------------------------------------------" + fF_Departamento.getArea());
-                da.setDepartamento(p);
             }
-            da.setArea((Area) s.createQuery("from Area where idArea= :var").setLong("var", Long.parseLong(fF_Departamento.getArea())).uniqueResult());
 
 
-
-
-//            p.setIdDepartamento(Long.parseLong(fF_Departamento.getIdDepartamento()));
+//            p.setIdDepartamento(Long.parseLong(fF_Departamento2.getIdDepartamento()));
 
 
 
             //verifico nombre
-            if (Pattern.matches(".+", fF_Departamento.getDepartamento())) {
-                p.setNombre(fF_Departamento.getDepartamento());
+            if (Pattern.matches(".+", fF_Departamento2.getDepartamento())) {
+                p.setNombre(fF_Departamento2.getDepartamento());
             } else {
                 request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
                 return mapping.findForward(SALIDAS[salida]);
@@ -724,12 +723,9 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             request.getSession().removeAttribute("Singular");
             if (guarda) {
                 s.save(p);
-                s.save(da);
             } else {
                 s.update(p);
-                s.update(da);
             }
-            request.getSession().setAttribute("idDepartamento", fF_Departamento.getDepartamento());
             List<Departamento> dato = s.createQuery("from Departamento ").list();
 
             if (!dato.isEmpty()) {
@@ -753,9 +749,6 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 
 
         request.getSession().removeAttribute("Singular");
-        request.getSession().removeAttribute("Agregar");
-        request.getSession().removeAttribute("Agregare");
-
         request.setAttribute("msg", "Modificación Exitosa");
         return mapping.findForward(SALIDAS[salida]);
     }
@@ -776,11 +769,10 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             request.getSession().removeAttribute("Agregar");
-            request.getSession().removeAttribute("Datos");
-            Departamento p = (Departamento) request.getSession().getAttribute("Singular");
+//            request.getSession().removeAttribute("Singular");
+//            request.getSession().removeAttribute("Datos");
+            Departamento p = (Departamento) request.getSession().getAttribute("Singular");                        //CAMBIAR CLASES
             request.getSession().removeAttribute("Singular");
-            DepartamentoArea ad = (DepartamentoArea) s.createQuery("from DepartamentoArea where departamento= :var").setLong("var", p.getIdDepartamento()).uniqueResult();
-//               request.getSession().removeAttribute("Singular");
 
 
             //List<Departamento> dato = s.createQuery("from Departamento ").list();
@@ -796,14 +788,20 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
+            List<DepartamentoArea> guarda3 = s.createQuery("from DepartamentoArea where area= :var").setLong("var", p.getIdDepartamento()).list();
+            if (!guarda3.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar el departamento si aún hay areas asociadas al mismo");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
 
 
 
 
-           
-            s.delete(ad);
-            s.delete(ad.getDepartamento());
-
+            s.delete(p);
 
             tr.commit();
         } catch (Exception ex) {
@@ -1235,7 +1233,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
-             List<Prorroga> guarda = s.createQuery("from Prorroga where estatus= :var").setLong("var", p.getIdEstatusProrroga()).list();
+            List<Prorroga> guarda = s.createQuery("from Prorroga where estatus= :var").setLong("var", p.getIdEstatusProrroga()).list();
             if (!guarda.isEmpty()) {
                 request.setAttribute("msg", "Disculpe no puede eliminar el estatus si aún hay prorrogas asociadas al mismo");
                 try {
@@ -1458,7 +1456,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
-             List<PasantiaIntermedia> guarda = s.createQuery("from PasantiaIntermedia where periodo= :var").setLong("var", p.getIdPeriodoPasantiaIntermedia()).list();
+            List<PasantiaIntermedia> guarda = s.createQuery("from PasantiaIntermedia where periodo= :var").setLong("var", p.getIdPeriodoPasantiaIntermedia()).list();
             if (!guarda.isEmpty()) {
                 request.setAttribute("msg", "Disculpe no puede eliminar el periodo si aún hay pasantías asociadas al mismo");
                 try {
@@ -1680,7 +1678,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
-             List<PasantiaLarga> guarda = s.createQuery("from PasantiaLarga where periodo= :var").setLong("var", p.getIdPeriodoPasantiaLarga()).list();
+            List<PasantiaLarga> guarda = s.createQuery("from PasantiaLarga where periodo= :var").setLong("var", p.getIdPeriodoPasantiaLarga()).list();
             if (!guarda.isEmpty()) {
                 request.setAttribute("msg", "Disculpe no puede eliminar el periodo si aún hay pasantías asociadas al mismo");
                 try {
@@ -1900,7 +1898,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
-                List<Etapa> guarda = s.createQuery("from Etapa where trimestre= :var").setLong("var", p.getIdTrimestre()).list();
+            List<Etapa> guarda = s.createQuery("from Etapa where trimestre= :var").setLong("var", p.getIdTrimestre()).list();
             if (!guarda.isEmpty()) {
                 request.setAttribute("msg", "Disculpe no puede eliminar el trimestre si aún hay etapas asociadas al mismo");
                 try {
@@ -2121,7 +2119,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
 //            }
 
 
-                List<Ciudad> guarda = s.createQuery("from Ciudad where pais= :var").setLong("var", p.getIdPais()).list();
+            List<Ciudad> guarda = s.createQuery("from Ciudad where pais= :var").setLong("var", p.getIdPais()).list();
             if (!guarda.isEmpty()) {
                 request.setAttribute("msg", "Disculpe no puede eliminar el país si aún hay ciudades asociadas al mismo");
                 try {
@@ -2149,4 +2147,267 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         request.setAttribute("msg", "Se elimino con éxito el registro");
         return mapping.findForward(SALIDAS[salida]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public ActionForward A_Prep_Gestionar_Ciudades(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Ciudades",};                                   //CAMBIAR JSP
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors estudiante
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            request.getSession().removeAttribute("Singular");
+            request.getSession().removeAttribute("CiudadD");
+            request.getSession().removeAttribute("L_Paises");
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Agregar");
+            String parametro = request.getParameter("Agregar");
+            if (parametro != null) {
+                request.getSession().setAttribute("Agregar", parametro);
+                List<Pais> L_Paises = s.createQuery("from Pais").list();
+                request.getSession().setAttribute("L_Paises", L_Paises);
+            }
+            String parameter = request.getParameter("idCiudad");                                   //CAMBIAR CLAVE Y VAINAS DE LA BD
+            if (parameter != null && !parameter.equals("")) {                                                                //AQUI ABAJO
+                Ciudad singular = (Ciudad) s.createQuery("from Ciudad where idCiudad= :var").setLong("var", Long.parseLong(parameter)).uniqueResult();
+                request.getSession().setAttribute("Singular", singular);
+                Pais CiudadD = (Pais) ((Ciudad) s.createQuery("from Ciudad where idCiudad= :var").setLong("var", Long.parseLong(request.getParameter("idCiudad"))).uniqueResult()).getPais();
+                request.getSession().setAttribute("CiudadD", CiudadD);
+                List<Pais> L_Paises = s.createQuery("from Pais").list();
+                request.getSession().setAttribute("L_Paises", L_Paises);
+            }
+            List<Ciudad> predato = s.createQuery("from Ciudad ").list();                             //CAMBIAR LA TABLA
+            Iterator it = predato.iterator();
+            Ciudad iterado;
+
+
+            List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+            while (it.hasNext()) {
+                iterado = (Ciudad) it.next();
+                Devolucion.add("<tr><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Ciudades.do?idCiudad=" + iterado.getIdCiudad() + "\">" + iterado.getNombre() + "</a>" + "</center></td><td width=\"250px\"><center>" + "<a href=\"/sistppg70/A_Prep_Gestionar_Ciudades.do?idCiudad=" + iterado.getIdCiudad() + "\">" + iterado.getPais().getNombre() + "</a>" + "</center></td></tr>");
+            }
+
+            if (!Devolucion.isEmpty()) {
+                request.getSession().setAttribute("Datos", Devolucion);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+
+            //YA NO ES MI VAINA
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+    public ActionForward A_insertar_ciudad(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"A_Prep_Gestionar_Ciudades",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            //MI VAINA
+            F_Ciudad fF_Ciudad = (F_Ciudad) form;                            //CAMBIAR CLASE
+
+
+            request.getSession().removeAttribute("Agregar");
+            request.getSession().removeAttribute("Datos");
+//            String parameter = request.getParameter("idCiudad");               //CAMBIAR CLAVE
+//            String parameter2 = request.getParameter("idCiudad");
+//            if (parameter != null && !parameter.equals("")) {                   //CAMBIAR VAINAS DE LAS TABLAS AQUI ABAJO
+//                Ciudad singular = (Ciudad) s.createQuery("from Ciudad where idCiudad= :var").setLong("var", Long.parseLong(request.getParameter("idCiudad"))).uniqueResult();
+//                request.getSession().setAttribute("Singular", singular);
+//            }
+
+
+
+
+
+
+
+            Ciudad p;
+            boolean guarda = true;
+            if (!fF_Ciudad.getIdCiudad().equals("")) {                                        //CAMBIAR CLASES
+                p = (Ciudad) s.createQuery("from Ciudad where idCiudad= :var").setLong("var", Long.parseLong(fF_Ciudad.getIdCiudad())).uniqueResult();
+                guarda = false;
+            } else {
+                p = new Ciudad();
+            }
+            p.setPais((Pais) s.createQuery("from Pais where idPais= :var").setLong("var", Long.parseLong(fF_Ciudad.getPais())).uniqueResult());
+
+
+
+
+//            p.setIdCiudad(Long.parseLong(fF_Ciudad.getIdCiudad()));
+
+
+
+            //verifico nombre
+            if (Pattern.matches(".+", fF_Ciudad.getCiudad())) {
+                p.setNombre(fF_Ciudad.getCiudad());
+            } else {
+                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+            request.setAttribute("msg", "Modificación Exitosa");
+            request.getSession().removeAttribute("Singular");
+            if (guarda) {
+                s.save(p);
+            } else {
+                s.update(p);
+            }
+            request.getSession().setAttribute("idCiudad", fF_Ciudad.getCiudad());
+            List<Ciudad> dato = s.createQuery("from Ciudad ").list();
+
+            if (!dato.isEmpty()) {
+                request.getSession().setAttribute("Datos", dato);
+            } else {
+                request.setAttribute("msg",
+                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+            }
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+
+        request.getSession().removeAttribute("Singular");
+        request.getSession().removeAttribute("Agregar");
+        request.getSession().removeAttribute("Agregare");
+
+        request.setAttribute("msg", "Modificación Exitosa");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+    public ActionForward A_eliminar_ciudad(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"A_Prep_Gestionar_Ciudades",};                                 //CAMBIAR PAGINA
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        if (!CohesionActor.checkActor(request, 32)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            request.getSession().removeAttribute("Agregar");
+            request.getSession().removeAttribute("Datos");
+            Ciudad p = (Ciudad) request.getSession().getAttribute("Singular");
+            request.getSession().removeAttribute("Singular");
+//               request.getSession().removeAttribute("Singular");
+
+
+            //List<Ciudad> dato = s.createQuery("from Ciudad ").list();
+//            List<Ciudad> dato = (List<Ciudad>) request.getSession().getAttribute("Datos");
+//            dato.remove(p);
+//
+//            if (!dato.isEmpty()) {
+//                request.getSession().setAttribute("Datos", dato);
+//            } else {
+//                request.getSession().removeAttribute("Datos");
+//                request.setAttribute("msg",
+//                        getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+//            }
+
+
+            List<Empresa> guarda2 = s.createQuery("from Empresa where ciudad= :var").setLong("var", p.getIdCiudad()).list();
+            if (!guarda2.isEmpty()) {
+                request.setAttribute("msg", "Disculpe no puede eliminar la ciudad si aún hay empresas asociadas a la misma");
+                try {
+                    s.close();
+                } catch (Exception ex2) {
+                }
+                return mapping.findForward(SALIDAS[salida]);
+            }
+
+
+
+
+
+            s.delete(p);
+
+            tr.commit();
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+
+
+        request.setAttribute("msg", "Se elimino con éxito el registro");
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
+
+
+
 }

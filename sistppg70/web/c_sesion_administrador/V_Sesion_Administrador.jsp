@@ -122,7 +122,7 @@
                                                             <html:link action="/A_Prep_Gestionar_Trimestres.do"><h2><center>Trimestres</center></h2></html:link>
                                                         </th>
                                                         <th width="250">
-                                                            <h2><center>Ciudad
+                                                            <html:link action="/A_Prep_Gestionar_Ciudades.do"><h2><center>Ciudades</center></h2></html:link>
                                                         </th>
                                                         <th width="250">
                                                             <html:link action="/A_Prep_Gestionar_Paises.do"><h2><center>Paises</center></h2></html:link>

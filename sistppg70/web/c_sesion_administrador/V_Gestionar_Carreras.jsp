@@ -16,6 +16,8 @@
 
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
 
+        <script type="text/javascript" src="../sorttable.js"></script>
+
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -102,9 +104,9 @@
 
                                                 <h2>
                                                     Carreras
-                                                </h2>
+                                                </h2><hr>
                                                 <div class="administrador">
-                                                    <table>
+                                                    <table class="sortable">
                                                         <thead>
                                                             <tr>
                                                                 <th width="250px">
