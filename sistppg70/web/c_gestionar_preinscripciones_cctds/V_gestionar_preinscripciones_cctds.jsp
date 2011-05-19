@@ -16,6 +16,7 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="1"><html:link action="/A_procesar_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label0"/><%-- Procesar Aprobados --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do">Consultar PENDIENTES</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="1"><html:link action="/A_prep_sesion_ccds.do">Home</html:link></cohesion:actor></li>
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
@@ -52,7 +53,7 @@
                                                 <td>${ p.tipo==1 ? "Corta" : ""}${ p.tipo==2 ? "Intermedia" : ""}${ p.tipo==3 ? "Larga" : ""}</td>
                                                 <td>${p.estudiante.usbid}</td>
                                                 <td>${p.created_at}</td>
-                                                <td id="pre${p.estatus ? "Proc" : "Pend"}">${p.estatus ? "Procesado" : "Pendiente"}</td>
+                                                <td id="pre${p.estatus ? "Proc" : "Pend"}">${p.estatus ? "Aprobado" : "Pendiente"}</td>
 
                                             </tr>
                                         </logic:iterate>

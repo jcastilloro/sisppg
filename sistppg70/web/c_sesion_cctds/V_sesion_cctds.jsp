@@ -14,10 +14,11 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do"><bean:message key="V_sesion_cctds.label0"/><%-- Consultas especiales --%></html:link></cohesion:actor></li>
+                    
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_preinscripcion_cctds.do"><bean:message key="V_sesion_cctds.label1"/><%-- gestionar Preinscripciones --%></html:link></cohesion:actor></li>
-                    <%-- <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_pasantias_cctds.do"><bean:message key="V_sesion_cctds.label2"/> Gestionar Pasantias </html:link></cohesion:actor></li> --%>
+                    <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_pasantias_cctds.do">Gestionar Pasantias </html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_gestionar_prorrogas.do"><bean:message key="V_sesion_cctds.label3"/><%-- Gestionar Prorrogas --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do"><bean:message key="V_sesion_cctds.label0"/><%-- Consultas especiales --%></html:link></cohesion:actor></li>
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
@@ -35,8 +36,26 @@
                             <div id="left">
                                 <div class="content">
 
-                            ${empty msg ? "" : msg}
-
+                                        <br>
+                                        <div style="float: left; border-right: 1px solid #666; padding-right: 45px;">
+                                            <h1>Numero de Pasantias por Status</h1>
+                                            <br>
+                                            <p><strong style="font-size: 12px; color: #5986BD;">Aprobadas: </strong>${p_aprobado}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Retiradas: </strong>${p_retirado}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Reprobadas: </strong>${p_reprobado}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Rezagadas: </strong>${p_rezagadado}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Revisadas: </strong>${p_revisado}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Por revisar: </strong>${p_porrevisar}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">"Pasar por CCTDS": </strong>${p_pasarporcctds}</p>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div style="float:right; margin-top: -30px;">
+                                            <h1>Numero de Preinscripciones por Status</h1>
+                                            <br>
+                                            <p><strong style="font-size: 12px; color: #5986BD;">Pendientes: </strong>${preins_noa}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Retiradas: </strong>${preins_a}</p>
+                                        </div>
                                 </div>
                             </div>
 
