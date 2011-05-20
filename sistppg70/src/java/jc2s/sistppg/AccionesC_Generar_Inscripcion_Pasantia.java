@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -133,6 +134,7 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             Profesor prof = (Profesor) s.createQuery("from Profesor where idProfesor = :profId").setLong("profId", Long.parseLong(fpasantia.getTutor_academico())).uniqueResult();
             TutorIndustrial ti = (TutorIndustrial) s.createQuery("from TutorIndustrial where idTutorIndustrial = :tiId").setLong("tiId", Long.parseLong(fpasantia.getTutor_industrial())).uniqueResult();
 
+            Calendar cal = Calendar.getInstance();
 
             pas.setProyecto(pro);
             pas.setEstatus(est);
@@ -141,6 +143,8 @@ public class AccionesC_Generar_Inscripcion_Pasantia extends CohesionAction {
             pas.setTitulo(fpasantia.getTitulo_pasantia());
             pas.setTutor_academico(prof);
             pas.setTutor_industrial(ti);
+            // Año actual. Hay que sumarle 1 si es para E-M
+            pas.setAno(cal.get(Calendar.YEAR));
 
             s.save(pas);
 

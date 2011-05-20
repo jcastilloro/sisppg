@@ -184,6 +184,26 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
         this.objetivos_generales = objetivos_generales;
     }
 
+    /**
+     * Holds value of property ano.
+     */
+    private int ano = 0;
+
+    /**
+     * Getter for property ano.
+     * @return Value of property ano.
+     */
+    public int getAno() {
+        return this.ano;
+    }
+
+    /**
+     * Setter for property ano.
+     * @param ano New value of property ano.
+     */
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 
 
 
@@ -201,6 +221,7 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
 
       "\" resumen =\"" + resumen +
       "\" objetivos_generales =\"" + objetivos_generales +
+      "\" ano =\"" + ano +
 
         "'/>";
     }

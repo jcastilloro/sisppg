@@ -20,6 +20,7 @@ import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -396,21 +397,22 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
              * CRITERIA *
              ************/
             long estatuss = f_sinai.getStatus();
-            Criteria criteria = s.createCriteria(Pasantia.class)
-                    .createCriteria("estatus");
-            if ( estatuss != -1){
-                criteria.add( Restrictions.eq("idEstatusPasantia", estatuss));
+            int ano = f_sinai.getAno();
+            Criteria criteria = s.createCriteria(Pasantia.class);
+
+            if (ano != -1){
+                criteria.add(Expression.eq("ano",ano));
             }
+            if ( estatuss != -1){
+                criteria.createCriteria("estatus")
+                        .add( Restrictions.eq("idEstatusPasantia", estatuss));
+            }
+            
             List<Pasantia> pas2 = criteria.list();
 
             pas.retainAll(pas2);
 
-
-            /*  QUE WEBO TAN PELAO NO TENER UN PUTO ATRIBUTO AÑO!!!!
-            if (f_sinai.getAno() != -1){
-                pas = s.createQuery("from Pasantia where proyecto IN (select id_proyecto from Proyecto where created_at= :var)").setLong("var", f_sinai.getStatus()).list();
-            }
-*/          
+        
 
             request.setAttribute("Pasantias", pas);
             

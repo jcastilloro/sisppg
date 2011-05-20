@@ -96,21 +96,21 @@
                                             </html:select>
                                         </td>
                                     </tr>
-<%--
+
                                     <tr><td>Año: </td>
                                         <td>
                                     <html:select property="ano">
                                         <html:option value="-1"> Todos </html:option>
+                                        <html:option value="2006"> 2006</html:option>
+                                        <html:option value="2007"> 2007</html:option>
                                         <html:option value="2008"> 2008</html:option>
                                         <html:option value="2009"> 2009</html:option>
                                         <html:option value="2010"> 2010</html:option>
                                         <html:option value="2011"> 2011</html:option>
                                         <html:option value="2012"> 2012</html:option>
-                                        <html:option value="2013"> 2013</html:option>
-                                        <html:option value="2014"> 2014</html:option>
                                     </html:select>
                                         </td></tr>
---%>
+
                                     <tr><td>Estatus: </td>
                                         <td>
                                     <html:select property="status">

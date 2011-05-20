@@ -20,5 +20,7 @@
     <property column="resumen" name="resumen" not-null="true" type="text"/>
     <!-- 7 -->
     <property column="objetivos_generales" name="objetivos_generales" not-null="true" type="text"/>
+    <!-- 8 -->
+    <property column="ano" name="ano" not-null="true" type="integer"/>
   </class>
 </hibernate-mapping>

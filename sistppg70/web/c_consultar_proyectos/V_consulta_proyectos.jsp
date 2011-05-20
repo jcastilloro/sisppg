@@ -61,6 +61,8 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
+                    <li><cohesion:actor actors="11"><html:link action="/A_consultar_PG.do"><bean:message key="V_consulta_proyectos.label0"/><%-- Consultar PG --%></html:link></cohesion:actor></li>
+	            <li><cohesion:actor actors="11"><html:link action="/A_consultar_pasantias.do"><bean:message key="V_consulta_proyectos.label1"/><%-- Consultar Pasantias --%></html:link></cohesion:actor></li>
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
