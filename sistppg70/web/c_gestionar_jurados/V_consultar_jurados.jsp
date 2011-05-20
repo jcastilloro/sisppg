@@ -101,6 +101,9 @@
                                                     <td>
                                                         Área
                                                     </td>
+                                                    <td>
+                                                        Búsqueda
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
@@ -117,13 +120,13 @@
                                                     <html:select styleId="1843493" property="periodo" value="">
                                                     <option value="">Todos</option>
                                                     <logic:iterate id="arrea" collection="${empty L_Trimestres ? _vacio : L_Trimestres}">
-                                                        <option value="${arrea.idTrimestre}">${arrea.nombre}</option>
+                                                        <option value="${arrea.nombre}">${arrea.nombre}</option>
                                                     </logic:iterate>
                                                     <logic:iterate id="arrea" collection="${empty L_PeriodosPasantiaIntermedia ? _vacio : L_PeriodosPasantiaIntermedia}">
-                                                        <option value="${arrea.idPeriodoPasantiaIntermedia}">${arrea.nombre}</option>
+                                                        <option value="${arrea.nombre}">${arrea.nombre}</option>
                                                     </logic:iterate>
                                                     <logic:iterate id="arrea" collection="${empty L_PeriodosPasantiaLarga ? _vacio : L_PeriodosPasantiaLarga}">
-                                                        <option value="${arrea.idPeriodoPasantiaLarga}">${arrea.nombre}</option>
+                                                        <option value="${arrea.nombre}">${arrea.nombre}</option>
                                                     </logic:iterate>
                                                 </html:select>
                                                 </td>
@@ -143,30 +146,11 @@
                                                     </logic:iterate>
                                                 </html:select>
                                                 </td>
-                                                </tr>
-
-                                                <tr>
+                                             
                                                     <td>
-                                                        Nombre
+                                                        <html:text styleId="1840413" property="texto" size="30" value=""/>
                                                     </td>
-                                                    <td>
-                                                        Apellido
-                                                    </td>
-                                                    <td>
-                                                        Cédula
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        <html:text styleId="1840413" property="nombre" size="30" value=""/>
-                                                    </td>
-                                                    <td>
-                                                        <html:text styleId="1840413" property="apellido" size="30" value=""/>
-                                                    </td>
-                                                    <td>
-                                                        <html:text styleId="1840413" property="cedula" size="30" value=""/>
-                                                    </td>
+                                                    
                                                     <td>
                                                         <center>
                                                             <html:submit styleClass="button">Refinar<%-- Crear --%></html:submit>

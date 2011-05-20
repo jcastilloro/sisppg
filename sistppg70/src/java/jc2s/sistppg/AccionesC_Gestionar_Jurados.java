@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -97,7 +98,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
 
-
+            request.getSession().removeAttribute("Datos");
 
             List<Area> L_Areas = s.createQuery("from Area").list();
             request.getSession().setAttribute("L_Areas", L_Areas);
@@ -110,15 +111,189 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
             List<PeriodoPasantiaLarga> L_PeriodosPasantiaLarga = s.createQuery("from PeriodoPasantiaLarga").list();
             request.getSession().setAttribute("L_PeriodosPasantiaLarga", L_PeriodosPasantiaLarga);
 
+            String query = "";
 
+            //Se hace el filtro por nombre, apellido, cedula y departamento
+            F_Jurado forma = (F_Jurado) form;
             List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
-            List<Profesor> profesores = s.createQuery("from Profesor").list();
-            Iterator iterador = profesores.iterator();
+            if (!forma.getDepartamento().equals("")) {
+                query = "AND departamento = '" + forma.getDepartamento() + "'";
+            }
+            List<Profesor> profesores = s.createQuery("from Profesor where (cedula LIKE '%" + forma.getTexto() + "%' OR nombre LIKE '%" + forma.getTexto() + "%' OR apellido LIKE '%" + forma.getTexto() + "%')" + query).list();
+            List<Profesor> profesores1 = s.createQuery("from Profesor where cedula = '-18'").list();
 
-            while(iterador.hasNext()){
+            List<Profesor> profesores2 = s.createQuery("from Profesor where cedula = '-18'").list();
+
+            Iterator iterador;
+
+
+
+            //Se hace el filtro por Periodo
+            if (!forma.getPeriodo().equals("")) {
+                List<String> periodos0 = s.createSQLQuery("select idTrimestre from trimestre where nombre = '" + forma.getPeriodo() + "'").list();
+                System.out.println("TAMAÑO DE LTRIM ES " + periodos0.size());
+                if (!periodos0.isEmpty()) {
+
+                    Iterator itp0 = periodos0.iterator();
+
+
+
+                    List<String> proyectos00 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                    while (itp0.hasNext()) {
+                        proyectos00.addAll(s.createSQLQuery("select proyecto_de_grado from etapa where trimestre = '" + itp0.next() + "'").list());
+                    }
+                    System.out.println("TAMAÑO DE LPROYGTRIM ES " + proyectos00.size());
+
+
+
+                    itp0 = itp0 = proyectos00.iterator();
+
+                    List<String> proyectos0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                    while (itp0.hasNext()) {
+                        proyectos0.addAll(s.createSQLQuery("select proyecto from proyectoDeGrado where idProyectoDeGrado = '" + itp0.next() + "'").list());
+                    }
+                    System.out.println("TAMAÑO DE LPROYTRIM ES " + proyectos0.size());
+
+                    List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                    itp0 = proyectos0.iterator();
+                    while (itp0.hasNext()) {
+                        profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
+                    }
+                    System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
+                    itp0 = profesores.iterator();
+
+                    while (itp0.hasNext()) {
+                        Profesor iterado = (Profesor) itp0.next();
+                        if (profesores0.contains(BigInteger.valueOf(iterado.getIdProfesor()))) {
+                            profesores1.add(iterado);
+                        }
+                    }
+
+                    System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores1.size());
+
+//                    List<String> periodos1 = s.createSQLQuery("select idPeriodoPasantiaIntermedia from PeriodoPasantiaIntermedia where nombre = '" + forma.getPeriodo() + "'").list();
+//                    List<String> periodos2 = s.createSQLQuery("select idPeriodoPasantiaLarga from PeriodoPasantiaLarga where nombre = '" + forma.getPeriodo() + "'").list();
+
+                } else {
+                    periodos0 = s.createSQLQuery("select idPeriodoPasantiaIntermedia from periodoPasantiaIntermedia where nombre = '" + forma.getPeriodo() + "'").list();
+                    if (!periodos0.isEmpty()) {
+
+                        Iterator itp0 = periodos0.iterator();
+                        List<String> proyectos0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                        while (itp0.hasNext()) {
+                            proyectos0.addAll(s.createSQLQuery("select pasantia from pasantiaIntermedia where periodo = '" + itp0.next() + "'").list());
+                        }
+
+                        System.out.println("TAMAÑO DE LPASTRIM ES " + proyectos0.size());
+
+                        List<String> pasantias0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                        itp0 = proyectos0.iterator();
+                        while (itp0.hasNext()) {
+                            pasantias0.addAll(s.createSQLQuery("select proyecto from Pasantia where idPasantia = '" + itp0.next() + "'").list());
+                        }
+
+
+
+                        System.out.println("TAMAÑO DE LPROYTRIM ES " + pasantias0.size());
+
+                        List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                        itp0 = pasantias0.iterator();
+                        while (itp0.hasNext()) {
+                            profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
+                        }
+                        System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
+                        itp0 = profesores.iterator();
+
+                        while (itp0.hasNext()) {
+                            Profesor iterado = (Profesor) itp0.next();
+                            if (profesores0.contains(BigInteger.valueOf(iterado.getIdProfesor()))) {
+                                profesores1.add(iterado);
+                            }
+                        }
+
+                        System.out.println("TAMAÑO DE LPROFTOT ES " + profesores1.size());
+
+
+                    } else {
+                        periodos0 = s.createSQLQuery("select idPeriodoPasantiaLarga from periodoPasantiaLarga where nombre = '" + forma.getPeriodo() + "'").list();
+                        if (!periodos0.isEmpty()) {
+
+                            Iterator itp0 = periodos0.iterator();
+                            List<String> proyectos0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                            while (itp0.hasNext()) {
+                                proyectos0.addAll(s.createSQLQuery("select pasantia from pasantiaLarga where periodo = '" + itp0.next() + "'").list());
+                            }
+
+                            System.out.println("TAMAÑO DE LPASTRIM ES " + proyectos0.size());
+
+                            List<String> pasantias0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                            itp0 = proyectos0.iterator();
+                            while (itp0.hasNext()) {
+                                pasantias0.addAll(s.createSQLQuery("select proyecto from Pasantia where idPasantia = '" + itp0.next() + "'").list());
+                            }
+
+
+
+                            System.out.println("TAMAÑO DE LPROYTRIM ES " + pasantias0.size());
+
+                            List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
+                            itp0 = pasantias0.iterator();
+                            while (itp0.hasNext()) {
+                                profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
+                            }
+                            System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
+                            itp0 = profesores.iterator();
+
+                            while (itp0.hasNext()) {
+                                Profesor iterado = (Profesor) itp0.next();
+                                if (profesores0.contains(BigInteger.valueOf(iterado.getIdProfesor()))) {
+                                    profesores1.add(iterado);
+                                }
+                            }
+
+                            System.out.println("TAMAÑO DE LPROFTOT ES " + profesores1.size());
+
+
+                        }
+                    }
+                }
+            } else {
+                profesores1 = profesores;
+            }
+
+
+
+
+            //Se hace el filtro por area del profesor
+            if (!forma.getArea().equals("")) {
+                List<String> ap = s.createSQLQuery("select profesor from areaProfesor where area = '" + forma.getArea() + "'").list();
+
+                iterador = profesores1.iterator();
+                while (iterador.hasNext()) {
+                    Profesor iterado = (Profesor) iterador.next();
+                    if (ap.contains(BigInteger.valueOf(iterado.getIdProfesor()))) {
+                        profesores2.add(iterado);
+                    }
+                }
+
+            } else {
+                profesores2 = profesores1;
+            }
+
+
+
+
+
+
+
+
+
+
+            iterador = profesores2.iterator();
+            while (iterador.hasNext()) {
                 Profesor iterado = (Profesor) iterador.next();
                 Devolucion.add("<tr><td><center>" + iterado.getNombre() + "</center></td><td><center>" + iterado.getApellido() + "</center></td>");
-                Devolucion.add("<td><center>" + iterado.getDepartamento().getNombre() + "</center></td><td><center>"+""+"</center></td></tr>");
+                Devolucion.add("<td><center>" + iterado.getDepartamento().getNombre() + "</center></td><td><center>" + ((List<String>) s.createSQLQuery("select proyecto from juradoProyecto where profesor =" + iterado.getIdProfesor()).list()).size() + "</center></td></tr>");
             }
 
             if (!Devolucion.isEmpty()) {

@@ -16,9 +16,8 @@ public class F_Jurado extends org.apache.struts.action.ActionForm {
         periodo="";
         departamento="";
         area="";
-        nombre="";
-        apellido="";
-        cedula="";
+        texto="";
+        
 
 
     }
@@ -28,9 +27,8 @@ public class F_Jurado extends org.apache.struts.action.ActionForm {
         periodo="";
         departamento="";
         area="";
-        nombre="";
-        apellido="";
-        cedula="";
+        texto="";
+       
 
     }
 
@@ -62,24 +60,13 @@ public class F_Jurado extends org.apache.struts.action.ActionForm {
 
 
 
-    private String nombre;
+    private String texto;
 
 
 
-    private String apellido;
+   
 
-
-
-    private String cedula;
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
+  
     public String getArea() {
         return area;
     }
@@ -88,13 +75,7 @@ public class F_Jurado extends org.apache.struts.action.ActionForm {
         this.area = area;
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
+  
 
     public String getDepartamento() {
         return departamento;
@@ -104,12 +85,12 @@ public class F_Jurado extends org.apache.struts.action.ActionForm {
         this.departamento = departamento;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTexto() {
+        return texto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public String getPeriodo() {
