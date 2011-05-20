@@ -6,7 +6,8 @@ insert into usuario values (5, 'cctds', 'cctds');
 insert into usuario values (6, 'coord-comp', 'coordinacion');
 insert into usuario values (7, 'sabad', 'profesor');
 insert into usuario values (8, '06-12345', 'estudiante');
-insert into usuario values (9, '07-41896', 'estudiante');
+insert into usuario values (9, '07-00000', 'estudiante');
+insert into usuario values (10, 'kdominguez', 'profesor');
 
 insert into carrera values (1, 'Ingeniería Eléctrica', 'coord-ee@usb.ve');
 insert into carrera values (2, 'Ingeniería de Computación', 'coord-comp@usb.ve');

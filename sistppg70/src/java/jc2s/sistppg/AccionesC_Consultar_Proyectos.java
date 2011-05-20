@@ -329,21 +329,28 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             List<Pasantia> pas = s.createQuery("from Pasantia").list();            
             List<Pasantia> pas1 = new LinkedList<Pasantia>();
             List<Pasantia> pasDef = new LinkedList<Pasantia>();
-
-            StringBuffer queryBuf = new StringBuffer("from Pasantia p ");
-            boolean firstClause = true;
- 
             boolean tipoON = false;
+            boolean hayCarrera = false;
+            boolean hayPeriodo = false;
+            long idCarrera;
+
+            // Formulario recibido
+            F_Sinai f_sinai = (F_Sinai) form;
 
             if (user.getUsbid().equals("coord-comp")){
                 //VALOR CABLIAO
-                long idCarrera = 2;
+                idCarrera = 2;
                 // TODOS los proyectos, toca filtrarlos por carrera
                 pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", idCarrera).list();
-
+                hayCarrera = true;
             } else {
                 List<Carrera> career = s.createQuery("from Carrera").list();
                 request.setAttribute("Carreras", career);
+                idCarrera = f_sinai.getIdCarrera();
+                if (idCarrera != -1) {
+                    pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", idCarrera).list();
+                    hayCarrera = true;
+                }
             }
             
             List<PeriodoPasantiaLarga> ppl = (List<PeriodoPasantiaLarga>) s.createQuery("from PeriodoPasantiaLarga").list();
@@ -352,14 +359,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             request.setAttribute("L_PPI",ppi);
 
             List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
-            request.setAttribute("Estatus", estatus);
-
-            F_Sinai f_sinai = (F_Sinai) form;
-
-
-            if(f_sinai.getIdCarrera() != -1){
-               pas1 = s.createQuery("from Pasantia where proyecto IN (select proyecto from EstudianteRealizaProyecto where estudiante IN (select idEstudiante from Estudiante where carrera= :var))").setLong("var", f_sinai.getIdCarrera()).list();
-            }
+            request.setAttribute("Estatus", estatus);           
 
             
             String tipo = f_sinai.getTipo();
@@ -388,9 +388,13 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
                 tipoON = true;
             }
 
+            // Intersección: Carrera-Tipo-Periodo
+            if (hayCarrera)
+                pas.retainAll(pas1);
 
-            /////////////// CRITERIA
-
+            /************
+             * CRITERIA *
+             ************/
             long estatuss = f_sinai.getStatus();
             Criteria criteria = s.createCriteria(Pasantia.class)
                     .createCriteria("estatus");
@@ -399,27 +403,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             }
             List<Pasantia> pas2 = criteria.list();
 
-            ///////////////
-
-            // El rancho en accion
-            if (!pas1.isEmpty() && tipoON && !pas2.isEmpty()){
-                pasDef = interseccion(pas2,pas1);
-                pasDef = interseccion(pasDef,pas);
-            } else if (!pas1.isEmpty() && tipoON){
-                pasDef = interseccion(pas1,pas);
-
-            } else if (!pas2.isEmpty() && tipoON){
-                pasDef = interseccion(pas2,pas);
-
-            } else if (!pas2.isEmpty() && !pas1.isEmpty()){
-                pasDef = interseccion(pas2,pas1);
-
-            } else if (!pas2.isEmpty()){
-                pasDef = pas2;
-            } else if (!pas1.isEmpty()){
-                pasDef = pas1;
-            } else
-                pasDef = pas;
+            pas.retainAll(pas2);
 
 
             /*  QUE WEBO TAN PELAO NO TENER UN PUTO ATRIBUTO AÑO!!!!
@@ -428,7 +412,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             }
 */          
 
-            request.setAttribute("Pasantias", pasDef);
+            request.setAttribute("Pasantias", pas);
             
             //micodigo
             tr.commit();

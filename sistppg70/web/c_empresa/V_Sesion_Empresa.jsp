@@ -18,7 +18,7 @@
                     <li><html:link action="/A_Prep_gestionar_solicitud_pasantes.do"><bean:message key="V_Sesion_Empresa.label1"/><%-- Solicitud de pasantes --%></html:link></li>
                     <li><html:link action="/A_Inicio_Sesion_Empresa.do">Cancelar Registro</html:link></li>
                 </ul>
-                <p align="right"><html:link action="/A_Pre_CerrarSesion.do">Cerrar Sesión</html:link></p>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link></p>
             </div>
 
             <div id="header">               
