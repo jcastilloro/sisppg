@@ -131,7 +131,6 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
             //Se hace el filtro por Periodo
             if (!forma.getPeriodo().equals("")) {
                 List<String> periodos0 = s.createSQLQuery("select idTrimestre from trimestre where nombre = '" + forma.getPeriodo() + "'").list();
-                System.out.println("TAMAÑO DE LTRIM ES " + periodos0.size());
                 if (!periodos0.isEmpty()) {
 
                     Iterator itp0 = periodos0.iterator();
@@ -142,8 +141,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                     while (itp0.hasNext()) {
                         proyectos00.addAll(s.createSQLQuery("select proyecto_de_grado from etapa where trimestre = '" + itp0.next() + "'").list());
                     }
-                    System.out.println("TAMAÑO DE LPROYGTRIM ES " + proyectos00.size());
-
+                   
 
 
                     itp0 = itp0 = proyectos00.iterator();
@@ -152,14 +150,12 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                     while (itp0.hasNext()) {
                         proyectos0.addAll(s.createSQLQuery("select proyecto from proyectoDeGrado where idProyectoDeGrado = '" + itp0.next() + "'").list());
                     }
-                    System.out.println("TAMAÑO DE LPROYTRIM ES " + proyectos0.size());
-
+                    
                     List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
                     itp0 = proyectos0.iterator();
                     while (itp0.hasNext()) {
                         profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
                     }
-                    System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
                     itp0 = profesores.iterator();
 
                     while (itp0.hasNext()) {
@@ -169,8 +165,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                         }
                     }
 
-                    System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores1.size());
-
+                    
 //                    List<String> periodos1 = s.createSQLQuery("select idPeriodoPasantiaIntermedia from PeriodoPasantiaIntermedia where nombre = '" + forma.getPeriodo() + "'").list();
 //                    List<String> periodos2 = s.createSQLQuery("select idPeriodoPasantiaLarga from PeriodoPasantiaLarga where nombre = '" + forma.getPeriodo() + "'").list();
 
@@ -184,8 +179,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                             proyectos0.addAll(s.createSQLQuery("select pasantia from pasantiaIntermedia where periodo = '" + itp0.next() + "'").list());
                         }
 
-                        System.out.println("TAMAÑO DE LPASTRIM ES " + proyectos0.size());
-
+                        
                         List<String> pasantias0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
                         itp0 = proyectos0.iterator();
                         while (itp0.hasNext()) {
@@ -194,14 +188,12 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
 
 
 
-                        System.out.println("TAMAÑO DE LPROYTRIM ES " + pasantias0.size());
-
+                       
                         List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
                         itp0 = pasantias0.iterator();
                         while (itp0.hasNext()) {
                             profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
                         }
-                        System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
                         itp0 = profesores.iterator();
 
                         while (itp0.hasNext()) {
@@ -211,8 +203,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                             }
                         }
 
-                        System.out.println("TAMAÑO DE LPROFTOT ES " + profesores1.size());
-
+                        
 
                     } else {
                         periodos0 = s.createSQLQuery("select idPeriodoPasantiaLarga from periodoPasantiaLarga where nombre = '" + forma.getPeriodo() + "'").list();
@@ -224,8 +215,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                                 proyectos0.addAll(s.createSQLQuery("select pasantia from pasantiaLarga where periodo = '" + itp0.next() + "'").list());
                             }
 
-                            System.out.println("TAMAÑO DE LPASTRIM ES " + proyectos0.size());
-
+                            
                             List<String> pasantias0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
                             itp0 = proyectos0.iterator();
                             while (itp0.hasNext()) {
@@ -234,14 +224,12 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
 
 
 
-                            System.out.println("TAMAÑO DE LPROYTRIM ES " + pasantias0.size());
-
+                            
                             List<String> profesores0 = s.createQuery("select nombre from Profesor where cedula = '-18'").list();
                             itp0 = pasantias0.iterator();
                             while (itp0.hasNext()) {
                                 profesores0.addAll(s.createSQLQuery("select profesor from juradoProyecto where proyecto = '" + itp0.next() + "'").list());
                             }
-                            System.out.println("TAMAÑO DE LPROFTRIM ES " + profesores0.size());
                             itp0 = profesores.iterator();
 
                             while (itp0.hasNext()) {
@@ -251,8 +239,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                                 }
                             }
 
-                            System.out.println("TAMAÑO DE LPROFTOT ES " + profesores1.size());
-
+                            
 
                         }
                     }
@@ -292,7 +279,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
             iterador = profesores2.iterator();
             while (iterador.hasNext()) {
                 Profesor iterado = (Profesor) iterador.next();
-                Devolucion.add("<tr><td><center>" + iterado.getNombre() + "</center></td><td><center>" + iterado.getApellido() + "</center></td>");
+                Devolucion.add("<tr onclick=\"location.href='/sistppg70/A_mostrar_jurado.do?idJurado=" + iterado.getIdProfesor() + "'\" onmouseover=\"this.style.cursor='pointer'\">               <td><center>" + iterado.getNombre() + "</center></td><td><center>" + iterado.getApellido() + "</center></td>");
                 Devolucion.add("<td><center>" + iterado.getDepartamento().getNombre() + "</center></td><td><center>" + ((List<String>) s.createSQLQuery("select proyecto from juradoProyecto where profesor =" + iterado.getIdProfesor()).list()).size() + "</center></td></tr>");
             }
 
@@ -349,6 +336,86 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+
+
+
+            String parameter = request.getParameter("idJurado");
+            List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+
+            if (parameter != null && !parameter.equals("")) {
+                Profesor profesor = (Profesor) s.createQuery("from Profesor where idProfesor= :var").setLong("var", Long.parseLong(parameter)).uniqueResult();
+                Devolucion.add("<table><thead><tr><th width=\"250px\"><h3 align=\"right\">Nombre: </h3></th><th width=\"250px\" align=\"left\">" + profesor.getNombre() + "</th></tr>");
+                Devolucion.add("<tr><th><h3 align=\"right\">Apellido: </h3></th><th align=\"left\">" + profesor.getApellido() + "</th></tr><tr><th><h3 align=\"right\">Cédula: </h3></th><th align=\"left\">" + profesor.getCedula());
+                Devolucion.add("</th></tr><tr><th><h3 align=\"right\">USBId: </h3></th><th align=\"left\">" + profesor.getUsbid() + "</th></tr><tr><th><h3 align=\"right\">Contacto: </h3></th><th align=\"left\">" + profesor.getEmail());
+                Devolucion.add("</th></tr><tr><th><h3 align=\"right\">Departamento: </h3></th><th align=\"left\">" + profesor.getDepartamento().getNombre() + "</th></tr>");
+                Devolucion.add("<tr><th><h3 align=\"right\">Areas: </h3></th>");
+                List<String> areaProfesor = s.createSQLQuery("select area from areaProfesor where profesor= :var").setLong("var", profesor.getIdProfesor()).list();
+                Iterator it = areaProfesor.iterator();
+                String query = "";
+                while (it.hasNext()) {
+                    if (!query.equals("")) {
+                        query = query + " OR";
+                    }
+                    query = query + " idArea = '" + it.next() + "'";
+                }
+                if (!query.equals("")) {
+                    List<Area> areas = s.createQuery("from Area where " + query).list();
+                    it = areas.iterator();
+                    while (it.hasNext()) {
+                        Devolucion.add("<th align=\"left\">" + ((Area) it.next()).getNombre() + "</th></tr><tr><th></th>");
+                    }
+                }
+
+                if (!Devolucion.isEmpty()) {
+                    Devolucion.add("<th></th></tr></thead></table>");
+                
+                    request.getSession().setAttribute("Datos", Devolucion);
+                } else {
+                    request.setAttribute("msg",
+                            getResources(request).getMessage("A_Prep_Inicio_Sesion_Adm.msg0"));
+                }
+
+
+                List<String> Devolucion2 = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+
+                List<String> proyectos = s.createSQLQuery("select proyecto from juradoProyecto where profesor = '"+profesor.getIdProfesor()+"'").list();
+                it = proyectos.iterator();
+                query = "";
+                while (it.hasNext()) {
+                    if (!query.equals("")) {
+                        query = query + " OR";
+                    }
+                    query = query + " proyecto = '" + it.next() + "'";
+                }
+                if (!query.equals("")) {
+                    List<Pasantia> pasantias = s.createQuery("from Pasantia where " + query).list();
+                    it = pasantias.iterator();
+                    while (it.hasNext()) {
+                        Devolucion2.add("<tr><td align=\"center\">" + ((Pasantia) it.next()).getTitulo() + "</td></tr>");
+                    }
+                }
+
+
+                if (!query.equals("")) {
+                    List<ProyectoDeGrado> pgs = s.createQuery("from ProyectoDeGrado where " + query).list();
+                    it = pgs.iterator();
+                    while (it.hasNext()) {
+                        Devolucion2.add("<tr><td align=\"center\">" + ((ProyectoDeGrado) it.next()).getNombre() + "</td></tr>");
+                    }
+                }
+
+                if (!Devolucion2.isEmpty()) {
+
+                    request.getSession().setAttribute("Datos2", Devolucion2);
+                }
+
+            }
+
+
+
+
+
             tr.commit();
 
         } catch (Exception ex) {

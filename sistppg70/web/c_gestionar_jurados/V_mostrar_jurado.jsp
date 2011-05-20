@@ -5,12 +5,19 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title>Consultar Jurados</title>
+        <title>Mostrar Jurados</title>
+
+
         <html:base/>
 
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+
+        <script type="text/javascript" src="../sorttable.js"></script>
+
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -60,12 +67,23 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
+
+
+
+
+
                 </ul>
             </div>
 
+
+
             <div id="header">
+                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
+
+
+
                 <div id="content">
 
                     <div id="body">
@@ -77,8 +95,43 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
+                                        <h2>Datos del Jurado</h2><hr>
 
 
+
+                                        <logic:notEmpty name="Datos">
+                                            <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
+
+                                                <bean:write name="dato" filter="false"/>
+
+
+                                            </logic:iterate>
+
+                                        </logic:notEmpty>
+
+                                        <hr>
+                                        <div class="administrador">
+                                            <table class="sortable" width="500px" align="center">
+                                                <thead>
+                                                    <tr>
+                                                        <th align="center">
+                                                            <h2>Proyectos Tutoreados</h2>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <logic:notEmpty name="Datos2">
+
+                                                        <logic:iterate id="dato" collection="${empty Datos2 ? _vacio : Datos2}">
+
+                                                            <bean:write name="dato" filter="false"/>
+
+
+                                                        </logic:iterate>
+                                                    </logic:notEmpty>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +149,8 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
+
+
 
     </body>
 </html:html>

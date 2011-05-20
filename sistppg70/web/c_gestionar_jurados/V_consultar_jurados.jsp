@@ -89,9 +89,9 @@
                                             <table border="0">
 
                                                 <tr>
-                                                    <td>
+                                                    <%--<td>
                                                         Tipo de Proyecto
-                                                    </td>
+                                                    </td>--%>
                                                     <td>
                                                         Periodo
                                                     </td>
@@ -107,7 +107,7 @@
                                                 </tr>
 
                                                 <tr>
-                                                    <td>
+                                                    <%--<td>
                                                         <html:select styleId="tipo" property="tipo" value="">
 
                                                     <option value="">Todos</option>
@@ -115,7 +115,7 @@
                                                     <option value="ProyectosDeGrado">Proyectos de Grado</option>
 
                                                 </html:select>
-                                                </td>
+                                                </td>--%>
                                                 <td>
                                                     <html:select styleId="1843493" property="periodo" value="">
                                                     <option value="">Todos</option>
