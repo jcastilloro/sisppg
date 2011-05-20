@@ -259,7 +259,7 @@
                                         </logic:notEmpty>
                                             <br>
                                             <logic:notEmpty name="idJurado">
-                                                <a href="www.google.com">Remover Jurado</a>
+                                                <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idProyectoDeGrado=${Proyecto.proyecto}">Remover Jurado</a>
                                             </logic:notEmpty>
                                         <p></p>
                                         <%--  <logic:notEmpty name="JuradoProyecto">

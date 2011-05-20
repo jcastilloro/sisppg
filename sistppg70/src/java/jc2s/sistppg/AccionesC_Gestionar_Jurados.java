@@ -339,6 +339,8 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
 
 
 
+            request.getSession().removeAttribute("Datos");
+            request.getSession().removeAttribute("Datos2");
 
             String parameter = request.getParameter("idJurado");
             List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
@@ -386,10 +388,13 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                     if (!query.equals("")) {
                         query = query + " OR";
                     }
-                    query = query + " proyecto = '" + it.next() + "'";
+                    query = query + " proyecto= '" + it.next() + "'";
                 }
                 if (!query.equals("")) {
+//                    System.out.println("----------------------------------------from Pasantia where "+query);
                     List<Pasantia> pasantias = s.createQuery("from Pasantia where " + query).list();
+//                    System.out.println("----------------------------------------from Pasantia where "+query);
+                    
                     it = pasantias.iterator();
                     while (it.hasNext()) {
                         Pasantia pasantia= (Pasantia)it.next();
@@ -402,7 +407,8 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                     List<ProyectoDeGrado> pgs = s.createQuery("from ProyectoDeGrado where " + query).list();
                     it = pgs.iterator();
                     while (it.hasNext()) {
-                        Devolucion2.add("<tr><td align=\"center\">" + ((ProyectoDeGrado) it.next()).getNombre() + "</td></tr>");
+                        ProyectoDeGrado pg = (ProyectoDeGrado)it.next();
+                        Devolucion2.add("<tr onclick=\"location.href='/sistppg70/A_mostrar_pg.do?idProyectoDeGrado=" + pg.getIdProyectoDeGrado() + "&idJurado="+profesor.getIdProfesor()+"'\" onmouseover=\"this.style.cursor='pointer'\">     <td align=\"center\">" + pg.getNombre() + "</td></tr>");
                     }
                 }
 
@@ -413,6 +419,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
 
             }
 
+            
 
 
 
@@ -430,4 +437,58 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
         }
         return mapping.findForward(SALIDAS[salida]);
     }
+
+
+
+
+    public ActionForward A_remover_jurado(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_Gestionar_Jurados",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors cordiacion_de_carrera
+        if (!CohesionActor.checkActor(request, 2)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            String idJurado = request.getParameter("idJurado");
+            String idPasantia = request.getParameter("idPasantia");
+            String idProyectoDeGrado = request.getParameter("idProyectoDeGrado");
+
+            if(idPasantia!=null){
+                Pasantia proyecto = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(idPasantia)).uniqueResult();
+                JuradoProyecto jp = (JuradoProyecto) s.createQuery("from JuradoProyecto where proyecto= :var AND profesor= :vbr").setLong("var", proyecto.getProyecto().getId_proyecto()).setLong("vbr",Long.parseLong(idJurado)).uniqueResult();
+                s.delete(jp);
+            }else{
+                ProyectoDeGrado proyecto = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado where idProyectoDeGrado= :var").setLong("var", Long.parseLong(idProyectoDeGrado)).uniqueResult();
+                JuradoProyecto jp = (JuradoProyecto) s.createQuery("from JuradoProyecto where proyecto= :var AND profesor= :vbr").setLong("var", proyecto.getProyecto().getId_proyecto()).setLong("vbr",Long.parseLong(idJurado)).uniqueResult();
+                s.delete(jp);
+            }
+
+
+
+
+            tr.commit();
+
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
+
 }

@@ -123,7 +123,7 @@
                                 </logic:notEmpty>
                                 <br>
                                         <logic:notEmpty name="idJurado">
-                                                <a href="www.google.com">Remover Jurado</a>
+                                                <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idPasantia=${Pasantia.idPasantia}">Remover Jurado</a>
                                             </logic:notEmpty>
 
                           </div>
