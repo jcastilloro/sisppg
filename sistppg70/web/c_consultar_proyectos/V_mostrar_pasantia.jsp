@@ -121,6 +121,10 @@
                                         </table>
                                     </logic:iterate>
                                 </logic:notEmpty>
+                                <br>
+                                        <logic:notEmpty name="idJurado">
+                                                <a href="www.google.com">Remover Jurado</a>
+                                            </logic:notEmpty>
 
                           </div>
                             </div>

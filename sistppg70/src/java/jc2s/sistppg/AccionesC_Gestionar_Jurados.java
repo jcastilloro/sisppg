@@ -392,7 +392,8 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
                     List<Pasantia> pasantias = s.createQuery("from Pasantia where " + query).list();
                     it = pasantias.iterator();
                     while (it.hasNext()) {
-                        Devolucion2.add("<tr><td align=\"center\">" + ((Pasantia) it.next()).getTitulo() + "</td></tr>");
+                        Pasantia pasantia= (Pasantia)it.next();
+                        Devolucion2.add("<tr onclick=\"location.href='/sistppg70/A_mostrar_pasantia.do?idPasantia=" + pasantia.getIdPasantia() + "&idJurado="+profesor.getIdProfesor()+"'\" onmouseover=\"this.style.cursor='pointer'\">     <td align=\"center\">" + pasantia.getTitulo() + "</td></tr>");
                     }
                 }
 

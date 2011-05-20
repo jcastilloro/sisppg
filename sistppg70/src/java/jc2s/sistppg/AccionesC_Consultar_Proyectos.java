@@ -199,7 +199,8 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             // Mi codigo
-
+                String parjur = request.getParameter("idJurado");
+            if(parjur!=null){request.setAttribute("idJurado", parjur);}
 //            request.getSession().removeAttribute("Proyecto");
 //            request.getSession().removeAttribute("Tutor");
 //            request.getSession().removeAttribute("Area");
@@ -457,7 +458,8 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
            //mi codigo
-            
+            String parjur = request.getParameter("idJurado");
+            if(parjur!=null){request.setAttribute("idJurado", parjur);}
             String pas = request.getParameter("idPasantia");
             long idPasantia = Long.valueOf(pas).longValue();
 

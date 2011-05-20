@@ -257,6 +257,10 @@
 
                                             </table>
                                         </logic:notEmpty>
+                                            <br>
+                                            <logic:notEmpty name="idJurado">
+                                                <a href="www.google.com">Remover Jurado</a>
+                                            </logic:notEmpty>
                                         <p></p>
                                         <%--  <logic:notEmpty name="JuradoProyecto">
                                               <table width="500px">
