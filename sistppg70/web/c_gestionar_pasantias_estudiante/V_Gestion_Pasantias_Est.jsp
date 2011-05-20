@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../sorttable.js"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -67,7 +68,7 @@
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
             <div id="header">
-                
+
             </div>
             <div id="page">
 
@@ -79,7 +80,7 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    
+
                                     <div class="box1465928" align="center">
 
 
@@ -88,14 +89,21 @@
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantias">
                                             <h1>Usted tiene las siguientes pasantías asociadas: </h1><br>
-                                            <table border="1" width="500">
-                                                <tr><th><center>Título</center></th><th><center>Resumen</center></th></tr>
-                                                <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
-                                                    <tr><td><html:link action="/A_prep_Consultar_Pasantia.do" paramName="pas" paramProperty="idPasantia" paramId="idPasantia"><center>${pas.titulo}</center></html:link></td>
-                                                        <td> <center>${pas.resumen} </center></td>
-                                                    </tr>
-                                                </logic:iterate>
-                                            </table>
+                                            <div class="administrador">
+                                                <table class="sortable" width="500">
+                                                    <thead>
+                                                        <tr><th><center>Título</center></th><th><center>Resumen</center></th></tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                                            <tr onclick="location.href='/sistppg70/A_prep_Consultar_Pasantia.do?idPasantia=${pas.idPasantia}'" onmouseover="this.style.cursor='pointer'">
+                                                                <td><center>${pas.titulo}</center></td>
+                                                                <td> <center>${pas.resumen} </center></td>
+                                                            </tr>
+                                                        </logic:iterate>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </logic:notEmpty>
 
 

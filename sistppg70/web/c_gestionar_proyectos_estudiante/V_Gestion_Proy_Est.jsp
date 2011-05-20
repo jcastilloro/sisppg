@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../sorttable.js"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -67,7 +68,7 @@
             </div>
 
             <div id="header">
-                
+
             </div>
             <div id="page">
 
@@ -92,25 +93,33 @@
                                             </logic:empty>
                                             <logic:notEmpty name="Pasantias">
                                                 <h2><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do">Pasantias:</html:link></h2>
-                                                <table border="1" width="500">
-                                                    <tr><th>Título</th></tr>
-                                                    <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
-                                                        <tr><td><center>${pas.titulo}</center></td>
-                                                        </tr>
-                                                    </logic:iterate>
-                                                </table>
+                                                <div class="administrador">
+                                                    <table class="sortable" width="500">
+                                                        <thead><tr><th align="center"><h2>Título</h2></th></tr></thead>
+                                                        <tbody>
+                                                            <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
+                                                                <tr><td><center>${pas.titulo}</center></td>
+                                                                </tr>
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </logic:notEmpty>
                                             <logic:empty name="ProyectoDeGrado">
                                             </logic:empty>
                                             <logic:notEmpty name="ProyectoDeGrado">
                                                 <br><br><h2><html:link action="/A_Prep_Gestion_PG_Est.do">Proyectos De Grado:</html:link></h2>
-                                                <table border="1" width="500">
-                                                    <tr><th>Nombre</th></tr>
-                                                    <logic:iterate id="pg" collection="${empty ProyectoDeGrado ? _vacio : ProyectoDeGrado}">
-                                                        <tr><td><center>${pg.nombre}</center></td>
-                                                        </tr>
-                                                    </logic:iterate>
-                                                </table>
+                                                <div class="administrador">
+                                                    <table class="sortable" width="500">
+                                                        <thead><tr><th><h2 align="center">Nombre</h2></th></tr></thead>
+                                                        <tbody>
+                                                            <logic:iterate id="pg" collection="${empty ProyectoDeGrado ? _vacio : ProyectoDeGrado}">
+                                                                <tr><td><center>${pg.nombre}</center></td>
+                                                                </tr>
+                                                            </logic:iterate>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </logic:notEmpty>
                                         </logic:notEmpty>
 

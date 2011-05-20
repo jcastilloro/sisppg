@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../sorttable.js"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -64,7 +65,7 @@
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
             <div id="header">
-                
+
             </div>
             <div id="page">
 
@@ -84,17 +85,34 @@
                                         </logic:empty>
                                         <logic:notEmpty name="L_PGS">
                                             <h1>Mis Proyectos de Grado: </h1>
-                                            <logic:iterate id="proy" collection="${empty L_PGS ? _vacio : L_PGS}">
-                                                <table>
-                                                    <tr><th>Nombre</th><td>${proy.nombre}</td></tr>
-                                                    <tr><th>Código</th><td>${proy.codigo}</td></tr>
-                                                    <tr><th>
-                                                            <html:link action="/A_prep_Consultar_PG.do" paramName="proy" paramProperty="idProyectoDeGrado"
-                                                                       paramId="idProyectoDeGrado">Consultar</html:link>
-                                                        </th>
-                                                    </tr>
-                                                </table><p><p>
-                                                </logic:iterate>
+
+                                            <div class="administrador">
+                                                <table width="500px" class="sortable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th align="center">
+                                                                Nombre
+                                                            </th>
+                                                            <th align="center">
+                                                                Código
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <logic:iterate id="proy" collection="${empty L_PGS ? _vacio : L_PGS}">
+                                                            <tr onclick="location.href='/sistppg70/A_prep_Consultar_PG.do?idProyectoDeGrado=${proy.idProyectoDeGrado}'" onmouseover="this.style.cursor='pointer'">
+                                                                <td align="center">
+                                                                    ${proy.nombre}
+                                                                </td>
+                                                                <td align="center">
+                                                                    ${proy.codigo}
+                                                                </td>
+                                                            </tr>
+                                                        </logic:iterate>
+                                                    </tbody>
+                                                    
+                                                </table></div><p><p>
+
                                             </logic:notEmpty>
 
 
