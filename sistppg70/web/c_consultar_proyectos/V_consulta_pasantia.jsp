@@ -9,18 +9,19 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
+        <script src="_js/insc-pasant.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="11"><html:link action="/A_consultar_pasantias.do"><bean:message key="V_consulta_pasantia.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
@@ -57,12 +58,42 @@
 
                                     <tr><td>Tipo: </td>
                                         <td>
-                                    <html:select property="tipo">
+                                    <html:select property="tipo" styleId="1843570">
                                         <html:option value="all"> Todos</html:option>
-                                        <html:option value="larga"> Pasantía Larga</html:option>
-                                        <html:option value="intermedia"> Pasantía Intermedia</html:option>
-                                        <html:option value="corta"> Pasantía Corta</html:option>
+                                        <html:option styleId="l" value="larga"> Pasantía Larga</html:option>
+                                        <html:option styleId="i" value="intermedia"> Pasantía Intermedia</html:option>
+                                        <html:option styleId="c" value="corta"> Pasantía Corta</html:option>
                                     </html:select>
+                                        </td>
+                                    </tr>
+
+                                    <tr><td>
+                                        <label for="18435702">Periodo:</label>
+                                        </td><td>
+                                            <html:select property="periodo" styleId="18435702">
+                                                <html:option value="-1">Todos</html:option>
+                                                <%-- periodos pasantia larga --%>
+                                                <logic:empty name="L_PPL">
+                                                    <html:option styleClass="periodo ppl" value="0">Fail.</html:option>
+                                                </logic:empty>
+                                                <logic:notEmpty name="L_PPL">
+                                                    <logic:iterate id="ppl" name="L_PPL">
+                                                        <html:option styleClass="periodo ppl" value="${ppl.idPeriodoPasantiaLarga}">${ppl.nombre}</html:option>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
+
+                                                <%-- periodos pasantia intermedia --%>
+                                                <logic:empty name="L_PPI">
+                                                    <html:option styleClass="periodo ppi" value="0">Fail.</html:option>
+                                                </logic:empty>
+                                                <logic:notEmpty name="L_PPI">
+                                                    <logic:iterate id="ppi" name="L_PPI">
+                                                        <html:option styleClass="periodo ppi" value="${ppi.idPeriodoPasantiaIntermedia}">${ppi.nombre}</html:option>
+                                                    </logic:iterate>
+                                                </logic:notEmpty>
+                                                <%-- periodos pasantia corta --%>
+                                                <html:option styleClass="periodo ppc" value="0">Julio-Septiembre</html:option>
+                                            </html:select>
                                         </td>
                                     </tr>
 <%--

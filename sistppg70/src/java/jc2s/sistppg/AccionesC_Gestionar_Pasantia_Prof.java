@@ -2,22 +2,17 @@ package jc2s.sistppg;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jc2s.sistppg.hibernate.Profesor;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
-import jc2s.sistppg.hibernate.*;
 
 
 /**
@@ -34,7 +29,7 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_prep_gestionar_pasantia_prof(ActionMapping mapping, ActionForm  form,
@@ -73,7 +68,7 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_consultar_pasantias_propias(ActionMapping mapping, ActionForm  form,
@@ -85,13 +80,17 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//Checking for actors profesor
-            if (!CohesionActor.checkActor(request, 8)) {
-                return mapping.findForward(CohesionActor.SALIDA_ACTOR);
-            }
+        //Checking for actors profesor
+        if (!CohesionActor.checkActor(request, 8)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            //micodigo
+            Profesor profe = (Profesor) request.getSession().getAttribute("profesor");
+            
+            //micodigo
             tr.commit();
 
         } catch (Exception ex) {

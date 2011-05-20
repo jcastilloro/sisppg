@@ -8,22 +8,19 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 
 /**
@@ -40,7 +37,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_prep_consultar_proyectos(ActionMapping mapping, ActionForm  form,
@@ -126,7 +123,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_consultar_PG(ActionMapping mapping, ActionForm  form,
@@ -181,7 +178,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_mostrar_pg(ActionMapping mapping, ActionForm  form,
@@ -305,7 +302,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_consultar_pasantias(ActionMapping mapping, ActionForm form,
@@ -326,11 +323,16 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
-            Usuario user = (Usuario) request.getSession().getAttribute("usuario");            
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+
+
             List<Pasantia> pas = s.createQuery("from Pasantia").list();            
-            List<Pasantia> pas1 = new LinkedList<Pasantia>();  // solucion rancho...
-            List<Pasantia> pas2 = new LinkedList<Pasantia>();
+            List<Pasantia> pas1 = new LinkedList<Pasantia>();
             List<Pasantia> pasDef = new LinkedList<Pasantia>();
+
+            StringBuffer queryBuf = new StringBuffer("from Pasantia p ");
+            boolean firstClause = true;
+ 
             boolean tipoON = false;
 
             if (user.getUsbid().equals("coord-comp")){
@@ -344,6 +346,10 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
                 request.setAttribute("Carreras", career);
             }
             
+            List<PeriodoPasantiaLarga> ppl = (List<PeriodoPasantiaLarga>) s.createQuery("from PeriodoPasantiaLarga").list();
+            List<PeriodoPasantiaIntermedia> ppi = (List<PeriodoPasantiaIntermedia>) s.createQuery("from PeriodoPasantiaIntermedia").list();
+            request.setAttribute("L_PPL",ppl);
+            request.setAttribute("L_PPI",ppi);
 
             List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
             request.setAttribute("Estatus", estatus);
@@ -357,10 +363,15 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
             
             String tipo = f_sinai.getTipo();
+            String periodo = f_sinai.getPeriodo();
             String query = new String();
             // Tipo de pasantía
             if (tipo.equals("larga")) {
-                query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaLarga)";
+                if (periodo.equals("-1")){
+                    query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaLarga)";
+                } else {
+                    query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaLarga where periodo = '"+periodo+"')";
+                }
                 pas = s.createQuery(query).list();
                 tipoON = true;
             } else if (tipo.equals("corta")) {
@@ -368,14 +379,27 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
                 pas = s.createQuery(query).list();
                 tipoON = true;
             } else if (tipo.equals("intermedia")) {
-                query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaIntermedia)";
+                if (periodo.equals("-1")){
+                    query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaIntermedia)";
+                } else {
+                    query = "from Pasantia where idPasantia IN (Select pasantia from PasantiaIntermedia where periodo = '"+periodo+"')";
+                }
                 pas = s.createQuery(query).list();
                 tipoON = true;
             }
 
-            if (f_sinai.getStatus() != -1){
-               pas2 = s.createQuery("from Pasantia where estatus IN (select idEstatusPasantia from EstatusPasantia where idEstatusPasantia= :var)").setLong("var", f_sinai.getStatus()).list();
+
+            /////////////// CRITERIA
+
+            long estatuss = f_sinai.getStatus();
+            Criteria criteria = s.createCriteria(Pasantia.class)
+                    .createCriteria("estatus");
+            if ( estatuss != -1){
+                criteria.add( Restrictions.eq("idEstatusPasantia", estatuss));
             }
+            List<Pasantia> pas2 = criteria.list();
+
+            ///////////////
 
             // El rancho en accion
             if (!pas1.isEmpty() && tipoON && !pas2.isEmpty()){
@@ -402,8 +426,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             if (f_sinai.getAno() != -1){
                 pas = s.createQuery("from Pasantia where proyecto IN (select id_proyecto from Proyecto where created_at= :var)").setLong("var", f_sinai.getStatus()).list();
             }
-*/
-            
+*/          
 
             request.setAttribute("Pasantias", pasDef);
             
@@ -428,7 +451,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
      * @throws java.lang.Exception For untreated exceptions. 
-     * These exceptios will normally be treated with 
+     * These exceptions will normally be treated with
      * the default exception action.
      */
     public ActionForward A_mostrar_pasantia(ActionMapping mapping, ActionForm  form,

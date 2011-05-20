@@ -2,10 +2,7 @@ package jc2s.sistppg;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-
 
 public class F_Sinai extends org.apache.struts.action.ActionForm {
 
@@ -14,6 +11,7 @@ public class F_Sinai extends org.apache.struts.action.ActionForm {
         super();
         status = -1;
         tipo="all";
+        periodo="all";
         idCarrera=-1;
         ano=-1;
 
@@ -22,6 +20,7 @@ public class F_Sinai extends org.apache.struts.action.ActionForm {
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         status = -1;
         tipo="";
+        periodo="";
         idCarrera=-1;
         ano=-1;
 
@@ -74,6 +73,16 @@ public class F_Sinai extends org.apache.struts.action.ActionForm {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    private String periodo;
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     private long idCarrera;
