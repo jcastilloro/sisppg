@@ -25,19 +25,19 @@ import org.hibernate.criterion.Restrictions;
 
 
 /**
- * 
+ *
  */
 public class AccionesC_Consultar_Proyectos extends CohesionAction {
-    
+
 /**
      * Called by Struts for the execution of action A_prep_consultar_proyectos.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
+     * @throws java.lang.Exception For untreated exceptions.
      * These exceptions will normally be treated with
      * the default exception action.
      */
@@ -117,13 +117,13 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_consultar_PG.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
+     * @throws java.lang.Exception For untreated exceptions.
      * These exceptions will normally be treated with
      * the default exception action.
      */
@@ -144,17 +144,36 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             //Mi Codigo
+            List<Profesor> profe = (List<Profesor>) s.createQuery("from Profesor").list();
+            List<Trimestre> trim = (List<Trimestre>) s.createQuery("from Trimestre").list();
+            request.setAttribute("Profesor", profe);
+            request.setAttribute("Trimestre", trim);
 
             List<EstudianteRealizaProyecto> proye = s.createQuery("from EstudianteRealizaProyecto").list();
             List<ProyectoDeGrado> lpg = s.createQuery("from ProyectoDeGrado").list();
-            lpg.clear();
-            for (int i = 0; i < proye.size(); i++) {
-                EstudianteRealizaProyecto proy = proye.get(i);
-                List<ProyectoDeGrado> pg = s.createQuery("from ProyectoDeGrado where proyecto= :var").setLong("var", proy.getProyecto().getId_proyecto()).list();
-                if (!pg.isEmpty()) {
-                    lpg.add(pg.get(0));
-                }
+            List<ProyectoDeGrado> lpg2 = new LinkedList<ProyectoDeGrado>();
+
+
+            F_SinaiPG f_sinai = (F_SinaiPG) form;
+            long tutor = f_sinai.getTutor();
+            int ano = f_sinai.getAno();
+            long trimestre = f_sinai.getTrimestre();
+
+            if ( tutor!=-1 ){
+                lpg = s.createQuery("from ProyectoDeGrado where profesor = '"+tutor+"'").list();
             }
+
+            if ( ano != -1){
+              lpg2 = s.createQuery("from ProyectoDeGrado where idProyectoDeGrado IN (Select proyecto_de_grado from Etapa where ano = '"+ano+"')").list();
+              lpg.retainAll(lpg2);
+            }
+
+            if ( trimestre != -1){
+              lpg2 = s.createQuery("from ProyectoDeGrado where idProyectoDeGrado IN (Select proyecto_de_grado from Etapa where trimestre = '"+trimestre+"')").list();
+              lpg.retainAll(lpg2);
+            }
+
+
             request.setAttribute("L_PGS", lpg);
 
 
@@ -172,13 +191,13 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_mostrar_pg.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
+     * @throws java.lang.Exception For untreated exceptions.
      * These exceptions will normally be treated with
      * the default exception action.
      */
@@ -221,9 +240,6 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             List<AreaProyectoDeGrado> apg = s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).list();
             List<Etapa> etapas = s.createQuery("from Etapa where proyecto_de_grado= :var").setLong("var", key).list();
 //            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
-
-
-
 
 
 
@@ -294,17 +310,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
 
 
-
-
-
-
             request.setAttribute("Datos", Devolucion);
-
-
-
-
-
-
 
 
 
@@ -329,7 +335,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 //            request.getSession().setAttribute("JuradoProyecto", jurados);
 
 
-            
+
             //Mi codigo
             tr.commit();
 
@@ -347,13 +353,13 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
     /**
      * Called by Struts for the execution of action A_consultar_pasantias.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
+     * @throws java.lang.Exception For untreated exceptions.
      * These exceptions will normally be treated with
      * the default exception action.
      */
@@ -378,7 +384,7 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 
 
-            List<Pasantia> pas = s.createQuery("from Pasantia").list();            
+            List<Pasantia> pas = s.createQuery("from Pasantia").list();
             List<Pasantia> pas1 = new LinkedList<Pasantia>();
             List<Pasantia> pasDef = new LinkedList<Pasantia>();
             boolean tipoON = false;
@@ -404,16 +410,16 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
                     hayCarrera = true;
                 }
             }
-            
+
             List<PeriodoPasantiaLarga> ppl = (List<PeriodoPasantiaLarga>) s.createQuery("from PeriodoPasantiaLarga").list();
             List<PeriodoPasantiaIntermedia> ppi = (List<PeriodoPasantiaIntermedia>) s.createQuery("from PeriodoPasantiaIntermedia").list();
             request.setAttribute("L_PPL",ppl);
             request.setAttribute("L_PPI",ppi);
 
             List<EstatusPasantia> estatus = s.createQuery("from EstatusPasantia").list();
-            request.setAttribute("Estatus", estatus);           
+            request.setAttribute("Estatus", estatus);
 
-            
+
             String tipo = f_sinai.getTipo();
             String periodo = f_sinai.getPeriodo();
             String query = new String();
@@ -458,15 +464,15 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
                 criteria.createCriteria("estatus")
                         .add( Restrictions.eq("idEstatusPasantia", estatuss));
             }
-            
+
             List<Pasantia> pas2 = criteria.list();
 
             pas.retainAll(pas2);
 
-        
+
 
             request.setAttribute("Pasantias", pas);
-            
+
             //micodigo
             tr.commit();
 
@@ -481,13 +487,13 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
 /**
      * Called by Struts for the execution of action A_mostrar_pasantia.
-     * 
+     *
      * @param mapping The ActionMapping used to select this instance.
      * @param form The optional ActionForm bean for this request.
      * @param request The HTTP Request we are processing.
      * @param response The HTTP Response we are processing.
      * @return The Struts name of the following step.
-     * @throws java.lang.Exception For untreated exceptions. 
+     * @throws java.lang.Exception For untreated exceptions.
      * These exceptions will normally be treated with
      * the default exception action.
      */
@@ -576,15 +582,5 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
        return dateFormat.format(date);
    }
 
-   // funcion intersección de listas de pasantias
-   private List<Pasantia> interseccion(List<Pasantia> a, List<Pasantia> b){
-       
-       List<Pasantia> pasDef = new LinkedList<Pasantia>();
-       for (int i = 0; a.size() > i; i++) {
-           if (b.indexOf(a.get(i)) != -1)
-               pasDef.add(a.get(i));
-       }
-       return pasDef;
-   }
 
 }

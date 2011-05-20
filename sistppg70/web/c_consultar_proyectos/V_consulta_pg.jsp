@@ -5,17 +5,12 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
-
+        <title>Consultar PG</title>
 
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,20 +60,14 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -91,10 +80,51 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
+                                        <html:form action="/A_consultar_PG.do" method="post">
+                                <table>
+                                    <tr><th>Criterios de Búsqueda</th><td></td></tr>
+
+                                    <tr><td>Trimestre: </td>
+                                        <td>
+                                    <html:select property="trimestre">
+                                        <html:option value="-1"> Todos </html:option>
+                                        <logic:iterate id="tri" collection="${empty Trimestre ? _vacio : Trimestre}">
+                                            <html:option value="${tri.idTrimestre}"> ${tri.nombre}</html:option>
+                                        </logic:iterate>
+                                    </html:select>
+                                        </td></tr>
+
+                                    <tr><td>Año: </td>
+                                        <td>
+                                    <html:select property="ano">
+                                        <html:option value="-1"> Todos </html:option>
+                                        <html:option value="2006"> 2006</html:option>
+                                        <html:option value="2007"> 2007</html:option>
+                                        <html:option value="2008"> 2008</html:option>
+                                        <html:option value="2009"> 2009</html:option>
+                                        <html:option value="2010"> 2010</html:option>
+                                        <html:option value="2011"> 2011</html:option>
+                                        <html:option value="2012"> 2012</html:option>
+                                    </html:select>
+                                        </td></tr>
+
+                                    <tr><td>Tutor: </td>
+                                        <td>
+                                    <html:select property="tutor">
+                                        <html:option value="-1"> Todos </html:option>
+                                        <logic:iterate id="tut" collection="${empty Profesor ? _vacio : Profesor}">
+                                            <html:option value="${tut.idProfesor}"> ${tut.nombre} ${tut.apellido}</html:option>
+                                        </logic:iterate>
+                                    </html:select>
+                                        </td></tr>
+
+                            <tr><td></td><td><html:submit styleClass="button">Buscar</html:submit></td></tr>
+                                </table>
+                            </html:form>
 
 
                                         <logic:empty name="L_PGS">
-                                            <h1>¡Usted no está realizando ningun proyecto de grado!</h1>
+                                            <h1>¡No se encontró ningun proyecto de grado con los criterios dados!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="L_PGS">
                                             <h1>Proyectos de Grado: </h1>
@@ -110,7 +140,6 @@
                                                 </table><p><p>
                                                 </logic:iterate>
                                             </logic:notEmpty>
-
 
                                     </div>
                                 </div>

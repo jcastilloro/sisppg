@@ -27,6 +27,7 @@
         <form-bean name="F_Tutor_Industrial" type="jc2s.sistppg.F_Tutor_Industrial"/>
         <form-bean name="F_Carrera" type="jc2s.sistppg.F_Carrera"/>
         <form-bean name="F_Sinai" type="jc2s.sistppg.F_Sinai"/>
+        <form-bean name="F_SinaiPG" type="jc2s.sistppg.F_SinaiPG"/>
         <form-bean name="F_Area2" type="jc2s.sistppg.F_Area2"/>
         <form-bean name="F_Estatus_Pasantia" type="jc2s.sistppg.F_Estatus_Pasantia"/>
         <form-bean name="F_Estatus_Prorroga" type="jc2s.sistppg.F_Estatus_Prorroga"/>
@@ -40,11 +41,11 @@
         <form-bean name="F_Jurado" type="jc2s.sistppg.F_Jurado"/>
 
     </form-beans>
-    
+
     <global-exceptions>
-        
+
     </global-exceptions>
-    
+
     <global-forwards>
 
         <!-- C_Inicio_Sesion -->
@@ -259,7 +260,7 @@
 
         <forward name="A_prep_sesion_ccds" path="/A_prep_sesion_ccds.do"/>
         <forward name="V_sesion_cctds" path="/c_sesion_cctds/V_sesion_cctds.jsp"/>
-        
+
         <!-- C_Pasantias_CCTDS -->
 
         <forward name="A_prep_gestionar_pasantias_cctds" path="/A_prep_gestionar_pasantias_cctds.do"/>
@@ -378,7 +379,7 @@
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
     </global-forwards>
-    
+
     <action-mappings>
 
         <!-- C_Inicio_Sesion -->
@@ -644,7 +645,7 @@
         <!-- C_Gestionar_Jurados -->
         <action path="/A_Prep_Gestionar_Jurados" parameter="A_Prep_Gestionar_Jurados"
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
-        
+
         <action path="/A_consultar_jurado" parameter="A_consultar_jurado"
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"
            input="/C_Gestionar_Jurados/V_consultar_jurados.jsp"
@@ -783,6 +784,13 @@
            name="F_Sinai"
            scope="session"/>
 
+       <!-- Consultas Sinai PG -->
+        <action path="/A_consultar_PG" parameter="A_consultar_PG"
+           type="jc2s.sistppg.AccionesC_Consultar_Proyectos"
+           input="/c_consultar_proyectos/V_consulta_pg.jsp"
+           name="F_SinaiPG"
+           scope="session"/>
+
            <!-- C_Gestionar_Estatus_Pasantias -->
         <action path="/A_Prep_Gestionar_Estatus_Pasantias" parameter="A_Prep_Gestionar_Estatus_Pasantias"
            type="jc2s.sistppg.AccionesC_Sesion_Administrador"/>
@@ -883,13 +891,13 @@
         <action path="/tooltip" parameter="tooltip"
            type="jc2s.sistppg.Acciones_tooltips"/>
     </action-mappings>
-    
+
     <!--
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
     -->
-    
+
     <message-resources parameter="jc2s/sistppg/ApplicationResource"/>
-    
+
     <!-- ========================= Tiles plugin ===============================-->
     <!--
     This plugin initialize Tiles definition factory. This later can takes some
@@ -919,7 +927,7 @@
     -->
     <!--
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
-        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
         <set-property property="moduleAware" value="true" />
     </plug-in>
     -->
