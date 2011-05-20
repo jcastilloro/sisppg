@@ -217,18 +217,98 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
             Long key = Long.parseLong(request.getParameter("idProyectoDeGrado"));
             ProyectoDeGrado pg = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado as p join fetch p.profesor where idProyectoDeGrado= :var").setLong("var", key).uniqueResult();
+            if(parjur!=null){request.setAttribute("idProyectoDeGrado", pg.getIdProyectoDeGrado());}
             List<AreaProyectoDeGrado> apg = s.createQuery("from AreaProyectoDeGrado where proyecto_de_grado= :var").setLong("var", key).list();
             List<Etapa> etapas = s.createQuery("from Etapa where proyecto_de_grado= :var").setLong("var", key).list();
 //            List<JuradoProyecto> jurados = s.createQuery("from JuradoProyecto where proyecto= :var").setLong("var", key).list();
 
 
-            request.setAttribute("Proyecto", pg);
-            request.setAttribute("Tutor", pg.getProfesor());
+
+
+
+
+
+
+//            request.setAttribute("Proyecto", pg);
+//            request.setAttribute("Tutor", pg.getProfesor());
 
             String[] res = new String[apg.size()];
             for (int i = 0; i < res.length; i++) {
                 res[i] = apg.get(i).getArea().getNombre();
             }
+
+
+             List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
+            Devolucion.add("<tr><th width=\"200px\">Nombre</th><td>"+pg.getNombre()+"</td></tr><tr><th>Código</th><td>"+pg.getCodigo()+"</td></tr>");
+            Devolucion.add("<tr><th>Recursos</th><td>"+pg.getRecursos()+"</td></tr><tr><th>Duración Recursos</th><td>"+pg.getDuracion_recursos()+"</td> </tr>");
+           Devolucion.add("<tr><th>Puntos de Interés</th><td>"+pg.getPuntos_de_interes()+"</td></tr><tr><th>Áreas</th></tr>");
+
+            Iterator itt=apg.iterator();
+            while(itt.hasNext()){
+                Devolucion.add("<tr> <td></td><td>"+itt.next()+"</td></tr>");
+            }
+
+            Devolucion.add("</table><p></p><hr><p></p><table width=\"500px\"><tr><th>Tutor Académico</th></tr></table><hr><p></p>");
+            Devolucion.add("<table border=\"0\" width=\"500px\"><tr><th width=\"200px\">Nombre</th><td>"+pg.getProfesor().getNombre()+"</td></tr><tr><th>Apellido</th>");
+            Devolucion.add("<td>"+pg.getProfesor().getApellido()+"</td></tr><tr><th>Email</th><td>"+pg.getProfesor().getEmail()+"</td></tr></table><p></p>");
+
+
+
+
+
+            for (int i = 0; i < etapas.size(); i++) {
+
+                List<PrimeraEtapa> etapa = s.createQuery("from PrimeraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapa.isEmpty()) {
+                    PrimeraEtapa indirecto = etapa.get(0);
+                    Devolucion.add("<table width=\"500px\"><tr><th>Etapa1</th></tr></table><hr><p></p><p></p></table><table border=\"0\" width=\"500px\">");
+                    Devolucion.add("<tr><th width=\"200px\">Nombre</th><td>"+indirecto.getEtapa().getNombre()+"</td></tr><tr><th>Resultados_Minimos</th><td>"+indirecto.getEtapa().getResultados_minimos()+"</td>");
+                    Devolucion.add("</tr><tr><th>Trimestre</th><td>"+indirecto.getEtapa().getTrimestre().getNombre()+"</td></tr><tr><th>Año</th><td>"+indirecto.getEtapa().getAno()+"</td>");
+                    Devolucion.add("</tr><tr><th>Descripcion</th><td>"+indirecto.getDescripcion_topicos()+"</td></tr></table><p></p><hr><p></p>");
+
+                }
+
+
+                List<SegundaEtapa> etapaa = s.createQuery("from SegundaEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaa.isEmpty()) {
+                    SegundaEtapa indirecto = etapaa.get(0);
+                    Devolucion.add("<table width=\"500px\"><tr><th>Etapa2</th></tr></table><hr><p></p><p></p></table><table border=\"0\" width=\"500px\">");
+                    Devolucion.add("<tr><th width=\"200px\">Nombre</th><td>"+indirecto.getEtapa().getNombre()+"</td></tr><tr><th>Resultados_Minimos</th><td>"+indirecto.getEtapa().getResultados_minimos()+"</td>");
+                    Devolucion.add("</tr><tr><th>Trimestre</th><td>"+indirecto.getEtapa().getTrimestre().getNombre()+"</td></tr><tr><th>Año</th><td>"+indirecto.getEtapa().getAno()+"</td>");
+                    Devolucion.add("</tr><tr><th>Descripcion</th><td>"+indirecto.getDescripcion_topicos()+"</td></tr></table> <p></p><hr><p></p>");
+
+                }
+
+
+                List<TerceraEtapa> etapaaa = s.createQuery("from TerceraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
+                if (!etapaaa.isEmpty()) {
+                    TerceraEtapa indirecto = etapaaa.get(0);
+                    Devolucion.add("<table width=\"500px\"><tr><th>Etapa3</th></tr></table><hr><p></p><p></p></table><table border=\"0\" width=\"500px\">");
+                    Devolucion.add("<tr><th width=\"200px\">Nombre</th><td>"+indirecto.getEtapa().getNombre()+"</td></tr><tr><th>Resultados_Minimos</th><td>"+indirecto.getEtapa().getResultados_minimos()+"</td>");
+                    Devolucion.add("</tr><tr><th>Trimestre</th><td>"+indirecto.getEtapa().getTrimestre().getNombre()+"</td></tr><tr><th>Año</th><td>"+indirecto.getEtapa().getAno()+"</td>");
+                    Devolucion.add("</tr></table><br>");
+
+                }
+            }
+
+
+
+
+
+
+
+
+            request.setAttribute("Datos", Devolucion);
+
+
+
+
+
+
+
+
+
+
 
 
 //            String[] res2 = new String[jurados.size()*3];
@@ -245,41 +325,11 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 //            }
 
 
-            request.setAttribute("Area", res);
+//            request.setAttribute("Area", res);
 //            request.getSession().setAttribute("JuradoProyecto", jurados);
 
 
-            for (int i = 0; i < etapas.size(); i++) {
-
-                List<PrimeraEtapa> etapa = s.createQuery("from PrimeraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
-                if (!etapa.isEmpty()) {
-                    PrimeraEtapa indirecto = etapa.get(0);
-                    request.setAttribute("Etapa1", indirecto.getEtapa());
-                    request.setAttribute("Trimestre1", indirecto.getEtapa().getTrimestre().getNombre());
-                    request.setAttribute("Descripcion1", indirecto.getDescripcion_topicos());
-
-                }
-
-
-                List<SegundaEtapa> etapaa = s.createQuery("from SegundaEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
-                if (!etapaa.isEmpty()) {
-                    SegundaEtapa indirecto = etapaa.get(0);
-                    request.setAttribute("Etapa2", indirecto.getEtapa());
-                    request.setAttribute("Trimestre2", indirecto.getEtapa().getTrimestre().getNombre());
-                    request.setAttribute("Descripcion2", indirecto.getDescripcion_topicos());
-
-                }
-
-
-                List<TerceraEtapa> etapaaa = s.createQuery("from TerceraEtapa where etapa= :var").setLong("var", etapas.get(i).getIdEtapa()).list();
-                if (!etapaaa.isEmpty()) {
-                    TerceraEtapa indirecto = etapaaa.get(0);
-                    request.setAttribute("Etapa3", indirecto.getEtapa());
-                    request.setAttribute("Trimestre3", indirecto.getEtapa().getTrimestre().getNombre());
-//                    request.getSession().setAttribute("Descripcion3", indirecto.getDescripcion_topicos());
-
-                }
-            }
+            
             //Mi codigo
             tr.commit();
 

@@ -99,167 +99,23 @@
                                             </table>
                                             <hr><p></p>
                                         <table border="0" width="500px">
-                                            <tr>
-                                                <th width="200px">Nombre</th>
-                                                <td>${Proyecto.nombre}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Código</th>
-                                                <td>${Proyecto.codigo}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Recursos</th>
-                                                <td>${Proyecto.recursos}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Duración Recursos</th>
-                                                <td>${Proyecto.duracion_recursos}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Puntos de Interés</th>
-                                                <td>${Proyecto.puntos_de_interes}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Áreas</th>
-                                            </tr>
+                                            
+                                            
+                                                <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                            <logic:iterate id="element" name="Area" >
-                                                <tr> <td></td><td><bean:write name="element" /></td></tr>
-                                            </logic:iterate>
+                                                                <bean:write name="dato" filter="false"/>
 
 
+                                                            </logic:iterate>
+                                            
 
+                                    
 
-
-
-                                        </table>
-                                        <p>
-                                        </p>
-                                        <hr>
-                                        <p>
-                                        </p>
-                                        <table width="500px">
-                                            <tr><th>Tutor Académico</th></tr>
-                                        </table>
-                                        <hr>
-                                        <p></p>
-                                        <table border="0" width="500px">
-                                            <tr>
-                                                <th width="200px">Nombre</th>
-                                              <td>${Tutor.nombre}</td>
-                                            </tr>
-                                              <tr>
-                                                <th>Apellido</th>
-                                                <td>${Tutor.apellido}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Email</th>
-                                                <td>${Tutor.email}</td>
-                                            </tr>    
-                                        </table>
-                                        <p>
-                                        </p>
-                                        <logic:notEmpty name="Etapa1">
-                                            <hr><p></p>
-                                            <table width="500px">
-                                                <tr><th>Etapa1</th></tr>
-                                            </table>
-                                            <hr><p></p>
-                                            <p>
-                                            </p>
-                                            </table>
-                                            <table border="0" width="500px">
-                                                <tr>
-                                                    <th width="200px">Nombre</th>
-                                                    <td>${Etapa1.nombre}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Resultados_Minimos</th>
-                                                    <td>${Etapa1.resultados_minimos}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Trimestre</th>
-                                                    <td>${Trimestre1}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Año</th>
-                                                    <td>${Etapa1.ano}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Descripcion</th>
-                                                    <td>${Descripcion1}</td>
-                                                </tr>
-                                            </table>
-                                        </logic:notEmpty>
-                                        <p>
-                                        </p>
-                                        <logic:notEmpty name="Etapa2">
-                                            <hr><p></p>
-                                            <table width="500px">
-                                                <tr><th>Etapa2</th></tr>
-                                            </table>
-                                            <hr><p></p>
-                                            <p>
-                                            </p>
-                                            </table>
-                                            <table border="0" width="500px">
-                                                <tr>
-                                                    <th width="200px">Nombre</th>
-                                                    <td>${Etapa2.nombre}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Resultados_Minimos</th>
-                                                    <td>${Etapa2.resultados_minimos}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Trimestre</th>
-                                                    <td>${Trimestre2}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Año</th>
-                                                    <td>${Etapa2.ano}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Descripcion</th>
-                                                    <td>${Descripcion2}</td>
-                                                </tr>
-                                            </table>
-                                        </logic:notEmpty>
-                                        <p>
-                                        </p>
-
-                                        <logic:notEmpty name="Etapa3">
-                                            <hr><p></p>
-                                            <table width="500px">
-                                                <tr><th>Etapa3</th></tr>
-                                            </table>
-                                            <hr><p></p>
-                                            <p>
-                                            </p>
-                                            </table>
-                                            <table border="0" width="500px">
-                                                <tr>
-                                                    <th width="200px">Nombre</th>
-                                                    <td>${Etapa3.nombre}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Resultados_Minimos</th>
-                                                    <td>${Etapa3.resultados_minimos}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Trimestre</th>
-                                                    <td>${Trimestre3}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Año</th>
-                                                    <td>${Etapa3.ano}</td>
-                                                </tr>
-
-                                            </table>
-                                        </logic:notEmpty>
-                                            <br>
+                                        
+                                        
+                                        
                                             <logic:notEmpty name="idJurado">
-                                                <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idProyectoDeGrado=${Proyecto.proyecto}">Remover Jurado</a>
+                                                <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idProyectoDeGrado=${idProyectoDeGrado}">Remover Jurado</a>
                                             </logic:notEmpty>
                                         <p></p>
                                         <%--  <logic:notEmpty name="JuradoProyecto">
