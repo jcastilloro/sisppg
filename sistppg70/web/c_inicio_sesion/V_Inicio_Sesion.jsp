@@ -89,13 +89,18 @@
                                                     <th>
                                                         <p id="1840389_C"><label for="1840389"><bean:message key="F_Inicio_Sesion.label0"/><%-- Usbid: --%></label><html:text styleId="1840389" property="usbid" size="30"/></p>
                                                     </th>
-                                                </tr>
-                                                <tr>
+                                                
                                                     <th>
                                                         <html:submit styleClass="button"><bean:message key="V_Inicio_Sesion.label0"/><%-- Ingresar --%></html:submit>
                                                     </th>
                                                 </tr>
+                                                </table>
+                                                    <table border="0">
+                                                <tr align="center">
+                                                    Se les recuerda a nuestros Usuarios que cualquier información enviada por correo<br> electrónico será a la traves de su cuenta de correo USBNet.
+                                                    </tr>
                                             </table>
+
                                         </html:form>
 
                                     </div>
