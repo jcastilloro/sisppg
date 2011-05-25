@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-        <script src="_js/jquery-1.4.4.min.js" type="text/javascript"></script>
-        <script src="_js/insc-pasant.js" type="text/javascript"></script>
+        <script src="../_js/jquery-1.4.4.min.js" type="text/javascript"></script>
+        <script src="../_js/insc-pasant.js" type="text/javascript"></script>
         <script type="text/javascript" src="../sorttable.js"></script>
         <style type="text/css">
 

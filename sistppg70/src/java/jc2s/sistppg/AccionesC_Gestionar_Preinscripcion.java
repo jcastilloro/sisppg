@@ -50,6 +50,10 @@ public class AccionesC_Gestionar_Preinscripcion extends CohesionAction {
             Estudiante est = (Estudiante)request.getSession().getAttribute("estudiante");
             List<Preinscripcion> preinscripciones = (List<Preinscripcion>) s.createQuery("from Preinscripcion where estudiante = :idEst order by created_at desc").setLong("idEst", est.getIdEstudiante()).list();
             request.setAttribute("L_preins", preinscripciones);
+            if(preinscripciones.isEmpty()){
+                List<Ciudad> ciudades = (List<Ciudad>) s.createQuery("from Ciudad order by nombre desc").list();
+                request.setAttribute("L_ciudades", ciudades);
+            }
             tr.commit();
 
         } catch (Exception ex) {
@@ -110,6 +114,20 @@ public class AccionesC_Gestionar_Preinscripcion extends CohesionAction {
 
                 f_pre.reset(mapping, request);
                 s.save(pre);
+
+                CiudadPreinscripcion cp;
+                Ciudad c;
+                String[] ciudades = donde.split(",");
+                for(int i=0;i<ciudades.length;i++){
+                    c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
+                    cp = new CiudadPreinscripcion();
+                    cp.setCiudad(c);
+                    cp.setPreinscripcion(pre);
+                    s.save(cp);
+                }
+
+
+
                 salida = SALIDA_0;
             } else {
                 // ERROR YA UD está preinscrito!!!!!!!!!!!

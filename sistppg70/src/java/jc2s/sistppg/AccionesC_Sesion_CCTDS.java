@@ -73,10 +73,6 @@ public class AccionesC_Sesion_CCTDS extends CohesionAction {
             request.setAttribute("preins_noa", preins_noa);
             request.setAttribute("preins_a", preins_a);
 
-
-
-
-
             tr.commit();
 
         } catch (Exception ex) {

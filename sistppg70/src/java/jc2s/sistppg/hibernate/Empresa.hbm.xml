@@ -19,6 +19,8 @@
     <!-- 6 -->
     <property column="direccion" name="direccion" not-null="true" type="string"/>
     <!-- 7 -->
+    <property column="email" name="email" not-null="true" type="string"/>
+    <!-- 8 -->
     <many-to-one column="ciudad" name="ciudad" not-null="true"/>
   </class>
 </hibernate-mapping>

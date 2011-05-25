@@ -6,7 +6,7 @@
     <id column="idPreinscripcion" name="idPreinscripcion">
       <generator class="native"/>
     </id>
-    <!-- 1 -->   
+    <!-- 1 -->
     <property column="tipo" name="tipo" not-null="true" type="integer"/>
     <!-- 2 -->
     <property column="regiones" name="regiones" type="string"/>
@@ -20,5 +20,10 @@
     <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
     <!-- 7 -->
     <property column="created_at" name="created_at" not-null="true" type="timestamp"/>
+    <!-- 8 -->
+    <set name="ciudadesPreinscripcion" table="ciudadPreiscripcion">
+        <key column="preinscripcion"/>
+        <one-to-many class="jc2s.sistppg.hibernate.CiudadPreinscripcion"/>
+    </set>
   </class>
 </hibernate-mapping>

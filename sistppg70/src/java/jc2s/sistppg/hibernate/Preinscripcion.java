@@ -1,5 +1,7 @@
 package jc2s.sistppg.hibernate;
 
+import java.util.HashSet;
+import java.util.Set;
 import ve.usb.cohesion.runtime.Timestamp;
 
 public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.runtime.Auditable {
@@ -188,6 +190,27 @@ public class Preinscripcion implements java.io.Serializable, ve.usb.cohesion.run
         if (created_at==null || created_at instanceof Timestamp)
             this.created_at = created_at;
         else this.created_at = new Timestamp(created_at);
+    }
+
+    /**
+     * Holds value of property ciudadesPreinscripcion.
+     */
+    private Set<CiudadPreinscripcion> ciudadesPreinscripcion = new HashSet<CiudadPreinscripcion>();
+
+    /**
+     * Getter for property actividades.
+     * @return Value of property ciudadesPreinscripcion.
+     */
+    public Set<CiudadPreinscripcion> getCiudadesPreinscripcion() {
+        return this.ciudadesPreinscripcion;
+    }
+
+    /**
+     * Setter for property ciudadesPreinscripcion.
+     * @param ciudadesPreinscripcion New value of property ciudadesPreinscripcion.
+     */
+    public void setCiudadesPreinscripcion(Set<CiudadPreinscripcion> ciudadesPreinscripcion) {
+        this.ciudadesPreinscripcion = ciudadesPreinscripcion;
     }
 
 

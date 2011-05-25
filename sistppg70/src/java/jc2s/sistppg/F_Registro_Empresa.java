@@ -19,6 +19,7 @@ public class F_Registro_Empresa extends org.apache.struts.action.ActionForm {
         rif = "";
         telefono = "";
         direccion = "";
+        email = "";
         pais = "";
         ciudad = "";
 
@@ -32,6 +33,7 @@ public class F_Registro_Empresa extends org.apache.struts.action.ActionForm {
         rif = "";
         telefono = "";
         direccion = "";
+        email="";
         pais = "";
         ciudad = "";
 
@@ -201,6 +203,28 @@ public class F_Registro_Empresa extends org.apache.struts.action.ActionForm {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+     /**
+     * Holds value of property email.
+     */
+    private String email = "";
+
+    /**
+     * Getter for property email.
+     * @return Value of property email.
+     */
+    public String getEmail() {
+        return this.email;
+    }
+
+    /**
+     * Setter for property email.
+     * @param email New value of property email.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     /**
      * Holds value of property pais.

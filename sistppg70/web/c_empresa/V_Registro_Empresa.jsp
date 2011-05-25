@@ -85,11 +85,12 @@
                                         <tr><td><p id="1840540_C"><label for="1840540"><bean:message key="F_Registro_Empresa.label3"/><%-- Nombre Empresa: --%></label></td><td><html:text styleId="1840540" property="nombre" size="30"/></td></tr>
                                         <tr><td><p id="1840543_C"><label for="1840543"><bean:message key="F_Registro_Empresa.label4"/><%-- RIF: --%></label></td><td><html:text styleId="1840543" property="rif" size="30"/></td></tr>
                                         <tr><td><p id="1840546_C"><label for="1840546"><bean:message key="F_Registro_Empresa.label5"/><%-- Telefono: --%></label></td><td><html:text styleId="1840546" property="telefono" size="30"/></td></tr>
+                                        <tr><td><p id="1840531_C"><label for="1840531">Email: </label></td><td><html:text styleId="18405312" property="email" size="30"/></td></tr>
                                         <tr><td><p id="1840550_C"><label for="1840550"><bean:message key="F_Registro_Empresa.label6"/><%-- Direccion: --%></label></td><td><html:textarea styleId="1840550" property="direccion" cols="60" rows="10"></html:textarea></td></tr>
                                         <tr><td><p id="1840553_C"><label for="1840553"><bean:message key="F_Registro_Empresa.label7"/><%-- Pais: --%></label></td><td>
                                                 <html:select styleId="1840553" property="pais">
                                                     <logic:iterate id="pais" collection="${empty L_Paises ? _vacio : L_Paises}">
-                                                <html:option value="${Pais.idPais}">${pais.nombre}</html:option>
+                                                <option value="${pais.idPais}">${pais.nombre}</option>
                                             </logic:iterate>
                                         </html:select>
                                         </td></tr>

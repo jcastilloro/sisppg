@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+                <script type="text/javascript" src="../_js/jquery-1.6.1.js"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -98,8 +99,25 @@
                                                 <html:radio property="buscar" value="true">Sí</html:radio>
                                                 <html:radio property="buscar" value="false">No</html:radio>
                                                     
-                                                <br><br><h3>¿A cuales regiones del País estaría Ud. dispuesto a ir?</h3>
-                                                <html:text property="donde" size="50"/>
+
+                                                <br><br><h3>¿A que ciudades estaría Ud. dispuesto a ir?</h3>
+                                                <html:text styleId="ciudades" property="donde" size="50" style="display:none;"/>
+                                                <select multiple="multiple">
+                                                    <logic:iterate name="L_ciudades" id="ciudad">
+                                                        <option id="${ciudad.idCiudad}">${ciudad.nombre}</option>
+                                                    </logic:iterate>
+                                                </select>
+                                                <script>
+                                                    $("select").change(function () {
+                                                          var str = "";
+                                                          $("select option:selected").each(function () {
+                                                                str += $(this).attr("id") + ",";
+                                                              });
+                                                              $("#ciudades").attr("value", str);
+                                                        })
+                                                        .trigger('change');
+                                                </script>
+
                                                 <br><br>
                                                 <html:submit styleClass="button">Preinscribete!</html:submit>                                                        
                                                 

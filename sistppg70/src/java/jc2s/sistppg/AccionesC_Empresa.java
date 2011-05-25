@@ -184,13 +184,20 @@ public class AccionesC_Empresa extends CohesionAction {
                 request.setAttribute("msg", "Por Favor Inserte una Dirección Válida");
             }
 
+            String email = fempresa.getEmail();
+            if (!Pattern.matches(".+", email)) {
+                salida = SALIDA_1;
+                request.setAttribute("msg", "Por Favor Inserte un Email Válido");
+            }
+
             if (salida == 0) {
                 Empresa e = new Empresa();
                 Ciudad c = (Ciudad) s.createQuery("from Ciudad where idCiudad = :var").setInteger("var", Integer.parseInt(fempresa.getCiudad())).list().get(0);
-                Pais pa = (Pais) s.createQuery("from Pais where idPais = :var").setInteger("var", Integer.parseInt(fempresa.getCiudad())).list().get(0);
+                Pais pa = (Pais) s.createQuery("from Pais where idPais = :var").setInteger("var", Integer.parseInt(fempresa.getPais())).list().get(0);
 
                 e.setCiudad(c);
                 e.setDireccion(direccion);
+                e.setEmail(email);
                 e.setLogin(login);
                 e.setNombre(nombre);
                 e.setPassword(password);

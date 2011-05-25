@@ -167,6 +167,27 @@ public class Empresa implements java.io.Serializable, ve.usb.cohesion.runtime.Au
         this.direccion = direccion;
     }
 
+     /**
+     * Holds value of property email.
+     */
+    private String email = "";
+
+    /**
+     * Getter for property email.
+     * @return Value of property email.
+     */
+    public String getEmail() {
+        return this.email;
+    }
+
+    /**
+     * Setter for property email.
+     * @param email New value of property email.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     /**
      * Holds value of property ciudad.
      */

@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,6 +51,11 @@ public class AccionesC_Solicitar_pasantes extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            Empresa e = (Empresa) request.getSession().getAttribute("empresa");
+            List<EmpresaSolicitaPasante> esp = (List<EmpresaSolicitaPasante>) s.createQuery("from EmpresaSolicitaPasante esp join fetch esp.empresa join fetch esp.carrera where esp.empresa = :e").setLong("e",e.getId()).list();
+            List<Carrera> carreras = (List<Carrera>) s.createQuery("from Carrera").list();
+            request.setAttribute("L_esp", esp);
+            request.setAttribute("L_carreras", carreras);
             tr.commit();
 
         } catch (Exception ex) {
@@ -82,15 +89,26 @@ public class AccionesC_Solicitar_pasantes extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_gestionar_solicitud_pasantes", "V_gestionar_solicitud_pasantes", };
+        final String[] SALIDAS = {"A_Prep_gestionar_solicitud_pasantes", "A_Prep_gestionar_solicitud_pasantes", };
         final int SALIDA_0 = 0;
         final int SALIDA_1 = 1;
 
-        int salida = SALIDA_0;
+        int salida = SALIDA_1;
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            F_Solicitud_Pasante fF_Solicitud_Pasante = (F_Solicitud_Pasante)form;
+            F_Solicitud_Pasante fsp = (F_Solicitud_Pasante)form;
+            if(!fsp.getCarrera().equals("0")){
+                Long idC = Long.parseLong(fsp.getCarrera());
+                EmpresaSolicitaPasante esp = new EmpresaSolicitaPasante();
+                Empresa e = (Empresa) request.getSession().getAttribute("empresa");
+                Carrera c = (Carrera) s.createQuery("from Carrera c where c.idCarrera = :var").setLong("var", idC).uniqueResult();
+                esp.setCarrera(c);
+                esp.setEmpresa(e);
+                esp.setCreated_at(new Date());
+                s.save(esp);
+                salida = SALIDA_0;
+            }
             tr.commit();
 
         } catch (Exception ex) {
@@ -128,15 +146,17 @@ public class AccionesC_Solicitar_pasantes extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_gestionar_solicitud_pasantes", };
+        final String[] SALIDAS = {"A_Prep_gestionar_solicitud_pasantes", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            Long id = Long.parseLong((String)request.getParameter("solId"));
+            EmpresaSolicitaPasante esp = (EmpresaSolicitaPasante) s.createQuery("from EmpresaSolicitaPasante esp where esp.idEmpresaSolicitaPasante = :var").setLong("var",id).uniqueResult();
+            s.delete(esp);
             tr.commit();
-
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
