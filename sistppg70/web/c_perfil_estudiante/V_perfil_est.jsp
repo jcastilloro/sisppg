@@ -77,7 +77,8 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center>${empty msg ? "" : msg}</center>
+                                    <center><h3>${empty msg ? "" : msg}</h3></center>
+                                    <br>
                                     <div class="box1465928" align="center">
 
                                         <html:form styleId="perfilEForm"

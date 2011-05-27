@@ -75,7 +75,7 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center>${empty msg ? "" : msg}</center>
+                                    <center>${empty msg ? "" : msg} Estudiante</center>
                                     <div class="box1465928" align="center">
                                     </div>
                                 </div>

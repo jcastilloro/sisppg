@@ -37,6 +37,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
             <div id="header">
                
@@ -50,14 +51,15 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-
+                                    <center><h3>Inscripción de Pasantía</h3></center>
+                                    <br>
                             ${empty msg ? "" : msg}
                             <div class="box1840463">
                             <html:form styleId="pasForm" action="/A_generar_inscripcion.do" method="post">
                             <table border="0"><tr><td>
                   <label for="1840465"><bean:message key="F_Inscripcion_Pasantia.label0"/><%-- Titulo: --%></label>
                                     </td><td>
-                  <html:text styleId="1840465" property="titulo_pasantia" size="30" styleClass="validate[required]"/>
+                                        <html:text styleId="1840465" property="titulo_pasantia" size="50" maxlength="100" styleClass="validate[required]"/><small>(máximo 100 caracteres)</small>
                                     </td></tr><tr><td>
                   <label for="1843570"><bean:message key="F_Inscripcion_Pasantia.label1"/><%-- Tipo de pasantia: --%></label>
                                     </td><td>
@@ -123,11 +125,11 @@
                   </td></tr><tr><td>
                   <label for="1840471"><bean:message key="F_Inscripcion_Pasantia.label4"/><%-- Objetivos Generales: --%></label>
                   </td><td>
-                      <html:textarea styleId="1840471" property="objetivos" cols="60" rows="10" styleClass="validate[required]"></html:textarea>
+                      <html:textarea styleId="1840471" property="objetivos" cols="50" rows="10" styleClass="validate[required]"></html:textarea>
                   </td></tr><tr><td>
                        <label for="1840468"><bean:message key="F_Inscripcion_Pasantia.label5"/><%-- Resumen del Proyecto: --%></label>
                   </td><td>
-                        <html:textarea styleId="1840468" property="resumen" cols="60" rows="10" styleClass="validate[required]"></html:textarea>
+                        <html:textarea styleId="1840468" property="resumen" cols="50" rows="10" styleClass="validate[required]"></html:textarea>
                   </td></tr><tr><td></td><td>
                   <html:submit styleClass="button"><bean:message key="V_generar_inscripcion.label0"/><%-- Generar Inscripcion --%></html:submit>
                    </td></table>

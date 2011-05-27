@@ -40,7 +40,9 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center>${empty msg ? "" : msg}</center>
+                                    <center><h3>Inscripción de Pasantía</h3>
+                                        <h4>Agregar Fase</h4>
+                                    ${empty msg ? "" : msg}</center>
                                     <div class="box1840475">
                                     <html:form action="/A_agregar_fase.do" method="post">
                                     <p id="1840477_C"><label for="1840477">
