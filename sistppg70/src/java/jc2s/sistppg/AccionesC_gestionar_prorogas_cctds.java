@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,26 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            long pi_aprobada      = (Long) s.createQuery("SELECT COUNT(idProrrogaInscripcion) FROM ProrrogaInscripcion WHERE prorroga.estatus.idEstatusProrroga=1").uniqueResult();
+            long pi_porrevisar    = (Long) s.createQuery("SELECT COUNT(idProrrogaInscripcion) FROM ProrrogaInscripcion WHERE prorroga.estatus.idEstatusProrroga=2").uniqueResult();
+            long pi_pasarporcctds = (Long) s.createQuery("SELECT COUNT(idProrrogaInscripcion) FROM ProrrogaInscripcion WHERE prorroga.estatus.idEstatusProrroga=3").uniqueResult();
+            long pi_rechazada     = (Long) s.createQuery("SELECT COUNT(idProrrogaInscripcion) FROM ProrrogaInscripcion WHERE prorroga.estatus.idEstatusProrroga=4").uniqueResult();
+
+            long pe_aprobada      = (Long) s.createQuery("SELECT COUNT(idProrrogaEvaluacion) FROM ProrrogaEvaluacion WHERE prorroga.estatus.idEstatusProrroga=1").uniqueResult();
+            long pe_porrevisar    = (Long) s.createQuery("SELECT COUNT(idProrrogaEvaluacion) FROM ProrrogaEvaluacion WHERE prorroga.estatus.idEstatusProrroga=2").uniqueResult();
+            long pe_pasarporcctds = (Long) s.createQuery("SELECT COUNT(idProrrogaEvaluacion) FROM ProrrogaEvaluacion WHERE prorroga.estatus.idEstatusProrroga=3").uniqueResult();
+            long pe_rechazada     = (Long) s.createQuery("SELECT COUNT(idProrrogaEvaluacion) FROM ProrrogaEvaluacion WHERE prorroga.estatus.idEstatusProrroga=4").uniqueResult();
+
+            request.setAttribute("pi_aprobada", pi_aprobada);
+            request.setAttribute("pi_porrevisar", pi_porrevisar);
+            request.setAttribute("pi_pasarporcctds", pi_pasarporcctds);
+            request.setAttribute("pi_rechazada", pi_rechazada);
+
+            request.setAttribute("pe_aprobada", pe_aprobada);
+            request.setAttribute("pe_porrevisar", pe_porrevisar);
+            request.setAttribute("pe_pasarporcctds", pe_pasarporcctds);
+            request.setAttribute("pe_rechazada", pe_rechazada);
+
             tr.commit();
 
         } catch (Exception ex) {
@@ -81,7 +102,7 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_consultar_prorrogas_e", };
+        final String[] SALIDAS = {"V_consultar_prorrogas_i", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -92,8 +113,10 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            List<ProrrogaInscripcion> prorrogas = (List<ProrrogaInscripcion>) s.createQuery("from ProrrogaInscripcion pi join fetch pi.prorroga pr join fetch pr.estatus").list();
+            request.setAttribute("L_prorrogas", prorrogas);
+            //prorrogas.get(0).getProrroga().getEstatus().getEstatus()
             tr.commit();
-
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
@@ -120,7 +143,7 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_consultar_prorrogas_i", };
+        final String[] SALIDAS = {"V_consultar_prorrogas_e", };
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
@@ -131,8 +154,9 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            List<ProrrogaEvaluacion> prorrogas = (List<ProrrogaEvaluacion>) s.createQuery("from ProrrogaEvaluacion pe join fetch pe.prorroga pr join fetch pr.estatus").list();
+            request.setAttribute("L_prorrogas", prorrogas);
             tr.commit();
-
         } catch (Exception ex) {
             tr.rollback();
             throw ex;
@@ -170,6 +194,20 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            if(!request.getParameter("tipo").equals("") && !request.getParameter("id").equals("")){
+                long id = (long) Long.parseLong(request.getParameter("id"));
+                if(request.getParameter("tipo").equals("e")){
+                    ProrrogaEvaluacion pe = (ProrrogaEvaluacion) s.createQuery("from ProrrogaEvaluacion pe join fetch pe.prorroga p join fetch p.estatus where pe.idProrrogaEvaluacion = :id").setLong("id", id).uniqueResult();
+                    request.setAttribute("Prorroga", pe);
+                }else{
+                    ProrrogaInscripcion pi = (ProrrogaInscripcion) s.createQuery("from ProrrogaInscripcion pe join fetch pe.prorroga p join fetch p.estatus where pe.idProrrogaInscripcion = :id").setLong("id", id).uniqueResult();
+                    request.setAttribute("Prorroga", pi);
+                }   
+
+                request.setAttribute("tipo",request.getParameter("tipo"));
+
+            }
+
             tr.commit();
 
         } catch (Exception ex) {

@@ -481,13 +481,6 @@
            scope="session"/>
 
 
-        <!-- C_Solicitar_Prorroga_Evaluacion -->
-        <action path="/A_prep_solicitar_prorroga_evaluacion" parameter="A_prep_solicitar_prorroga_evaluacion"
-           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>
-        <action path="/A_solicitar_prorroga_evaluacion" parameter="A_solicitar_prorroga_evaluacion"
-           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>
-
-
         <!-- C_Generar_Inscripcion_Pasantia -->
         <action path="/A_prep_generar_inscripcion" parameter="A_prep_generar_inscripcion"
            type="jc2s.sistppg.AccionesC_Generar_Inscripcion_Pasantia"/>
@@ -635,6 +628,16 @@
            input="/C_Solicitar_Prorroga_Inscripcion/V_solicitar_prorroga_inscripcion.jsp"
            name="F_Prorroga_Inscripcion"
            scope="session"/>
+
+        <!-- C_Solicitar_Prorroga_Evaluacion -->
+        <action path="/A_prep_solicitar_prorroga_evaluacion" parameter="A_prep_solicitar_prorroga_evaluacion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>
+        <action path="/A_solicitar_prorroga_evaluacion" parameter="A_solicitar_prorroga_evaluacion"
+           type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"
+           input="/C_Solicitar_Prorroga_Evaluacion/V_solicitar_prorroga_evaluacion.jsp"
+           name="F_Prorroga_Evaluacion"
+           scope="session"/>
+
 
 
         <!-- C_Sesion_Coordinador -->

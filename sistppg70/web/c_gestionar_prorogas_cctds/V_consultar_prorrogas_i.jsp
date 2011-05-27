@@ -14,7 +14,6 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
- <li><cohesion:actor actors="1"><html:link action="/A_mostrar_prorroga.do"><bean:message key="V_consultar_prorrogas_i.label0"/><%-- A_mostrar_prorroga --%></html:link></cohesion:actor></li>
 
 
 
@@ -35,8 +34,28 @@
                             <div id="left">
                                 <div class="content">
 
-       <bean:message key="V_consultar_prorrogas_i.title"/>
-                            ${empty msg ? "" : msg}
+                            <table border="1" class="sortable">
+                                <thead>
+                                    <tr>
+                                        <th>usbid</th>
+                                        <th>Nombre</th>
+                                        <th>Fecha solicitud</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <logic:notEmpty name="L_prorrogas">
+                                        <logic:iterate name="L_prorrogas" id="p">
+                                            <tr>
+                                                <td><html:link action="/A_mostrar_prorroga.do?id=${p.idProrrogaInscripcion}&tipo=i">${p.prorroga.estudiante.usbid}</html:link></td>
+                                                <td><html:link action="/A_mostrar_prorroga.do?id=${p.idProrrogaInscripcion}&tipo=i">${p.prorroga.estudiante.apellido}, ${p.prorroga.estudiante.apellido}</html:link></td>
+                                                <td><html:link action="/A_mostrar_prorroga.do?id=${p.idProrrogaInscripcion}&tipo=i"> ${p.prorroga.created_at}</html:link></td>
+                                                <td><html:link action="/A_mostrar_prorroga.do?id=${p.idProrrogaInscripcion}&tipo=i"> ${p.prorroga.estatus.estatus}</html:link></td>
+                                            </tr>
+                                        </logic:iterate>
+                                    </logic:notEmpty>
+                                </tbody>
+                            </table>
 
                           </div>
                             </div>

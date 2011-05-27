@@ -1,5 +1,6 @@
 package jc2s.sistppg;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -93,6 +94,32 @@ public class AccionesC_Solicitar_Prorroga_Evaluacion extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+            F_Prorroga_Evaluacion fprorroga = (F_Prorroga_Evaluacion)form;
+            String justificacion = fprorroga.getJustificacion();
+            String[] fecha = fprorroga.getFecha_propuesta().split("/");
+            if(!justificacion.equals("") && fecha.length==3){
+                salida = SALIDA_1;
+                Estudiante est = (Estudiante) request.getSession().getAttribute("estudiante");
+                Prorroga p = new Prorroga();
+                p.setCreated_at(new Date());
+                p.setUpdated_at(new Date());
+                EstatusProrroga e = (EstatusProrroga) s.createQuery("from EstatusProrroga where estatus = 'Por revisar'").uniqueResult();
+                p.setEstatus(e);
+                p.setEstudiante(est);
+
+                s.save(p);
+                ProrrogaEvaluacion pe = new ProrrogaEvaluacion();
+                pe.setProrroga(p);
+
+                Pasantia pas = (Pasantia) s.createQuery("from Pasantia p order by p.proyecto.created_at DESC").iterate().next();
+                pe.setPasantia(pas);
+
+                Date fecha_propuesta = new Date(Integer.parseInt(fecha[0])-1900,Integer.parseInt(fecha[1])-1,Integer.parseInt(fecha[2]));
+                pe.setFecha_propuesta(fecha_propuesta);
+
+                s.save(pe);
+            }
             tr.commit();
 
         } catch (Exception ex) {

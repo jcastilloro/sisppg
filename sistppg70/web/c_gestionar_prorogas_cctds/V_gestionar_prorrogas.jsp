@@ -13,12 +13,12 @@
     <body>
         <div id="wrapper">
             <div id="menu">
-                                <ul id="nav">
-<li><cohesion:actor actors="1"><html:link action="/A_mostrar_prorroga.do"><bean:message key="V_gestionar_prorrogas.label0"/><%-- A_mostrar_prorroga --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_e.do"><bean:message key="V_gestionar_prorrogas.label1"/><%-- Prorrogas Evaluacion --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_i.do"><bean:message key="V_gestionar_prorrogas.label2"/><%-- Prorrogas Inscripcion --%></html:link></cohesion:actor></li>
+                <ul id="nav">
+                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_e.do">Prorrogas Evaluacion</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_i.do">Prorrogas Inscripcion</html:link></cohesion:actor></li>
 
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
@@ -35,7 +35,31 @@
                             <div id="left">
                                 <div class="content">
 
-                            ${empty msg ? "" : msg}
+<br>
+                                        <div>
+                                            <h1>Numero de Prorrogas de Inscripcion por Status</h1>
+                                            <br>
+                                            <p>
+                                            <strong style="font-size: 12px; color: #5986BD;">Por Revisar: </strong>${pi_porrevisar}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">"Pasar por CCTDS": </strong>${pi_pasarporcctds}<br>
+                                            <br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Aprobadas: </strong>${pi_aprobada}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Rechazada: </strong>${pi_rechazada}<br>
+                                            </p>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div>
+                                            <h1>Numero de Prorrogas de Evaluacion por Status</h1>
+                                            <br>
+                                            <p>
+                                            <strong style="font-size: 12px; color: #5986BD;">Por Revisar: </strong>${pe_porrevisar}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">"Pasar por CCTDS": </strong>${pe_pasarporcctds}<br>
+                                            <br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Aprobadas: </strong>${pe_aprobada}<br>
+                                            <strong style="font-size: 12px; color: #5986BD;">Rechazada: </strong>${pe_rechazada}<br>
+                                            </p>
+                                        </div>
 
 
                           </div>

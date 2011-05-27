@@ -31,8 +31,49 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                            Mostrar Prorroga
                             ${empty msg ? "" : msg}
+                            <logic:equal name="tipo" value="e">
+                                <h1>Prorroga Evaluacion</h1>
+                                <table>
+                                    <tr>
+                                        <th>Estudiante: </th>
+                                        <td>${Prorroga.prorroga.estudiante.usbid}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Justificacion: </th>
+                                        <td>${Prorroga.prorroga.justificacion}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha propuesta: </th>
+                                        <td>${Prorroga.fecha_propuesta}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha Solicitud: </th>
+                                        <td>${Prorroga.prorroga.estatus.estatus}</td>
+                                    </tr>
+                                </table>
+                            </logic:equal>
+                            <logic:equal name="tipo" value="i">
+                                <h1>Prorroga Evaluacion</h1>
+                                <table>
+                                    <tr>
+                                        <th>Estudiante: </th>
+                                        <td>${Prorroga.prorroga.estudiante.usbid}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Justificacion: </th>
+                                        <td>${Prorroga.prorroga.justificacion}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha Solicitud: </th>
+                                        <td>${Prorroga.prorroga.created_at}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estatus: </th>
+                                        <td>${Prorroga.prorroga.estatus.estatus}</td>
+                                    </tr>
+                                </table>
+                            </logic:equal>
 
                           </div>
                             </div>

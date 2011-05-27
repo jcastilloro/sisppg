@@ -53,15 +53,15 @@ public class AccionesC_Sesion_CCTDS extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
-            long p_aprobado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=1").iterate().next();
-            long p_retirado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=2").iterate().next();
-            long p_reprobado     = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=3").iterate().next();
-            long p_rezagado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=4").iterate().next();
-            long p_revisado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=5").iterate().next();
-            long p_porrevisar    = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=6").iterate().next();
-            long p_pasarporcctds = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=7").iterate().next();
-            long preins_noa      = (Long) s.createQuery("SELECT COUNT(idPreinscripcion) FROM Preinscripcion WHERE estatus = false").iterate().next();
-            long preins_a        = (Long) s.createQuery("SELECT COUNT(idPreinscripcion) FROM Preinscripcion WHERE estatus = true").iterate().next();
+            long p_aprobado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=1").uniqueResult();
+            long p_retirado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=2").uniqueResult();
+            long p_reprobado     = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=3").uniqueResult();
+            long p_rezagado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=4").uniqueResult();
+            long p_revisado      = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=5").uniqueResult();
+            long p_porrevisar    = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=6").uniqueResult();
+            long p_pasarporcctds = (Long) s.createQuery("SELECT COUNT(idPasantia) FROM Pasantia WHERE estatus.idEstatusPasantia=7").uniqueResult();
+            long preins_noa      = (Long) s.createQuery("SELECT COUNT(idPreinscripcion) FROM Preinscripcion WHERE estatus = false").uniqueResult();
+            long preins_a        = (Long) s.createQuery("SELECT COUNT(idPreinscripcion) FROM Preinscripcion WHERE estatus = true").uniqueResult();
 
             request.setAttribute("p_aprobado", p_aprobado);
             request.setAttribute("p_retirado", p_retirado);
