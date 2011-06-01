@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,24 +60,13 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
                 </ul>
             </div>
-
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
-
-
                 <div id="content">
-
                     <div id="body">
 
                         <div id="split">
@@ -91,16 +75,6 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-
-
-
-
-
-
-
-
-
-
                                         <html:form
                                             action="/A_inicio_sesion_t_industrial.do" method="post">
                                             <table borde="0">
@@ -109,7 +83,7 @@
                                                         <p id="1840982_C"><label for="1840982"><bean:message key="F_Inicio_Sesion_externo.label0"/><%-- Login: --%></label>
                                                     </th>
                                                     <td>
-                                                        <html:text styleId="1840982" property="login" size="30"/></p>
+                                                        <html:text styleId="1840982" property="login" size="30"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -117,7 +91,7 @@
                                                         <p id="1840985_C"><label for="1840985"><bean:message key="F_Inicio_Sesion_externo.label1"/><%-- Password: --%></label>
                                                     </th>
                                                     <td>
-                                                        <html:password styleId="1840985" property="password" size="30"/></p>
+                                                        <html:password styleId="1840985" property="password" size="30"/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -126,17 +100,6 @@
                                             </center>
 
                                         </html:form>
-
-
-
-
-
-
-
-
-
-
-
                                     </div>
                                 </div>
                             </div>

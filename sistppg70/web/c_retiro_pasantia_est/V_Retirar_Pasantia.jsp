@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,27 +60,16 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
                   <%--  <li><cohesion:actor actors="4"><html:link action="/A_prep_Consultar_Pasantia.do"><bean:message key="V_Retirar_Pasantia.label1"/><%-- Atras --%> <%--  </html:link></cohesion:actor></li> --%>
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
-
-
-            <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            <div id="header">               
             </div>
             <div id="page">
 
-
-
                 <div id="content">
-
                     <div id="body">
 
                         <div id="split">
@@ -95,7 +79,6 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-
                                         <html:form
                                             action="/A_Retirar_Pasantia.do" method="post" enctype="multipart/form-data">
                                             <p id="1840514_C"><label for="1840514"><bean:message key="F_Retiro_Pasantia.label0"/><%-- Carta Tutor Academico: --%></label><html:file styleId="1840514" property="carta_retiro_tutor_academico" size="30"/></p>
@@ -104,7 +87,6 @@
 
                                             <html:submit styleClass="button"><bean:message key="V_Retirar_Pasantia.label0"/><%-- RetirarPasantia --%></html:submit>
                                         </html:form>
-
 
                                     </div>
                                 </div>

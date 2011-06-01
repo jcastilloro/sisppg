@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <script type="text/javascript" src="../sorttable.js"></script>
 
         <style type="text/css">
@@ -67,22 +62,13 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -139,7 +125,7 @@
                                             <html:form
                                                 action="/A_insertar_estatus_prorroga.do" method="post">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}"/></td></tr></p>
+                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}"/></td></tr>
                                                     <html:hidden property="idEstatusProrroga" value="${Singular.idEstatusProrroga}"/>
 
 
@@ -148,11 +134,6 @@
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
-
-
-
-
-
 
 
 
@@ -174,7 +155,7 @@
                                             <html:form
                                                 action="/A_insertar_estatus_prorroga.do" method="post">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value=""/></td></tr></p>
+                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value=""/></td></tr>
                                                     <html:hidden property="idEstatusProrroga" value=""/>
 
 

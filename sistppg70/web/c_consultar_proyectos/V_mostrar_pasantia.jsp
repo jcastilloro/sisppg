@@ -45,6 +45,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
+                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">

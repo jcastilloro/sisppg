@@ -13,14 +13,14 @@
     <body>
         <div id="wrapper">
             <div id="menu">
-                                <ul id="nav">
+                <ul id="nav">
                     <li><cohesion:actor actors="16"><html:link action="/A_modificar_perfil.do"><bean:message key="V_sesion_tutor_i.label0"/><%-- Modificar Perfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="16"><html:link action="/A_prep_gestionar_pasatias_TI.do"><bean:message key="V_sesion_tutor_i.label1"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
@@ -32,9 +32,8 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-
-
-                            ${empty msg ? "" : msg}
+                                <center><h3>Modificar Perfil de Tutor Industrial</h3></center>
+                                <%--${empty msg ? "" : msg}--%>
                             <div class="box1840560"><html:form
                                     action="/A_actualizar_perfil_TI.do" method="post">
                                     <table border="0">

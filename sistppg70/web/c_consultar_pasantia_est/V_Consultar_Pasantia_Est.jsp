@@ -62,8 +62,8 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_retirar_pasantia.do"><bean:message key="V_Consultar_Pasantia_Est.label0"/><%-- Retirar Pasantia --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_solicitar_prorroga_evaluacion.do">Solicitar Prorroga Evaluacion</html:link></cohesion:actor></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
             <div id="header">              
             </div>

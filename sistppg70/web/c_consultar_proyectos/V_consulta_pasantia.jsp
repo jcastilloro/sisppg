@@ -68,10 +68,7 @@
                                         <h1 align="center">Pasantías</h1>
                                         <html:form action="/A_consultar_pasantias.do" method="post">
 
-
-
                                             <table border="0">
-
                                                 <tr>
                                                     <th align="center">
                                                         Carrera
@@ -173,9 +170,10 @@
                                             </table>
                                         </html:form>
 
+                                        <%-- Resultados de la Búsqueda --%>
 
                                         <logic:empty name="Pasantias">
-                                            <h1>¡No hay estudiantes haciendo pasantías!</h1>
+                                            <h1>¡No hay estudiantes haciendo pasantías según los criterios de búsqueda seleccionados!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantias">
                                             <div class="administrador">
@@ -189,7 +187,7 @@
                                                             <tr onclick="location.href='/sistppg70/A_mostrar_pasantia.do?idPasantia=${pas.idPasantia}'" onmouseover="this.style.cursor='pointer'">
 
                                                                 <td>${pas.titulo}</td>
-                                                                <td> ${pas.resumen} </td>
+                                                                <td>${pas.resumen}</td>
                                                             </tr>
                                                         </logic:iterate>
                                                     </tbody>

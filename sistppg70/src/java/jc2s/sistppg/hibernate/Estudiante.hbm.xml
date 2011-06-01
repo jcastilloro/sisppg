@@ -21,7 +21,7 @@
     <!-- 7 -->
     <property column="telefono" name="telefono" not-null="true" type="string"/>
     <!-- 8 -->
-    <property column="otrotelefono" name="otrotelefono" not-null="true" type="string"/>
+    <property column="otrotelefono" name="otrotelefono" type="string"/>
     <!-- 9 -->
     <property column="fecha_nacimiento" name="fecha_nacimiento" not-null="true" type="date"/>
     <!-- 10 -->

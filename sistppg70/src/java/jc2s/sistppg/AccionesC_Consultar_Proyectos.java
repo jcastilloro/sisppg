@@ -470,7 +470,6 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             pas.retainAll(pas2);
 
 
-
             request.setAttribute("Pasantias", pas);
 
             //micodigo

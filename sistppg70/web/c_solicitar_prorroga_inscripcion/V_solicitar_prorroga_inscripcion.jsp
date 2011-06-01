@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_solicitar_prorroga_inscripcion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,21 +60,13 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
 
                 <div id="content">
 
@@ -92,16 +79,12 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-
-
                                         <html:form
                                             action="/A_solicitar_prorroga_inscripcion.do" method="post">
                                             <p id="1840450_C"><label for="1840450"><bean:message key="F_Prorroga_Inscripcion.label0"/><%-- Justificacion: --%></label><br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
 
                                             <html:submit styleClass="button"><bean:message key="V_solicitar_prorroga_inscripcion.label0"/><%-- Solicitar Prorroga --%></html:submit>
                                         </html:form>
-
-
 
                                     </div>
                                 </div>
@@ -120,8 +103,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>
