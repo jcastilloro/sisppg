@@ -96,7 +96,7 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
         final int SALIDA_1 = 1;
 
         int salida = SALIDA_1;
-//Checking for actors estudiante
+        //Checking for actors estudiante
         if (!CohesionActor.checkActor(request, 4)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }

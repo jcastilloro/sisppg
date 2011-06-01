@@ -2,9 +2,7 @@ package jc2s.sistppg;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 
 public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {

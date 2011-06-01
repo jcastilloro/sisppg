@@ -105,7 +105,7 @@
                           </logic:empty>
                           <logic:notEmpty name="L_TA">
                               <logic:iterate id="ta" name="L_TA">
-                                  <html:option value="${ta.idProfesor}">${ta.apellido}, ${ta.nombre}</html:option>
+                                  <html:option value="${ta.idProfesor}">${ta.nombre} ${ta.apellido} - ${ta.email}</html:option>
                               </logic:iterate>
                           </logic:notEmpty>
                       </html:select>
@@ -118,7 +118,7 @@
                           </logic:empty>
                           <logic:notEmpty name="L_TI">
                               <logic:iterate id="ti" name="L_TI">
-                                  <html:option value="${ti.idTutorIndustrial}">${ti.nombre}</html:option>
+                                  <html:option value="${ti.idTutorIndustrial}">${ti.nombre} - ${ti.email}</html:option>
                               </logic:iterate>
                           </logic:notEmpty>
                       </html:select>

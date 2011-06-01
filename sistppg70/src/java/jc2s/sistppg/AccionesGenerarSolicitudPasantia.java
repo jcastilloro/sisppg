@@ -31,6 +31,7 @@ import java.util.Calendar;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import jc2s.sistppg.hibernate.Ciudad;
 import jc2s.sistppg.hibernate.Estudiante;
 import jc2s.sistppg.hibernate.Preinscripcion;
 import jc2s.sistppg.hibernate.Usuario;
@@ -105,7 +106,20 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                 int cedula = estudiante.getCedula();
                 boolean graduando = preinscripcion.getPor_graduar();
                 boolean tramite = preinscripcion.getTramitecctds();
-                String region = preinscripcion.getRegiones();
+                String donde = preinscripcion.getRegiones();
+                String region = "ninguna";
+
+                String[] ciudades = donde.split(",");
+                Ciudad c;
+                for(int i=0;i<ciudades.length;i++){
+                    c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
+                    if (region.equals("ninguna"))
+                        region = c.getNombre();
+                    else if ( i+1<ciudades.length )
+                        region = region +", "+c.getNombre();
+                    else
+                        region = region +" y "+c.getNombre();
+                }
 
                 Calendar cal = Calendar.getInstance();
                 int month = cal.get(Calendar.MONTH) + 1;
