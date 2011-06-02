@@ -127,10 +127,18 @@
                                         <logic:notEmpty name="L_preins">
                                             <ul id="preinscripciones">
                                                 <logic:iterate id="p" name="L_preins">
-                                                    <h1>Usted se preinscribió para realizar pasantía ${p.tipo==1 ? "Corta" : ""} ${p.tipo==2 ? "Intermedia" : ""} ${p.tipo==3 ? "Larga" : ""} </h1>
+                                                    <h1>Usted se preinscribió para realizar pasantía ${p.tipo==1 ? "corta" : ""} ${p.tipo==2 ? "intermedia" : ""} ${p.tipo==3 ? "larga" : ""} </h1>
                                                     Creada el: ${p.created_at}
                                                     <h3><html:link action="/A_GenerarCartaPostulacion.do">Generar Carta Postulación<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                                     <h3><html:link action="/A_GenerarSolicitudPasantia.do">Generar Solicitud de Pasantía<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                                    <logic:equal name="Estatus" value="false">
+                                                        <h3><html:link action="/A_EliminarPreinscripcion.do" onclick="return confirm('¿Está seguro que desea eliminar su preinscripción?')"><img style="padding-rigth: 10px" height="15" src="../_css/images/eliminar.gif"><font color="red"> Eliminar Preinscripción</font></html:link></h3>
+                                                        Recuerde revisar sus datos y en caso de que sean incorrectos elimine su preinscripción, corrija sus datos y vuelva a preinscribirse
+                                                        <p>Una vez la CCTDS apruebe su preinscripción usted no podrá hacer modificaciones</p>
+                                                    </logic:equal>
+                                                    <logic:equal name="Estatus" value="true">
+                                                        <h4>La CCTDS aprobó su preinscripción y envió sus datos a las empresas que estan solicitando pasantes en su area.</h4>
+                                                    </logic:equal>
                                                 </logic:iterate>
                                             </ul>
                                         </logic:notEmpty>

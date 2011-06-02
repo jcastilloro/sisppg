@@ -54,7 +54,7 @@
                                             </tr>
                                         </table>
                                         <div id="aprobarBtm">
-                                            <cohesion:actor actors="1"><h3><html:link action="/A_cambiar_estatus.do?preId=${p.idPreinscripcion}" onclick="return confirm('Se enviará un email con datos del estudiante a empresas que hayan solicitado pasantes de la misma carrera, período y tipo que el \n\r¿Está de acuerdo? ')">Aprobar</html:link></h3></cohesion:actor>
+                                            <cohesion:actor actors="1"><h3><html:link action="/A_cambiar_estatus.do?preId=${p.idPreinscripcion}" onclick="return confirm('Se enviará un email con datos del estudiante a empresas que hayan solicitado pasantes de la misma carrera, período y tipo que el \n\r¿Está de acuerdo? ')"><img style="padding-left: 3px" height="22" src="_css/images/checkmark.png">Aprobar</html:link></h3></cohesion:actor>
                                         </div>
                                  
 

@@ -457,6 +457,10 @@
         <action path="/A_GenerarSolicitudPasantia" parameter="A_GenerarSolicitudPasantia"
                 type="jc2s.sistppg.AccionesGenerarSolicitudPasantia"/>
 
+       <!-- Eliminar Preinscripción -->
+        <action path="/A_EliminarPreinscripcion" parameter="A_EliminarPreinscripcion"
+                type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
+
         <!-- C_Gestionar_PG_Estudiante -->
         <action path="/A_Prep_Gestion_PG_Est" parameter="A_Prep_Gestion_PG_Est"
            type="jc2s.sistppg.AccionesC_Gestionar_PG_Estudiante"/>
