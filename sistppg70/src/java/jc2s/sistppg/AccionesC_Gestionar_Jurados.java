@@ -491,4 +491,61 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
     }
 
 
+    public ActionForward A_asignar_jurado(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_consultar_jurados",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+//Checking for actors cordiacion_de_carrera
+        if (!CohesionActor.checkActor(request, 2)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+
+
+            String idJurado = request.getParameter("idJurado");
+            String idPasantia = request.getParameter("idPasantia");
+            String idProyectoDeGrado = request.getParameter("idProyectoDeGrado");
+
+            if(idPasantia!=null){
+                Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(idPasantia)).uniqueResult();
+                Profesor pp = (Profesor) s.createQuery("from Profesor where idProfesor= :var").setLong("var", Long.parseLong(idJurado)).uniqueResult();
+
+                JuradoProyecto jp = new JuradoProyecto();
+                jp.setProfesor(pp);
+                jp.setProyecto(p.getProyecto());
+                s.save(jp);
+            }else{
+                ProyectoDeGrado p = (ProyectoDeGrado) s.createQuery("from ProyectoDeGrado where idProyectoDeGrado= :var").setLong("var", Long.parseLong(idProyectoDeGrado)).uniqueResult();
+                Profesor pp = (Profesor) s.createQuery("from Profesor where idProfesor= :var").setLong("var", Long.parseLong(idJurado)).uniqueResult();
+
+                JuradoProyecto jp = new JuradoProyecto();
+                jp.setProfesor(pp);
+                jp.setProyecto(p.getProyecto());
+                s.save(jp);
+            }
+
+
+
+
+            tr.commit();
+
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
+
 }

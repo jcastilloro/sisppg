@@ -144,6 +144,16 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             //Mi Codigo
+
+            //Añadido por Jorge pa asignar jurado
+
+            String parjur = request.getParameter("idJurado");
+            if(parjur!=null){request.setAttribute("idJurado", parjur);}
+
+
+            //fin jorge
+
+
             List<Profesor> profe = (List<Profesor>) s.createQuery("from Profesor").list();
             List<Trimestre> trim = (List<Trimestre>) s.createQuery("from Trimestre").list();
             request.setAttribute("Profesor", profe);
@@ -220,6 +230,8 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
             // Mi codigo
                 String parjur = request.getParameter("idJurado");
             if(parjur!=null){request.setAttribute("idJurado", parjur);}
+            String parjur2 = request.getParameter("idJuradoA");
+            if(parjur2!=null){request.setAttribute("idJuradoA", parjur2);}
 //            request.getSession().removeAttribute("Proyecto");
 //            request.getSession().removeAttribute("Tutor");
 //            request.getSession().removeAttribute("Area");
@@ -381,6 +393,14 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
         try {
             //micodigo
 
+            //Añadido por Jorge pa asignar jurado
+
+            String parjur = request.getParameter("idJurado");
+            if(parjur!=null){request.setAttribute("idJurado", parjur);}
+
+
+            //fin jorge
+
             Usuario user = (Usuario) request.getSession().getAttribute("usuario");
 
 
@@ -515,6 +535,8 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
            //mi codigo
             String parjur = request.getParameter("idJurado");
             if(parjur!=null){request.setAttribute("idJurado", parjur);}
+            String parjur2 = request.getParameter("idJuradoA");
+            if(parjur2!=null){request.setAttribute("idJuradoA", parjur2);}
             String pas = request.getParameter("idPasantia");
             long idPasantia = Long.valueOf(pas).longValue();
 

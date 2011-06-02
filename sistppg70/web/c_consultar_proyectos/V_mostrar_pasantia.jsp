@@ -155,6 +155,9 @@
                                         <logic:notEmpty name="idJurado">
                                             <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idPasantia=${Pasantia.idPasantia}">Remover Jurado</a>
                                         </logic:notEmpty>
+                                        <logic:notEmpty name="idJuradoA">
+                                            <a href="/sistppg70/A_asignar_jurado.do?idJurado=${idJuradoA}&idPasantia=${Pasantia.idPasantia}">Añadir Jurado</a>
+                                        </logic:notEmpty>
 
                                     </div>
                                 </div>

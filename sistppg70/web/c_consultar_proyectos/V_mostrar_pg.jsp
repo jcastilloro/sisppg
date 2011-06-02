@@ -97,6 +97,9 @@
                                             <logic:notEmpty name="idJurado">
                                                 <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idProyectoDeGrado=${idProyectoDeGrado}">Remover Jurado</a>
                                             </logic:notEmpty>
+                                            <logic:notEmpty name="idJuradoA">
+                                                <a href="/sistppg70/A_asignar_jurado.do?idJurado=${idJuradoA}&idProyectoDeGrado=<%= request.getParameter("idProyectoDeGrado") %>">Añadir Jurado</a>
+                                            </logic:notEmpty>
                                         <p></p>
                                         <%--  <logic:notEmpty name="JuradoProyecto">
                                               <table width="500px">

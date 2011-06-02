@@ -225,6 +225,7 @@
         <forward name="V_mostrar_jurado" path="/c_gestionar_jurados/V_mostrar_jurado.jsp"/>
         <forward name="A_mostrar_jurado" path="/A_mostrar_jurado.do"/>
         <forward name="A_remover_jurado" path="/A_remover_jurado.do"/>
+        <forward name="A_asignar_jurado" path="/A_asignar_jurado.do"/>
 
         <!-- C_Preinscripciones_CCTDS -->
 
@@ -659,6 +660,9 @@
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
 
            <action path="/A_remover_jurado" parameter="A_remover_jurado"
+           type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
+
+           <action path="/A_asignar_jurado" parameter="A_asignar_jurado"
            type="jc2s.sistppg.AccionesC_Gestionar_Jurados"/>
 
         <!-- C_Preinscripciones_CCTDS -->

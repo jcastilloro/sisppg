@@ -151,7 +151,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr onclick="location.href='/sistppg70/A_mostrar_pg.do?idProyectoDeGrado=${proy.idProyectoDeGrado}'" onmouseover="this.style.cursor='pointer'">
+                                                            <tr onclick="location.href='/sistppg70/A_mostrar_pg.do?idProyectoDeGrado=${proy.idProyectoDeGrado}<logic:notEmpty name="idJurado">&idJuradoA=<%= request.getParameter("idJurado") %></logic:notEmpty>'" onmouseover="this.style.cursor='pointer'">
                                                                 <td>
                                                                     ${proy.codigo}
                                                                 </td>

@@ -184,7 +184,7 @@
                                                     <tbody>
                                                         <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
 
-                                                            <tr onclick="location.href='/sistppg70/A_mostrar_pasantia.do?idPasantia=${pas.idPasantia}'" onmouseover="this.style.cursor='pointer'">
+                                                            <tr onclick="location.href='/sistppg70/A_mostrar_pasantia.do?idPasantia=${pas.idPasantia}<logic:notEmpty name="idJurado">&idJuradoA=<%= request.getParameter("idJurado") %></logic:notEmpty>'" onmouseover="this.style.cursor='pointer'">
 
                                                                 <td>${pas.titulo}</td>
                                                                 <td>${pas.resumen}</td>

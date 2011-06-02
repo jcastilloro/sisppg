@@ -131,6 +131,13 @@
                                                     </logic:notEmpty>
                                                 </tbody>
                                             </table>
+
+
+                                            <h3>Añadir</h3><h3> <a href="/sistppg70/A_consultar_PG.do?idJurado=<%= request.getParameter("idJurado") %>">Proyecto de Grado</a>|<a href="/sistppg70/A_consultar_pasantias.do?idJurado=<%= request.getParameter("idJurado") %>">Pasantía</a></h3>
+                                            
+
+
+
                                         </div>
                                     </div>
                                 </div>
