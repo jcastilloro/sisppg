@@ -198,9 +198,19 @@ public class AccionesC_gestionar_prorogas_cctds extends CohesionAction {
                 long id = (long) Long.parseLong(request.getParameter("id"));
                 if(request.getParameter("tipo").equals("e")){
                     ProrrogaEvaluacion pe = (ProrrogaEvaluacion) s.createQuery("from ProrrogaEvaluacion pe join fetch pe.prorroga p join fetch p.estatus where pe.idProrrogaEvaluacion = :id").setLong("id", id).uniqueResult();
+                    if(request.getParameter("nuevo_estatus")!=null){
+                        EstatusProrroga estatus = (EstatusProrroga) s.createQuery("from EstatusProrroga where idEstatusProrroga = :var").setLong("var", Long.parseLong(request.getParameter("nuevo_estatus"))).uniqueResult();
+                        pe.getProrroga().setEstatus(estatus);
+                       s.save(pe);
+                    }
                     request.setAttribute("Prorroga", pe);
                 }else{
                     ProrrogaInscripcion pi = (ProrrogaInscripcion) s.createQuery("from ProrrogaInscripcion pe join fetch pe.prorroga p join fetch p.estatus where pe.idProrrogaInscripcion = :id").setLong("id", id).uniqueResult();
+                    if(request.getParameter("nuevo_estatus")!=null){
+                        EstatusProrroga estatus = (EstatusProrroga) s.createQuery("from EstatusProrroga where idEstatusProrroga = :var").setLong("var", Long.parseLong(request.getParameter("nuevo_estatus"))).uniqueResult();
+                        pi.getProrroga().setEstatus(estatus);
+                        s.save(pi);
+                    }
                     request.setAttribute("Prorroga", pi);
                 }   
 

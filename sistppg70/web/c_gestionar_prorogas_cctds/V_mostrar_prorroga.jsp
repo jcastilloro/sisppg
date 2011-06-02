@@ -49,9 +49,16 @@
                                     </tr>
                                     <tr>
                                         <th>Fecha Solicitud: </th>
+                                        <td>${Prorroga.prorroga.created_at}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estatus: </th>
                                         <td>${Prorroga.prorroga.estatus.estatus}</td>
                                     </tr>
-                                </table>
+                                </table><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaEvaluacion}&tipo=e&nuevo_estatus=1">Aprobar</html:link><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaEvaluacion}&tipo=e&nuevo_estatus=3">Pasar por CCTDS</html:link><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaEvaluacion}&tipo=e&nuevo_estatus=4">Rechazar</html:link><br>
                             </logic:equal>
                             <logic:equal name="tipo" value="i">
                                 <h1>Prorroga Evaluacion</h1>
@@ -72,7 +79,10 @@
                                         <th>Estatus: </th>
                                         <td>${Prorroga.prorroga.estatus.estatus}</td>
                                     </tr>
-                                </table>
+                                </table><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaInscripcion}&tipo=i&nuevo_estatus=1">Aprobar</html:link><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaInscripcion}&tipo=i&nuevo_estatus=3">Pasar por CCTDS</html:link><br>
+                                <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaInscripcion}&tipo=i&nuevo_estatus=4">Rechazar</html:link><br>
                             </logic:equal>
 
                           </div>
