@@ -206,6 +206,16 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
     }
 
 
+    private String evaluacion_tutor_academico;
+
+    public String getEvaluacion_tutor_academico() {
+        return evaluacion_tutor_academico;
+    }
+
+    public void setEvaluacion_tutor_academico(String evaluacion_tutor_academico) {
+        this.evaluacion_tutor_academico = evaluacion_tutor_academico;
+    }
+
 
     public String toString() {
         return "<Pasantia id='C" + this.id +

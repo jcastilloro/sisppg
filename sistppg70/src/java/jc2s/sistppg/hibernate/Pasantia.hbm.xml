@@ -22,5 +22,7 @@
     <property column="objetivos_generales" name="objetivos_generales" not-null="true" type="text"/>
     <!-- 8 -->
     <property column="ano" name="ano" not-null="true" type="integer"/>
+    <!-- 9 -->
+    <property column="evaluacion_tutor_academico" name="evaluacion_tutor_academico" not-null="false" type="string" />
   </class>
 </hibernate-mapping>

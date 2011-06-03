@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Pasantías Propias</title>
 
 
         <html:base/>
@@ -15,6 +15,8 @@
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
 
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+
+        <script type="text/javascript" src="../sorttable.js"></script>
 
         <style type="text/css">
 
@@ -67,10 +69,10 @@
                 <ul id="nav">
 
 
-
-                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_pasantias_propias.do"><bean:message key="V_consulta_pasantia_propias.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="8"><html:link action="/A_mostrar_pasantia_propia.do"><bean:message key="V_consulta_pasantia_propias.label1"/><%-- A_mostrar_pasantia_propia --%></html:link></cohesion:actor></li>
-
+                    <!--
+                                        <li><cohesion:actor actors="8"><html:link action="/A_consultar_pasantias_propias.do"><bean:message key="V_consulta_pasantia_propias.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
+                                        <li><cohesion:actor actors="8"><html:link action="/A_mostrar_pasantia_propia.do"><bean:message key="V_consulta_pasantia_propias.label1"/><%-- A_mostrar_pasantia_propia --%></html:link></cohesion:actor></li>
+                    -->
 
 
 
@@ -96,6 +98,62 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
+
+
+                                        <div class="administrador">
+                                            <logic:notEmpty name="Datos">
+                                            <h2>
+                                                Mis Pasantías
+                                            </h2><hr>
+                                            <table class="sortable" >
+                                                <thead>
+                                                    <tr>
+                                                        <th width="500px">
+                                                            <center>
+                                                                Titulo
+                                                            </center>
+                                                        </th>
+                                                        <th width="100px">
+                                                            <center>
+                                                                Año
+                                                            </center>
+                                                        </th>
+                                                        <th width="200px">
+                                                            <center>
+                                                                Tipo de Pasantía
+                                                            </center>
+                                                        </th>
+                                                        <th width="100px">
+                                                            <center>
+                                                                Estatus
+                                                            </center>
+                                                        </th>
+                                                        <th width="100px">
+                                                            <center>
+                                                                Evaluación
+                                                            </center>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                     
+                                                    <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
+
+                                                        <bean:write name="dato" filter="false"/>
+
+
+                                                    </logic:iterate>
+                                                     
+                                                </tbody>
+                                            </table>
+                                                    </logic:notEmpty>
+                                                    <logic:empty name="Datos">
+                                                            Usted no posee pasantías asociadas!!.
+                                                    </logic:empty>
+
+
+
+                                        </div>
 
 
                                     </div>

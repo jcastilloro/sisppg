@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Evaluar Pasantía Intermedia</title>
 
 
         <html:base/>
@@ -92,7 +92,27 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
+                                        <html:form
+                                            action="/A_evaluacion_intermedia.do" method="post">
+                                            <center>
+                                                <table>
+                                                    <tr><td>
+                                                            <h3>Aprobado</h3>
+                                                        </td><td>
+                                                            <html:radio property="evaluacion" value="Aprobado"/>
+                                                        </td></tr>
+                                                    <tr><td>
+                                                            <h3>Reprobado</h3>
+                                                        </td><td>
+                                                            <html:radio property="evaluacion" value="Reprobado"/>
+                                                        </td></tr>
+                                                </table>
+                                                        <hr>
+                                                        <html:hidden property="idPasantia" value="<%= request.getParameter("idPasantia") %>"/>
+                                                        <html:submit styleClass="button">Evaluar</html:submit>
+                                            </center>
 
+                                        </html:form>
 
                                     </div>
                                 </div>
