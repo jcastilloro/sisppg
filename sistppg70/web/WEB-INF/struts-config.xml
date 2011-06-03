@@ -457,6 +457,10 @@
         <action path="/A_GenerarSolicitudPasantia" parameter="A_GenerarSolicitudPasantia"
                 type="jc2s.sistppg.AccionesGenerarSolicitudPasantia"/>
 
+        <!-- Generar Prorroga Inscripción -->
+        <action path="/A_GenerarProrrogaInscripcion" parameter="A_GenerarProrrogaInscripcion"
+                type="jc2s.sistppg.AccionesGenerarProrrogaInscripcion"/>
+
        <!-- Eliminar Preinscripción -->
         <action path="/A_EliminarPreinscripcion" parameter="A_EliminarPreinscripcion"
                 type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"/>
