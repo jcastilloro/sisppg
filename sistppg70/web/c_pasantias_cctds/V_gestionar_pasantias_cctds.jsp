@@ -33,7 +33,90 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
+                                    <h1>Pasantias Cortas</h1>
+                                    <table border="1">
+                                        <thead>
+                                            <tr>
+                                                <th>Estudiante</th>
+                                                <tH>Titulo</tH>
+                                                <tH>Tutor Academico</tH>
+                                                <tH>Tutor Industrial</tH>
+                                                <tH>Estatus</tH>
+                                            </tr>
+                                        </thead>
+                                            <logic:notEmpty name="L_pc">
+                                            <tbody>
+                                                <logic:iterate id="obj" name="L_pc">
+                                                    <tr>
+                                                        <td>${obj[0]}</td>
+                                                        <td>${obj[1]}</td>
+                                                        <td>${obj[2]}</td>
+                                                        <td>${obj[3]}</td>
+                                                        <td>${obj[4]}</td>
+                                                    </tr>
+                                                </logic:iterate>
+                                            </tbody>
+                                            </logic:notEmpty>
+                                        
+                                    </table>
+                                    <br>
+                                    <br>
 
+                                    <h1>Pasantias Intermedias</h1>
+                                    <table border="1">
+                                        <thead>
+                                            <tr>
+                                                <th>Estudiante</th>
+                                                <tH>Titulo</tH>
+                                                <tH>Tutor Academico</tH>
+                                                <tH>Tutor Industrial</tH>
+                                                <tH>Estatus</tH>
+                                            </tr>
+                                        </thead>
+                                            <logic:notEmpty name="L_pi">
+                                            <tbody>
+                                                <logic:iterate id="obj" name="L_pi">
+                                                    <tr>
+                                                        <td>${obj[0]}</td>
+                                                        <td>${obj[1]}</td>
+                                                        <td>${obj[2]}</td>
+                                                        <td>${obj[3]}</td>
+                                                        <td>${obj[4]}</td>
+                                                    </tr>
+                                                </logic:iterate>
+                                            </tbody>
+                                            </logic:notEmpty>
+
+                                    </table>
+
+                                    <br>
+                                    <br>
+                                    <h1>Pasantias Largas</h1>
+                                    <table border="1">
+                                        <thead>
+                                            <tr>
+                                                <th>Estudiante</th>
+                                                <tH>Titulo</tH>
+                                                <tH>Tutor Academico</tH>
+                                                <tH>Tutor Industrial</tH>
+                                                <tH>Estatus</tH>
+                                            </tr>
+                                        </thead>
+                                            <logic:notEmpty name="L_pl">
+                                            <tbody>
+                                                <logic:iterate id="obj" name="L_pl">
+                                                    <tr>
+                                                        <td>${obj[0]}</td>
+                                                        <td>${obj[1]}</td>
+                                                        <td>${obj[2]}</td>
+                                                        <td>${obj[3]}</td>
+                                                        <td>${obj[4]}</td>
+                                                    </tr>
+                                                </logic:iterate>
+                                            </tbody>
+                                            </logic:notEmpty>
+
+                                    </table>
                                 </div>
                             </div>
 

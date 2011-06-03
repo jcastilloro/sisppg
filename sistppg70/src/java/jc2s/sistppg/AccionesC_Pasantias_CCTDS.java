@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +55,25 @@ public class AccionesC_Pasantias_CCTDS extends CohesionAction {
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+
+            Date fecha_actual = new Date();
+            Date fecha_anterior = new Date(fecha_actual.getTime());
+
+            List<String> L_pc = (List<String>) s.createQuery("select erp.estudiante.usbid, pc.pasantia.titulo, pc.pasantia.tutor_academico.usbid, pc.pasantia.tutor_industrial.nombre, pc.pasantia.estatus.estatus from EstudianteRealizaProyecto erp, PasantiaCorta pc where erp.proyecto.id_proyecto = pc.pasantia.proyecto.id_proyecto").list();// and pc.pasantia.proyecto.created_at < :fecha_actual and pc.pasantia.proyecto.created_at > :fecha_anterior").setDate("fecha_actual", fecha_actual).setDate("fecha_anterior", fecha_anterior).list();
+            List<String> L_pi = (List<String>) s.createQuery("select erp.estudiante.usbid, pc.pasantia.titulo, pc.pasantia.tutor_academico.usbid, pc.pasantia.tutor_industrial.nombre, pc.pasantia.estatus.estatus from EstudianteRealizaProyecto erp, PasantiaIntermedia pc where erp.proyecto.id_proyecto = pc.pasantia.proyecto.id_proyecto").list();// and pc.pasantia.proyecto.created_at < :fecha_actual and pc.pasantia.proyecto.created_at > :fecha_anterior").setDate("fecha_actual", fecha_actual).setDate("fecha_anterior", fecha_anterior).list();
+            List<String> L_pl = (List<String>) s.createQuery("select erp.estudiante.usbid, pc.pasantia.titulo, pc.pasantia.tutor_academico.usbid, pc.pasantia.tutor_industrial.nombre, pc.pasantia.estatus.estatus from EstudianteRealizaProyecto erp, PasantiaLarga pc where erp.proyecto.id_proyecto = pc.pasantia.proyecto.id_proyecto").list();// and pc.pasantia.proyecto.created_at < :fecha_actual and pc.pasantia.proyecto.created_at > :fecha_anterior").setDate("fecha_actual", fecha_actual).setDate("fecha_anterior", fecha_anterior).list();
+
+            System.out.println("size lc="+L_pc.size());
+            System.out.println("size li="+L_pi.size());
+            System.out.println("size ll="+L_pl.size());
+
+            System.out.println("size fecha a="+fecha_actual.toString());
+            System.out.println("size fecha ant="+fecha_anterior.toString());
+
+            request.setAttribute("L_pc", L_pc);
+            request.setAttribute("L_pi", L_pi);
+            request.setAttribute("L_pl", L_pl);
+
             tr.commit();
 
         } catch (Exception ex) {
