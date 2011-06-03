@@ -386,4 +386,58 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
         }
         return mapping.findForward(SALIDAS[salida]);
     }
+
+    // EVALUAR PASANTIA TI
+        public ActionForward A_evaluar_pasatias_TI(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        //Salidas
+        final String[] SALIDAS = {"V_evaluar_pasantias_TI",};
+        final int SALIDA_0 = 0;
+
+        int salida = SALIDA_0;
+        //Checking for actors tutor_industrial
+        if (!CohesionActor.checkActor(request, 16)) {
+            return mapping.findForward(CohesionActor.SALIDA_ACTOR);
+        }
+        Session s = HibernateUtil.getCurrentSession();
+        Transaction tr = s.beginTransaction();
+        try {
+            // Mi codigo
+            TutorIndustrial tutor = (TutorIndustrial) request.getSession().getAttribute("tutorindustrial");
+            List<Pasantia> pasantias = s.createQuery("from Pasantia where tutor_industrial = :var))").setLong("var", tutor.getId()).list();
+            request.setAttribute("Pasantias", pasantias);
+
+            String pas = request.getParameter("idPasantia");
+            
+            long idPas = 57;
+            if (pas != null)
+                idPas = Long.valueOf(pas).longValue();
+            
+            Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", idPas).uniqueResult();
+            request.setAttribute("Pasantia", pasantia);
+
+            F_EvaluacionTI eval = (F_EvaluacionTI) form;
+
+            double nota = ( eval.getUno()+eval.getDos()+eval.getTres()+eval.getCuatro()
+                    +eval.getCinco()+eval.getSeis()+eval.getSiete()+eval.getOcho()+
+                    eval.getNueve()+eval.getDiez() ) / 10.0;
+
+            if (nota > 0.11)
+                request.setAttribute("Ya_Evaluo", nota);
+            
+            tr.commit();
+
+        } catch (Exception ex) {
+            tr.rollback();
+            throw ex;
+        } finally {
+            try {
+                s.close();
+            } catch (Exception ex2) {
+            }
+        }
+        return mapping.findForward(SALIDAS[salida]);
+    }
 }

@@ -37,6 +37,7 @@
         <form-bean name="F_Pais" type="jc2s.sistppg.F_Pais"/>
         <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
         <form-bean name="F_Preinscripcion" type="jc2s.sistppg.F_Preinscripcion"/>
+        <form-bean name="F_EvaluacionTI" type="jc2s.sistppg.F_EvaluacionTI"/>
         <form-bean name="F_Ciudad" type="jc2s.sistppg.F_Ciudad"/>
         <form-bean name="F_Jurado" type="jc2s.sistppg.F_Jurado"/>
 
@@ -256,6 +257,7 @@
         <forward name="A_actualizar_perfil_TI" path="/A_actualizar_perfil_TI.do"/>
         <forward name="A_prep_gestionar_pasatias_TI" path="/A_prep_gestionar_pasatias_TI.do"/>
         <forward name="V_gestionar_pasantias_TI" path="/c_inicio_sesion_t_industrial/V_gestionar_pasantias_TI.jsp"/>
+        <forward name="V_evaluar_pasantias_TI" path="/c_inicio_sesion_t_industrial/V_evaluar_pasantias_TI.jsp"/>
 
         <!-- C_Sesion_CCTDS -->
 
@@ -438,6 +440,13 @@
            type="jc2s.sistppg.AccionesC_Gestionar_Preinscripcion"
            input="/c_gestionar_preinscripcion/V_gestionar_preinscripcion.jsp"
            name="F_Preinscripcion"
+           scope="session"/>
+
+        <!-- Evaluacion TI -->
+        <action path="/A_evaluar_pasatias_TI" parameter="A_evaluar_pasatias_TI"
+           type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"
+           input="/c_inicio_sesion_t_industrial/V_evaluar_pasantias_TI.jsp"
+           name="F_EvaluacionTI"
            scope="session"/>
 
         <!-- C_Gestionar_proyectos_Estudiante -->
@@ -718,7 +727,6 @@
            scope="session"/>
         <action path="/A_prep_gestionar_pasatias_TI" parameter="A_prep_gestionar_pasatias_TI"
            type="jc2s.sistppg.AccionesC_Inicio_Sesion_T_industrial"/>
-
 
         <!-- C_Sesion_CCTDS -->
         <action path="/A_prep_sesion_ccds" parameter="A_prep_sesion_ccds"

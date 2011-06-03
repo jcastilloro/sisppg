@@ -5,7 +5,7 @@
 %><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <title>Sesión Tutor Industrial</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
@@ -53,12 +53,12 @@
                                                 <tr>
                                                     <td><center>${pas.titulo}</center></td>
                                                     <td><center>${pas.resumen}</center></td>
-                                                    <td>Evaluar</td>
+                                                    <td><html:link action="/A_evaluar_pasatias_TI.do?idPasantia=${pas.idPasantia}">Evaluar</html:link></td>
                                                 </tr>
                                             </logic:iterate>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div>                                
 
                             </logic:notEmpty>
 
