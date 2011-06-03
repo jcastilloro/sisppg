@@ -496,7 +496,7 @@ public class AccionesC_Gestionar_Jurados extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_consultar_jurados",};
+        final String[] SALIDAS = {"V_Gestionar_Jurados",};
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;

@@ -183,6 +183,12 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
               lpg.retainAll(lpg2);
             }
 
+            //Codigo de Jorge
+            if(parjur!=null){
+                List<ProyectoDeGrado> lpg3 = s.createQuery("from ProyectoDeGrado where proyecto IN (Select proyecto from JuradoProyecto where profesor = '"+parjur+"')").list();
+                lpg.removeAll(lpg3);
+            }
+            //End Codigo de Jorge
 
             request.setAttribute("L_PGS", lpg);
 
@@ -489,6 +495,12 @@ public class AccionesC_Consultar_Proyectos extends CohesionAction {
 
             pas.retainAll(pas2);
 
+            //Codigo de Jorge
+            if(parjur!=null){
+                List<Pasantia> lpg3 = s.createQuery("from Pasantia where proyecto IN (Select proyecto from JuradoProyecto where profesor = '"+parjur+"')").list();
+                pas.removeAll(lpg3);
+            }
+            //End Codigo de Jorge
 
             request.setAttribute("Pasantias", pas);
 
