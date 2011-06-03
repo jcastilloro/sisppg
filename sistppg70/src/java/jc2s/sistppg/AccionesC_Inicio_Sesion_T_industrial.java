@@ -361,13 +361,18 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//Checking for actors tutor_industrial
+        //Checking for actors tutor_industrial
         if (!CohesionActor.checkActor(request, 16)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
+            // Mi codigo
+            TutorIndustrial tutor = (TutorIndustrial) request.getSession().getAttribute("tutorindustrial");
+            List<Pasantia> pasantias = s.createQuery("from Pasantia where tutor_industrial = :var))").setLong("var", tutor.getId()).list();
+            request.setAttribute("Pasantias", pasantias);
+
             tr.commit();
 
         } catch (Exception ex) {
