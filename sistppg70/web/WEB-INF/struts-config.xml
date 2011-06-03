@@ -38,6 +38,7 @@
         <form-bean name="F_Departamento" type="jc2s.sistppg.F_Departamento"/>
         <form-bean name="F_Preinscripcion" type="jc2s.sistppg.F_Preinscripcion"/>
         <form-bean name="F_EvaluacionTI" type="jc2s.sistppg.F_EvaluacionTI"/>
+        <form-bean name="F_Mencion" type="jc2s.sistppg.F_Mencion"/>
         <form-bean name="F_Ciudad" type="jc2s.sistppg.F_Ciudad"/>
         <form-bean name="F_Jurado" type="jc2s.sistppg.F_Jurado"/>
 
@@ -116,6 +117,12 @@
         <forward name="A_prep_solicitar_prorroga_evaluacion" path="/A_prep_solicitar_prorroga_evaluacion.do"/>
         <forward name="V_solicitar_prorroga_evaluacion" path="/c_solicitar_prorroga_evaluacion/V_solicitar_prorroga_evaluacion.jsp"/>
         <forward name="A_solicitar_prorroga_evaluacion" path="/A_solicitar_prorroga_evaluacion.do"/>
+
+        <!-- Mención -->
+
+        <forward name="A_prep_mencion" path="/A_prep_mencion.do"/>
+        <forward name="V_mencion" path="/c_gestionar_pasantias_estudiante/V_mencion.jsp"/>
+        <forward name="A_mencion" path="/A_mencion.do"/>
 
         <!-- C_Generar_Inscripcion_Pasantia -->
 
@@ -466,6 +473,15 @@
         <action path="/A_GenerarSolicitudPasantia" parameter="A_GenerarSolicitudPasantia"
                 type="jc2s.sistppg.AccionesGenerarSolicitudPasantia"/>
 
+        <!-- GenerarMencion 
+        <action path="/A_GenerarMencion" parameter="A_GenerarMencion"
+                type="jc2s.sistppg.AccionesGenerarMencion"/> -->
+        <action path="/A_GenerarMencion" parameter="A_GenerarMencion"
+           type="jc2s.sistppg.AccionesGenerarMencion"
+           input="/C_gestionar_pasantias_estudiante/V_solicitar_mencion.jsp"
+           name="F_Mencion"
+           scope="session"/>
+
         <!-- Generar Prorroga Inscripción -->
         <action path="/A_GenerarProrrogaInscripcion" parameter="A_GenerarProrrogaInscripcion"
                 type="jc2s.sistppg.AccionesGenerarProrrogaInscripcion"/>
@@ -656,6 +672,10 @@
            name="F_Prorroga_Evaluacion"
            scope="session"/>
 
+
+           <!-- mencion -->
+           <action path="/A_prep_mencion" parameter="A_prep_mencion"
+                type="jc2s.sistppg.AccionesC_Solicitar_Prorroga_Evaluacion"/>           
 
 
         <!-- C_Sesion_Coordinador -->
