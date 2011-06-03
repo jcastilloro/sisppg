@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_sesion_cctds.title"/></title>
+        <title>Gestionar Preincripciones CCTDS</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -61,7 +61,7 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="1"><html:link action="/A_procesar_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label0"/><%-- Procesar Aprobados --%></html:link></cohesion:actor></li>
+                  <%--  <li><cohesion:actor actors="1"><html:link action="/A_procesar_aprobados.do"><bean:message key="V_gestionar_preinscripciones_cctds.label0"/></html:link></cohesion:actor></li> --%>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do">Consultar PENDIENTES</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_sesion_ccds.do">Home</html:link></cohesion:actor></li>
                 </ul>
