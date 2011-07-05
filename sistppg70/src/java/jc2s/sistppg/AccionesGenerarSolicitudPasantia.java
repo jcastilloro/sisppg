@@ -109,16 +109,19 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                 String donde = preinscripcion.getRegiones();
                 String region = "ninguna";
 
-                String[] ciudades = donde.split(",");
-                Ciudad c;
-                for(int i=0;i<ciudades.length;i++){
-                    c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
-                    if (region.equals("ninguna"))
-                        region = c.getNombre();
-                    else if ( i+1<ciudades.length )
-                        region = region +", "+c.getNombre();
-                    else
-                        region = region +" y "+c.getNombre();
+                if (!donde.isEmpty()){
+                    String[] ciudades = donde.split(",");
+                    Ciudad c;
+                    for (int i = 0; i < ciudades.length; i++) {
+                        c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
+                        if (region.equals("ninguna")) {
+                            region = c.getNombre();
+                        } else if (i + 1 < ciudades.length) {
+                            region = region + ", " + c.getNombre();
+                        } else {
+                            region = region + " y " + c.getNombre();
+                        }
+                    }
                 }
 
                 Calendar cal = Calendar.getInstance();

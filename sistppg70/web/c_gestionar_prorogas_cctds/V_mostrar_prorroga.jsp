@@ -61,9 +61,6 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
@@ -83,7 +80,7 @@
                                     <div class="box1465928" align="center">
 
                             <logic:equal name="tipo" value="e">
-                                <h1>Prorroga Evaluacion</h1>
+                                <h1>Prorroga Evaluación</h1>
                                 <table>
                                     <tr>
                                         <th>Estudiante: </th>
@@ -111,7 +108,7 @@
                                 <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaEvaluacion}&tipo=e&nuevo_estatus=4">Rechazar</html:link><br>
                             </logic:equal>
                             <logic:equal name="tipo" value="i">
-                                <h1>Prorroga Evaluacion</h1>
+                                <h1>Prorroga Inscripción</h1>
                                 <table>
                                     <tr>
                                         <th>Estudiante: </th>

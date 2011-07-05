@@ -11,9 +11,18 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery.ui.datepicker-es.js"></script>
 
     </head>
     <body>
+        <script type="text/javascript">
+            jQuery(function($){
+                $("#1840509").datepicker();
+            });
+        </script>
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
@@ -38,7 +47,7 @@
                                         <h3>Si obtuvo mención "excepcionalmetne buena" transcribala</h3>
                                         <html:form action="/A_GenerarMencion.do" method="post">
                                             <p id="1840450_C">Mención: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
-                                            <p id="1840450_C">Fecha de defensa: <br><html:text styleId="1840450" property="fecha_propuesta"></html:text></p>
+                                            <p id="1840450_C">Fecha de defensa: <br><html:text styleId="1840509" property="fecha_propuesta"></html:text></p>
                                             <html:submit styleClass="button">Generar</html:submit>
                                         </html:form>
 
@@ -59,8 +68,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>

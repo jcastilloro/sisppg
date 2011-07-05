@@ -121,14 +121,17 @@ public class AccionesC_Gestionar_Preinscripcion extends CohesionAction {
 
                 CiudadPreinscripcion cp;
                 Ciudad c;
-                String[] ciudades = donde.split(",");
-                for(int i=0;i<ciudades.length;i++){
-                    c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
-                    cp = new CiudadPreinscripcion();
-                    cp.setCiudad(c);
-                    cp.setPreinscripcion(pre);
-                    s.save(cp);
+                if (!donde.isEmpty()){
+                    String[] ciudades = donde.split(",");
+                    for (int i = 0; i < ciudades.length; i++) {
+                        c = (Ciudad) s.createQuery("from Ciudad c where c.idCiudad = :idc").setLong("idc", Long.parseLong(ciudades[i])).uniqueResult();
+                        cp = new CiudadPreinscripcion();
+                        cp.setCiudad(c);
+                        cp.setPreinscripcion(pre);
+                        s.save(cp);
+                    }
                 }
+                
 
 
 
