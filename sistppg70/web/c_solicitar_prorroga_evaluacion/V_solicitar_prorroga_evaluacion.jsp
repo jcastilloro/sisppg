@@ -44,12 +44,21 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-                                        <html:form
-                                            action="/A_solicitar_prorroga_evaluacion.do" method="post">
-                                            <p id="1840450_C">Justificacion: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
-                                            <p id="1840450_C">Fecha: <br><html:text styleId="1840509" property="fecha_propuesta"></html:text></p>
-                                            <html:submit styleClass="button"><bean:message key="V_solicitar_prorroga_inscripcion.label0"/><%-- Solicitar Prorroga --%></html:submit>
-                                        </html:form>
+                                        <logic:empty name="Prorroga">
+                                            <html:form
+                                                action="/A_solicitar_prorroga_evaluacion.do" method="post">
+                                                <p id="1840450_C">Justificacion: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
+                                                <p id="1840450_C">Fecha: <br><html:text styleId="1840509" property="fecha_propuesta"></html:text></p>
+                                                    <html:submit styleClass="button"><bean:message key="V_solicitar_prorroga_inscripcion.label0"/><%-- Solicitar Prorroga --%></html:submit>
+                                                </html:form>
+                                            </logic:empty>
+
+                                        <logic:notEmpty name="Prorroga">
+                                            <h3>Usted ya solicitó una prorroga para evaluación</h3>
+                                            Creada el: ${Prorroga.created_at} <br>
+                                            <h3><html:link action="/A_GenerarProrrogaEvaluacion.do">Generar Planilla PDF<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                            La prorroga se encuentra en estatus: ${Estatus}
+                                        </logic:notEmpty>
 
                                     </div>
                                 </div>
