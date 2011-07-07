@@ -99,6 +99,7 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                 String direccion = (String) estudiante.getDireccion();
                 String correo = (String) estudiante.getEmail();
                 String tlf = (String) estudiante.getTelefono();
+                String otrotlf = (String) estudiante.getOtrotelefono();
                 String edocivil = (String) estudiante.getEdocivil();
                 Date fn = (Date) estudiante.getFecha_nacimiento();
                 double indice = estudiante.getIndice();
@@ -256,7 +257,7 @@ public class AccionesGenerarSolicitudPasantia extends CohesionAction {
                     PdfPTable t = new PdfPTable(widths);
                     t.addCell("APELLIDOS: "+apellido);  t.addCell("NOMBRE: "+nombre); t.addCell("C.I.: "+cedula);
                     t.addCell("EDAD: "+calcularEdad(fn));     t.addCell("SEXO: "+genero);    t.addCell("NACIONALIDAD: "+nacionalidad);
-                    t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlf); t.addCell("OTROS TELEFONOS: ");
+                    t.addCell("EDO CIVIL: "+edocivil); t.addCell("TELEFONO(HAB): "+tlf); t.addCell("OTROS TELEFONOS: "+otrotlf);
                     t.addCell(bloque);     t.addCell("E-MAIL: "+correo);      t.addCell("DIRECCIÓN: "+direccion);
                     t.setHorizontalAlignment(Element.ALIGN_LEFT);
                     pdf.add(t);
