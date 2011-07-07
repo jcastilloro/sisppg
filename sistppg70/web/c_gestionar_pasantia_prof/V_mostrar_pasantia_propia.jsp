@@ -5,17 +5,11 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
-
-
+        <title>Evaluar Pasantía</title>
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,28 +59,18 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-                    <li><cohesion:actor actors="8"><html:link action="/A_prep_evaluacion.do"><bean:message key="V_mostrar_pasantia_propia.label0"/><%-- Evaluar --%></html:link></cohesion:actor></li>
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
-
-
-            <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+            <div id="header">        
             </div>
             <div id="page">
 
-
-
                 <div id="content">
-
+                <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
+                        <p><strong>USBID: </strong>${usuario.usbid}</p>
+                    </div>
                     <div id="body">
 
                         <div id="split">
@@ -101,11 +85,8 @@
 
                                                 <bean:write name="dato" filter="false"/>
 
-
                                             </logic:iterate>
                                         </logic:notEmpty>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +104,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>

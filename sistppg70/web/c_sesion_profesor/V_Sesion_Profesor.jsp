@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Sesión Profesor</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -60,7 +60,7 @@
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_modif_perfil_profesor.do">Modificar Perfil</html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_pasantia_prof.do">Gestionar Pasantias</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_pasantias_propias.do"><bean:message key="V_gestionar_pasantias_prof.label0"/><%-- Consultar Pasantias Tutoreadas --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_PG_prof.do">Gestionar PG</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do">Consultar Proyectos</html:link></cohesion:actor></li>
                 </ul>

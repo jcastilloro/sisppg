@@ -5,19 +5,12 @@
            %><%@ page contentType="text/html;charset=ISO-8859-1"
            %><html:html>
     <head>
-        <title>Pasantías Propias</title>
-
-
+        <title>Pasantías Tutoreadas</title>
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <script type="text/javascript" src="../sorttable.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -67,28 +60,18 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-                    <!--
-                                        <li><cohesion:actor actors="8"><html:link action="/A_consultar_pasantias_propias.do"><bean:message key="V_consulta_pasantia_propias.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
-                                        <li><cohesion:actor actors="8"><html:link action="/A_mostrar_pasantia_propia.do"><bean:message key="V_consulta_pasantia_propias.label1"/><%-- A_mostrar_pasantia_propia --%></html:link></cohesion:actor></li>
-                    -->
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
-
-
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
 
-
-
                 <div id="content">
+                <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
+                        <p><strong>USBID: </strong>${usuario.usbid}</p>
+                    </div>
 
                     <div id="body">
 
@@ -110,7 +93,7 @@
                                                     <tr>
                                                         <th width="500px">
                                                             <center>
-                                                                Titulo
+                                                                Título
                                                             </center>
                                                         </th>
                                                         <th width="100px">
@@ -141,18 +124,13 @@
 
                                                         <bean:write name="dato" filter="false"/>
 
-
-                                                    </logic:iterate>
-                                                     
+                                                    </logic:iterate>                                                     
                                                 </tbody>
                                             </table>
                                                     </logic:notEmpty>
                                                     <logic:empty name="Datos">
                                                             Usted no posee pasantías asociadas!!.
                                                     </logic:empty>
-
-
-
                                         </div>
 
 
@@ -173,8 +151,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>
