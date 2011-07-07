@@ -7,15 +7,10 @@
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -65,22 +60,14 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
+      
             </div>
             <div id="page">
-
-
 
                 <div id="content">
                     <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
@@ -99,7 +86,7 @@
                                         <html:form
                                             action="/A_evaluacion_corta.do" method="post" >
                                             <center>
-                                                <h2>Evaluación</h2><hr>
+                                                <h2>Evaluación de Pasantía Corta</h2><hr>
                                                 <table width="700">
                                                     <tr><h3>
                                                             Adquirió conocimientos de la estructura y organización de la empresa, así como de los procedimientos de trabajo y de la seguridad industrial.
@@ -128,8 +115,6 @@
                                                 <table width="700">
                                                     <tr><h3>
                                                             Argumentó adecuadamente las soluciones técnicas que propuso.
-
-
                                                         </h3></tr>
                                                     <tr><td width="50">
                                                             <html:radio property="item2" value="0"/>NR
@@ -227,6 +212,13 @@
                                                         <td width="50">
                                                             <html:radio property="item5" value="5"/>5
                                                         </td></tr>
+                                                </table>
+                                                <hr>
+                                                <table>
+                                                     <tr>
+                                                          <td width="100"><h3>Observaciones:</h3></td>
+                                                          <td><html:textarea property="observaciones" cols="50" rows="4"/></td>
+                                                     </tr>
                                                 </table>
                                                 <hr>
                                                 <html:hidden property="idPasantia" value="${idPasantia}"/>

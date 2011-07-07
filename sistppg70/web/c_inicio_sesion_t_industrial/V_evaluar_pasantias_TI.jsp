@@ -73,7 +73,7 @@
 
                 <div id="content">
                     <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
-                        <p><strong>USBID: </strong>${usuario.usbid}</p>
+                        <p><strong>USBID: </strong>${usuario.nombre}</p>
                     </div>
                     <div id="body">
 
@@ -94,8 +94,8 @@
                                 2. Informe al pasante de los resultados de la evaluación
                             </p>
                             <html:form action="/A_evaluar_pasatias_TI.do" method="post">
-                            <table border="1">
-                                <tr>
+                            <table border="0">
+                                <tr height="50">
                                     <td>1. Adquirió conocimiento de la estructura y organización de la empresa, así como de los procedimientos de trabajo y de seguridad industrial.</td>
                                     <td width="180">
                                         <html:radio property="uno" value="1">1</html:radio>
@@ -105,7 +105,7 @@
                                         <html:radio property="uno" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>2. Cumplió las normas y procedimientos de la empresa tales como: Horario de trabajo, normas de seguridad, tramitación de servicios, etc.</td>
                                     <td width="180">
                                         <html:radio property="dos" value="1">1</html:radio>
@@ -115,7 +115,7 @@
                                         <html:radio property="dos" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>3. Comprendió las limitaciones y exigencias con que deben realizarse los trabajos profesionales dentro de la Empresa, mostrando una clara disposición para el aprendizaje.</td>
                                     <td width="180">
                                         <html:radio property="tres" value="1">1</html:radio>
@@ -125,7 +125,7 @@
                                         <html:radio property="tres" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>4. Desarrolló el sentido de trabajar en grupo.</td>
                                     <td width="180">
                                         <html:radio property="cuatro" value="1">1</html:radio>
@@ -135,7 +135,7 @@
                                         <html:radio property="cuatro" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>5. Demostró tener iniciativa para enfrentar los problemas que se le presentaron.</td>
                                     <td width="180">
                                         <html:radio property="cinco" value="1">1</html:radio>
@@ -145,7 +145,7 @@
                                         <html:radio property="cinco" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>6. Se documentaba antes de proponer cualquier solución.</td>
                                     <td width="180">
                                         <html:radio property="seis" value="1">1</html:radio>
@@ -155,7 +155,7 @@
                                         <html:radio property="seis" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>7. Argumentó adecuadamente las soluciones técnicas que propuso.</td>
                                     <td width="180">
                                         <html:radio property="siete" value="1">1</html:radio>
@@ -165,7 +165,7 @@
                                         <html:radio property="siete" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>8. Presentó varias alternativas de posibles soluciones a cada problema propuesto.</td>
                                     <td width="180">
                                         <html:radio property="ocho" value="1">1</html:radio>
@@ -175,7 +175,7 @@
                                         <html:radio property="ocho" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>9. Demostró receptividad a planteamientos diferentes a los presentados por él.</td>
                                     <td width="180">
                                         <html:radio property="nueve" value="1">1</html:radio>
@@ -185,7 +185,7 @@
                                         <html:radio property="nueve" value="5">5</html:radio>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="50">
                                     <td>10. Presentó explicaciones escritas de su trabajo en forma clara y precisa.</td>
                                     <td width="180">
                                         <html:radio property="diez" value="1">1</html:radio>
@@ -194,6 +194,12 @@
                                         <html:radio property="diez" value="4">4</html:radio>
                                         <html:radio property="diez" value="5">5</html:radio>
                                     </td>
+                                </tr>                                
+                            </table>
+                            <table>
+                                <tr>
+                                     <td width="100">Observaciones: </td>
+                                     <td><html:textarea property="observaciones" cols="50" rows="4"/></td>
                                 </tr>
                             </table>
                             <html:submit styleClass="button">Enviar Evaluación</html:submit>

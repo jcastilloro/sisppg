@@ -2,9 +2,7 @@ package jc2s.sistppg;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 
 public class F_evaluar_corta extends org.apache.struts.action.ActionForm {
@@ -18,6 +16,7 @@ public class F_evaluar_corta extends org.apache.struts.action.ActionForm {
         item4 = "0";
         item5 = "0";
         idPasantia = "";
+        observaciones = "";
     }
 
     public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -27,6 +26,7 @@ public class F_evaluar_corta extends org.apache.struts.action.ActionForm {
         item4 = "0";
         item5 = "0";
         idPasantia = "";
+        observaciones = "";
 
     }
 
@@ -106,6 +106,16 @@ public class F_evaluar_corta extends org.apache.struts.action.ActionForm {
         this.item5 = item5;
     }
 
+    // Observaciones
+    private String observaciones;
+
+    public String getObservaciones() {
+        return this.observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
     
 
 }

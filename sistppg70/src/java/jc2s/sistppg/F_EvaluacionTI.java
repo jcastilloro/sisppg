@@ -19,6 +19,7 @@ public class F_EvaluacionTI extends org.apache.struts.action.ActionForm {
         ocho = 0;
         nueve = 0;
         diez = 0;
+        observaciones = "";
 
     }
 
@@ -33,6 +34,7 @@ public class F_EvaluacionTI extends org.apache.struts.action.ActionForm {
         ocho = 0;
         nueve = 0;
         diez = 0;
+        observaciones = "";
 
     }
 
@@ -157,6 +159,17 @@ public class F_EvaluacionTI extends org.apache.struts.action.ActionForm {
 
     public void setDiez(int diez) {
         this.diez = diez;
+    }
+
+    // Observaciones
+    private String observaciones;
+
+    public String getObservaciones() {
+        return this.observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
 
