@@ -83,7 +83,9 @@
 
 
                 <div id="content">
-
+                    <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
+                        <p><strong>USBID: </strong>${usuario.usbid}</p>
+                    </div>
                     <div id="body">
 
                         <div id="split">
@@ -227,7 +229,7 @@
                                                         </td></tr>
                                                 </table>
                                                 <hr>
-                                                <html:hidden property="idPasantia" value="<%= request.getParameter("idPasantia")%>"/>
+                                                <html:hidden property="idPasantia" value="${idPasantia}"/>
                                                 <html:submit styleClass="button">Evaluar</html:submit>
                                             </center>
 

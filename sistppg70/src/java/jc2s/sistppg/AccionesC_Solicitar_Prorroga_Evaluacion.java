@@ -144,12 +144,16 @@ public class AccionesC_Solicitar_Prorroga_Evaluacion extends CohesionAction {
                 p.setEstatus(e);
                 p.setEstudiante(est);
 
+                p.setJustificacion(justificacion);
+
                 s.save(p);
                 ProrrogaEvaluacion pe = new ProrrogaEvaluacion();
                 pe.setProrroga(p);
 
                 Pasantia pas = (Pasantia) s.createQuery("from Pasantia p order by p.proyecto.created_at DESC").iterate().next();
                 pe.setPasantia(pas);
+
+
 
                 Date fecha_propuesta = new Date(Integer.parseInt(fecha[0])-1900,Integer.parseInt(fecha[1])-1,Integer.parseInt(fecha[2]));
                 pe.setFecha_propuesta(fecha_propuesta);
