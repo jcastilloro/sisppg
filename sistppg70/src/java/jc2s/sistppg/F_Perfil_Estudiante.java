@@ -176,7 +176,7 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
      * Getter for property otroTelefono.
      * @return Value of property otroTelefono.
      */
-    public String getOtroTelefono() {
+    public String getOtrotelefono() {
         return this.otrotelefono;
     }
 
@@ -184,7 +184,7 @@ public class F_Perfil_Estudiante extends org.apache.struts.action.ActionForm {
      * Setter for property otroTelefono.
      * @param otroTelefono New value of property otroTelefono.
      */
-    public void setOtroTelefono(String otrotelefono) {
+    public void setOtrotelefono(String otrotelefono) {
         this.otrotelefono = otrotelefono;
     }
 

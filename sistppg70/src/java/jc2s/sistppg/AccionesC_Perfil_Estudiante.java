@@ -114,83 +114,20 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 
                 e.setUsbid(u.getUsbid());
 
-
-                //verifico nombre
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
-                    e.setNombre(fperfil.getNombre());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-                }
-                //verifico apellido
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
-                    e.setApellido(fperfil.getApellido());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
-                }
-                //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
-                    e.setCedula(Integer.parseInt(fperfil.getCedula()));
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
-                }
-
-                //verifico email
-                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fperfil.getEmail())) {
-                    e.setEmail(fperfil.getEmail());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
-                }
-
-                //verifico telefono
-                if (Pattern.matches("(\\d){0,4}-?\\d{7}", fperfil.getTelefono())) {
-                    e.setTelefono(fperfil.getTelefono());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
-                }
-
-                //verifico nacionalidad
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNacionalidad())) {
-                    e.setNacionalidad(fperfil.getNacionalidad());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Nacionalidad Válido");
-                }
-
-                //verifico indice
-                if (Pattern.matches("((0*[1-4](\\.[0-9]+)?)|5(\\.0*)?)", fperfil.getIndice())) {
-                    e.setIndice(Double.parseDouble(fperfil.getIndice()));
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Indice Válido");
-                }
-
-                //verifico direccion
-                if (Pattern.matches(".+", fperfil.getDireccion())) {
-                    e.setDireccion(fperfil.getDireccion());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válido");
-                }
-
+                e.setNombre(new String(fperfil.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setApellido(new String(fperfil.getApellido().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setCedula(Integer.parseInt(fperfil.getCedula()));
+                e.setEmail(fperfil.getEmail());
+                e.setTelefono(fperfil.getTelefono());
+                e.setOtrotelefono(fperfil.getOtrotelefono());
+                e.setNacionalidad(new String(fperfil.getNacionalidad().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setIndice(Double.parseDouble(fperfil.getIndice()));
+                e.setDireccion(new String(fperfil.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
                 e.setSexo(fperfil.getSexo());
-                e.setOtrotelefono(fperfil.getOtroTelefono());
                 e.setEdocivil(fperfil.getEstadoCivil());
-
-
-                //verifico fecha
-                if (Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", fperfil.getFecha_nacimiento())) {
-                    SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-                    Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
-                    e.setFecha_nacimiento(fecha);
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Fecha Válida");
-                }
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
+                e.setFecha_nacimiento(fecha);
 
 
                 if (salida != SALIDA_0) {
@@ -211,83 +148,22 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
 
                 e.setUsbid(u.getUsbid());
 
-                //verifico nombre
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNombre())) {
-                    e.setNombre(fperfil.getNombre());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-                }
-                //verifico apellido
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getApellido())) {
-                    e.setApellido(fperfil.getApellido());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
-                }
-                //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fperfil.getCedula())) {
-                    e.setCedula(Integer.parseInt(fperfil.getCedula()));
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
-                }
-
-                //verifico email
-                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fperfil.getEmail())) {
-                    e.setEmail(fperfil.getEmail());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
-                }
-
-                //verifico telefono
-                if (Pattern.matches("(\\d){0,4}-?\\d{7}", fperfil.getTelefono())) {
-                    e.setTelefono(fperfil.getTelefono());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
-                }
-
-                //verifico fecha
-                if (Pattern.matches("[0-9][0-9]?/[0-9][0-9]?/[0-9][0-9][0-9][0-9]", fperfil.getFecha_nacimiento())) {
-                    SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-                    Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
-                    e.setFecha_nacimiento(fecha);
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Fecha Válida");
-                }
-
-
-
-               //verifico nacionalidad
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fperfil.getNacionalidad())) {
-                    e.setNacionalidad(fperfil.getNacionalidad());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Nacionalidad Válido");
-                }
-
-                //verifico indice
-                if (Pattern.matches("((0*[1-4](\\.[0-9]+)?)|5(\\.0*)?)", fperfil.getIndice())) {
-                    e.setIndice(Double.parseDouble(fperfil.getIndice()));
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Indice Válido");
-                }
-
-                //verifico direccion
-                if (Pattern.matches(".+", fperfil.getDireccion())) {
-                    e.setDireccion(fperfil.getDireccion());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Direccion Válida");
-                }
-
+                e.setNombre(new String(fperfil.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setApellido(new String(fperfil.getApellido().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setCedula(Integer.parseInt(fperfil.getCedula()));
+                e.setEmail(fperfil.getEmail());
+                e.setTelefono(fperfil.getTelefono());
+                e.setNacionalidad(new String(fperfil.getNacionalidad().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setIndice(Double.parseDouble(fperfil.getIndice()));
+                e.setDireccion(new String(fperfil.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
                 e.setSexo(fperfil.getSexo());
-                e.setOtrotelefono(fperfil.getOtroTelefono());
+                e.setOtrotelefono(fperfil.getOtrotelefono());
+                System.out.println("--------------------------------------------->"+fperfil.getOtrotelefono());
+                System.out.println("--------------------------------------------->"+e.getOtrotelefono());
                 e.setEdocivil(fperfil.getEstadoCivil());
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());
+                e.setFecha_nacimiento(fecha);
 
 
                 if (salida != SALIDA_0) {

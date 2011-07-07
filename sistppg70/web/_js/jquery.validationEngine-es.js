@@ -84,8 +84,24 @@
                     "regex": /^[0-9\ ]+$/,
                     "alertText": "* Sólo números"
                 },
-			    "onlyLetterSp": {
-                    "regex": /^[a-zA-Z\ \']+$/,
+                "onlyNumber": {
+                    "regex": /^[0-9,\.]+$/,
+                    "alertText": "* Sólo números"
+                },
+                "cedula": {
+                    "regex": /^[0-9]+$/,
+                    "alertText": "* Sólo números"
+                },
+                "onlyLetterSp": {
+                    "regex": /^[a-zA-Z\ \'ñÑáéíóúÁÉÍÓÚüÜ]+$/,
+                    "alertText": "* Sólo letras"
+                },
+                "onlyLetter": {
+                    "regex": /^[a-zA-Z\'ñÑáéíóúÁÉÍÓÚüÜ]+$/,
+                    "alertText": "* Sólo letras"
+                },
+                "onlyLetterNumberSp": {
+                    "regex": /^[0-9a-zA-Z\ \'ñÑáéíóúÁÉÍÓÚüÜ,\.]+$/,
                     "alertText": "* Sólo letras"
                 },
                 "onlyLetterNumber": {
