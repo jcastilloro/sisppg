@@ -92,6 +92,10 @@
                     "regex": /^[0-9]+$/,
                     "alertText": "* Sólo números"
                 },
+                "rif": {
+                    "regex": /^[a-zA-Z0-9\-\.]+$/,
+                    "alertText": "* Rif Inválido"
+                },
                 "onlyLetterSp": {
                     "regex": /^[a-zA-Z\ \'ñÑáéíóúÁÉÍÓÚüÜ]+$/,
                     "alertText": "* Sólo letras"

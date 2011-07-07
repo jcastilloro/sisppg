@@ -148,61 +148,23 @@ public class AccionesC_Empresa extends CohesionAction {
 
             //verifico si el usuario existe
             String login = fempresa.getLogin();
-            if (!Pattern.matches("([a-zA-Z0-9]|_|-)+", login) || !(s.createQuery("from Empresa where login = :var").setString("var", login).list().isEmpty())) {
+            if (!(s.createQuery("from Empresa where login = :var").setString("var", login).list().isEmpty())) {
                 salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte un Login Válido");
+                request.setAttribute("msg", "Disculpe el Login ya Existe");
             }
-
-            //verifico si la confirmacion del password es el password
-            String password = fempresa.getPassword();
-            if (!password.equals(fempresa.getConfirmar_password()) || password.equals("")) {
-                salida = SALIDA_1;
-            }
-
-            //verifico que los demas campos obliatorios esten completos.
-            String nombre = fempresa.getNombre();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\.|\\s)+", nombre)) {
-                salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-            }
-
-            String rif = fempresa.getRif();
-            if (!Pattern.matches("[a-zA-Z]-?[0-9]+", rif)) {
-                salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte un Rif Válido");
-            }
-
-            String telefono = fempresa.getTelefono();
-            if (!Pattern.matches("(\\d){0,4}-?\\d{7}", telefono)) {
-                salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
-            }
-
-            String direccion = fempresa.getDireccion();
-            if (!Pattern.matches(".+", direccion)) {
-                salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte una Dirección Válida");
-            }
-
-            String email = fempresa.getEmail();
-            if (!Pattern.matches(".+", email)) {
-                salida = SALIDA_1;
-                request.setAttribute("msg", "Por Favor Inserte un Email Válido");
-            }
-
             if (salida == 0) {
                 Empresa e = new Empresa();
                 Ciudad c = (Ciudad) s.createQuery("from Ciudad where idCiudad = :var").setInteger("var", Integer.parseInt(fempresa.getCiudad())).list().get(0);
                 Pais pa = (Pais) s.createQuery("from Pais where idPais = :var").setInteger("var", Integer.parseInt(fempresa.getPais())).list().get(0);
 
                 e.setCiudad(c);
-                e.setDireccion(direccion);
-                e.setEmail(email);
-                e.setLogin(login);
-                e.setNombre(nombre);
-                e.setPassword(password);
-                e.setRif(rif);
-                e.setTelefono(telefono);
+                e.setDireccion(new String(fempresa.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setEmail(fempresa.getLogin());
+                e.setLogin(new String(fempresa.getLogin().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setNombre(new String(fempresa.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                e.setPassword(fempresa.getPassword());
+                e.setRif(fempresa.getRif());
+                e.setTelefono(fempresa.getTelefono());
                 s.save(e);
 
                 fempresa.reset(mapping, request);
@@ -377,82 +339,23 @@ public class AccionesC_Empresa extends CohesionAction {
             F_Tutor_Industrial findustrial = (F_Tutor_Industrial) form;
 
             //mi codigo
-            String nombre = findustrial.getNombre();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s)+", nombre)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-            }
-
-
-            String cedula = findustrial.getCedula();
-            if (!Pattern.matches("(v|V|e|E)?-?[0-9]+",cedula)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte una Cédula Válida");
-            }
-
-            String email = findustrial.getEmail();
-            if (!Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+",email)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte una Email Válido");
-            }
-
-            String telefono = findustrial.getTelefono();
-            if (!Pattern.matches("(\\d){0,4}-?\\d{7}", telefono)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Teléfono Válido");
-            }
-
-            String profesion = findustrial.getProfesion();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", profesion)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte una Profesión Válida");
-            }
-
-            String direccion = findustrial.getDireccion();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", direccion)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte una Dirección Válida");
-            }
-
-            String departamento = findustrial.getDepartamento();
-            if (!Pattern.matches(".+", departamento)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Departamento Válido");
-            }
-
-            String cargo = findustrial.getCargo();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", cargo)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Cargo Válido");
-            }
-
-            String login = findustrial.getLogin();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", login)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Login Válido");
-            }
-
-            String password = findustrial.getPassword();
-            if (!Pattern.matches("([a-zA-Z0-9]|\\s|,|\\.|_|-)+", password)) {
-                salida = SALIDA_0;
-                request.setAttribute("msg", "Por Favor Inserte un Password Válido");
-            }
+            
 
 
             if (salida == SALIDA_1) {
 
                 TutorIndustrial ti = new TutorIndustrial();
-                ti.setCedula(cedula);
-                ti.setEmail(email);
+                ti.setCedula(new String(findustrial.getCedula().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setEmail(new String(findustrial.getEmail().getBytes("ISO-8859-1"),"UTF-8"));
                 ti.setEmpresa((Empresa) request.getSession().getAttribute("empresa"));
-                ti.setNombre(nombre);
-                ti.setTelefono(telefono);
-                ti.setProfesion(profesion);
-                ti.setDireccion(direccion);
-                ti.setDepartamento(departamento);
-                ti.setCargo(cargo);
-                ti.setLogin(login);
-                ti.setPassword(password);
+                ti.setNombre(new String(findustrial.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setTelefono(new String(findustrial.getTelefono().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setProfesion(new String(findustrial.getProfesion().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setDireccion(new String(findustrial.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setDepartamento(new String(findustrial.getDepartamento().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setCargo(new String(findustrial.getCargo().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setLogin(new String(findustrial.getLogin().getBytes("ISO-8859-1"),"UTF-8"));
+                ti.setPassword(new String(findustrial.getPassword().getBytes("ISO-8859-1"),"UTF-8"));
 
                 s.save(ti);
                 findustrial.reset(mapping, request);

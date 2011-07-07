@@ -127,36 +127,10 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
 
 
 
-                //verifico nombre
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fF_Perfil_Profesor.getNombre())) {
-                    p.setNombre(fF_Perfil_Profesor.getNombre());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-                }
-                //verifico apellido
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fF_Perfil_Profesor.getApellido())) {
-                    p.setApellido(fF_Perfil_Profesor.getApellido());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
-                }
-                //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fF_Perfil_Profesor.getCedula())) {
-                    p.setCedula(fF_Perfil_Profesor.getCedula());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
-                }
-
-                //verifico email
-                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fF_Perfil_Profesor.getEmail())) {
-                    p.setEmail(fF_Perfil_Profesor.getEmail());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
-                }
-
+                p.setNombre(new String(fF_Perfil_Profesor.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                p.setApellido(new String (fF_Perfil_Profesor.getApellido().getBytes("ISO-8859-1"),"UTF-8"));
+                p.setCedula(fF_Perfil_Profesor.getCedula());
+                p.setEmail(fF_Perfil_Profesor.getEmail());
 
                 if (salida != SALIDA_0) {
                     int idDepartamento = Integer.parseInt(fF_Perfil_Profesor.getDepartamento());
@@ -177,35 +151,10 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
 
                 p.setUsbid(u.getUsbid());
 
-                //verifico nombre
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fF_Perfil_Profesor.getNombre())) {
-                    p.setNombre(fF_Perfil_Profesor.getNombre());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Nombre Válido");
-                }
-                //verifico apellido
-                if (Pattern.matches("([a-zA-Z]|\\s)+", fF_Perfil_Profesor.getApellido())) {
-                    p.setApellido(fF_Perfil_Profesor.getApellido());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Apellido Válido");
-                }
-                //verifico cedula
-                if (Pattern.matches("(v|V|e|E)?-?[0-9]+", fF_Perfil_Profesor.getCedula())) {
-                    p.setCedula(fF_Perfil_Profesor.getCedula());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte una Cedula Válida");
-                }
-
-                //verifico email
-                if (Pattern.matches("(\\w|-|\\.)+@(\\w|-|\\.)+\\.(\\w|-|\\.)+", fF_Perfil_Profesor.getEmail())) {
-                    p.setEmail(fF_Perfil_Profesor.getEmail());
-                } else {
-                    salida = SALIDA_0;
-                    request.setAttribute("msg", "Por Favor Inserte un Mail Válido");
-                }
+                p.setNombre(new String(fF_Perfil_Profesor.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
+                p.setApellido(new String (fF_Perfil_Profesor.getApellido().getBytes("ISO-8859-1"),"UTF-8"));
+                p.setCedula(fF_Perfil_Profesor.getCedula());
+                p.setEmail(fF_Perfil_Profesor.getEmail());
 
 
                 if (salida != SALIDA_0) {
@@ -295,7 +244,7 @@ public class AccionesC_Perfil_Profesor extends CohesionAction {
         try {
             //Mi Codigo
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-             List<Departamento> d = s.createQuery("from Departamento").list();
+            List<Departamento> d = s.createQuery("from Departamento").list();
 
             Profesor p = (Profesor) s.createQuery("from Profesor where usbid = :var").setString("var", u.getUsbid()).uniqueResult();
 

@@ -2,15 +2,22 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery.ui.datepicker-es.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -61,7 +68,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -79,13 +86,13 @@
                                     <center><h3>Crear Perfil de Profesor</h3></center>
                                     <br>
                                     <div class="box1465928" align="center">
-                                        <html:form
-                                            action="/A_guardar_perfil_prof.do" method="post">
+                                        <html:form styleId="perfilPForm"
+                                            action="/A_guardar_perfil_prof.do" method="post" acceptCharset="utf-8">
                                             <table border="0">
-                                                <tr><td><p id="1840413_C"><label for="1840413"><bean:message key="F_Perfil_Profesor.label0"/><%-- Nombre: --%></label></td><td><html:text styleId="1840413" property="nombre" size="30" value="${Datos.nombre}"/></td></tr>
-                                                <tr><td><p id="1840416_C"><label for="1840416"><bean:message key="F_Perfil_Profesor.label1"/><%-- Apellido: --%></label></td><td><html:text styleId="1840416" property="apellido" size="30" value="${Datos.apellido}"/></td></tr>
-                                                <tr><td><p id="1840419_C"><label for="1840419"><bean:message key="F_Perfil_Profesor.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840419" property="cedula" size="30" value="${Datos.cedula}"/></td></tr>
-                                                <tr><td><p id="1840423_C"><label for="1840423"><bean:message key="F_Perfil_Profesor.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840423" property="email" size="30" value="${Datos.email}"/></td></tr>
+                                                <tr><td><p id="1840413_C"><label for="1840413"><bean:message key="F_Perfil_Profesor.label0"/><%-- Nombre: --%></label></td><td><html:text styleId="1840413" property="nombre" size="30" value="${Datos.nombre}" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr>
+                                                <tr><td><p id="1840416_C"><label for="1840416"><bean:message key="F_Perfil_Profesor.label1"/><%-- Apellido: --%></label></td><td><html:text styleId="1840416" property="apellido" size="30" value="${Datos.apellido}" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr>
+                                                <tr><td><p id="1840419_C"><label for="1840419"><bean:message key="F_Perfil_Profesor.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840419" property="cedula" size="30" value="${Datos.cedula}" styleClass="validate[required,custom[cedula]]"/></td></tr>
+                                                <tr><td><p id="1840423_C"><label for="1840423"><bean:message key="F_Perfil_Profesor.label3"/><%-- Email: --%></label></td><td><html:text styleId="1840423" property="email" size="30" value="${Datos.email}" styleClass="validate[required,custom[email]]"/></td></tr>
                                                 <tr><td><p id="1840426_C"><label for="1840426"><bean:message key="F_Perfil_Profesor.label4"/><%-- Departamento: --%></label></td><td>
 
                                                         <html:select styleId="1840426" property="departamento">
@@ -98,6 +105,11 @@
                                             <html:submit styleClass="button"><bean:message key="V_perfil_prof.label0"/><%-- Crear --%></html:submit>
                                             <p><bean:message key="V_Obligatorios.msg0"/>
                                             </html:form>
+                                        <script>
+                                            $(document).ready(function(){
+                                                $("#perfilPForm").validationEngine('attach');
+                                            });
+                                        </script>
 
 
                                     </div>

@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Preincripciones CCTDS</title>
+        <title>Modifica Perfil</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -64,7 +64,7 @@
                     <li><cohesion:actor actors="16"><html:link action="/A_modificar_perfil.do"><bean:message key="V_sesion_tutor_i.label0"/><%-- Modificar Perfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="16"><html:link action="/A_prep_gestionar_pasatias_TI.do"><bean:message key="V_sesion_tutor_i.label1"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi�n</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
@@ -88,17 +88,10 @@
                                         <tr><td><p id="1840569_C"><label for="1840569"><bean:message key="F_Tutor_Industrial.label2"/><%-- Cedula: --%></label></td><td><html:text styleId="1840569" property="cedula" size="30" value="${Datos.cedula}"/></td></tr></p>
                                         <tr><td><p id="1840572_C"><label for="1840572"><bean:message key="F_Tutor_Industrial.label3"/><%-- Telefono: --%></label></td><td><html:text styleId="1840572" property="telefono" size="30"value="${Datos.telefono}"/></td></tr></p>
                                         <tr><td><p id="1844840_C"><label for="1844840"><bean:message key="F_Tutor_Industrial.label4"/><%-- Profesi&oacute;n: --%></label></td><td><html:text styleId="1844840" property="profesion" size="30"value="${Datos.profesion}"/></td></tr></p>
-                                        <tr><td><p id="1840575_C"><label for="1840575"><bean:message key="F_Tutor_Industrial.label6"/><%-- Empresa: --%></label></td><td>
-                                                <html:select styleId="1840575" property="empresa">
-                                                <logic:iterate id="empresa" collection="${empty L_Empresas ? _vacio : L_Empresas}">
-                                                <option value="${empresa.idEmpresa}">${empresa.nombre}</option>
-                                            </logic:iterate>
-                                        </html:select>
-
-                                            </td></tr></p>
+                                        <tr><td><p id="1840575_C"><label for="1840575"><bean:message key="F_Tutor_Industrial.label6"/><%-- Empresa: --%></label></td><td>${empresa.nombre}</td></tr></p>
                                         <tr><td><p id="1844837_C"><label for="1844837"><bean:message key="F_Tutor_Industrial.label7"/><%-- Departamento: --%></label></td><td><html:text styleId="1844837" property="departamento" size="30" value="${Datos.departamento}"/></td></tr></p>
                                         <tr><td><p id="1844848_C"><label for="1844848"><bean:message key="F_Tutor_Industrial.label8"/><%-- Cargo: --%></label></td><td><html:text styleId="1844848" property="cargo" size="30" value="${Datos.cargo}"/></td></tr></p>
-                                        <tr><td><p id="1844834_C"><label for="1844834"><bean:message key="F_Tutor_Industrial.label10"/><%-- Login de sesion: --%></label></td><td><html:text styleId="1844834" property="login" size="30" value="${Datos.login}"/></td></tr></p>
+                                        <tr><td><p id="1844834_C"><label for="1844834">Login de sesión:<%-- Login de sesion: --%></label></td><td>${Datos.login}</td></tr></p>
                                         <tr><td><p id="1844823_C"><label for="1844823"><bean:message key="F_Tutor_Industrial.label10"/><%-- Password de sesion: --%></label></td><td><html:password styleId="1844823" property="password" size="30" value="${Datos.password}"/></td></tr></p>
                                         <tr><td><p id="1844843_C"><label for="1844843"><bean:message key="F_Tutor_Industrial.label5"/><%-- Direccion: --%></label></td><td><html:textarea styleId="1844843" property="direccion" cols="60" rows="10" value="${Datos.direccion}"></html:textarea></td></tr></p>
 

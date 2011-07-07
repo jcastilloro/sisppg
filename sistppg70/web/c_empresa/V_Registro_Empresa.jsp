@@ -2,15 +2,21 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Registro_Empresa.title"/></title>
-<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <html:base/>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery.ui.datepicker-es.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
         <style type="text/css">
             div#box1840529 {width: 400px; margin: 40px auto; }
             form#1840529 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
@@ -49,13 +55,13 @@
 
     </head>
     <body>
-       <div id="wrapper">
+        <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
 
 
-                  
-               </ul>
+
+                </ul>
             </div>
 
 
@@ -75,38 +81,44 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                            ${empty msg ? "" : msg}
-                            <div class="box1840529"><html:form
-                                    action="/A_Registrar_Empresa.do" method="post">
-                                    <table>
-                                        <tr><td><p id="1840531_C"><label for="1840531"><bean:message key="F_Registro_Empresa.label0"/><%-- Login: --%></label></td><td><html:text styleId="1840531" property="login" size="30"/></td></tr>
-                                        <tr><td><p id="1840534_C"><label for="1840534"><bean:message key="F_Registro_Empresa.label1"/><%-- Password: --%></label></td><td><html:password styleId="1840534" property="password" size="30"/></td></tr>
-                                        <tr><td><p id="1840537_C"><label for="1840537"><bean:message key="F_Registro_Empresa.label2"/><%-- Confirmar Password: --%></label></td><td><html:password styleId="1840537" property="confirmar_password" size="30"/></td></tr>
-                                        <tr><td><p id="1840540_C"><label for="1840540"><bean:message key="F_Registro_Empresa.label3"/><%-- Nombre Empresa: --%></label></td><td><html:text styleId="1840540" property="nombre" size="30"/></td></tr>
-                                        <tr><td><p id="1840543_C"><label for="1840543"><bean:message key="F_Registro_Empresa.label4"/><%-- RIF: --%></label></td><td><html:text styleId="1840543" property="rif" size="30"/></td></tr>
-                                        <tr><td><p id="1840546_C"><label for="1840546"><bean:message key="F_Registro_Empresa.label5"/><%-- Telefono: --%></label></td><td><html:text styleId="1840546" property="telefono" size="30"/></td></tr>
-                                        <tr><td><p id="1840531_C"><label for="1840531">Email: </label></td><td><html:text styleId="18405312" property="email" size="30"/></td></tr>
-                                        <tr><td><p id="1840550_C"><label for="1840550"><bean:message key="F_Registro_Empresa.label6"/><%-- Direccion: --%></label></td><td><html:textarea styleId="1840550" property="direccion" cols="60" rows="10"></html:textarea></td></tr>
-                                        <tr><td><p id="1840553_C"><label for="1840553"><bean:message key="F_Registro_Empresa.label7"/><%-- Pais: --%></label></td><td>
-                                                <html:select styleId="1840553" property="pais">
-                                                    <logic:iterate id="pais" collection="${empty L_Paises ? _vacio : L_Paises}">
-                                                <option value="${pais.idPais}">${pais.nombre}</option>
-                                            </logic:iterate>
-                                        </html:select>
-                                        </td></tr>
-                                        <tr><td><p id="1840557_C"><label for="1840557"><bean:message key="F_Registro_Empresa.label8"/><%-- Ciudad: --%></label></td><td>
-                                                <html:select styleId="1840557" property="ciudad">
-                                                    <logic:iterate id="ciudad" collection="${empty L_Ciudades ? _vacio : L_Ciudades}">
-                                                <option value="${ciudad.idCiudad}">${ciudad.nombre}</option>
-                                            </logic:iterate>
-                                        </html:select>
-                                        </td></tr></p>
-                                    </table>
-                                    <center><html:submit styleClass="button"><bean:message key="V_Registro_Empresa.label0"/><%-- RegistrarEmpresa --%></html:submit></center>
-                                <center><bean:message key="V_Obligatorios.msg0"/></center>
-                                </html:form></div>
+                                    ${empty msg ? "" : msg}
+                                    <div class="box1840529" align="center"><html:form styleId="perfilEmForm"
+                                               action="/A_Registrar_Empresa.do" method="post" acceptCharset="utf-8">
+                                            <table>
+                                                <tr><td><p id="1840531_C"><label for="1840531"><bean:message key="F_Registro_Empresa.label0"/><%-- Login: --%></label></td><td><html:text styleId="1840531" property="login" size="30" styleClass="validate[required,custom[onlyLetter]]"/></td></tr>
+                                                <tr><td><p id="1840534_C"><label for="1840534"><bean:message key="F_Registro_Empresa.label1"/><%-- Password: --%></label></td><td><html:password styleId="1840534" property="password" size="30" styleClass="validate[required]"/></td></tr>
+                                                <tr><td><p id="1840537_C"><label for="1840537"><bean:message key="F_Registro_Empresa.label2"/><%-- Confirmar Password: --%></label></td><td><html:password styleId="1840537" property="confirmar_password" size="30" styleClass="validate[required,equals[1840534]]"/></td></tr>
+                                                <tr><td><p id="1840540_C"><label for="1840540"><bean:message key="F_Registro_Empresa.label3"/><%-- Nombre Empresa: --%></label></td><td><html:text styleId="1840540" property="nombre" size="30" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr>
+                                                <tr><td><p id="1840543_C"><label for="1840543"><bean:message key="F_Registro_Empresa.label4"/><%-- RIF: --%></label></td><td><html:text styleId="1840543" property="rif" size="30" styleClass="validate[required,custom[rif]]"/></td></tr>
+                                                <tr><td><p id="1840546_C"><label for="1840546"><bean:message key="F_Registro_Empresa.label5"/><%-- Telefono: --%></label></td><td><html:text styleId="1840546" property="telefono" size="30" styleClass="validate[required,custom[phone]]"/></td></tr>
+                                                <tr><td><p id="1840531_C"><label for="1840531">Email: </label></td><td><html:text styleId="18405312" property="email" size="30" styleClass="validate[required,custom[email]]"/></td></tr>
+                                                <tr><td><p id="1840550_C"><label for="1840550"><bean:message key="F_Registro_Empresa.label6"/><%-- Direccion: --%></label></td><td><html:textarea styleId="1840550" property="direccion" cols="60" rows="10" styleClass="validate[required,custom[onlyLetterNumberSp]]"></html:textarea></td></tr>
+                                                <tr><td><p id="1840553_C"><label for="1840553"><bean:message key="F_Registro_Empresa.label7"/><%-- Pais: --%></label></td><td>
+                                                        <html:select styleId="1840553" property="pais">
+                                                            <logic:iterate id="pais" collection="${empty L_Paises ? _vacio : L_Paises}">
+                                                        <option value="${pais.idPais}">${pais.nombre}</option>
+                                                    </logic:iterate>
+                                                </html:select>
+                                                </td></tr>
+                                                <tr><td><p id="1840557_C"><label for="1840557"><bean:message key="F_Registro_Empresa.label8"/><%-- Ciudad: --%></label></td><td>
+                                                        <html:select styleId="1840557" property="ciudad">
+                                                            <logic:iterate id="ciudad" collection="${empty L_Ciudades ? _vacio : L_Ciudades}">
+                                                        <option value="${ciudad.idCiudad}">${ciudad.nombre}</option>
+                                                    </logic:iterate>
+                                                </html:select>
+                                                </td></tr></p>
+                                            </table>
+                                            <center><html:submit styleClass="button"><bean:message key="V_Registro_Empresa.label0"/><%-- RegistrarEmpresa --%></html:submit></center>
+                                            <center><bean:message key="V_Obligatorios.msg0"/></center>
+                                        </html:form>
+                                        <script>
+                                            $(document).ready(function(){
+                                                $("#perfilEmForm").validationEngine('attach');
+                                            });
+                                        </script>
+                                    </div>
 
-                         </div>
+                                </div>
                             </div>
 
                             <div class="clearer"></div>
