@@ -1,5 +1,7 @@
 package jc2s.sistppg;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 import jc2s.sistppg.hibernate.*;
+import org.apache.struts.upload.FormFile;
 
 
 /**
@@ -99,6 +102,102 @@ public class AccionesC_Retiro_Pasantia_Est extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
             F_Retiro_Pasantia fF_Retiro_Pasantia = (F_Retiro_Pasantia)form;
+                    // Process the FormFile
+
+            if(fF_Retiro_Pasantia.getCarta_retiro_estudiante()==null || fF_Retiro_Pasantia.getCarta_retiro_tutor_academico()==null || fF_Retiro_Pasantia.getCarta_retiro_tutor_industrial()==null){
+                salida = SALIDA_1;
+            }else{
+                boolean successUserDir = (new File(getServlet().getServletContext().getRealPath("/") + "documentos/")).mkdir();
+                            System.out.println("Creo bien el directorio?:" + successUserDir);
+                successUserDir = (new File(getServlet().getServletContext().getRealPath("/") + "documentos/"+((Usuario)request.getSession().getAttribute("usuario")).getUsbid())).mkdir();
+                            System.out.println("Creo bien el del usuario??:" + successUserDir);
+                //----------------------------
+                //Montar la carta del estudiante
+                FormFile myFile = fF_Retiro_Pasantia.getCarta_retiro_estudiante();
+                String contentType = myFile.getContentType();
+                String fileName = myFile.getFileName();
+                int fileSize = myFile.getFileSize();
+                String filePath = getServlet().getServletContext().getRealPath("/") + "documentos/"+((Usuario)request.getSession().getAttribute("usuario")).getUsbid()+"/C_retiro_E";
+                successUserDir = (new File(filePath)).mkdir();
+                System.out.println("Creo bien el primero?:" + successUserDir);
+                if (!fileName.equals("")) {
+                    String ext = ".___";
+                    if (!contentType.equals("image/jpeg") && !contentType.equals("application/pdf")) {
+                        salida = SALIDA_1;
+                    }
+                    if (fileSize > 5000000) {
+                        salida = SALIDA_1;
+                    }
+                    System.out.println("Server path:" + filePath);
+                    File fileToCreate = new File(filePath, fileName);
+                    boolean createNewFileBoole = fileToCreate.createNewFile();
+                    System.out.println("boolean:" + createNewFileBoole);
+                    if (!fileToCreate.exists()) {
+                        FileOutputStream fileOutStream = new FileOutputStream(fileToCreate);
+                        fileOutStream.write(myFile.getFileData());
+                        fileOutStream.flush();
+                        fileOutStream.close();
+                    }
+                }
+                //-----------
+                //----------------------------
+                //Montar la carta del T academico
+                myFile = fF_Retiro_Pasantia.getCarta_retiro_tutor_academico();
+                contentType = myFile.getContentType();
+                fileName = myFile.getFileName();
+                filePath = getServlet().getServletContext().getRealPath("/") + "documentos/"+((Usuario)request.getSession().getAttribute("usuario")).getUsbid()+"/C_retiro_TA";
+                successUserDir = (new File(filePath)).mkdir();
+                System.out.println("Creo bien el segundo?:" + successUserDir);
+                if (!fileName.equals("")) {
+                    String ext = ".___";
+                    if (!contentType.equals("image/jpeg") && !contentType.equals("application/pdf")) {
+                        salida = SALIDA_1;
+                    }
+                    if (fileSize > 5000000) {
+                        salida = SALIDA_1;
+                    }
+
+                    System.out.println("Server path:" + filePath);
+                    File fileToCreate = new File(filePath, fileName);
+                    boolean createNewFileBoole = fileToCreate.createNewFile();
+                    System.out.println("boolean:" + createNewFileBoole);
+                    if (!fileToCreate.exists()) {
+                        FileOutputStream fileOutStream = new FileOutputStream(fileToCreate);
+                        fileOutStream.write(myFile.getFileData());
+                        fileOutStream.flush();
+                        fileOutStream.close();
+                    }
+                }
+                //-----------
+                //----------------------------
+                //Montar la carta del T industrial
+                myFile = fF_Retiro_Pasantia.getCarta_retiro_tutor_industrial();
+                contentType = myFile.getContentType();
+                fileName = myFile.getFileName();
+                fileSize = myFile.getFileSize();
+                filePath = getServlet().getServletContext().getRealPath("/") + "documentos/"+((Usuario)request.getSession().getAttribute("usuario")).getUsbid()+"/C_retiro_TI";
+                successUserDir = (new File(filePath)).mkdir();
+                System.out.println("Creo bien el segundo?:" + successUserDir);
+                if (!fileName.equals("")) {
+                    String ext = ".___";
+                    if (!contentType.equals("image/jpeg") && !contentType.equals("application/pdf")) {
+                        salida = SALIDA_1;
+                    }
+                    if (fileSize > 5000000) {
+                        salida = SALIDA_1;
+                    }
+                    System.out.println("Server path:" + filePath);
+                    File fileToCreate = new File(filePath, fileName);
+                    if (!fileToCreate.exists()) {
+                        FileOutputStream fileOutStream = new FileOutputStream(fileToCreate);
+                        fileOutStream.write(myFile.getFileData());
+                        fileOutStream.flush();
+                        fileOutStream.close();
+                    }
+                }
+                //-----------
+
+            }
             tr.commit();
 
         } catch (Exception ex) {
