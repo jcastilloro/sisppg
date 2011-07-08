@@ -202,6 +202,8 @@
                                      <td><html:textarea property="observaciones" cols="50" rows="4"/></td>
                                 </tr>
                             </table>
+                                <html:hidden property="id" value="${Pasantia.idPasantia}"/>
+
                             <html:submit styleClass="button">Enviar Evaluación</html:submit>
                             </html:form>
                             </logic:empty>

@@ -206,7 +206,7 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
     }
 
 
-    private String evaluacion_tutor_academico;
+    private String evaluacion_tutor_academico = "";
 
     public String getEvaluacion_tutor_academico() {
         return evaluacion_tutor_academico;
@@ -216,6 +216,25 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
         this.evaluacion_tutor_academico = evaluacion_tutor_academico;
     }
 
+    private String evaluacion_tutor_industrial = "";
+
+    public String getEvaluacion_tutor_industrial() {
+        return evaluacion_tutor_industrial;
+    }
+
+    public void setEvaluacion_tutor_industrial(String evaluacion_tutor_industrial) {
+        this.evaluacion_tutor_industrial = evaluacion_tutor_industrial;
+    }
+
+    private String observaciones_tutor_industrial;
+
+    public String getObservaciones_tutor_industrial() {
+        return observaciones_tutor_industrial;
+    }
+
+    public void setObservaciones_tutor_industrial(String observaciones_tutor_industrial) {
+        this.observaciones_tutor_industrial = observaciones_tutor_industrial;
+    }
 
     public String toString() {
         return "<Pasantia id='C" + this.id +

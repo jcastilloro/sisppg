@@ -24,5 +24,9 @@
     <property column="ano" name="ano" not-null="true" type="integer"/>
     <!-- 9 -->
     <property column="evaluacion_tutor_academico" name="evaluacion_tutor_academico" not-null="false" type="string" />
+    <!-- 10 -->
+    <property column="evaluacion_tutor_industrial" name="evaluacion_tutor_industrial" not-null="false" type="string" />
+    <!-- 11 -->
+    <property column="observaciones_tutor_industrial" name="observaciones_tutor_industrial" not-null="false" type="string" />
   </class>
 </hibernate-mapping>

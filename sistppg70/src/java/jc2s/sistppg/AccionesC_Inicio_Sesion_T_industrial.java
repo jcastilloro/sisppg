@@ -168,7 +168,7 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
             request.setAttribute("L_Empresas", em);
             Empresa singular = (Empresa) s.createQuery("from Empresa where idEmpresa= :var").setLong("var", ti.getEmpresa().getIdEmpresa()).uniqueResult();
 
-            
+
             request.setAttribute("empresa", singular);
             request.setAttribute("tutorindustrial", ti);
             tr.commit();
@@ -223,27 +223,27 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
 
             //Mi Codigo
 
-            
+
 
             if (salida == SALIDA_1) {
 
                 TutorIndustrial ti = (TutorIndustrial) request.getSession().getAttribute("tutorindustrial");
-              
-                
-                
+
+
+
 //               List<TutorIndustrial> lp = s.createQuery("from TutorIndustrial where login= :var").setString("var", login).list();
 //               TutorIndustrial tt = lp.get(0);
-                ti.setCedula(new String(fF_Tutor_Industrial.getCedula().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setEmail(new String(fF_Tutor_Industrial.getEmail().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setNombre(new String(fF_Tutor_Industrial.getNombre().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setTelefono(new String(fF_Tutor_Industrial.getTelefono().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setProfesion(new String(fF_Tutor_Industrial.getProfesion().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setDireccion(new String(fF_Tutor_Industrial.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setDepartamento(new String(fF_Tutor_Industrial.getDepartamento().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setCargo(new String(fF_Tutor_Industrial.getCargo().getBytes("ISO-8859-1"),"UTF-8"));
-                ti.setPassword(new String(fF_Tutor_Industrial.getPassword().getBytes("ISO-8859-1"),"UTF-8"));
-                
-               //ti.setIdTutorIndustrial(((TutorIndustrial) request.getSession().getAttribute("tutorindustrial")).getIdTutorIndustrial());
+                ti.setCedula(new String(fF_Tutor_Industrial.getCedula().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setEmail(new String(fF_Tutor_Industrial.getEmail().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setNombre(new String(fF_Tutor_Industrial.getNombre().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setTelefono(new String(fF_Tutor_Industrial.getTelefono().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setProfesion(new String(fF_Tutor_Industrial.getProfesion().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setDireccion(new String(fF_Tutor_Industrial.getDireccion().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setDepartamento(new String(fF_Tutor_Industrial.getDepartamento().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setCargo(new String(fF_Tutor_Industrial.getCargo().getBytes("ISO-8859-1"), "UTF-8"));
+                ti.setPassword(new String(fF_Tutor_Industrial.getPassword().getBytes("ISO-8859-1"), "UTF-8"));
+
+                //ti.setIdTutorIndustrial(((TutorIndustrial) request.getSession().getAttribute("tutorindustrial")).getIdTutorIndustrial());
 
                 s.update(ti);
                 request.getSession().setAttribute("tutorindustrial", ti);
@@ -274,7 +274,7 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
             } catch (Exception ex2) {
             }
         }
-       
+
         if (salida == 1) {
             request.setAttribute("msg",
                     getResources(request).getMessage("A_actualizar_perfil_TI.msg1"));
@@ -331,7 +331,7 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
     }
 
     // EVALUAR PASANTIA TI
-        public ActionForward A_evaluar_pasatias_TI(ActionMapping mapping, ActionForm form,
+    public ActionForward A_evaluar_pasatias_TI(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
@@ -353,23 +353,29 @@ public class AccionesC_Inicio_Sesion_T_industrial extends CohesionAction {
             request.setAttribute("Pasantias", pasantias);
 
             String pas = request.getParameter("idPasantia");
-            
+
+
             long idPas = 57;
-            if (pas != null)
+            if (pas != null) {
                 idPas = Long.valueOf(pas).longValue();
-            
+                System.out.println("__________============================================" + idPas);
+            }
             Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", idPas).uniqueResult();
             request.setAttribute("Pasantia", pasantia);
 
             F_EvaluacionTI eval = (F_EvaluacionTI) form;
 
-            double nota = ( eval.getUno()+eval.getDos()+eval.getTres()+eval.getCuatro()
-                    +eval.getCinco()+eval.getSeis()+eval.getSiete()+eval.getOcho()+
-                    eval.getNueve()+eval.getDiez() ) / 10.0;
+            double nota = (eval.getUno() + eval.getDos() + eval.getTres() + eval.getCuatro()
+                    + eval.getCinco() + eval.getSeis() + eval.getSiete() + eval.getOcho()
+                    + eval.getNueve() + eval.getDiez()) / 10.0;
 
-            if (nota > 0.11)
+            if (nota > 0.11) {
                 request.setAttribute("Ya_Evaluo", nota);
-            
+                pasantia = (Pasantia) s.createQuery("from Pasantia where idpasantia= :var").setLong("var", Long.parseLong(eval.getId())).uniqueResult();
+                pasantia.setObservaciones_tutor_industrial(eval.getObservaciones());
+                pasantia.setEvaluacion_tutor_industrial(String.valueOf(nota));
+                s.update(pasantia);
+            }
             tr.commit();
 
         } catch (Exception ex) {
