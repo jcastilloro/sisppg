@@ -72,9 +72,6 @@
             <div id="page">
 
                 <div id="content">
-                    <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
-                        <p><strong>USBID: </strong>${usuario.usbid}</p>
-                    </div>
                     
                     <div id="body">
 

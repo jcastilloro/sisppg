@@ -50,16 +50,15 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center><h3>Inscripción de Pasantía</h3>
-                                        <h4>Agregar Fase</h4>
-                                    ${empty msg ? "" : msg}</center>
+                                    <center><h2>Inscripción de Pasantía</h2>                                    
                                     <div class="box1840475">
                                     <html:form action="/A_agregar_fase.do" method="post">
                                     <p id="1840477_C"><label for="1840477">
-                                    <bean:message key="F_Fase_Pasantia.label0"/><%-- Objetivos Especificos: --%></label><html:textarea styleId="1840477" property="objetivos_especificos" cols="60" rows="10"></html:textarea></p>
+                                            <h3><bean:message key="F_Fase_Pasantia.label0"/></h3><%-- Objetivos Especificos: --%></label><html:textarea styleId="1840477" property="objetivos_especificos" cols="50" rows="8"></html:textarea></p>
 
                                     <html:submit styleClass="button"><bean:message key="V_fases_pasantia.label0"/><%-- Agregar Fase --%></html:submit>
                                     </html:form>
+                                            </center>
                                     </div>
                                 </div>
                             </div>

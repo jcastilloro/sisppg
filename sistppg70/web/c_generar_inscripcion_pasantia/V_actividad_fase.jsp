@@ -56,14 +56,20 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                            ${empty msg ? "" : msg}
-                <div class="box1840480"><html:form
-                  action="/A_agregar_actividad.do" method="post">
-                  <p id="1840482_C"><label for="1840482"><bean:message key="F_Actividad_Fase.label0"/><%-- Descripcion: --%></label><html:textarea styleId="1840482" property="descripcion" cols="60" rows="10"></html:textarea></p>
-                  <p id="1840509_C"><label for="1840509"><bean:message key="F_Actividad_Fase.label1"/><%-- Tiempo Estimado: --%></label><html:text styleId="1840509" property="tiempo_estimado" size="30"/></p>
-
+                                    <h3>${empty msg ? "" : msg}</h3>
+                <div class="box1840480">
+                    <table border=0">
+                    <html:form action="/A_agregar_actividad.do" method="post">
+                        <tr><td>
+                  <label for="1840482"><bean:message key="F_Actividad_Fase.label0"/><%-- Descripcion: --%></label>
+                            </td><td><html:textarea styleId="1840482" property="descripcion" cols="50" rows="8"></html:textarea></td>
+                        </tr><tr><td><label for="1840509"><bean:message key="F_Actividad_Fase.label1"/><%-- Tiempo Estimado: --%></label>
+                            </td><td><html:text styleId="1840509" property="tiempo_estimado" size="30"/></td>
+                        </tr><tr><td></td><td>
                   <html:submit styleClass="button"><bean:message key="V_actividad_fase.label0"/><%-- Agregar Actividad --%></html:submit>
-                </html:form></div>
+                            </td></tr>
+                    </html:form></div>
+        </table>
 
                         </div>
                                 </div>
