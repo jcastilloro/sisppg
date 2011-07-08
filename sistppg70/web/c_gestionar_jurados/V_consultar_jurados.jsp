@@ -64,19 +64,18 @@
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="2"><html:link action="/A_consultar_jurado.do"><bean:message key="V_consultar_jurados.label0"/><%-- A_consultar_jurado --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="2"><html:link action="/A_mostrar_jurado.do"><bean:message key="V_consultar_jurados.label1"/><%-- V_mostrar_jurado --%></html:link></cohesion:actor></li>
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">
             </div>
             <div id="page">
+                    
+                <div id="content">
                     <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
                         <p><strong>USBID: </strong>${usuario.usbid}</p>
                     </div>
-                <div id="content">
-
                     <div id="body">
 
                         <div id="split">

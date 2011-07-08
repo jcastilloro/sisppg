@@ -62,8 +62,9 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="2"><html:link action="/A_Prep_Gestionar_Jurados.do"><bean:message key="V_Sesion_Coordinador.label0"/><%-- Gestionar Jurados --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do"><bean:message key="V_Sesion_Coordinador.label1"/><%-- Consultar Proyectos --%></html:link></cohesion:actor></li>
-                    <li><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesion</html:link></li>
+                   
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">

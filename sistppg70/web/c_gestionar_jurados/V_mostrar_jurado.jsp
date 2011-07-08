@@ -7,17 +7,11 @@
     <head>
         <title>Mostrar Jurados</title>
 
-
         <html:base/>
-
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
         <script type="text/javascript" src="../sorttable.js"></script>
-
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -67,22 +61,13 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-
-
-
-
-
                 </ul>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
-
-
 
             <div id="header">
-                <%-- NO ESTOY SEGURO DE QUE VA AQUI PERO SE VE FEO Y QUEDA SOBRE LA IMAGEN --%>
             </div>
             <div id="page">
-
-
 
                 <div id="content">
                     <div id="status-bar" style="margin-left: -40px; margin-top: -30px;">
@@ -98,8 +83,6 @@
                                     <div class="box1465928" align="center">
 
                                         <h2>Datos del Jurado</h2><hr>
-
-
 
                                         <logic:notEmpty name="Datos">
                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
@@ -136,9 +119,6 @@
 
 
                                             <h3>Añadir</h3><h3> <a href="/sistppg70/A_consultar_PG.do?idJurado=<%= request.getParameter("idJurado") %>">Proyecto de Grado</a>|<a href="/sistppg70/A_consultar_pasantias.do?idJurado=<%= request.getParameter("idJurado") %>">Pasantía</a></h3>
-                                            
-
-
 
                                         </div>
                                     </div>
@@ -158,8 +138,6 @@
             <div style="clear: both;">&nbsp;</div>
         </div>
         <div id="footer"><center> <bean:message key="bottom.label"/> </center></div>
-
-
 
     </body>
 </html:html>
