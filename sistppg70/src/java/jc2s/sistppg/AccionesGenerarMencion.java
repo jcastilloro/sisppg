@@ -24,8 +24,10 @@ import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import jc2s.sistppg.hibernate.Estudiante;
+import jc2s.sistppg.hibernate.Pasantia;
 import jc2s.sistppg.hibernate.Usuario;
 
 /**
@@ -66,24 +68,25 @@ public class AccionesGenerarMencion  extends CohesionAction {
             String path = getServlet().getServletContext().getRealPath("/")+ "../../img/";
             Usuario u = (Usuario) request.getSession().getAttribute("usuario");
             Estudiante estudiante = (Estudiante) s.createQuery("from Estudiante where usbid = :login").setString("login", u.getUsbid()).uniqueResult();
-            
-            if (estudiante != null) {
+            String idPasantia = (String) request.getSession().getAttribute("EstaPasantia");
+            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var",  Long.parseLong(idPasantia)).uniqueResult();
+
+            if (estudiante != null && p != null) {
 
                 F_Mencion f_mencion = (F_Mencion) form;
-                String defensa = f_mencion.getFecha_propuesta();
+                Date fecha = p.getFecha_defensa();
                 String mencion = f_mencion.getJustificacion();
+                String tutorA = p.getTutor_academico().getNombre() +" "+ p.getTutor_academico().getApellido();
 
-                String carnet = (String)(estudiante.getUsbid());
                 String nombre = (String)(estudiante.getNombre());
                 String apellido = (String)(estudiante.getApellido());
                 String carrera = (String) (estudiante.getCarrera().getNombre());
                 String genero = (String) estudiante.getSexo();
                 
                 int ci   = estudiante.getCedula();
-                
+
                 Calendar cal = Calendar.getInstance();
-                int month = cal.get(Calendar.MONTH) + 1;
-                int year = cal.get(Calendar.YEAR);
+                Date hoy = cal.getTime();
 
                 String adj = "al";
 
@@ -132,10 +135,10 @@ public class AccionesGenerarMencion  extends CohesionAction {
                     pdf.add(blank);
 
                     Paragraph uno = new Paragraph("Quien suscribe, Profesor Kenyer Dominguez Coordinador de Cooperación Técnica"
-                            + "y Desarrollo Social, hace constar que el Trabajo de Pasantía realizado por "
+                            + " y Desarrollo Social, hace constar que el Trabajo de Pasantía realizado por "
                             + adj +" Br. "+ apellido +", "+ nombre +" C.I. número "+ci+" y estudiante de la carrera "
-                            + carrera +" ha sido evaluada en fecha "+defensa+" por un Jurado examinador conformado por la "
-                            + "Profesora Tutor Académico, y el Profesor jurado quienes han determinado por unanimidad que"
+                            + carrera +" ha sido evaluada en fecha "+fecha.getDate()+"/"+(fecha.getMonth()+1)+"/2011 por un Jurado examinador conformado por la "
+                            + "Profesora "+tutorA+", y el Profesor jurado quienes han determinado por unanimidad que"
                             + "dicho trabajo posee una calidad EXCEPCIONALMENTE BUENA, con base en los siguientes argumentos \""
                             +mencion+"\".", font);
                     pdf.add(uno);
@@ -143,7 +146,7 @@ public class AccionesGenerarMencion  extends CohesionAction {
 
 
                     Paragraph tres = new Paragraph("En razon de ello se emite el presente Reconocimiento en el Valle de Sartenejas, "
-                            + "Baruta a los 4 días del mes de junio de 2011.");
+                            + "Baruta a los "+hoy.getDate()+" días del mes de julio de 2011.");
                     pdf.add(tres);
                     pdf.add(blank);
 

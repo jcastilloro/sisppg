@@ -8,18 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
 
 import ve.usb.cohesion.runtime.CohesionAction;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ve.usb.cohesion.runtime.HibernateUtil;
@@ -64,6 +59,7 @@ public class AccionesC_Consultar_Pasantia_Est extends CohesionAction {
             long idPasantia = Long.valueOf(pas).longValue();
 
             Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia as p join fetch p.estatus join fetch p.proyecto join fetch p.tutor_academico join fetch p.tutor_industrial where idpasantia= :var").setLong("var", idPasantia).uniqueResult();
+            request.getSession().setAttribute("EstaPasantia", pas);
             request.setAttribute("Pasantia", pasantia);
             request.setAttribute("Estatus", pasantia.getEstatus());
             request.setAttribute("Defensa", pasantia.getFecha_defensa());

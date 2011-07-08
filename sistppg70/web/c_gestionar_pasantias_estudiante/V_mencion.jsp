@@ -47,7 +47,6 @@
                                         <h3>Si obtuvo mención "excepcionalmetne buena" transcribala</h3>
                                         <html:form action="/A_GenerarMencion.do" method="post">
                                             <p id="1840450_C">Mención: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
-                                            <p id="1840450_C">Fecha de defensa: <br><html:text styleId="1840509" property="fecha_propuesta"></html:text></p>
                                             <html:submit styleClass="button">Generar</html:submit>
                                         </html:form>
 
