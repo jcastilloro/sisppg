@@ -6,11 +6,16 @@
 %><html:html>
     <head>
         <title><bean:message key="V_actividad_fase.title"/></title>
-        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-        <script type="text/javascript" src="_js/jquery-1.4.4.min.js"></script>
-        <link type="text/css" href="_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
-        <script type="text/javascript" src="_js/jquery-ui-1.8.10.custom.min.js"></script>
-        <script type="text/javascript" src="_js/jquery.ui.datepicker-es.js"></script>
+        <html:base/>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
+        <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
+        <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
         <style type="text/css">
         div#box1840480 {width: 400px; margin: 40px auto; }
         form#1840480 {float: left; margin: 0; padding: 0; display: inline; width: 400px; }
