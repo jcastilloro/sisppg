@@ -142,7 +142,7 @@ public class AccionesGenerarProrrogaEvaluacion extends CohesionAction {
 
                     PdfWriter.getInstance(pdf, response.getOutputStream());
 
-                    pdf.addTitle("Solicitud de Pasantía - " );
+                    pdf.addTitle("Prorroga de Evaluación" );
                     pdf.open();
 
                     // Logo

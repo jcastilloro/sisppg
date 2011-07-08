@@ -83,9 +83,11 @@
                                         <logic:notEmpty name="Datos">
                                             <logic:iterate id="dato" collection="${empty Datos ? _vacio : Datos}">
 
-                                                <bean:write name="dato" filter="false"/>
+                                                <bean:write name="dato" filter="false"/>                                                
 
                                             </logic:iterate>
+                                            <br>
+                                            <h3><html:link action="/A_GenerarActa.do">Generar Acta de Evaluación<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                         </logic:notEmpty>
                                     </div>
                                 </div>

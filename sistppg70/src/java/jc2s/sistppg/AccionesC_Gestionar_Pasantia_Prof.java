@@ -196,10 +196,10 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
             } else {
                 List<PasantiaIntermedia> consultor2 = s.createQuery("from PasantiaIntermedia where pasantia= :var").setLong("var", Long.parseLong(idPasantia)).list();
                 if (!consultor2.isEmpty()) {
-                    Devolucion.add("Pasantía Intermedia </td>     </tr>  <tr><th align=\"right\">Periodo</th><td align=\"left\">" + consultor2.get(0).getPeriodo().getNombre() + "</td></tr>  </table> <center><a href=\"/sistppg70/A_prep_evaluacion_intermedia.do?idPasantia=" + idPasantia + "\">EVALUAR</a></center>");
+                    Devolucion.add("Pasantía Intermedia </td>     </tr>  <tr><th align=\"right\">Periodo</th><td align=\"left\">" + consultor2.get(0).getPeriodo().getNombre() + "</td></tr>  </table> <center><a href=\"/sistppg70/A_prep_evaluacion_intermedia.do?idPasantia=" + idPasantia + "\"><h3>EVALUAR</h3></a></center>");
                 } else {
                     List<PasantiaLarga> consultor3 = s.createQuery("from PasantiaLarga where pasantia= :var").setLong("var", Long.parseLong(idPasantia)).list();
-                    Devolucion.add("Pasantía Larga </td>    </tr> <tr><th align=\"right\">Periodo</th><td align=\"left\">" + consultor3.get(0).getPeriodo().getNombre() + "</td></tr>  </table> <center><a href=\"/sistppg70/A_prep_evaluacion_larga.do?idPasantia=" + idPasantia + "\">EVALUAR</a></center>");
+                    Devolucion.add("Pasantía Larga </td>    </tr> <tr><th align=\"right\">Periodo</th><td align=\"left\">" + consultor3.get(0).getPeriodo().getNombre() + "</td></tr>  </table> <center><a href=\"/sistppg70/A_prep_evaluacion_larga.do?idPasantia=" + idPasantia + "\"><h3>EVALUAR</h3></a></center>");
                 }
             }
 

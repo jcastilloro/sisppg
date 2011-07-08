@@ -164,7 +164,7 @@ public class AccionesGenerarProrrogaInscripcion extends CohesionAction {
 
                     PdfWriter.getInstance(pdf, response.getOutputStream());
 
-                    pdf.addTitle("Solicitud de Pasantía - " );
+                    pdf.addTitle("Prorroga de Inscripción" );
                     pdf.open();
 
                     // Logo

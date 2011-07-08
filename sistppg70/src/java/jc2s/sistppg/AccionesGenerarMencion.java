@@ -100,7 +100,7 @@ public class AccionesGenerarMencion  extends CohesionAction {
 
                     PdfWriter.getInstance(pdf, response.getOutputStream());
 
-                    pdf.addTitle("Carta de Postulación - " );
+                    pdf.addTitle("Mención Excepcionalmente Bueno" );
                     pdf.open();
 
                     // Logo

@@ -60,7 +60,6 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="8"><html:link action="/A_Prep_Inicio_Sesion_Prof.do">Home</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_agregar_PG.do">Agregar PG</html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_PG_propios.do">PG Tutoreados</html:link></cohesion:actor></li>
                 </ul>
                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>

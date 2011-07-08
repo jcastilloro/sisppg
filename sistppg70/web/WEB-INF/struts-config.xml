@@ -487,6 +487,10 @@
         <action path="/A_GenerarSolicitudPasantia" parameter="A_GenerarSolicitudPasantia"
                 type="jc2s.sistppg.AccionesGenerarSolicitudPasantia"/>
 
+        <!-- Generar Acta -->
+        <action path="/A_GenerarActa" parameter="A_GenerarActa"
+                type="jc2s.sistppg.AccionesGenerarActa"/>
+
         <!-- GenerarMencion 
         <action path="/A_GenerarMencion" parameter="A_GenerarMencion"
                 type="jc2s.sistppg.AccionesGenerarMencion"/> -->
