@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Datos de PasantÃ­a</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -73,10 +73,10 @@
             <div id="menu">
                 <ul id="nav">
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_retirar_pasantia.do"><bean:message key="V_Consultar_Pasantia_Est.label0"/><%-- Retirar Pasantia --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="4"><html:link action="/A_prep_solicitar_prorroga_evaluacion.do">Solicitar Prorroga Evaluación</html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="4"><html:link action="/A_prep_mencion.do">Constancia de Mención</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="4"><html:link action="/A_prep_solicitar_prorroga_evaluacion.do">Solicitar Prorroga EvaluaciÃ³n</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="4"><html:link action="/A_prep_mencion.do">Constancia de MenciÃ³n</html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
             <div id="header">              
             </div>
@@ -97,7 +97,7 @@
 
 
                                         <logic:empty name="Pasantia">
-                                            <h1>¡Usted no tiene ninguna pasantía asociada!</h1>
+                                            <h1>Â¡Usted no tiene ninguna pasantÃ­a asociada!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantia">
                                             <h1>${Pasantia.titulo}</h1>
@@ -112,10 +112,10 @@
                                                 <tr><th>Estatus:</th><td> ${Estatus.estatus} </td></tr>
                                             </logic:notEmpty>
                                             <logic:empty name="Profesor">
-                                                <tr><th>Tutor Académico:</th><td> Indefinido </td></tr>
+                                                <tr><th>Tutor AcadÃ©mico:</th><td> Indefinido </td></tr>
                                             </logic:empty>
                                             <logic:notEmpty name="Profesor">
-                                                <tr><th>Tutor Académico:</th><td> ${Profesor.nombre} ${Profesor.apellido} </td></tr>
+                                                <tr><th>Tutor AcadÃ©mico:</th><td> ${Profesor.nombre} ${Profesor.apellido} </td></tr>
                                             </logic:notEmpty>
                                             <logic:empty name="TutorIndustrial">
                                                 <tr><th>Tutor Industrial:</th><td> Indefinido </td></tr>
@@ -124,41 +124,41 @@
                                                 <tr><th>Tutor Industrial:</th><td> ${TutorIndustrial.nombre} </td></tr>
                                             </logic:notEmpty>
 
-                                            <%-- Perído y Tipo de la Pasantía --%>
+                                            <%-- PerÃ­do y Tipo de la PasantÃ­a --%>
                                             <logic:empty name="PasantiaLarga">
                                                 <logic:empty name="PasantiaCorta">
                                                     <logic:empty name="PasantiaIntermedia">
                                                         <tr><th>Tipo:</th><td> No definido </td></tr>
                                                     </logic:empty>
                                                     <logic:notEmpty name="PasantiaIntermedia">
-                                                        <tr><th>Tipo:</th><td> Pasantía Intermedia </td></tr>
+                                                        <tr><th>Tipo:</th><td> PasantÃ­a Intermedia </td></tr>
                                                         <logic:empty name="Periodo">
                                                         </logic:empty>
                                                         <logic:notEmpty name="Periodo">
-                                                            <tr><th>Período:</th><td>${Periodo.nombre} </td></tr>
+                                                            <tr><th>PerÃ­odo:</th><td>${Periodo.nombre} </td></tr>
                                                         </logic:notEmpty>
                                                     </logic:notEmpty>
                                                 </logic:empty>
                                                 <logic:notEmpty name="PasantiaCorta">
-                                                    <tr><th>Tipo:</th><td> Pasantía Corta </td></tr>
-                                                    <tr><th>Período:</th><td> Julio-Septiembre </td></tr>
+                                                    <tr><th>Tipo:</th><td> PasantÃ­a Corta </td></tr>
+                                                    <tr><th>PerÃ­odo:</th><td> Julio-Septiembre </td></tr>
                                                 </logic:notEmpty>
                                             </logic:empty>
                                             <logic:notEmpty name="PasantiaLarga">
-                                                <tr><th>Tipo:</th><td> Pasantía Larga </td></tr>
+                                                <tr><th>Tipo:</th><td> PasantÃ­a Larga </td></tr>
                                                 <logic:empty name="Periodo">
                                                 </logic:empty>
                                                 <logic:notEmpty name="Periodo">
-                                                    <tr><th>Período:</th><td>${Periodo.nombre} </td></tr>
+                                                    <tr><th>PerÃ­odo:</th><td>${Periodo.nombre} </td></tr>
                                                 </logic:notEmpty>
                                             </logic:notEmpty>
-                                            <%-- FIN: Perído y Tipo de la Pasantía --%>
+                                            <%-- FIN: PerÃ­do y Tipo de la PasantÃ­a --%>
 
                                             <logic:empty name="Ano">
-                                                <tr><th>Año:</th><td> Indefinido </td></tr>
+                                                <tr><th>AÃ±o:</th><td> Indefinido </td></tr>
                                             </logic:empty>
                                             <logic:notEmpty name="Ano">
-                                                <tr><th>Año:</th><td> ${Ano} </td></tr>
+                                                <tr><th>AÃ±o:</th><td> ${Ano} </td></tr>
                                             </logic:notEmpty>
 
                                             <logic:empty name="Defensa">
@@ -199,13 +199,13 @@
                                         <%-- FASES --%>
 
                                         <logic:empty name="Fases">
-                                            *No tiene ninguna fase o etapa asociada a su pasantía
+                                            *No tiene ninguna fase o etapa asociada a su pasantÃ­a
                                         </logic:empty>
                                         <logic:notEmpty name="Fases">
                                             <logic:iterate id="fase" indexId="i" collection="${empty Fases ? _vacio : Fases}">
                                                 <br><br>
                                                 <center><h3>Fase ${i+1} </h3>
-                                                    <b>Objetivos Específicos:</b> ${fase.objetivos_especificos}
+                                                    <b>Objetivos EspecÃ­ficos:</b> ${fase.objetivos_especificos}
                                                 </center><br>
                                                 <table width="450">
                                                     <tr><th>Actividades</th><th>Tiempo Estimado</th></tr>

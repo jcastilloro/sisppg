@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Preincripciones CCTDS</title>
+        <title>Sesión de Tutor Industrial</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -64,7 +64,7 @@
                     <li><cohesion:actor actors="16"><html:link action="/A_modificar_perfil.do"><bean:message key="V_sesion_tutor_i.label0"/><%-- Modificar Perfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="16"><html:link action="/A_prep_gestionar_pasatias_TI.do"><bean:message key="V_sesion_tutor_i.label1"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>               
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi�n</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">

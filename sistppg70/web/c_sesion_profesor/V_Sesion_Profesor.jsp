@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Sesión Profesor</title>
+        <title>SesiÃ³n Profesor</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -64,7 +64,7 @@
                     <li><cohesion:actor actors="8"><html:link action="/A_prep_gestionar_PG_prof.do">Gestionar PG</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="11"><html:link action="/A_prep_consultar_proyectos.do">Consultar Proyectos</html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">

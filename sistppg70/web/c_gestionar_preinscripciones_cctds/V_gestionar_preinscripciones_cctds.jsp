@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title>Gestionar Preincripciones CCTDS</title>
@@ -65,7 +65,7 @@
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_consultar_no_aprobados.do">Consultar PENDIENTES</html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_sesion_ccds.do">Home</html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">

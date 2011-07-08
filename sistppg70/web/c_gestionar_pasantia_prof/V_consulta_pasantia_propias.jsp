@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Pasantías Tutoreadas</title>
+        <title>PasantÃ­as Tutoreadas</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -86,24 +86,24 @@
                                         <div class="administrador">
                                             <logic:notEmpty name="Datos">
                                             <h2>
-                                                Mis Pasantías
+                                                Mis PasantÃ­as
                                             </h2><hr>
                                             <table class="sortable" >
                                                 <thead>
                                                     <tr>
                                                         <th width="500px">
                                                             <center>
-                                                                Título
+                                                                TÃ­tulo
                                                             </center>
                                                         </th>
                                                         <th width="100px">
                                                             <center>
-                                                                Año
+                                                                AÃ±o
                                                             </center>
                                                         </th>
                                                         <th width="200px">
                                                             <center>
-                                                                Tipo de Pasantía
+                                                                Tipo de PasantÃ­a
                                                             </center>
                                                         </th>
                                                         <th width="100px">
@@ -113,7 +113,7 @@
                                                         </th>
                                                         <th width="100px">
                                                             <center>
-                                                                Evaluación
+                                                                EvaluaciÃ³n
                                                             </center>
                                                         </th>
                                                     </tr>
@@ -129,7 +129,7 @@
                                             </table>
                                                     </logic:notEmpty>
                                                     <logic:empty name="Datos">
-                                                            ¡Usted no posee pasantías asociadas!
+                                                            Â¡Usted no posee pasantÃ­as asociadas!
                                                     </logic:empty>
                                         </div>
 

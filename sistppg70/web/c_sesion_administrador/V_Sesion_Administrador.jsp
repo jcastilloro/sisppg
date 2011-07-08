@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Administrador.title"/></title>
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
             <div id="header">
             </div>
@@ -77,7 +77,7 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-                                        <center><h2>Selecciona una Categoría</h2></center>
+                                        <center><h2>Selecciona una CategorÃ­a</h2></center>
                                         <p><hr>
                                         <center>
                                             <div class="administrador">
@@ -102,7 +102,7 @@
                                                         <tr><p></p></tr>
                                                     <tr>
                                                         <th width="250">
-                                                            <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do"><h3><center>Estatus de Pasantías</center></h3></html:link>
+                                                            <html:link action="/A_Prep_Gestionar_Estatus_Pasantias.do"><h3><center>Estatus de PasantÃ­as</center></h3></html:link>
                                                         </th>
                                                         <th width="250">
                                                             <html:link action="/A_Prep_Gestionar_Periodo_Pasantia_Intermedias.do"><h3><center>Periodos de Pasantia Intermedia</center></h3></html:link>

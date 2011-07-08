@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Consultar PG</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÛn</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi√≥n</html:link>
             </div>
             <div id="header">
 
@@ -92,7 +92,7 @@
                                                 <td>${Proyecto.nombre}</td>
                                             </tr>
                                             <tr>
-                                                <th>CÛdigo</th>
+                                                <th>C√≥digo</th>
                                                 <td>${Proyecto.codigo}</td>
                                             </tr>
                                             <tr>
@@ -100,15 +100,15 @@
                                                 <td>${Proyecto.recursos}</td>
                                             </tr>
                                             <tr>
-                                                <th>DuraciÛn Recursos</th>
+                                                <th>Duraci√≥n Recursos</th>
                                                 <td>${Proyecto.duracion_recursos}</td>
                                             </tr>
                                             <tr>
-                                                <th>Puntos de InterÈs</th>
+                                                <th>Puntos de Inter√©s</th>
                                                 <td>${Proyecto.puntos_de_interes}</td>
                                             </tr>
                                             <tr>
-                                                <th>¡reas</th>
+                                                <th>√Åreas</th>
                                             </tr>
 
                                             <logic:iterate id="element" name="Area" >
@@ -123,7 +123,7 @@
                                         <p>
                                         </p>
                                         <table width="500px">
-                                            <tr><th>Tutor AcadÈmico</th></tr>
+                                            <tr><th>Tutor Acad√©mico</th></tr>
                                         </table>
                                         <hr>
                                         <p></p>
@@ -166,7 +166,7 @@
                                                     <td>${Trimestre1}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>AÒo</th>
+                                                    <th>A√±o</th>
                                                     <td>${Etapa1.ano}</td>
                                                 </tr>
                                                 <tr>
@@ -200,7 +200,7 @@
                                                     <td>${Trimestre2}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>AÒo</th>
+                                                    <th>A√±o</th>
                                                     <td>${Etapa2.ano}</td>
                                                 </tr>
                                                 <tr>
@@ -235,7 +235,7 @@
                                                     <td>${Trimestre3}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>AÒo</th>
+                                                    <th>A√±o</th>
                                                     <td>${Etapa3.ano}</td>
                                                 </tr>
 

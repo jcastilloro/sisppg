@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <title>Agregar Tutor Industrial</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">

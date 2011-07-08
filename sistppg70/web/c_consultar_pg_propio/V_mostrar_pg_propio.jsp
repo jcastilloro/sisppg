@@ -2,20 +2,17 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=UTF-8"
+%><%@ page contentType="text/html;charset=ISO-8859-1"
 %><html:html>
     <head>
-        <title><bean:message key="V_preinscripciones_CCTDS.title"/></title>
+        <title><bean:message key="V_mostrar_pg_propio.title"/></title>
         <link rel="stylesheet" type="text/css" href="_css/style.css"/>
     </head>
     <body>
         <div id="header">
-            <div id="title"><bean:message key="V_preinscripciones_CCTDS.title"/></div>
+            <div id="title"><bean:message key="V_mostrar_pg_propio.title"/></div>
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="1"><html:link action="/A_enviar_aprobadas.do"><bean:message key="V_preinscripciones_CCTDS.label0"/><%-- A_enviar_aprobadas --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_estatus.do"><bean:message key="V_preinscripciones_CCTDS.label1"/><%-- consultar por estatus --%></html:link></cohesion:actor></li>
-
                 </ul>
             </div>
         </div>

@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Mostrar Preinscripciones</title>
 
 
         <html:base/>
@@ -114,7 +114,7 @@
                                             </tr>
                                         </table>
                                         <div id="aprobarBtm">
-                                            <cohesion:actor actors="1"><h3><html:link action="/A_cambiar_estatus.do?preId=${p.idPreinscripcion}" onclick="return confirm('Se enviará un email con datos del estudiante a empresas que hayan solicitado pasantes de la misma carrera, período y tipo que el \n\r¿Está de acuerdo? ')"><img style="padding-left: 3px" height="22" src="../_css/images/checkmark.png">Aprobar</html:link></h3></cohesion:actor>
+                                            <cohesion:actor actors="1"><h3><html:link action="/A_cambiar_estatus.do?preId=${p.idPreinscripcion}" onclick="return confirm('Se enviarÃ¡ un email con datos del estudiante a empresas que hayan solicitado pasantes de la misma carrera, perÃ­odo y tipo que el \n\rÂ¿EstÃ¡ de acuerdo? ')"><img style="padding-left: 3px" height="22" src="../_css/images/checkmark.png">Aprobar</html:link></h3></cohesion:actor>
                                         </div>
                                  
 

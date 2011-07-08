@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Preincripciones CCTDS</title>
+        <title>Gestionar Pr贸rrogas</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -61,11 +61,11 @@
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_e.do">Prorrogas Evaluaci髇</html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_i.do">Prorrogas Inscripci髇</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_e.do">Prorrogas Evaluaci贸n</html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_prorrogas_i.do">Prorrogas Inscripci贸n</html:link></cohesion:actor></li>
 
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi髇</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi贸n</html:link>
             </div>
 
             <div id="header">
@@ -87,7 +87,7 @@
 
 <br>
                                         <div>
-                                            <h1>Numero de Prorrogas de Inscripci髇 por Status</h1>
+                                            <h1>Numero de Prorrogas de Inscripci贸n por Status</h1>
                                             <br>
                                             <p>
                                             <strong style="font-size: 12px; color: #5986BD;">Por Revisar: </strong>${pi_porrevisar}<br>
@@ -100,7 +100,7 @@
                                         <br>
                                         <br>
                                         <div>
-                                            <h1>Numero de Prorrogas de Evaluaci髇 por Status</h1>
+                                            <h1>Numero de Prorrogas de Evaluaci贸n por Status</h1>
                                             <br>
                                             <p>
                                             <strong style="font-size: 12px; color: #5986BD;">Por Revisar: </strong>${pe_porrevisar}<br>

@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
@@ -97,7 +97,7 @@
                                                 </table>
                                                     <table border="0">
                                                 <tr align="center">
-                                                    Se les recuerda a nuestros Usuarios que cualquier informaciÛn enviada por correo<br> electrÛnico ser· a la traves de su cuenta de correo USBNet.
+                                                    Se les recuerda a nuestros Usuarios que cualquier informaci√≥n enviada por correo<br> electr√≥nico ser√° a la traves de su cuenta de correo USBNet.
                                                     </tr>
                                             </table>
 

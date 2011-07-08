@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Mostrar PG</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                 <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -101,7 +101,7 @@
                                                 <a href="/sistppg70/A_remover_jurado.do?idJurado=${idJurado}&idProyectoDeGrado=${idProyectoDeGrado}">Remover Jurado</a>
                                             </logic:notEmpty>
                                             <logic:notEmpty name="idJuradoA">
-                                                <a href="/sistppg70/A_asignar_jurado.do?idJurado=${idJuradoA}&idProyectoDeGrado=<%= request.getParameter("idProyectoDeGrado") %>">Añadir Jurado</a>
+                                                <a href="/sistppg70/A_asignar_jurado.do?idJurado=${idJuradoA}&idProyectoDeGrado=<%= request.getParameter("idProyectoDeGrado") %>">AÃ±adir Jurado</a>
                                             </logic:notEmpty>
                                         <p></p>
                                         <%--  <logic:notEmpty name="JuradoProyecto">

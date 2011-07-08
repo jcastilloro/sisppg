@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Gestionar Estatus de Prórrogas</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">

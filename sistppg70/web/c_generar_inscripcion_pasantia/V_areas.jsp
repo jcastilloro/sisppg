@@ -2,7 +2,7 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
+%><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
         <title><bean:message key="V_areas.title"/></title>
@@ -45,7 +45,7 @@
                     <div class="top"></div>
                     <div id="left">
                         <div class="content">
-                            <center><h3>Inscripción de Pasantía</h3></center>
+                            <center><h3>InscripciÃ³n de PasantÃ­a</h3></center>
                             ${empty msg ? "" : msg}
                             <br><br>
 

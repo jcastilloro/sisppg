@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Preincripciones CCTDS</title>
+        <title>Mostrar Pr贸rroga</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -62,7 +62,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi髇</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi贸n</html:link>
             </div>
 
             <div id="header">
@@ -83,7 +83,7 @@
                                     <div class="box1465928" align="center">
 
                             <logic:equal name="tipo" value="e">
-                                <h1>Prorroga Evaluaci髇</h1>
+                                <h1>Prorroga Evaluaci贸n</h1>
                                 <table>
                                     <tr>
                                         <th>Estudiante: </th>
@@ -111,7 +111,7 @@
                                 <html:link action="/A_mostrar_prorroga.do?id=${Prorroga.idProrrogaEvaluacion}&tipo=e&nuevo_estatus=4">Rechazar</html:link><br>
                             </logic:equal>
                             <logic:equal name="tipo" value="i">
-                                <h1>Prorroga Inscripci髇</h1>
+                                <h1>Prorroga Inscripci贸n</h1>
                                 <table>
                                     <tr>
                                         <th>Estudiante: </th>

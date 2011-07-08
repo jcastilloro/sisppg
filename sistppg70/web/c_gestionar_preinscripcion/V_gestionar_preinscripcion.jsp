@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Gestionar PreinscripciÃ³n</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -63,7 +63,7 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="4"><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do">Regresar</html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -85,25 +85,25 @@
 
 
                                         <logic:empty name="L_preins">
-                                            <h2>Preinscripción de pasantía</h2>
+                                            <h2>PreinscripciÃ³n de pasantÃ­a</h2>
 
                                             <html:form action="/A_Preinscripcion.do" method="post">
                                                 
-                                                <br><h3>Tipo de Pasantía</h3>
+                                                <br><h3>Tipo de PasantÃ­a</h3>
                                                 <html:radio property="tipo" value="1">Corta EP-1420</html:radio>                                                
                                                 <html:radio property="tipo" value="2">Intermedia EP-2420</html:radio>                                                
                                                 <html:radio property="tipo" value="3">Larga EP-3420</html:radio>
                                                     
                                                 <br><br><h3>Bloque</h3>
-                                                <html:radio property="bloque" value="true">A (Te gradúas con la pasantía)</html:radio>
-                                                <html:radio property="bloque" value="false">B (No te gradúas con la pasantía)</html:radio>
+                                                <html:radio property="bloque" value="true">A (Te gradÃºas con la pasantÃ­a)</html:radio>
+                                                <html:radio property="bloque" value="false">B (No te gradÃºas con la pasantÃ­a)</html:radio>
                                                     
-                                                <br><br><h3>¿Desea que la Coordinación de Cooperación Técnica y Desarrollo Social tramite el Proceso de Búsqueda de Pasantía en la Empresa?</h3>
-                                                <html:radio property="buscar" value="true">Sí</html:radio>
+                                                <br><br><h3>Â¿Desea que la CoordinaciÃ³n de CooperaciÃ³n TÃ©cnica y Desarrollo Social tramite el Proceso de BÃºsqueda de PasantÃ­a en la Empresa?</h3>
+                                                <html:radio property="buscar" value="true">SÃ­</html:radio>
                                                 <html:radio property="buscar" value="false">No</html:radio>
                                                     
 
-                                                <br><br><h3>¿A que ciudades estaría Ud. dispuesto a ir?</h3>
+                                                <br><br><h3>Â¿A que ciudades estarÃ­a Ud. dispuesto a ir?</h3>
                                                 <html:text styleId="ciudades" property="donde" size="50" style="display:none;"/>
                                                 <select multiple="multiple">
                                                     <logic:iterate name="L_ciudades" id="ciudad">
@@ -130,17 +130,17 @@
                                         <logic:notEmpty name="L_preins">
                                             <ul id="preinscripciones">
                                                 <logic:iterate id="p" name="L_preins">
-                                                    <h1>Usted se preinscribió para realizar pasantía ${p.tipo==1 ? "corta" : ""} ${p.tipo==2 ? "intermedia" : ""} ${p.tipo==3 ? "larga" : ""} </h1>
+                                                    <h1>Usted se preinscribiÃ³ para realizar pasantÃ­a ${p.tipo==1 ? "corta" : ""} ${p.tipo==2 ? "intermedia" : ""} ${p.tipo==3 ? "larga" : ""} </h1>
                                                     Creada el: ${p.created_at}
-                                                    <h3><html:link action="/A_GenerarCartaPostulacion.do">Generar Carta Postulación<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
-                                                    <h3><html:link action="/A_GenerarSolicitudPasantia.do">Generar Solicitud de Pasantía<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                                    <h3><html:link action="/A_GenerarCartaPostulacion.do">Generar Carta PostulaciÃ³n<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                                    <h3><html:link action="/A_GenerarSolicitudPasantia.do">Generar Solicitud de PasantÃ­a<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                                     <logic:equal name="Estatus" value="false">
-                                                        <h3><html:link action="/A_EliminarPreinscripcion.do" onclick="return confirm('¿Está seguro que desea eliminar su preinscripción?')"><img style="padding-rigth: 10px" height="15" src="../_css/images/eliminar.gif"><font color="red"> Eliminar Preinscripción</font></html:link></h3>
-                                                        Recuerde revisar sus datos y en caso de que sean incorrectos elimine su preinscripción, corrija sus datos y vuelva a preinscribirse
-                                                        <p>Una vez la CCTDS apruebe su preinscripción usted no podrá hacer modificaciones</p>
+                                                        <h3><html:link action="/A_EliminarPreinscripcion.do" onclick="return confirm('Â¿EstÃ¡ seguro que desea eliminar su preinscripciÃ³n?')"><img style="padding-rigth: 10px" height="15" src="../_css/images/eliminar.gif"><font color="red"> Eliminar PreinscripciÃ³n</font></html:link></h3>
+                                                        Recuerde revisar sus datos y en caso de que sean incorrectos elimine su preinscripciÃ³n, corrija sus datos y vuelva a preinscribirse
+                                                        <p>Una vez la CCTDS apruebe su preinscripciÃ³n usted no podrÃ¡ hacer modificaciones</p>
                                                     </logic:equal>
                                                     <logic:equal name="Estatus" value="true">
-                                                        <h4>La CCTDS aprobó su preinscripción y envió sus datos a las empresas que estan solicitando pasantes en su area.</h4>
+                                                        <h4>La CCTDS aprobÃ³ su preinscripciÃ³n y enviÃ³ sus datos a las empresas que estan solicitando pasantes en su area.</h4>
                                                     </logic:equal>
                                                 </logic:iterate>
                                             </ul>

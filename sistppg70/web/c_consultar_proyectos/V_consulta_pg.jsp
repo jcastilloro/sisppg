@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title>Consultar PG</title>
@@ -62,7 +62,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -90,7 +90,7 @@
                                                         Trimestre
                                                     </th>
                                                     <th align="center">
-                                                        Año
+                                                        AÃ±o
                                                     </th>
                                                     <th align="center">
                                                         Tutor
@@ -135,7 +135,7 @@
 
 
                                         <logic:empty name="L_PGS">
-                                            <h1>¡No se encontró ningun proyecto de grado con los criterios dados!</h1>
+                                            <h1>Â¡No se encontrÃ³ ningun proyecto de grado con los criterios dados!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="L_PGS">
 
@@ -145,7 +145,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th align="center">
-                                                                    Código
+                                                                    CÃ³digo
                                                                 </th>
                                                                 <th align="center">
                                                                     Nombre

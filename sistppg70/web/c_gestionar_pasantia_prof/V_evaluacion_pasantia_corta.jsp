@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Evaluar Pasant√≠a Corta</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÛn</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi√≥n</html:link>
             </div>
 
             <div id="header">
@@ -86,10 +86,10 @@
                                         <html:form
                                             action="/A_evaluacion_corta.do" method="post" >
                                             <center>
-                                                <h2>EvaluaciÛn de PasantÌa Corta</h2><hr>
+                                                <h2>Evaluaci√≥n de Pasant√≠a Corta</h2><hr>
                                                 <table width="700">
                                                     <tr><h3>
-                                                            AdquiriÛ conocimientos de la estructura y organizaciÛn de la empresa, asÌ como de los procedimientos de trabajo y de la seguridad industrial.
+                                                            Adquiri√≥ conocimientos de la estructura y organizaci√≥n de la empresa, as√≠ como de los procedimientos de trabajo y de la seguridad industrial.
 
                                                         </h3></tr>
                                                     <tr><td width="50">
@@ -114,7 +114,7 @@
                                                 <hr>
                                                 <table width="700">
                                                     <tr><h3>
-                                                            ArgumentÛ adecuadamente las soluciones tÈcnicas que propuso.
+                                                            Argument√≥ adecuadamente las soluciones t√©cnicas que propuso.
                                                         </h3></tr>
                                                     <tr><td width="50">
                                                             <html:radio property="item2" value="0"/>NR
@@ -138,7 +138,7 @@
                                                 <hr>
                                                 <table width="700">
                                                     <tr><h3>
-                                                            DemostrÛ tener iniciativa para enfrentar los problemas que se le presentaron.
+                                                            Demostr√≥ tener iniciativa para enfrentar los problemas que se le presentaron.
 
 
                                                         </h3></tr>
@@ -164,7 +164,7 @@
                                                 <hr>
                                                 <table width="700">
                                                     <tr><h3>
-                                                            Se documentaba antes de proponer cualquier soluciÛn
+                                                            Se documentaba antes de proponer cualquier soluci√≥n
 
 
                                                         </h3></tr>
@@ -190,7 +190,7 @@
                                                 <hr>
                                                 <table width="700">
                                                     <tr><h3>
-                                                            EvaluaciÛn del informe final considerando: metodologÌa empleada, estructura, redacciÛn, ortografÌa y precisiÛn.
+                                                            Evaluaci√≥n del informe final considerando: metodolog√≠a empleada, estructura, redacci√≥n, ortograf√≠a y precisi√≥n.
 
 
                                                         </h3></tr>

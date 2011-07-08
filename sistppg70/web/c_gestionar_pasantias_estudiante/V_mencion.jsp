@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_solicitar_prorroga_evaluacion.title"/></title>
+        <title>Menci贸n</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -27,7 +27,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi髇</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi贸n</html:link>
             </div>
 
             <div id="header">
@@ -44,9 +44,9 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-                                        <h3>Si obtuvo menci髇 "excepcionalmetne buena" transcribala</h3>
+                                        <h3>Si obtuvo menci贸n "excepcionalmetne buena" transcribala</h3>
                                         <html:form action="/A_GenerarMencion.do" method="post">
-                                            <p id="1840450_C">Menci髇: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
+                                            <p id="1840450_C">Menci贸n: <br><html:textarea styleId="1840450" property="justificacion" cols="60" rows="10"></html:textarea></p>
                                             <html:submit styleClass="button">Generar</html:submit>
                                         </html:form>
 

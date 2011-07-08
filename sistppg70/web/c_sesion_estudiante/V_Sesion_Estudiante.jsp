@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Sesión de Estudiante</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -63,7 +63,7 @@
                     <li><cohesion:actor actors="4"><html:link action="/A_prep_modif_perfil_estudiante.do"><bean:message key="V_Sesion_Estudiante.label0"/><%-- ModificarPerfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_Prep_Gestion_Proy_Est.do"><bean:message key="V_Sesion_Estudiante.label1"/><%-- Gestionar Proyectos --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi�n</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
             </div>
 
             <div id="header">

@@ -2,7 +2,7 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
+%><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
         <title><bean:message key="V_Sesion_Empresa.title"/></title>
@@ -18,7 +18,7 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="11"><html:link action="/A_consultar_pasantias.do"><bean:message key="V_consulta_pasantia.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -39,13 +39,13 @@
                             ${empty msg ? "" : msg}
                             <html:form action="/A_consultar_pasantias.do" method="post">
                                 <table>
-                                    <tr><th>Criterios de Búsqueda</th><td></td></tr>
+                                    <tr><th>Criterios de BÃºsqueda</th><td></td></tr>
                                     <tr><td>Carrera: </td>
                                         <td>
                                             <logic:empty name="Carreras">
                                                 <html:select property="idCarrera">
                                                     <%-- Valor cabliao --%>
-                                                    <html:option value="2"> Ingeniería de Computación</html:option>
+                                                    <html:option value="2"> IngenierÃ­a de ComputaciÃ³n</html:option>
                                                 </html:select>
                                             </logic:empty>
                                             <logic:notEmpty name="Carreras">
@@ -62,9 +62,9 @@
                                         <td>
                                     <html:select property="tipo" styleId="1843570">
                                         <html:option value="all"> Todos</html:option>
-                                        <html:option styleId="l" value="larga"> Pasantía Larga</html:option>
-                                        <html:option styleId="i" value="intermedia"> Pasantía Intermedia</html:option>
-                                        <html:option styleId="c" value="corta"> Pasantía Corta</html:option>
+                                        <html:option styleId="l" value="larga"> PasantÃ­a Larga</html:option>
+                                        <html:option styleId="i" value="intermedia"> PasantÃ­a Intermedia</html:option>
+                                        <html:option styleId="c" value="corta"> PasantÃ­a Corta</html:option>
                                     </html:select>
                                         </td>
                                     </tr>
@@ -99,7 +99,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr><td>Año: </td>
+                                    <tr><td>AÃ±o: </td>
                                         <td>
                                     <html:select property="ano">
                                         <html:option value="-1"> Todos </html:option>
@@ -129,12 +129,12 @@
 
 
                             <logic:empty name="Pasantias">
-                                <h1>¡No hay estudiantes haciendo pasantías!</h1>
+                                <h1>Â¡No hay estudiantes haciendo pasantÃ­as!</h1>
                             </logic:empty>
                             <logic:notEmpty name="Pasantias">
-                                <h1>Pasantías: </h1>
+                                <h1>PasantÃ­as: </h1>
                                 <table border="1">
-                                    <tr><th>Título</th><th>Resumen</th></tr>
+                                    <tr><th>TÃ­tulo</th><th>Resumen</th></tr>
                                 <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
                                        <tr><td><html:link action="/A_mostrar_pasantia.do" paramName="pas" paramProperty="idPasantia" paramId="idPasantia">${pas.titulo}</html:link></td>
                                         <td> ${pas.resumen} </td>

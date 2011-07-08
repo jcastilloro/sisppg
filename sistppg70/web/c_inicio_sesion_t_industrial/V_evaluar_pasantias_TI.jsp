@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Preincripciones CCTDS</title>
+        <title>Evaluar PasantÃ­as</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -64,7 +64,7 @@
                     <li><cohesion:actor actors="16"><html:link action="/A_modificar_perfil.do"><bean:message key="V_sesion_tutor_i.label0"/><%-- Modificar Perfil --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="16"><html:link action="/A_prep_gestionar_pasatias_TI.do"><bean:message key="V_sesion_tutor_i.label1"/><%-- Gestionar Pasantias --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
            <div id="header">
@@ -84,19 +84,19 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
                             <logic:empty name="Ya_Evaluo">
-                            <h2>EVALUACIÓN DEL TUTOR INDUSTRIAL</h2>
-                            <h3>Título de la pasantía a evaluar: ${Pasantia.titulo}</h3>
-                            <h4>(Antes de proceder a llenar esta evaluación favor leer las instrucciones)</h4>
+                            <h2>EVALUACIÃ“N DEL TUTOR INDUSTRIAL</h2>
+                            <h3>TÃ­tulo de la pasantÃ­a a evaluar: ${Pasantia.titulo}</h3>
+                            <h4>(Antes de proceder a llenar esta evaluaciÃ³n favor leer las instrucciones)</h4>
                             <p>Instrucciones:<br>
 
-                                1. Responda, en la escala de 1 a 5, los ítems que corresponda. La hoja de evaluación debe ser llenada sin enmiendas ni tachaduras.
+                                1. Responda, en la escala de 1 a 5, los Ã­tems que corresponda. La hoja de evaluaciÃ³n debe ser llenada sin enmiendas ni tachaduras.
                                 <br>
-                                2. Informe al pasante de los resultados de la evaluación
+                                2. Informe al pasante de los resultados de la evaluaciÃ³n
                             </p>
                             <html:form action="/A_evaluar_pasatias_TI.do" method="post">
                             <table border="0">
                                 <tr height="50">
-                                    <td>1. Adquirió conocimiento de la estructura y organización de la empresa, así como de los procedimientos de trabajo y de seguridad industrial.</td>
+                                    <td>1. AdquiriÃ³ conocimiento de la estructura y organizaciÃ³n de la empresa, asÃ­ como de los procedimientos de trabajo y de seguridad industrial.</td>
                                     <td width="180">
                                         <html:radio property="uno" value="1">1</html:radio>
                                         <html:radio property="uno" value="2">2</html:radio>
@@ -106,7 +106,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>2. Cumplió las normas y procedimientos de la empresa tales como: Horario de trabajo, normas de seguridad, tramitación de servicios, etc.</td>
+                                    <td>2. CumpliÃ³ las normas y procedimientos de la empresa tales como: Horario de trabajo, normas de seguridad, tramitaciÃ³n de servicios, etc.</td>
                                     <td width="180">
                                         <html:radio property="dos" value="1">1</html:radio>
                                         <html:radio property="dos" value="2">2</html:radio>
@@ -116,7 +116,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>3. Comprendió las limitaciones y exigencias con que deben realizarse los trabajos profesionales dentro de la Empresa, mostrando una clara disposición para el aprendizaje.</td>
+                                    <td>3. ComprendiÃ³ las limitaciones y exigencias con que deben realizarse los trabajos profesionales dentro de la Empresa, mostrando una clara disposiciÃ³n para el aprendizaje.</td>
                                     <td width="180">
                                         <html:radio property="tres" value="1">1</html:radio>
                                         <html:radio property="tres" value="2">2</html:radio>
@@ -126,7 +126,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>4. Desarrolló el sentido de trabajar en grupo.</td>
+                                    <td>4. DesarrollÃ³ el sentido de trabajar en grupo.</td>
                                     <td width="180">
                                         <html:radio property="cuatro" value="1">1</html:radio>
                                         <html:radio property="cuatro" value="2">2</html:radio>
@@ -136,7 +136,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>5. Demostró tener iniciativa para enfrentar los problemas que se le presentaron.</td>
+                                    <td>5. DemostrÃ³ tener iniciativa para enfrentar los problemas que se le presentaron.</td>
                                     <td width="180">
                                         <html:radio property="cinco" value="1">1</html:radio>
                                         <html:radio property="cinco" value="2">2</html:radio>
@@ -146,7 +146,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>6. Se documentaba antes de proponer cualquier solución.</td>
+                                    <td>6. Se documentaba antes de proponer cualquier soluciÃ³n.</td>
                                     <td width="180">
                                         <html:radio property="seis" value="1">1</html:radio>
                                         <html:radio property="seis" value="2">2</html:radio>
@@ -156,7 +156,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>7. Argumentó adecuadamente las soluciones técnicas que propuso.</td>
+                                    <td>7. ArgumentÃ³ adecuadamente las soluciones tÃ©cnicas que propuso.</td>
                                     <td width="180">
                                         <html:radio property="siete" value="1">1</html:radio>
                                         <html:radio property="siete" value="2">2</html:radio>
@@ -166,7 +166,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>8. Presentó varias alternativas de posibles soluciones a cada problema propuesto.</td>
+                                    <td>8. PresentÃ³ varias alternativas de posibles soluciones a cada problema propuesto.</td>
                                     <td width="180">
                                         <html:radio property="ocho" value="1">1</html:radio>
                                         <html:radio property="ocho" value="2">2</html:radio>
@@ -176,7 +176,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>9. Demostró receptividad a planteamientos diferentes a los presentados por él.</td>
+                                    <td>9. DemostrÃ³ receptividad a planteamientos diferentes a los presentados por Ã©l.</td>
                                     <td width="180">
                                         <html:radio property="nueve" value="1">1</html:radio>
                                         <html:radio property="nueve" value="2">2</html:radio>
@@ -186,7 +186,7 @@
                                     </td>
                                 </tr>
                                 <tr height="50">
-                                    <td>10. Presentó explicaciones escritas de su trabajo en forma clara y precisa.</td>
+                                    <td>10. PresentÃ³ explicaciones escritas de su trabajo en forma clara y precisa.</td>
                                     <td width="180">
                                         <html:radio property="diez" value="1">1</html:radio>
                                         <html:radio property="diez" value="2">2</html:radio>
@@ -204,11 +204,11 @@
                             </table>
                                 <html:hidden property="id" value="${Pasantia.idPasantia}"/>
 
-                            <html:submit styleClass="button">Enviar Evaluación</html:submit>
+                            <html:submit styleClass="button">Enviar EvaluaciÃ³n</html:submit>
                             </html:form>
                             </logic:empty>
                             <logic:notEmpty name="Ya_Evaluo">
-                                <center><h3>Usted ya evaluó esta pasantía con nota: ${Ya_Evaluo} / 5.0</h3></center>
+                                <center><h3>Usted ya evaluÃ³ esta pasantÃ­a con nota: ${Ya_Evaluo} / 5.0</h3></center>
                             </logic:notEmpty>
                        </div>
                                 </div>

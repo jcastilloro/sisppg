@@ -5,7 +5,7 @@
            %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Gestionar Areas</title>
+        <title>Gestionar Áreas</title>
 
 
         <html:base/>

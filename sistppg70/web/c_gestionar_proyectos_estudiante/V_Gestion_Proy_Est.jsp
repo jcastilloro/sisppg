@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Gestionar Proyectos</title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -64,7 +64,7 @@
                     <li><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do"><bean:message key="V_Gestion_Proy_Est.label0"/><%-- Gestionar Pasantias --%></html:link></li>
                     <li><cohesion:actor actors="4"><html:link action="/A_Prep_Gestion_PG_Est.do"><bean:message key="V_Gestion_Proy_Est.label1"/><%-- Gestionar PG --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -87,7 +87,7 @@
 
 
                                         <logic:empty name="EstudianteRealizaProyecto">
-                                            <h1>¡Usted no está realizando ningun tipo de proyecto!</h1>
+                                            <h1>Â¡Usted no estÃ¡ realizando ningun tipo de proyecto!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="EstudianteRealizaProyecto">
                                             <h1>Usted tiene los siguientes proyectos asociados: </h1>
@@ -97,7 +97,7 @@
                                                 <h2><html:link action="/A_Prep_Gestion_Pasantias_Estudiante.do">Pasantias:</html:link></h2>
                                                 <div class="administrador">
                                                     <table class="sortable" width="500">
-                                                        <thead><tr><th align="center"><h2>Título</h2></th></tr></thead>
+                                                        <thead><tr><th align="center"><h2>TÃ­tulo</h2></th></tr></thead>
                                                         <tbody>
                                                             <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
                                                                 <tr><td><center>${pas.titulo}</center></td>

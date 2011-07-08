@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title><bean:message key="V_Inicio_Sesion.title"/></title>
+        <title>Agregar Etapa</title>
 
 
         <html:base/>
@@ -105,7 +105,7 @@
 
                    <tr><th> <p id="1840610_C"><label for="1840610"><bean:message key="F_Etapa_PG.label0"/><%-- Nombre Etapa: --%></label></th><td><html:text styleClass="validate[required]" styleId="1840610" property="nombre" size="30"/></td></tr></p>
                   <tr><th><p id="1840613_C"><label for="1840613"><bean:message key="F_Etapa_PG.label1"/><%-- Resultados Minimos: --%></label></th><td><html:textarea styleClass="validate[required]" styleId="1840613" property="resultados_minimos" cols="60" rows="10"></html:textarea></td></tr></p>
-                  <tr><th><p id="18406131_C">Descripcion Tópicos:</th><td><html:textarea styleClass="validate[required]" styleId="18406131" property="topicos" cols="60" rows="10"></html:textarea></td></tr></p>
+                  <tr><th><p id="18406131_C">Descripcion TÃ³picos:</th><td><html:textarea styleClass="validate[required]" styleId="18406131" property="topicos" cols="60" rows="10"></html:textarea></td></tr></p>
                   <tr><th><p id="1840616_C"><label for="1840616">
 
                           </table>

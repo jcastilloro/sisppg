@@ -2,7 +2,7 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
+%><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
         <title><bean:message key="V_mostrar_pasantia_cctds.title"/></title>
@@ -18,7 +18,7 @@
                     <li><cohesion:actor actors="1"><html:link action="/A_mostrar_pasantia_cctds.do"><bean:message key="V_consultar_pasantias_cctds.label1"/><%-- A_mostrar --%></html:link></cohesion:actor></li>
                     <li><cohesion:actor actors="1"><html:link action="/A_prep_sesion_ccds.do">Home</html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">

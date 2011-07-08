@@ -5,16 +5,16 @@
 %><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
-        <title><bean:message key="V_preinscripciones_CCTDS.title"/></title>
+        <title><bean:message key="V_consulta_pg_propia.title"/></title>
         <link rel="stylesheet" type="text/css" href="_css/style.css"/>
     </head>
     <body>
         <div id="header">
-            <div id="title"><bean:message key="V_preinscripciones_CCTDS.title"/></div>
+            <div id="title"><bean:message key="V_consulta_pg_propia.title"/></div>
             <div id="menu">
                 <ul id="nav">
-                    <li><cohesion:actor actors="1"><html:link action="/A_enviar_aprobadas.do"><bean:message key="V_preinscripciones_CCTDS.label0"/><%-- A_enviar_aprobadas --%></html:link></cohesion:actor></li>
-                    <li><cohesion:actor actors="1"><html:link action="/A_consultar_estatus.do"><bean:message key="V_preinscripciones_CCTDS.label1"/><%-- consultar por estatus --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="8"><html:link action="/A_consultar_PG_propios.do"><bean:message key="V_consulta_pg_propia.label0"/><%-- ordenar --%></html:link></cohesion:actor></li>
+                    <li><cohesion:actor actors="8"><html:link action="/A_mostrar_pg_propio.do"><bean:message key="V_consulta_pg_propia.label1"/><%-- Mostrar PG --%></html:link></cohesion:actor></li>
 
                 </ul>
             </div>

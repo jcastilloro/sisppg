@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title>Consultar Proyectos</title>
@@ -64,7 +64,7 @@
                     <li><cohesion:actor actors="11"><html:link action="/A_consultar_PG.do"><bean:message key="V_consulta_proyectos.label0"/><%-- Consultar PG --%></html:link></cohesion:actor></li>
 	            <li><cohesion:actor actors="11"><html:link action="/A_consultar_pasantias.do"><bean:message key="V_consulta_proyectos.label1"/><%-- Consultar Pasantias --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
             <div id="header">
 
@@ -84,7 +84,7 @@
 
                                     ${empty msg ? "" : msg}
                                     <logic:empty name="EstudianteRealizaProyecto">
-                                        <h1 align="center">¡No hay estudiantes realizando proyectos!</h1>
+                                        <h1 align="center">Â¡No hay estudiantes realizando proyectos!</h1>
                                     </logic:empty>
                                     <logic:notEmpty name="EstudianteRealizaProyecto">
                                         <center>
@@ -96,7 +96,7 @@
                                                 <div class="administrador">
                                                     <table width="500px" class="sortable">
                                                         <thead>
-                                                            <tr><th align="center">Título</th></tr>
+                                                            <tr><th align="center">TÃ­tulo</th></tr>
                                                         </thead>
                                                         <tbody>
                                                             <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">

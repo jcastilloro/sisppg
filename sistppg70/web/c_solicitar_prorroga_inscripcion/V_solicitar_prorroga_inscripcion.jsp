@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_solicitar_prorroga_inscripcion.title"/></title>
@@ -61,7 +61,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÛn</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi√≥n</html:link>
             </div>
 
             <div id="header">
@@ -81,7 +81,7 @@
                                     <center>${empty msg ? "" : msg}</center>
 
                                     <logic:empty name="Prorroga">
-                                    <center><h3>Solicitud para inscripciÛn extempor·nea de pasantÌa</h3></center>
+                                    <center><h3>Solicitud para inscripci√≥n extempor√°nea de pasant√≠a</h3></center>
                                     <div class="box1465928" align="center">
 
                                         <html:form
@@ -93,7 +93,7 @@
                                     </logic:empty>
                                             
                                     <logic:notEmpty name="Prorroga">
-                                        <h3>Usted ya solicitÛ una prorroga para inscripciÛn</h3>                                        
+                                        <h3>Usted ya solicit√≥ una prorroga para inscripci√≥n</h3>                                        
                                         Creada el: ${Prorroga.created_at} <br>
                                         <h3><html:link action="/A_GenerarProrrogaInscripcion.do">Generar Planilla PDF<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                         La prorroga se encuentra en estatus: ${Estatus}

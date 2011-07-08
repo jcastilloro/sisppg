@@ -2,10 +2,10 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
-        <title>Evaluar Pasantía</title>
+        <title>Evaluar PasantÃ­a</title>
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
@@ -60,7 +60,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">        
@@ -87,7 +87,7 @@
 
                                             </logic:iterate>
                                             <br>
-                                            <h3><html:link action="/A_GenerarActa.do">Generar Acta de Evaluación<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
+                                            <h3><html:link action="/A_GenerarActa.do">Generar Acta de EvaluaciÃ³n<img style="padding-left: 3px" src="../_css/images/download.png"></html:link></h3>
                                         </logic:notEmpty>
                                     </div>
                                 </div>

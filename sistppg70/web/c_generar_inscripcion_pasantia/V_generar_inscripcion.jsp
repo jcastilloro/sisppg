@@ -2,7 +2,7 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" 
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" 
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
+%><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
         <title><bean:message key="V_generar_inscripcion.title"/></title>
@@ -13,6 +13,7 @@
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
         <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/insc-pasant.js"></script>
         <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
         <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
         <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
@@ -40,7 +41,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÛn</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi√≥n</html:link>
             </div>
             <div id="header">
                
@@ -57,7 +58,7 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center><h3>InscripciÛn de PasantÌa</h3></center>
+                                    <center><h3>Inscripci√≥n de Pasant√≠a</h3></center>
                                     <br>
                             ${empty msg ? "" : msg}
                             <div class="box1840463">
@@ -65,7 +66,7 @@
                             <table border="0"><tr><td>
                   <label for="1840465"><bean:message key="F_Inscripcion_Pasantia.label0"/><%-- Titulo: --%></label>
                                     </td><td>
-                                        <html:text styleId="1840465" property="titulo_pasantia" size="50" maxlength="100" styleClass="validate[required]"/><small>(m·ximo 100 caracteres)</small>
+                                        <html:text styleId="1840465" property="titulo_pasantia" size="50" maxlength="100" styleClass="validate[required]"/><small>(m√°ximo 100 caracteres)</small>
                                     </td></tr><tr><td>
                   <label for="1843570"><bean:message key="F_Inscripcion_Pasantia.label1"/><%-- Tipo de pasantia: --%></label>
                                     </td><td>

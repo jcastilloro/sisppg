@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title>Consultar Jurados</title>
@@ -65,7 +65,7 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="2"><html:link action="/A_consultar_jurado.do"><bean:message key="V_consultar_jurados.label0"/><%-- A_consultar_jurado --%></html:link></cohesion:actor></li>
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÛn</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesi√≥n</html:link>
             </div>
 
             <div id="header">
@@ -101,10 +101,10 @@
                                                         Departamento
                                                     </td>
                                                     <td>
-                                                        ¡rea
+                                                        √Årea
                                                     </td>
                                                     <td>
-                                                        B˙squeda
+                                                        B√∫squeda
                                                     </td>
                                                 </tr>
 
@@ -113,7 +113,7 @@
                                                         <html:select styleId="tipo" property="tipo" value="">
 
                                                     <option value="">Todos</option>
-                                                    <option value="Pasantias">PasantÌas</option>
+                                                    <option value="Pasantias">Pasant√≠as</option>
                                                     <option value="ProyectosDeGrado">Proyectos de Grado</option>
 
                                                 </html:select>

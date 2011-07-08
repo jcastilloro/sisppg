@@ -2,7 +2,7 @@
 %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
 %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
 %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-%><%@ page contentType="text/html;charset=ISO-8859-1"
+%><%@ page contentType="text/html;charset=UTF-8"
 %><html:html>
     <head>
         <title><bean:message key="V_fases_pasantia.title"/></title>
@@ -35,7 +35,7 @@
                 <ul id="nav">
                     <li><cohesion:actor actors="4"><html:link action="/A_finalizar_inscripcion.do"><bean:message key="V_fases_pasantia.label1"/><%-- Finalizar --%></html:link></cohesion:actor></li>                    
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -50,7 +50,7 @@
                             <div class="top"> </div>
                             <div id="left">
                                 <div class="content">
-                                    <center><h3>Inscripción de Pasantía</h3>
+                                    <center><h3>InscripciÃ³n de PasantÃ­a</h3>
                                         <h4>Agregar Fase</h4>
                                     ${empty msg ? "" : msg}</center>
                                     <div class="box1840475">

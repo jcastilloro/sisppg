@@ -2,11 +2,11 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <html:base/>
-        <title><bean:message key="V_Sesion_Empresa.title"/></title>
+        <title>Consultar PasantÃ­a</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
@@ -47,7 +47,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -67,7 +67,7 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-                                        <h1 align="center">Pasantías</h1>
+                                        <h1 align="center">PasantÃ­as</h1>
                                         <html:form action="/A_consultar_pasantias.do" method="post">
 
                                             <table border="0">
@@ -85,7 +85,7 @@
                                                     </th>
 
                                                     <th align="center">
-                                                        Año
+                                                        AÃ±o
                                                     </th>
 
                                                     <th align="center">
@@ -97,7 +97,7 @@
                                                         <logic:empty name="Carreras">
                                                             <html:select property="idCarrera">
                                                                 <%-- Valor cabliao --%>
-                                                                <html:option value="2"> Ingeniería de Computación</html:option>
+                                                                <html:option value="2"> IngenierÃ­a de ComputaciÃ³n</html:option>
                                                             </html:select>
                                                         </logic:empty>
                                                         <logic:notEmpty name="Carreras">
@@ -112,9 +112,9 @@
                                                     <td>
                                                         <html:select property="tipo" styleId="1843570">
                                                             <html:option value="all"> Todos</html:option>
-                                                            <html:option styleId="l" value="larga"> Pasantía Larga</html:option>
-                                                            <html:option styleId="i" value="intermedia"> Pasantía Intermedia</html:option>
-                                                            <html:option styleId="c" value="corta"> Pasantía Corta</html:option>
+                                                            <html:option styleId="l" value="larga"> PasantÃ­a Larga</html:option>
+                                                            <html:option styleId="i" value="intermedia"> PasantÃ­a Intermedia</html:option>
+                                                            <html:option styleId="c" value="corta"> PasantÃ­a Corta</html:option>
                                                         </html:select>
                                                     </td>
                                                     <td>
@@ -172,16 +172,16 @@
                                             </table>
                                         </html:form>
 
-                                        <%-- Resultados de la Búsqueda --%>
+                                        <%-- Resultados de la BÃºsqueda --%>
 
                                         <logic:empty name="Pasantias">
-                                            <h1>¡No hay estudiantes haciendo pasantías según los criterios de búsqueda seleccionados!</h1>
+                                            <h1>Â¡No hay estudiantes haciendo pasantÃ­as segÃºn los criterios de bÃºsqueda seleccionados!</h1>
                                         </logic:empty>
                                         <logic:notEmpty name="Pasantias">
                                             <div class="administrador">
                                                 <table width="500px" class="sortable">
                                                     <thead>
-                                                        <tr><th align="center">Título</th><th align="center">Resumen</th></tr>
+                                                        <tr><th align="center">TÃ­tulo</th><th align="center">Resumen</th></tr>
                                                     </thead>
                                                     <tbody>
                                                         <logic:iterate id="pas" collection="${empty Pasantias ? _vacio : Pasantias}">
