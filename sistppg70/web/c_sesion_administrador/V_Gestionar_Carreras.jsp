@@ -2,7 +2,7 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
@@ -10,13 +10,15 @@
 
         <html:base/>
 
-        <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
-
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-
-        <script type="text/javascript" src="../sorttable.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
 
         <style type="text/css">
 
@@ -94,7 +96,7 @@
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
 
-  
+
 
 
 
@@ -138,20 +140,25 @@
                                         <p><p><p>
 
                                             <logic:notEmpty name="Singular">
-                                                <hr>
-                                                <html:form
-                                                    action="/A_insertar_carrera.do" method="post">
+                                            <hr>
+                                            <html:form styleId="CarrerasForm"
+                                                       action="/A_insertar_carrera.do" method="post" acceptCharset="utf-8">
                                                 <table border="0">
-                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}"/></td></tr></p>
-                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="${Singular.email}"/></td></tr>
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="${Singular.nombre}" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr></p>
+                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="${Singular.email}" styleClass="validate[required,custom[email]]"/></td></tr>
                                                     <html:hidden property="idCarrera" value="${Singular.idCarrera}"/>
 
 
-                                                    <tr><td><html:link action="/A_eliminar_carrera.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                    <tr><td><html:link action="/A_eliminar_carrera.do" onclick="return confirm('Â¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
                                                         </td></tr>
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                        $("#CarrerasForm").validationEngine('attach');
+                                                    });
+                                                </script>
 
 
 
@@ -174,12 +181,12 @@
                                         </logic:empty>
 
                                         <logic:notEmpty name="Agregar">
-                                        <hr>
-                                            <html:form
-                                                action="/A_insertar_carrera.do" method="post">
+                                            <hr>
+                                            <html:form styleId="CarrerasForm"
+                                                       action="/A_insertar_carrera.do" method="post" acceptCharset="utf-8">
                                                 <table border="0">
-                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value=""/></td></tr></p>
-                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value=""/></td></tr>
+                                                    <tr><td><p id="1840413_C">Nombre</td><td><html:text styleId="1840413" property="nombre" size="30" value="" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr></p>
+                                                    <tr><td><p id="1840416_C">Email</td><td><html:text styleId="1840416" property="email" size="30" value="" styleClass="validate[required,custom[email]]"/></td></tr>
                                                     <html:hidden property="idCarrera" value=""/>
 
 
@@ -188,6 +195,11 @@
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                        $("#CarrerasForm").validationEngine('attach');
+                                                    });
+                                                </script>
                                             </logic:notEmpty>
 
 

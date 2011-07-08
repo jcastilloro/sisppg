@@ -2,16 +2,21 @@
            %><%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"
            %><%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"
            %><%@ taglib tagdir="/WEB-INF/tags" prefix="cohesion"
-           %><%@ page contentType="text/html;charset=ISO-8859-1"
+           %><%@ page contentType="text/html;charset=UTF-8"
            %><html:html>
     <head>
         <title><bean:message key="V_Inicio_Sesion.title"/></title>
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
-        <script type="text/javascript" src="../sorttable.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
 
         <style type="text/css">
 
@@ -63,7 +68,7 @@
             <div id="menu">
                 <ul id="nav">
                 </ul>
-                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar Sesión</html:link>
+                <p align="right"><html:link action="/A_Prep_Inicio_Sesion.do">Cerrar SesiÃ³n</html:link>
             </div>
 
             <div id="header">
@@ -85,7 +90,7 @@
                                             <center>
 
                                                 <h2>
-                                                    Estatus de Prórrogas
+                                                    Estatus de PrÃ³rrogas
                                                 </h2><hr>
                                                 <div class="administrador">
                                                     <table class="sortable" width="400px">
@@ -121,18 +126,23 @@
 
                                             <logic:notEmpty name="Singular">
                                             <hr>
-                                            <html:form
-                                                action="/A_insertar_estatus_prorroga.do" method="post">
+                                            <html:form styleId="AdmForm"
+                                                       action="/A_insertar_estatus_prorroga.do" method="post" acceptCharset="utf-8">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}"/></td></tr>
+                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="${Singular.estatus}" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr>
                                                     <html:hidden property="idEstatusProrroga" value="${Singular.idEstatusProrroga}"/>
 
 
-                                                    <tr><td><html:link action="/A_eliminar_estatus_prorroga.do" onclick="return confirm('¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
+                                                    <tr><td><html:link action="/A_eliminar_estatus_prorroga.do" onclick="return confirm('Â¿Esta seguro de que desea borrar el registro?')" >Eliminar</html:link></td><td><html:submit styleClass="button">Modificar<%-- Crear --%></html:submit><p>
                                                         </td></tr>
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                        $("#AdmForm").validationEngine('attach');
+                                                    });
+                                                </script>
 
 
 
@@ -151,10 +161,10 @@
 
                                         <logic:notEmpty name="Agregar">
                                             <hr>
-                                            <html:form
-                                                action="/A_insertar_estatus_prorroga.do" method="post">
+                                            <html:form styleId="AdmForm"
+                                                       action="/A_insertar_estatus_prorroga.do" method="post" acceptCharset="utf-8">
                                                 <table border="0">
-                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value=""/></td></tr>
+                                                    <tr><td>estatus</td><td><html:text styleId="1840413" property="estatus" size="30" value="" styleClass="validate[required,custom[onlyLetterSp]]"/></td></tr>
                                                     <html:hidden property="idEstatusProrroga" value=""/>
 
 
@@ -163,6 +173,11 @@
                                                 </table>
                                                 <p><bean:message key="V_Obligatorios.msg0"/>
                                                 </html:form>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                        $("#AdmForm").validationEngine('attach');
+                                                    });
+                                                </script>
                                             </logic:notEmpty>
 
 

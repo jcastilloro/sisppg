@@ -44,17 +44,27 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             throws Exception {
 
         //Salidas
-        final String[] SALIDAS = {"V_Sesion_Administrador",};
+        final String[] SALIDAS = {"V_Sesion_Administrador", "V_inicio_sesion_administrador"};
         final int SALIDA_0 = 0;
+        final int SALIDA_1 = 1;
 
 
-        int salida = SALIDA_0;
+        int salida = SALIDA_1;
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
         try {
             //mi codigo
+            F_Inicio_Sesion_externo fF_Inicio_Sesion_externo = (F_Inicio_Sesion_externo) form;
+
+
             request.getSession().removeAttribute("Singular");
             request.getSession().removeAttribute("Agregar");
+            Usuario Usuario = (Usuario) s.createQuery("from Usuario where tipo_actor= 'administrador'").uniqueResult();
+            if ((fF_Inicio_Sesion_externo.getLogin().equals("admin") || fF_Inicio_Sesion_externo.getLogin().equals("Admin")) && fF_Inicio_Sesion_externo.getPassword().equals(Usuario.getUsbid())) {
+                salida = SALIDA_0;
+            } else {
+                salida = SALIDA_1;
+            }
             //mi codigo
             tr.commit();
 
@@ -69,10 +79,11 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         }
         if (salida == 0) {
             new CohesionActor(CohesionActor.ACTOR_administrador).setMe(request);
-        }
-        if (salida == 0) {
             request.setAttribute("msg",
                     getResources(request).getMessage("A_Inicio_Sesion_Adm.msg0"));
+        }
+        if (salida == 1) {
+            request.setAttribute("msg","Password o Login Inválido");
         }
 
         return mapping.findForward(SALIDAS[salida]);
@@ -384,7 +395,7 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
             while (it.hasNext()) {
                 iterado = (Area) it.next();
                 DepartamentoArea dato = (DepartamentoArea) s.createQuery("from DepartamentoArea where area= :var").setLong("var", iterado.getIdArea()).uniqueResult();
-                Devolucion.add("<tr onclick=\"location.href='/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "'\" onmouseover=\"this.style.cursor='pointer'\">               <td width=\"250px\"><center>" +  iterado.getNombre() + "</center></td><td width=\"250px\"><center>" + dato.getDepartamento().getNombre() + "</center></td></tr>");
+                Devolucion.add("<tr onclick=\"location.href='/sistppg70/A_Prep_Gestionar_Areas.do?idArea=" + iterado.getIdArea() + "'\" onmouseover=\"this.style.cursor='pointer'\">               <td width=\"250px\"><center>" + iterado.getNombre() + "</center></td><td width=\"250px\"><center>" + dato.getDepartamento().getNombre() + "</center></td></tr>");
             }
 
             if (!Devolucion.isEmpty()) {
@@ -2148,24 +2159,6 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         return mapping.findForward(SALIDAS[salida]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public ActionForward A_Prep_Gestionar_Ciudades(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -2405,9 +2398,4 @@ public class AccionesC_Sesion_Administrador extends CohesionAction {
         request.setAttribute("msg", "Se elimino con éxito el registro");
         return mapping.findForward(SALIDAS[salida]);
     }
-
-
-
-
-
 }
