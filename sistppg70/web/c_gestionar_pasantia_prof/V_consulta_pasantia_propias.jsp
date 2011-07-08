@@ -129,7 +129,7 @@
                                             </table>
                                                     </logic:notEmpty>
                                                     <logic:empty name="Datos">
-                                                            Usted no posee pasantías asociadas!!.
+                                                            ¡Usted no posee pasantías asociadas!
                                                     </logic:empty>
                                         </div>
 

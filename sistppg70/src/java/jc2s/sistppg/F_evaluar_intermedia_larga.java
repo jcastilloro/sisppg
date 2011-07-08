@@ -2,9 +2,7 @@ package jc2s.sistppg;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 
 public class F_evaluar_intermedia_larga extends org.apache.struts.action.ActionForm {
@@ -34,11 +32,6 @@ public class F_evaluar_intermedia_larga extends org.apache.struts.action.ActionF
         return fF_Tutor_Industrial;
     }
 
-//    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-//        ActionErrors errors = new ActionErrors();
-//
-//        return errors;
-//    }
 
     /**
      * Holds value of property nombre.

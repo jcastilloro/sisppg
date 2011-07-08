@@ -79,8 +79,7 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-                                        <html:form
-                                            action="/A_evaluacion_intermedia.do" method="post">
+                                        <html:form action="/A_evaluacion_intermedia.do" method="post">
                                             <center>
                                                 <table>
                                                     <tr><td>

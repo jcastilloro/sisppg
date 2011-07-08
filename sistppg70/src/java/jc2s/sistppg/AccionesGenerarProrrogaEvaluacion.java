@@ -31,7 +31,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import jc2s.sistppg.hibernate.Estudiante;
 import jc2s.sistppg.hibernate.EstudianteRealizaProyecto;
@@ -39,7 +38,6 @@ import jc2s.sistppg.hibernate.Pasantia;
 import jc2s.sistppg.hibernate.PasantiaCorta;
 import jc2s.sistppg.hibernate.PasantiaIntermedia;
 import jc2s.sistppg.hibernate.PasantiaLarga;
-import jc2s.sistppg.hibernate.Preinscripcion;
 import jc2s.sistppg.hibernate.Prorroga;
 import jc2s.sistppg.hibernate.Usuario;
 

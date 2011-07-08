@@ -77,8 +77,8 @@
                                 <div class="content">
                                     <center>${empty msg ? "" : msg}</center>
                                     <div class="box1465928" align="center">
-                                        <html:form
-                                            action="/A_evaluacion_larga.do" method="post">
+                                        <logic:empty name="Evaluado">
+                                            <html:form action="/A_evaluacion_larga.do" method="post">
                                             <center>
                                                 <table>
                                                     <tr><td>
@@ -92,11 +92,15 @@
                                                             <html:radio property="evaluacion" value="Reprobado"/>
                                                         </td></tr>
                                                 </table>
-                                                        <hr>
-                                                        <html:hidden property="idPasantia" value="${idPasantia}"/>
-                                                        <html:submit styleClass="button">Evaluar</html:submit>
+                                                <hr>
+                                                <html:hidden property="idPasantia" value="${idPasantia}"/>
+                                                <html:submit styleClass="button">Evaluar</html:submit>
                                             </center>
-                                        </html:form>
+                                            </html:form>
+                                        </logic:empty>
+                                        <logic:notEmpty name ="Evaluado">
+                                            <h3>¡Usted ya evaluó esta pasantía!</h3>
+                                        </logic:notEmpty>
 
                                     </div>
                                 </div>

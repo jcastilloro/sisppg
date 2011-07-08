@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jc2s.sistppg.hibernate.EstatusPasantia;
 import jc2s.sistppg.hibernate.Pasantia;
 import jc2s.sistppg.hibernate.PasantiaCorta;
 import jc2s.sistppg.hibernate.PasantiaIntermedia;
@@ -182,6 +183,7 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         try {
 
             String idPasantia = request.getParameter("idPasantia");
+            request.getSession().setAttribute("EstaPasantia", idPasantia);
             Pasantia pasantia = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(idPasantia)).uniqueResult();
             List<String> Devolucion = s.createSQLQuery("select nombre from trimestre where nombre = 'nidevainaexisto'").list();
 
@@ -305,13 +307,13 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//Checking for actors profesor
+        //Checking for actors profesor
         if (!CohesionActor.checkActor(request, 8)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
         Session s = HibernateUtil.getCurrentSession();
         Transaction tr = s.beginTransaction();
-        try {
+        try {            
             tr.commit();
 
         } catch (Exception ex) {
@@ -345,7 +347,11 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         try {
 
             F_evaluar_corta F = (F_evaluar_corta) form;
-            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(F.getIdPasantia())).uniqueResult();
+                       String idPasantia = (String) request.getSession().getAttribute("EstaPasantia");
+            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var",  Long.parseLong(idPasantia)).uniqueResult();
+            EstatusPasantia aprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Aprobado").uniqueResult();
+            EstatusPasantia reprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Reprobado").uniqueResult();
+
             Long puntaje = Long.parseLong("0");
             Long respondidas = Long.parseLong("0");
             Long actual = Long.parseLong(F.getItem1());
@@ -373,11 +379,15 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
                 puntaje=puntaje+actual;
                 respondidas++;
             }
-            p.setEvaluacion_tutor_academico(String.valueOf(puntaje/respondidas));
+            
+            long nota = puntaje/respondidas;
+            p.setEvaluacion_tutor_academico(String.valueOf(nota));
+            if (nota >= 3.0)
+                p.setEstatus(aprobo);
+            else if (nota < 3.0)
+                p.setEstatus(reprobo);            
      
             s.update(p);
-
-
             tr.commit();
 
         } catch (Exception ex) {
@@ -401,7 +411,7 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         final int SALIDA_0 = 0;
 
         int salida = SALIDA_0;
-//Checking for actors profesor
+        //Checking for actors profesor
         if (!CohesionActor.checkActor(request, 8)) {
             return mapping.findForward(CohesionActor.SALIDA_ACTOR);
         }
@@ -411,8 +421,16 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
 
 
             F_evaluar_intermedia_larga F = (F_evaluar_intermedia_larga) form;
-            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(F.getIdPasantia())).uniqueResult();
-            p.setEvaluacion_tutor_academico(F.getEvaluacion());
+            String idPasantia = (String) request.getSession().getAttribute("EstaPasantia");
+            String Eval = F.getEvaluacion();
+            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var",  Long.parseLong(idPasantia)).uniqueResult();
+            EstatusPasantia aprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Aprobado").uniqueResult();
+            EstatusPasantia reprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Reprobado").uniqueResult();
+            p.setEvaluacion_tutor_academico(Eval);
+            if (Eval.equals("Aprobado"))
+                p.setEstatus(aprobo);
+            else if (Eval.equals("Reprobado"))
+                p.setEstatus(reprobo);
             s.update(p);
 
             tr.commit();
@@ -446,10 +464,17 @@ public class AccionesC_Gestionar_Pasantia_Prof extends CohesionAction {
         Transaction tr = s.beginTransaction();
         try {
 
-
-             F_evaluar_intermedia_larga F = (F_evaluar_intermedia_larga) form;
-            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var", Long.parseLong(F.getIdPasantia())).uniqueResult();
-            p.setEvaluacion_tutor_academico(F.getEvaluacion());
+            F_evaluar_intermedia_larga F = (F_evaluar_intermedia_larga) form;
+            String idPasantia = (String) request.getSession().getAttribute("EstaPasantia");
+            String Eval = F.getEvaluacion();
+            Pasantia p = (Pasantia) s.createQuery("from Pasantia where idPasantia= :var").setLong("var",  Long.parseLong(idPasantia)).uniqueResult();
+            EstatusPasantia aprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Aprobado").uniqueResult();
+            EstatusPasantia reprobo = (EstatusPasantia) s.createQuery("from EstatusPasantia where estatus= :var").setString("var", "Reprobado").uniqueResult();
+            p.setEvaluacion_tutor_academico(Eval);
+            if (Eval.equals("Aprobado"))
+                p.setEstatus(aprobo);
+            else if (Eval.equals("Reprobado"))
+                p.setEstatus(reprobo);
             s.update(p);
             tr.commit();
 
