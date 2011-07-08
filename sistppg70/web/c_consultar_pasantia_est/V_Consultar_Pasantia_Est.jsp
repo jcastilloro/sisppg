@@ -9,8 +9,15 @@
 
         <html:base/>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" href="../_css/validationEngine.jquery.css" type="text/css"/>
+        <link type="text/css" href="../_css/smoothness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />
         <script type="text/javascript" src="../_tooltips/js/prototype.js"></script>
         <script type="text/javascript" src="../_tooltips/js/HelpBalloon.js"></script>
+        <script type="text/javascript" src="../_js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery-ui-1.8.10.custom.min.js"></script>
+        <script type="text/javascript" src="../_js/jquery.ui.datepicker-es.js"></script>
+        <script src="../_js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="../_js/jquery.validationEngine-es.js" type="text/javascript"></script>
         <style type="text/css">
 
             div#box1465928 {width: 400px; margin: 40px auto; }
@@ -57,6 +64,11 @@
 
     </head>
     <body>
+        <script type="text/javascript">
+            jQuery(function($){
+                $("#1840509").datepicker();
+            });
+        </script>
         <div id="wrapper">
             <div id="menu">
                 <ul id="nav">
@@ -148,7 +160,41 @@
                                             <logic:notEmpty name="Ano">
                                                 <tr><th>Año:</th><td> ${Ano} </td></tr>
                                             </logic:notEmpty>
+
+                                            <logic:empty name="Defensa">
+                                                <tr><th>Fecha de Defensa:</th><td> Indefinida </td></tr>
+
+                                            </logic:empty>
+                                            <logic:notEmpty name="Defensa">
+                                                <tr><th>Fecha de Defensa:</th><td> ${Pasantia.fecha_defensa} </td></tr>
+
+                                            </logic:notEmpty>
+
+
                                         </table>
+
+
+
+
+                                        <html:form styleId="DefensaForm"
+                                                   action="/A_definir_defensa.do?idPasantia=${Pasantia.idPasantia}" method="post" acceptCharset="utf-8">
+                                            <table>
+                                                <tr><td>
+
+                                                        <html:submit styleClass="button">Definir Fecha!</html:submit></td><td>
+                                                        <p id="1843588_C"><label for="1843588"></label></td><td><html:text styleId="1840509" property="fecha_defensa" size="30" styleClass="validate[required],past[NOW]"/></td></tr>
+                                            </table>
+                                        </html:form>
+
+                                        <script>
+                                            $(document).ready(function(){
+                                                $("#DefensaForm").validationEngine('attach');
+                                            });
+                                        </script>
+
+
+
+
 
                                         <%-- FASES --%>
 

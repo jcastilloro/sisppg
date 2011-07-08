@@ -43,6 +43,7 @@
         <form-bean name="F_Jurado" type="jc2s.sistppg.F_Jurado"/>
         <form-bean name="F_evaluar_intermedia_larga" type="jc2s.sistppg.F_evaluar_intermedia_larga"/>
         <form-bean name="F_evaluar_corta" type="jc2s.sistppg.F_evaluar_corta"/>
+        <form-bean name="F_Defensa" type="jc2s.sistppg.F_Defensa"/>
 
     </form-beans>
 
@@ -107,6 +108,8 @@
 
         <forward name="V_Consultar_Pasantia_Est" path="/c_consultar_pasantia_est/V_Consultar_Pasantia_Est.jsp"/>
         <forward name="A_prep_Consultar_Pasantia" path="/A_prep_Consultar_Pasantia.do"/>
+        <forward name="A_definir_defensa" path="/A_definir_defensa.do"/>
+
 
         <!-- C_Retiro_Pasantia_Est -->
 
@@ -397,6 +400,8 @@
 
         <forward name="tooltip" path="/tooltip.do"/>
         <forward name="Info" path="/_tooltips/Info.jsp"/>
+
+
     </global-forwards>
 
     <action-mappings>
@@ -516,6 +521,11 @@
         <!-- C_Consultar_Pasantia_Est -->
         <action path="/A_prep_Consultar_Pasantia" parameter="A_prep_Consultar_Pasantia"
            type="jc2s.sistppg.AccionesC_Consultar_Pasantia_Est"/>
+        <action path="/A_definir_defensa" parameter="A_definir_defensa"
+           type="jc2s.sistppg.AccionesC_Consultar_Pasantia_Est"
+           input="/C_Consultar_Pasantia_Est/V_Consultar_Pasantia_Est.jsp"
+           name="F_Defensa"
+           scope="session"/>
 
 
         <!-- C_Retiro_Pasantia_Est -->

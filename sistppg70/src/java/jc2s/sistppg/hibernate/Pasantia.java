@@ -1,5 +1,7 @@
 package jc2s.sistppg.hibernate;
 
+import java.util.Date;
+
 
 
 public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.Auditable {
@@ -234,6 +236,16 @@ public class Pasantia implements java.io.Serializable, ve.usb.cohesion.runtime.A
 
     public void setObservaciones_tutor_industrial(String observaciones_tutor_industrial) {
         this.observaciones_tutor_industrial = observaciones_tutor_industrial;
+    }
+
+    private java.util.Date fecha_defensa;
+
+    public Date getFecha_defensa() {
+        return fecha_defensa;
+    }
+
+    public void setFecha_defensa(Date fecha_defensa) {
+        this.fecha_defensa = fecha_defensa;
     }
 
     public String toString() {

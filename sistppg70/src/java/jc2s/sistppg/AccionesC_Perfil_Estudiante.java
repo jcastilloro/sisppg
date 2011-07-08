@@ -158,8 +158,8 @@ public class AccionesC_Perfil_Estudiante extends CohesionAction {
                 e.setDireccion(new String(fperfil.getDireccion().getBytes("ISO-8859-1"),"UTF-8"));
                 e.setSexo(fperfil.getSexo());
                 e.setOtrotelefono(fperfil.getOtrotelefono());
-                System.out.println("--------------------------------------------->"+fperfil.getOtrotelefono());
-                System.out.println("--------------------------------------------->"+e.getOtrotelefono());
+//                System.out.println("--------------------------------------------->"+fperfil.getOtrotelefono());
+//                System.out.println("--------------------------------------------->"+e.getOtrotelefono());
                 e.setEdocivil(fperfil.getEstadoCivil());
                 SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
                 Date fecha = formatoDelTexto.parse(fperfil.getFecha_nacimiento());

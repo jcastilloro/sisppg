@@ -17,13 +17,13 @@
     <!-- 5 -->
     <property column="tramitecctds" name="tramitecctds" type="boolean"/>
     <!-- 6 -->
-    <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
+    <many-to-one column="estudiante" lazy="false" name="estudiante" not-null="true"/>
     <!-- 7 -->
     <property column="created_at" name="created_at" not-null="true" type="timestamp"/>
     <!-- 8 -->
     <set name="ciudadesPreinscripcion" table="ciudadPreiscripcion">
-        <key column="preinscripcion"/>
-        <one-to-many class="jc2s.sistppg.hibernate.CiudadPreinscripcion"/>
+      <key column="preinscripcion"/>
+      <one-to-many class="jc2s.sistppg.hibernate.CiudadPreinscripcion"/>
     </set>
   </class>
 </hibernate-mapping>

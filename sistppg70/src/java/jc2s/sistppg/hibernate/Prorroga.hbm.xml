@@ -7,7 +7,7 @@
       <generator class="native"/>
     </id>
     <!-- 1 -->
-    <many-to-one column="estudiante" name="estudiante" not-null="true" lazy="false"/>
+    <many-to-one column="estudiante" lazy="false" name="estudiante" not-null="true"/>
     <!-- 2 -->
     <property column="justificacion" name="justificacion" not-null="true" type="text"/>
     <!-- 3 -->
