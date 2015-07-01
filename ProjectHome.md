@@ -1,0 +1,1 @@
+Sistema de Gestión de Pasantías y Proyectos de Grado (SISPPG) desarrollado por JC2 Systems para sistemas de información II y III en la USB
